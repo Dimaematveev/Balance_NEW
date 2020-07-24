@@ -223,7 +223,7 @@ namespace BalanceMain
         /// <param name="_dataGridView"> В какой DataGridView будет записаны данные с запроса </param>
         private void ButtonExecuteSQL(string _sql, DataGridView _dataGridView)
         {
-            DataSet ds = new DataSet();
+            DataSet ds = new DataSet(); 
 
             reader = con.ExecuteCommand(_sql);
             reader.Fill(ds);
