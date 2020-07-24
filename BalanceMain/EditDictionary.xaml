@@ -23,7 +23,7 @@
             <Button  x:Name="Remove" Content="Удаление" Margin="10" Width="80"/>
         </StackPanel>
         <TreeView Grid.Column="0" Grid.Row="1">
-            <TreeViewItem Header="Словари" IsExpanded="True">
+            <TreeViewItem Header="Словари" x:Name="Dictionarys" IsExpanded="True">
                 <TreeViewItem Header="Типы устройств" x:Name="Type"/>
                 <TreeViewItem Header="Модели устройств" x:Name="Model"/>
                 <TreeViewItem Header="Местоположение" x:Name="Location"/>
@@ -33,7 +33,7 @@
         <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
 
         <WindowsFormsHost Grid.Column="2" Grid.Row="1">
-            <wf:DataGridView x:Name="ViewDictionary" AllowUserToAddRows="False"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"/>
+            <wf:DataGridView x:Name="ViewDictionary" AllowUserToAddRows="False" ReadOnly="True"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"/>
         </WindowsFormsHost>
 
     </Grid>

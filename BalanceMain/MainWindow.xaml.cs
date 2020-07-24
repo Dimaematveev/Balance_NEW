@@ -19,14 +19,14 @@ namespace BalanceMain
     public partial class MainWindow : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        Connect con = new Connect();
+        Connect con;
         /// <summary> заполняет DataSet данными из БД.</summary>
         SqlDataAdapter reader;
 
 
-        public MainWindow()
+        public MainWindow(Connect con)
         {
-
+            this.con = con;
             InitializeComponent();
             /// <summary> словарь для элемента Zip.</summary>
             var DictionaryZip = new List<NameAndIdTable>

@@ -18,6 +18,8 @@ namespace BalanceMain
     /// </summary>
     public partial class AdminPanel : Window
     {
+        /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
+        Connect con = new Connect();
         public AdminPanel()
         {
             InitializeComponent();
@@ -28,13 +30,13 @@ namespace BalanceMain
 
         private void DictionaryName_Click(object sender, RoutedEventArgs e)
         {
-            var view = new EditDictionary();
+            var view = new EditDictionary(con);
             view.ShowDialog();
         }
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {
-            var view = new MainWindow();
+            var view = new MainWindow(con);
             view.ShowDialog();
         }
     }
