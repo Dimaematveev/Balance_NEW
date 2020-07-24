@@ -1,0 +1,63 @@
+﻿<Window x:Class="BalanceMain.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BalanceMain"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
+        mc:Ignorable="d"
+        Title="Баланс" Height="450" Width="800">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <WrapPanel x:Name="FiltersWrapPanel"  Grid.Row="0"  Margin="10,0,10,15">
+            <Grid x:Name="ClearGrid" Margin="10,0,0,0">
+                <Button x:Name="Button_ClearAllComboBox" Content="X"  Width="22" Height="22" Margin="0,25,0,0" ToolTip="Очистить поля фильтров"/>
+            </Grid>
+            <Grid x:Name="TypeGrid" Margin="10,0,0,0">
+                <Label Content="Тип оборудования:" Width="120" Margin="0,0,0,0"/>
+                <ComboBox x:Name="ComboBoxType" Width="120" IsEnabled="True" Margin="0,25,0,0"/>
+            </Grid>
+            <Grid x:Name="ModelGrid" Margin="10,0,0,0">
+                <Label Content="Модель:" Width="120" Margin="0,0,0,0"/>
+                <ComboBox x:Name="ComboBoxModel" Width="120" IsEnabled="False" Margin="0,25,0,0"/>
+            </Grid>
+            <Grid x:Name="LocationGrid" Margin="10,0,0,0">
+                <Label Content="Местонахождение:"  Width="120" Margin="0,0,0,0"/>
+                <ComboBox x:Name="ComboBoxLocation" Width="120" Margin="0,25,0,0"/>
+            </Grid>
+
+            <Grid x:Name="ZipGrid" Margin="10,0,0,0">
+                <Label Content="Зип?"  Width="90" Margin="0,0,0,0"/>
+                <ComboBox x:Name="ComboBoxIsZip" Width="90" Margin="0,25,0,0" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+
+            </Grid>
+
+            <Grid x:Name="ViewGrid" Margin="10,0,0,0">
+                <Button x:Name="Button_View" Content="Просмотр" Width="80" Height="22" Margin="10,25,0,0"/>
+            </Grid>
+        </WrapPanel>
+
+        <Grid x:Name="DataGrid" Grid.Row="1"  Margin="10,10,10,10">
+            <TabControl x:Name="DataTabControl" Margin="0,0,0,0">
+                <TabItem x:Name="CommonTabItem" Header="Общий список">
+                    <Grid x:Name="CommonGrid" Background="#FFE5E5E5">
+                        <WindowsFormsHost>
+                            <wf:DataGridView x:Name="commonDataGridView" AllowUserToAddRows="False"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"></wf:DataGridView>
+                        </WindowsFormsHost>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="DeviceTabItem" Header="Устройства" >
+                    <Grid  x:Name="DeviceGrid" Background="#FFE5E5E5">
+                            <WindowsFormsHost>
+                            <wf:DataGridView x:Name="deviceDataGridView" MultiSelect="False" AllowUserToAddRows="False" Height="99" Width="100" Margin="10,10,0,0"></wf:DataGridView>
+                            </WindowsFormsHost>
+                        </Grid>
+                </TabItem>
+                
+            </TabControl>
+        </Grid>
+    </Grid>
+</Window>
