@@ -36,16 +36,10 @@ namespace BalanceMain
 
             Type.Selected += (s, e) => { Type_Selected(); };
 
-            Loaded += EditDictionary_Loaded;
             
         }
-
-        private void EditDictionary_Loaded(object sender, RoutedEventArgs e)
-        {
-            Type.IsSelected = true;
-            Type_Selected();
-            Add_Click(null, null);
-        }
+        //TODO: Нет проверок, sql может выдавать ошибки!!
+ 
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {

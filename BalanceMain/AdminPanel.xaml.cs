@@ -27,14 +27,9 @@ namespace BalanceMain
             ViewDevice.Click += ViewDevice_Click;
             DictionaryName.Click += DictionaryName_Click;
 
-            Loaded += AdminPanel_Loaded;
            
         }
 
-        private void AdminPanel_Loaded(object sender, RoutedEventArgs e)
-        {
-            DictionaryName_Click(null, null);
-        }
 
         private void DictionaryName_Click(object sender, RoutedEventArgs e)
         {

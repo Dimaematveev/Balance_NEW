@@ -34,9 +34,12 @@ namespace EditAddDictionary
 
         private void DictionaryType_Loaded(object sender, RoutedEventArgs e)
         {
-            
             GadgetName.Text = DR["GadgetName"].ToString();
             Name.Text = DR["Name"].ToString();
+            if (GadgetName.Text != null && GadgetName.Text != "")
+            {
+                Add.Content = "Изменить";
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
