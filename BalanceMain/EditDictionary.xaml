@@ -7,26 +7,34 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"  
         mc:Ignorable="d"
         Title="EditDictionary" Height="450" Width="800">
-    <Grid>
+    <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="5" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="5,5,0,5" Orientation="Horizontal" HorizontalAlignment="Left" Width="300">
             <Button  x:Name="Add" Content="Добавление" Margin="10" Width="80"/>
             <Button  x:Name="Edit" Content="Изменение" Margin="10" Width="80"/>
             <Button  x:Name="Remove" Content="Удаление" Margin="10" Width="80"/>
         </StackPanel>
-        <ListBox Grid.Column="0" Grid.Row="1">
-            <ListBoxItem Content="dwdwd"/>
-            <ListBoxItem Content="dwdwd"/>
-        </ListBox>
-        <WindowsFormsHost Grid.Column="1" Grid.Row="1">
+        <TreeView Grid.Column="0" Grid.Row="1">
+            <TreeViewItem Header="111" IsExpanded="True">
+                <TreeViewItem Header="122"></TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="111" IsExpanded="True">
+                <TreeViewItem Header="122" ></TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
+        <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+
+        <WindowsFormsHost Grid.Column="2" Grid.Row="1">
             <wf:DataGridView x:Name="commonDataGridView" AllowUserToAddRows="False"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"></wf:DataGridView>
         </WindowsFormsHost>
+
     </Grid>
 </Window>
