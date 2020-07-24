@@ -17,9 +17,9 @@ namespace EditAddDictionary
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DictionaryType : Window
     {
-        public MainWindow()
+        public DictionaryType()
         {
             InitializeComponent();
         }

@@ -27,7 +27,7 @@ namespace BalanceMain
 
         private void Type_Selected(object sender, RoutedEventArgs e)
         {
-            EditAddDictionary.MainWindow mainWindow = new EditAddDictionary.MainWindow();
+            EditAddDictionary.DictionaryType mainWindow = new EditAddDictionary.DictionaryType();
             mainWindow.ShowDialog();
         }
     }

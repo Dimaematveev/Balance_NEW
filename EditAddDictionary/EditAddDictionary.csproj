@@ -48,12 +48,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow.xaml">
+    <Page Include="DictionaryType.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="DictionaryType.xaml.cs">
+      <DependentUpon>DictionaryType.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
