@@ -23,6 +23,13 @@ namespace BalanceMain
             InitializeComponent();
 
             ViewDevice.Click += ViewDevice_Click;
+            DictionaryName.Click += DictionaryName_Click;
+        }
+
+        private void DictionaryName_Click(object sender, RoutedEventArgs e)
+        {
+            var view = new EditDictionary();
+            view.ShowDialog();
         }
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
