@@ -9,26 +9,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BalanceMain
+namespace EditAddDictionary
 {
     /// <summary>
-    /// Interaction logic for EditDictionary.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class EditDictionary : Window
+    public partial class MainWindow : Window
     {
-        public EditDictionary()
+        public MainWindow()
         {
             InitializeComponent();
-
-            Type.Selected += Type_Selected;
-        }
-
-        private void Type_Selected(object sender, RoutedEventArgs e)
-        {
-            EditAddDictionary.MainWindow mainWindow = new EditAddDictionary.MainWindow();
-            mainWindow.ShowDialog();
         }
     }
 }

@@ -13,7 +13,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -23,17 +23,17 @@
             <Button  x:Name="Remove" Content="Удаление" Margin="10" Width="80"/>
         </StackPanel>
         <TreeView Grid.Column="0" Grid.Row="1">
-            <TreeViewItem Header="111" IsExpanded="True">
-                <TreeViewItem Header="122"></TreeViewItem>
-            </TreeViewItem>
-            <TreeViewItem Header="111" IsExpanded="True">
-                <TreeViewItem Header="122" ></TreeViewItem>
+            <TreeViewItem Header="Словари" IsExpanded="True">
+                <TreeViewItem Header="Типы устройств" x:Name="Type"/>
+                <TreeViewItem Header="Модели устройств" x:Name="Model"/>
+                <TreeViewItem Header="Местоположение" x:Name="Location"/>
+                <TreeViewItem Header="СП и СИ" x:Name="SP_SI"/>
             </TreeViewItem>
         </TreeView>
         <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
 
         <WindowsFormsHost Grid.Column="2" Grid.Row="1">
-            <wf:DataGridView x:Name="commonDataGridView" AllowUserToAddRows="False"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"></wf:DataGridView>
+            <wf:DataGridView x:Name="ViewDictionary" AllowUserToAddRows="False"  MultiSelect="False" Height="150" Width="100" Margin="10,10,0,0"/>
         </WindowsFormsHost>
 
     </Grid>
