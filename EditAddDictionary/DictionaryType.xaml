@@ -23,7 +23,7 @@
         <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
 
         <Label Content="_Имя таблицы" Grid.Row="0" Grid.Column="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox x:Name="GadgetName" Grid.Row="0" Grid.Column="2" Margin="10" VerticalAlignment="Center" Text="xsa"/>
+        <ComboBox x:Name="GadgetName" Grid.Row="0" Grid.Column="2" Margin="10" VerticalAlignment="Center" />
 
         <Label Content="_Тип устройства" Grid.Row="2" Grid.Column="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBox x:Name="Name" Grid.Row="2" Grid.Column="2" Margin="10" VerticalAlignment="Center" Text="cd"/>

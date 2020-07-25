@@ -34,9 +34,11 @@ namespace EditAddDictionary
 
         private void DictionaryType_Loaded(object sender, RoutedEventArgs e)
         {
-            GadgetName.Text = DR["GadgetName"].ToString();
+            GadgetName.Items.Add("Monitor");
+            GadgetName.Items.Add("Printer");
+            GadgetName.SelectedItem = DR["GadgetName"].ToString();
             Name.Text = DR["Name"].ToString();
-            if (GadgetName.Text != null && GadgetName.Text != "")
+            if (GadgetName.SelectedItem != null && (string)GadgetName.SelectedItem != "")
             {
                 Add.Content = "Изменить";
             }
@@ -49,7 +51,7 @@ namespace EditAddDictionary
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            DR["GadgetName"] = GadgetName.Text;
+            DR["GadgetName"] = GadgetName.SelectedItem.ToString();
             DR["Name"] = Name.Text;
             DialogResult = true;
             Close();
