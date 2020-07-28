@@ -10,9 +10,15 @@
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
-        <WrapPanel x:Name="FiltersWrapPanel"  Grid.Row="0"  Margin="10,0,10,15">
+        <Menu Grid.Row="0">
+            <MenuItem Header="Устройство">
+                <MenuItem Header="Добавить устройство" Name="AddDevice"/>
+            </MenuItem>
+        </Menu>
+        <WrapPanel x:Name="FiltersWrapPanel"  Grid.Row="1"  Margin="10,0,10,15">
             <Grid x:Name="ClearGrid" Margin="10,0,0,0">
                 <Button x:Name="Button_ClearAllComboBox" Content="X"  Width="22" Height="22" Margin="0,25,0,0" ToolTip="Очистить поля фильтров"/>
             </Grid>
@@ -40,7 +46,7 @@
             </Grid>
         </WrapPanel>
 
-        <Grid x:Name="DataGrid" Grid.Row="1"  Margin="10,10,10,10">
+        <Grid x:Name="DataGrid" Grid.Row="2"  Margin="10,10,10,10">
             <TabControl x:Name="DataTabControl" Margin="0,0,0,0">
                 <TabItem x:Name="CommonTabItem" Header="Общий список">
                     <Grid x:Name="CommonGrid" Background="#FFE5E5E5">

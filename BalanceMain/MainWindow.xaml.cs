@@ -8,8 +8,9 @@ using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
 using System.Windows.Input;
+using Connected;
 using System;
-
+using EditAddDevice;
 
 namespace BalanceMain
 {
@@ -48,6 +49,14 @@ namespace BalanceMain
 
             commonDataGridView.MouseDoubleClick += (sender, e) => { DataGridView_NewTab_MouseDoubleClick((DataGridView)sender); };
             deviceDataGridView.MouseDoubleClick += (sender, e) => { DataGridView_NewTab_MouseDoubleClick((DataGridView)sender); };
+
+            AddDevice.Click += AddDevice_Click;
+        }
+
+        private void AddDevice_Click(object sender, RoutedEventArgs e)
+        {
+            SelectTypeDevice selectTypeDevice = new SelectTypeDevice(con);
+            selectTypeDevice.ShowDialog();
         }
 
 

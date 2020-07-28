@@ -1,11 +1,11 @@
 ﻿using System.Data.SqlClient;
 
-namespace BalanceMain
+namespace Connected
 {
     public class Connect
     {
         /// <summary> Строка соединения с БД </summary>
-        public const string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = True; User Id = sa; Password = escort";
+        public const string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = True; User Id = sa; Password = qwerty";
         /// <summary> Создание подключения </summary>
         public SqlConnection connection = new SqlConnection(_connetionString);
 
