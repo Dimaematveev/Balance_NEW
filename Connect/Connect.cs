@@ -51,24 +51,26 @@ namespace Connected
         }
 
 
-        /// <summary>
-        ///  На строку sql выводит dataset
-        /// </summary>
-        /// <param name="_SqlString"> Запрос sql</param>
-        /// <returns> Выводит DataSet из запроса</returns>
-        public SqlDataAdapter ExecuteCommand(string _SqlString)
-        {
+        ///// <summary>
+        /////  На строку sql выводит dataset
+        ///// </summary>
+        ///// <param name="_SqlString"> Запрос sql</param>
+        ///// <returns> Выводит DataSet из запроса</returns>
+        //private SqlDataAdapter ExecuteCommand(string _SqlString)
+        //{
             
-            SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
-            return adapter;
-        }
+        //    SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
+        //    return adapter;
+        //}
 
         public string ExecuteProcedure(string _SqlExecProcedure, SqlParameter[] sqlParameters)
         {
 
-            SqlCommand command = new SqlCommand(_SqlExecProcedure, connection);
-            // указываем, что команда представляет хранимую процедуру
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlCommand command = new SqlCommand(_SqlExecProcedure, connection)
+            {
+                // указываем, что команда представляет хранимую процедуру
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
             command.Parameters.AddRange(sqlParameters);
             
 

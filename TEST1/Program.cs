@@ -10,7 +10,7 @@ namespace TEST1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             var connect = new Connect();
@@ -22,7 +22,7 @@ namespace TEST1
             sqlParameters.Add(new SqlParameter { ParameterName = "@ScreenResolution", Value = "500x500" });
             var Procedure = connect.ExecuteProcedure("[dev].[Add_Monitor]", sqlParameters.ToArray());
             Console.WriteLine();
-            Console.WriteLine("PROCEDURE: "+Procedure);
+            Console.WriteLine("PROCEDURE: "+ Procedure);
             Console.WriteLine();
             var data = connect.GetData("select * from dev.View_Monitor");
             foreach (DataColumn item in data.Columns)

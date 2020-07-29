@@ -21,10 +21,9 @@ namespace BalanceMain
     public partial class EditDictionary : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        Connect con;
-        /// <summary> заполняет DataSet данными из БД.</summary>
-        SqlDataAdapter reader;
-        DataSet ds = new DataSet();
+        readonly Connect con;
+        /// <summary> таблица с данными </summary>
+        DataTable Table;
 
         public EditDictionary(Connect con)
         {
@@ -49,16 +48,14 @@ namespace BalanceMain
             }
             if (Type.IsSelected && ViewDictionary.SelectedCells.Count >= 1)
             {
-                var row = ds.Tables[0].Rows[ViewDictionary.SelectedCells[0].RowIndex];
+                var row = Table.Rows[ViewDictionary.SelectedCells[0].RowIndex];
                 EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(row);
                 dictionaryType.ShowDialog();
                 if (!dictionaryType.DialogResult.Value)
                 {
                     return;
                 }
-                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(reader);
-
-                reader.Update(ds);
+                
                 Type_Selected();
 
             }
@@ -74,20 +71,16 @@ namespace BalanceMain
                 {
                     return;
                 }
-                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(reader);
-                ds.Tables[0].Rows.Add(dictionaryType.DR);
-                reader.Update(ds);
+                Table.Rows.Add(dictionaryType.DR);
                 Type_Selected();
             }
         }
 
         private void Type_Selected()
         {
-            
-            reader = con.ExecuteCommand("Select * from dic.Type");
-            ds.Clear();
-            reader.Fill(ds);
-            ViewDictionary.DataSource = ds.Tables[0];
+
+            Table = con.GetData("Select * from dic.Type");
+            ViewDictionary.DataSource = Table;
         }
     }
 }

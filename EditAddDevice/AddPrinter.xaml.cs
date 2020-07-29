@@ -19,7 +19,7 @@ namespace EditAddDevice
     /// </summary>
     public partial class AddPrinter : Window
     {
-        Connect Con;
+        readonly Connect Con;
         public AddPrinter(Connect con)
         {
             InitializeComponent();
@@ -29,7 +29,7 @@ namespace EditAddDevice
 
         private void AddPrinter_Loaded(object sender, RoutedEventArgs e)
         {
-            AddModel.ItemsSource = Con.GetData("select * from dic.Model");
+            AddModel.ItemsSource = Con.GetData("select * from dic.Model").DefaultView;
             AddModel.DisplayMemberPath = "Name";
         }
     }

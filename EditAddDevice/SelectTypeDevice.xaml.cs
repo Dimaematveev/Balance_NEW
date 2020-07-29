@@ -22,7 +22,7 @@ namespace EditAddDevice
     public partial class SelectTypeDevice : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        Connect Con;
+        readonly Connect Con;
         public SelectTypeDevice(Connect con)
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace EditAddDevice
 
         private void SelectTypeDevice_Loaded(object sender, RoutedEventArgs e)
         {
-            TypeDevice.ItemsSource = Con.GetData("Select * from dic.Type");
+            TypeDevice.ItemsSource = Con.GetData("Select * from dic.Type").DefaultView;
             TypeDevice.DisplayMemberPath = "Name";
 
         }

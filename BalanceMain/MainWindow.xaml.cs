@@ -20,10 +20,7 @@ namespace BalanceMain
     public partial class MainWindow : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        Connect con;
-        /// <summary> заполняет DataSet данными из БД.</summary>
-        SqlDataAdapter reader;
-
+        readonly Connect con;
 
         public MainWindow(Connect con)
         {
@@ -92,8 +89,10 @@ namespace BalanceMain
                 //Получение таблицы по GadgetID и DeviceID
                 ButtonExecuteSQL($"exec [dev].[ViewAllColumsInOneTableFromOneDevice] {_rowGridView.Cells["DeviceID"].Value}", _dataGridView);
 
-                var _windowsFormHost = new WindowsFormsHost();
-                _windowsFormHost.Child = _dataGridView;
+                var _windowsFormHost = new WindowsFormsHost
+                {
+                    Child = _dataGridView
+                };
                 var _grid = new Grid();
                 _grid.Children.Add(_windowsFormHost);
                 tab.Content = _grid;
@@ -179,13 +178,11 @@ namespace BalanceMain
         /// <returns>  </returns>
         private List<NameAndIdTable> FillDictionary(string _sql)
         {
-            DataSet ds = new DataSet();
-
-            reader = con.ExecuteCommand(_sql);
-            reader.Fill(ds);
+            var table = con.GetData(_sql).DefaultView;
+            
 
             List<NameAndIdTable> dictionary = new List<NameAndIdTable>();
-            foreach (DataRow item in ds.Tables[0].Rows)
+            foreach (DataRow item in table)
             {
                 dictionary.Add(new NameAndIdTable(item.Field<object>("ID"), item.Field<string>("Name")));
             }
@@ -232,11 +229,10 @@ namespace BalanceMain
         /// <param name="_dataGridView"> В какой DataGridView будет записаны данные с запроса </param>
         private void ButtonExecuteSQL(string _sql, DataGridView _dataGridView)
         {
-            DataSet ds = new DataSet(); 
 
-            reader = con.ExecuteCommand(_sql);
-            reader.Fill(ds);
-            _dataGridView.DataSource = ds.Tables[0];
+
+            var table = con.GetData(_sql).DefaultView;
+            _dataGridView.DataSource = table;
             
             if (_dataGridView == commonDataGridView || _dataGridView == deviceDataGridView)
             {
