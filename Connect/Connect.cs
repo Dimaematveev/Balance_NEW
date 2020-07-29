@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace Connected
@@ -56,8 +58,35 @@ namespace Connected
         /// <returns> Выводит DataSet из запроса</returns>
         public SqlDataAdapter ExecuteCommand(string _SqlString)
         {
+            
             SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
             return adapter;
+        }
+
+        public string ExecuteProcedure(string _SqlExecProcedure, SqlParameter[] sqlParameters)
+        {
+
+            SqlCommand command = new SqlCommand(_SqlExecProcedure, connection);
+            // указываем, что команда представляет хранимую процедуру
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddRange(sqlParameters);
+            
+
+            try
+            {
+                command.ExecuteNonQuery();
+                return null;
+            }
+            catch (SqlException sqlEx)
+            {
+                
+                return sqlEx.Message;
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            
         }
 
         /// <summary>
@@ -65,12 +94,12 @@ namespace Connected
         /// </summary>
         /// <param name="_SqlString"> Запрос sql</param>
         /// <returns> Выводит DataSet из запроса</returns>
-        public DataView GetData(string _SqlString)
+        public DataTable GetData(string _SqlString)
         {
             DataSet dataSet = new DataSet();
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(_SqlString, connection);
             sqlDataAdapter.Fill(dataSet);
-            var table = dataSet.Tables[0].DefaultView;
+            var table = dataSet.Tables[0];
             return table;
         }
     }
