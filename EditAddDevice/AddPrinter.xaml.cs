@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connected;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,18 @@ namespace EditAddDevice
     /// </summary>
     public partial class AddPrinter : Window
     {
-        public AddPrinter()
+        Connect Con;
+        public AddPrinter(Connect con)
         {
             InitializeComponent();
+            Con = con;
+            Loaded += AddPrinter_Loaded;
+        }
 
+        private void AddPrinter_Loaded(object sender, RoutedEventArgs e)
+        {
+            AddModel.ItemsSource = Con.GetData("select * from dic.Model");
+            AddModel.DisplayMemberPath = "Name";
         }
     }
 }

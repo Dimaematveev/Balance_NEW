@@ -28,18 +28,22 @@ namespace EditAddDevice
             InitializeComponent();
             Con = con;
             Loaded += SelectTypeDevice_Loaded;
-            
+
+            SelectType.Click += SelectType_Click;
+        }
+
+        private void SelectType_Click(object sender, RoutedEventArgs e)
+        {
+            if (((DataRowView)(TypeDevice.SelectedItem))[1].Equals("Printer")) 
+            {
+                var addPrinter = new AddPrinter(Con);
+                addPrinter.ShowDialog();
+            }
         }
 
         private void SelectTypeDevice_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter();
-            sqlDataAdapter = Con.ExecuteCommand("Select * from dic.Type");
-            DataSet ds = new DataSet();
-            sqlDataAdapter.Fill(ds);
-
-            TypeDevice.ItemsSource = ds.Tables[0].DefaultView;
+            TypeDevice.ItemsSource = Con.GetData("Select * from dic.Type");
             TypeDevice.DisplayMemberPath = "Name";
 
         }

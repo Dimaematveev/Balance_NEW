@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 
 namespace Connected
 {
@@ -57,6 +58,20 @@ namespace Connected
         {
             SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
             return adapter;
+        }
+
+        /// <summary>
+        ///  На строку sql выводит данные в виде таблицы
+        /// </summary>
+        /// <param name="_SqlString"> Запрос sql</param>
+        /// <returns> Выводит DataSet из запроса</returns>
+        public DataView GetData(string _SqlString)
+        {
+            DataSet dataSet = new DataSet();
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(_SqlString, connection);
+            sqlDataAdapter.Fill(dataSet);
+            var table = dataSet.Tables[0].DefaultView;
+            return table;
         }
     }
 }
