@@ -49,7 +49,7 @@ namespace BalanceMain
             if (Type.IsSelected && ViewDictionary.SelectedCells.Count >= 1)
             {
                 var row = Table.Rows[ViewDictionary.SelectedCells[0].RowIndex];
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(row);
+                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(con,row);
                 dictionaryType.ShowDialog();
                 if (!dictionaryType.DialogResult.Value)
                 {
@@ -65,13 +65,12 @@ namespace BalanceMain
         {
             if (Type.IsSelected)
             {
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(((DataTable)ViewDictionary.DataSource).NewRow());
+                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(con,((DataTable)ViewDictionary.DataSource).NewRow());
                 dictionaryType.ShowDialog();
                 if (!dictionaryType.DialogResult.Value)
                 {
                     return;
                 }
-                Table.Rows.Add(dictionaryType.DR);
                 Type_Selected();
             }
         }

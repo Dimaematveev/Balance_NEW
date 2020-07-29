@@ -8,15 +8,16 @@ namespace Connected
     public class Connect
     {
         /// <summary> Строка соединения с БД </summary>
-        public const string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = True; User Id = sa; Password = qwerty";
+        public readonly string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = True; User Id = sa; Password = qwerty";
         /// <summary> Создание подключения </summary>
-        public SqlConnection connection = new SqlConnection(_connetionString);
+        public SqlConnection connection;
 
         /// <summary> Строка Выводящая получилось ли подключение </summary>
         public string _resultConnection;
 
         public Connect()
         {
+            connection = new SqlConnection(_connetionString); 
             _resultConnection = ConnectString();
         }
 
@@ -58,10 +59,36 @@ namespace Connected
         ///// <returns> Выводит DataSet из запроса</returns>
         //private SqlDataAdapter ExecuteCommand(string _SqlString)
         //{
-            
+
         //    SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
         //    return adapter;
         //}
+
+        public string ExecAction(string _SqlExecProcedure)
+        {
+
+            SqlCommand command = new SqlCommand(_SqlExecProcedure, connection)
+            {
+                // указываем, что команда представляет хранимую процедуру
+                CommandType = System.Data.CommandType.Text
+            };
+
+
+            try
+            {
+                command.ExecuteNonQuery();
+                return null;
+            }
+            catch (SqlException sqlEx)
+            {
+                return sqlEx.Message;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
+        }
 
         public string ExecuteProcedure(string _SqlExecProcedure, SqlParameter[] sqlParameters)
         {
@@ -103,6 +130,10 @@ namespace Connected
             sqlDataAdapter.Fill(dataSet);
             var table = dataSet.Tables[0];
             return table;
+
         }
+
+
+
     }
 }

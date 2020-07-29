@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,11 @@ namespace TEST1
     {
         static void Main()
         {
+            
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             var connect = new Connect();
+            DataContext db = new DataContext(connect._connetionString);
+        
             // параметры
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
             sqlParameters.Add(new SqlParameter { ParameterName = "@ModelID", Value = 4 });

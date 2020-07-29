@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connected;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,12 +22,14 @@ namespace EditAddDictionary
     public partial class DictionaryType : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        public DataRow DR { get; }
-        public DictionaryType(DataRow dr)
+        private DataRow DR { get; }
+        private readonly Connect Connect;
+
+        public DictionaryType(Connect connect , DataRow dr)
         {
             InitializeComponent();
             DR = dr;
-           
+            Connect = connect;
             Add.Click += Add_Click;
             Cancel.Click += Cancel_Click;
             Loaded += DictionaryType_Loaded;
@@ -51,8 +54,14 @@ namespace EditAddDictionary
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            DR["GadgetName"] = GadgetName.SelectedItem.ToString();
-            DR["Name"] = Name.Text;
+            if (DR["ID"] == DBNull.Value)
+            {
+                Connect.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{Name.Text}')");
+            }
+            else
+            {
+                Connect.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{Name.Text}' where ID = {DR["ID"]}");
+            }
             DialogResult = true;
             Close();
         }

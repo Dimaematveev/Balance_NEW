@@ -80,5 +80,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Connect\Connect.csproj">
+      <Project>{57A9BA4E-13AE-40D8-BE67-ECBC90168620}</Project>
+      <Name>Connect</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
