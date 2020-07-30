@@ -182,9 +182,9 @@ namespace BalanceMain
             
 
             List<NameAndIdTable> dictionary = new List<NameAndIdTable>();
-            foreach (DataRow item in table)
+            foreach (DataRowView item in table)
             {
-                dictionary.Add(new NameAndIdTable(item.Field<object>("ID"), item.Field<string>("Name")));
+                dictionary.Add(new NameAndIdTable((int)item.Row["ID"], (string)item.Row["Name"]));
             }
             return dictionary;
         }

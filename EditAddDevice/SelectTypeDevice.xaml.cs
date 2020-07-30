@@ -34,9 +34,10 @@ namespace EditAddDevice
 
         private void SelectType_Click(object sender, RoutedEventArgs e)
         {
-            if (((DataRowView)(TypeDevice.SelectedItem))[1].Equals("Printer")) 
+            var dataRow = (DataRowView)(TypeDevice.SelectedItem);
+            if (dataRow.Row["GadgetName"].Equals("Printer")) 
             {
-                var addPrinter = new AddPrinter(Con);
+                var addPrinter = new AddPrinter(Con, (int)dataRow.Row["ID"]);
                 addPrinter.ShowDialog();
             }
         }

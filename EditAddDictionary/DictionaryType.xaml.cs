@@ -41,7 +41,7 @@ namespace EditAddDictionary
             GadgetName.Items.Add("Printer");
             GadgetName.SelectedItem = DR["GadgetName"].ToString();
             Name.Text = DR["Name"].ToString();
-            if (GadgetName.SelectedItem != null && (string)GadgetName.SelectedItem != "")
+            if (DR["ID"] != DBNull.Value)
             {
                 Add.Content = "Изменить";
             }
@@ -54,13 +54,19 @@ namespace EditAddDictionary
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
+            string exeption = "";
             if (DR["ID"] == DBNull.Value)
             {
-                Connect.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{Name.Text}')");
+                exeption=Connect.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{Name.Text}')");
             }
             else
             {
-                Connect.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{Name.Text}' where ID = {DR["ID"]}");
+                exeption=Connect.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{Name.Text}' where ID = {DR["ID"]}");
+            }
+            if (exeption!=null)
+            {
+                MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
             DialogResult = true;
             Close();
