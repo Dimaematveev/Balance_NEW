@@ -37,7 +37,7 @@ namespace EditAddDevice
             var dataRow = (DataRowView)(TypeDevice.SelectedItem);
             if (dataRow.Row["GadgetName"].Equals("Printer")) 
             {
-                var addPrinter = new AddPrinter(Con, (int)dataRow.Row["ID"]);
+                var addPrinter = new AddPrinter1(Con, (int)dataRow.Row["ID"]);
                 addPrinter.ShowDialog();
             }
         }

@@ -12,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EditAddDevice
+namespace TEST2
 {
     /// <summary>
-    /// Interaction logic for AddPrinter.xaml
+    /// Interaction logic for UserControl1.xaml
     /// </summary>
-    public partial class AddPrinter : UserControl
+    public partial class UserControl1 : UserControl
     {
-        public AddPrinter()
+        public UserControl1()
         {
             InitializeComponent();
         }

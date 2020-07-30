@@ -1,0 +1,85 @@
+﻿<Window x:Class="EditAddDevice.AddDevice"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditAddDevice"
+        mc:Ignorable="d"
+        Title="AddDevice" MinHeight="270" MaxHeight="450" Height="270" Width="500" ResizeMode="CanResize">
+    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Модель" Grid.Column="0"/>
+            <ComboBox x:Name="AddModel" Background="Bisque" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Серийный номер" Grid.Column="0"/>
+            <TextBox x:Name="AddSN" Background="Bisque" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Год" Grid.Column="0"/>
+            <TextBox x:Name="AddYear" Background="Bisque" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="СП" Grid.Column="0"/>
+            <ComboBox x:Name="AddSP" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="СИ" Grid.Column="0"/>
+            <ComboBox x:Name="AddSI" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Размещение" Grid.Column="0"/>
+            <ComboBox x:Name="AddLocation" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Зип" Grid.Column="0"/>
+            <CheckBox x:Name="AddIsZip" Grid.Column="1" IsThreeState="True" IsChecked="{x:Null}" />
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Сломан" Grid.Column="0"/>
+            <CheckBox x:Name="AddIsBroken" Grid.Column="1"/>
+        </Grid>
+        <local:AddPrinter/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Add" Content="Добавление" Margin="0" Grid.Column="0"/>
+            <Button x:Name="Cancel" Content="Отмена" Margin="0" Grid.Column="1"/>
+        </Grid>
+        
+    </StackPanel>
+</Window>
