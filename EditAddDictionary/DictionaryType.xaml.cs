@@ -37,8 +37,12 @@ namespace EditAddDictionary
 
         private void DictionaryType_Loaded(object sender, RoutedEventArgs e)
         {
-            GadgetName.Items.Add("Monitor");
-            GadgetName.Items.Add("Printer");
+            var data = Connect.GetData("exec [dbo].[GetNameTableDevice]").Rows;
+            foreach (DataRow item in data)
+            {
+                GadgetName.Items.Add(item[0]);
+            }
+            
             GadgetName.SelectedItem = DR["GadgetName"].ToString();
             Name.Text = DR["Name"].ToString();
             if (DR["ID"] != DBNull.Value)
