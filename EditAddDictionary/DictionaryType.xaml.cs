@@ -44,7 +44,7 @@ namespace EditAddDictionary
             }
             
             GadgetName.SelectedItem = DR["GadgetName"].ToString();
-            Name.Text = DR["Name"].ToString();
+            TypeName.Text = DR["Name"].ToString();
             if (DR["ID"] != DBNull.Value)
             {
                 Add.Content = "Изменить";
@@ -58,14 +58,14 @@ namespace EditAddDictionary
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            string exeption = "";
+            string exeption;
             if (DR["ID"] == DBNull.Value)
             {
-                exeption=Connect.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{Name.Text}')");
+                exeption=Connect.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{TypeName.Text}')");
             }
             else
             {
-                exeption=Connect.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{Name.Text}' where ID = {DR["ID"]}");
+                exeption=Connect.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{TypeName.Text}' where ID = {DR["ID"]}");
             }
             if (exeption!=null)
             {

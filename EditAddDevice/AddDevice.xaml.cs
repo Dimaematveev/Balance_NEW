@@ -22,7 +22,6 @@ namespace EditAddDevice
     public partial class AddDevice : Window
     {
         readonly Connect Con;
-        readonly int TypeID;
         public AddDevice(Connect con)
         {
             InitializeComponent();
@@ -114,8 +113,8 @@ namespace EditAddDevice
             AddType.ItemsSource = Con.GetData("Select * from dic.Type").DefaultView;
             AddType.DisplayMemberPath = "Name";
 
-            AddModel.ItemsSource = Con.GetData($"select * from dic.[Model] where [TypeID] = {TypeID.ToString()}").DefaultView;
-            AddModel.DisplayMemberPath = "Name";
+            //AddModel.ItemsSource = Con.GetData($"select * from dic.[Model] where [TypeID] = {TypeID.ToString()}").DefaultView;
+            //AddModel.DisplayMemberPath = "Name";
             AddSP.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
             AddSP.DisplayMemberPath = "Name";
             AddSI.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
