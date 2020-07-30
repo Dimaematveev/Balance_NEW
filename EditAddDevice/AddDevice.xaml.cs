@@ -23,16 +23,41 @@ namespace EditAddDevice
     {
         readonly Connect Con;
         readonly int TypeID;
-        public AddDevice(Connect con, int typeID)
+        public AddDevice(Connect con)
         {
             InitializeComponent();
             Con = con;
-            TypeID = typeID;
             Loaded += AddPrinter_Loaded;
 
             Cancel.Click += Cancel_Click;
 
             Add.Click += Add_Click;
+
+            AddType.SelectionChanged += AddType_SelectionChanged;
+        }
+
+        private void AddType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (AddType.SelectedItem is DataRowView selectType)
+            {
+                if(selectType.Row["GadgetName"].Equals("Printer"))
+                {
+
+                    AddPrinter addPrinter = new AddPrinter();
+                    this.Height = this.MinHeight;
+                    AddOtherDevice.Children.Clear();
+                    AddOtherDevice.Children.Add(addPrinter);
+                    this.Height += addPrinter.Height;
+                    
+                }
+                else
+                {
+                    this.Height = this.MinHeight;
+                    AddOtherDevice.Children.Clear();
+                }
+                
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
@@ -86,6 +111,9 @@ namespace EditAddDevice
 
         private void AddPrinter_Loaded(object sender, RoutedEventArgs e)
         {
+            AddType.ItemsSource = Con.GetData("Select * from dic.Type").DefaultView;
+            AddType.DisplayMemberPath = "Name";
+
             AddModel.ItemsSource = Con.GetData($"select * from dic.[Model] where [TypeID] = {TypeID.ToString()}").DefaultView;
             AddModel.DisplayMemberPath = "Name";
             AddSP.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;

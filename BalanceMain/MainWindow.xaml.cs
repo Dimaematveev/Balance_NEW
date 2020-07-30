@@ -52,8 +52,8 @@ namespace BalanceMain
 
         private void AddDevice_Click(object sender, RoutedEventArgs e)
         {
-            SelectTypeDevice selectTypeDevice = new SelectTypeDevice(con);
-            selectTypeDevice.ShowDialog();
+            AddDevice addDevice = new AddDevice(con);
+            addDevice.ShowDialog();
         }
 
 

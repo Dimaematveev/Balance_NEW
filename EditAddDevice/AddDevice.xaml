@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EditAddDevice"
         mc:Ignorable="d"
-        Title="AddDevice" MinHeight="270" MaxHeight="450" Height="270" Width="500" ResizeMode="CanResize">
-    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+        Title="AddDevice" MinHeight="300" Height="300" Width="300" ResizeMode="CanResize">
+    
+    <StackPanel x:Name="StackPanelMain" VerticalAlignment="Center" Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Тип устройства" Grid.Column="0"/>
+            <ComboBox x:Name="AddType" Background="Bisque" Grid.Column="1"/>
+        </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -71,7 +80,7 @@
             <Label Content="Сломан" Grid.Column="0"/>
             <CheckBox x:Name="AddIsBroken" Grid.Column="1"/>
         </Grid>
-        <local:AddPrinter/>
+        <Grid x:Name="AddOtherDevice"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>

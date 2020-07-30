@@ -54,9 +54,6 @@
     <Compile Include="AddPrinter.xaml.cs">
       <DependentUpon>AddPrinter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddPrinter1.xaml.cs">
-      <DependentUpon>AddPrinter1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,10 +85,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="AddPrinter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AddPrinter1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
