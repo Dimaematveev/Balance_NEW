@@ -23,11 +23,19 @@ namespace EditAddDevice
         /// <summary>
         /// Проверка что все обязательные поля заполнены
         /// </summary>
-        public bool Verification()
+        public List<string> Verification()
         {
-            bool check = true;
-            check = check && !string.IsNullOrEmpty(AddPagesPerMinute.Text);
-            return check; 
+            List<string> res = new List<string>();
+
+            if (string.IsNullOrEmpty(AddPagesPerMinute.Text) || AddPagesPerMinute.Text.Length > 50) 
+            {
+                Grid parent = (Grid)AddPagesPerMinute.Parent;
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И длина должна быть от 1 до 50 символов.Сейчас:{AddPagesPerMinute.Text.Length}.");
+            }
+
+
+            
+            return res; 
         }
 
         public AddPrinter()
@@ -39,10 +47,15 @@ namespace EditAddDevice
         
         public List<SqlParameter> GetSqlParameters()
         {
-            if (Verification())
+            if (Verification().Count == 0)
             {
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
+                //Обязательные параметры не могут быть null
                 sqlParameters.Add(new SqlParameter("@PagesPerMinute", AddPagesPerMinute.Text));
+
+                //необязательные параметры могут быть null
+
+
                 return sqlParameters;
             }
             return null;

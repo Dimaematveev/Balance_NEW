@@ -12,7 +12,7 @@ namespace EditAddDevice
         /// <summary>
         /// Проверка что все обязательные поля заполнены
         /// </summary>
-        bool Verification();
+        List<string> Verification();
         /// <summary>
         /// Получит все возможные параметры для процедуры
         /// </summary>

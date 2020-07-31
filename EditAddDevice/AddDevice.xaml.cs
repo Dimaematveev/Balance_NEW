@@ -55,17 +55,30 @@ namespace EditAddDevice
         /// <summary>
         /// Проверка что все обязательные поля заполнены
         /// </summary>
-        public bool Verification()
+        public List<string> Verification()
         {
-            bool check = true;
-            check = check && AddModel != null;
-            check = check && AddSN != null;
-            check = check && AddYear != null;
-            return check;
+            List<string> res = new List<string>();
+            if (AddModel.SelectedItem == null)
+            {
+                Grid parent = (Grid)AddModel.Parent;
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено!");
+            }
+            if (string.IsNullOrEmpty(AddSN.Text) || AddSN.Text.Length > 50)
+            {
+                Grid parent = (Grid)AddSN.Parent;
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И длина должна быть от 1 до 50 символов.Сейчас:{AddSN.Text.Length}.");
+            }
+            if (string.IsNullOrEmpty(AddYear.Text) || !int.TryParse(AddYear.Text, out int year) || year < 1990 || year > 2100) 
+            {
+                Grid parent = (Grid)AddYear.Parent;
+                
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И содержать год от 1990 до 2100. Сейчас:{AddYear.Text}.");
+            }
+            return res;
         }
         public List<SqlParameter> GetSqlParameters()
         {
-            if (Verification())
+            if (Verification().Count == 0)
             {
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
                 //обязательные параметры мы проверили уже
@@ -73,7 +86,7 @@ namespace EditAddDevice
                 sqlParameters.Add(new SqlParameter("@SN", AddSN.Text));
                 sqlParameters.Add(new SqlParameter("@Year", AddYear.Text));
 
-                //необязательные параметры не проверяли
+                //необязательные параметры не проверяли на NULL
                 if (AddSP.SelectedItem is DataRowView sp)
                 {
                     sqlParameters.Add(new SqlParameter("@SpID", (int)sp["ID"]));
@@ -128,24 +141,33 @@ namespace EditAddDevice
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (SpecificDevice != null && Verification() && SpecificDevice.Verification())
+            var verification = Verification();
+            if (SpecificDevice != null)
             {
-                var sqlParameters = GetSqlParameters();
-                sqlParameters.AddRange(SpecificDevice.GetSqlParameters());
-
-                string gadgetName = ((DataRowView)AddType.SelectedItem).Row["GadgetName"].ToString();
-                string exeption = Con.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
-                if (exeption != null)
+                verification.AddRange(SpecificDevice.Verification());
+                if (verification.Count == 0)
                 {
-                    MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    var sqlParameters = GetSqlParameters();
+                    sqlParameters.AddRange(SpecificDevice.GetSqlParameters());
+
+                    string gadgetName = ((DataRowView)AddType.SelectedItem).Row["GadgetName"].ToString();
+                    string exeption = Con.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
+                    if (exeption != null)
+                    {
+                        MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    Close();
                     return;
                 }
-                Close();
             }
-            else
+            string str = "";
+            foreach (var item in verification)
             {
-                MessageBox.Show("Не заполнениы обязательные поля!", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                str += item + "\n";
             }
+            MessageBox.Show(str, "Внимание!Неправильно заполнены поля!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
