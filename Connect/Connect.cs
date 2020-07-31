@@ -9,6 +9,10 @@ namespace Connected
     {
         /// <summary> Строка соединения с БД </summary>
         public static readonly string _connetionString;
+        /// <summary>
+        /// название используемого соединения
+        /// </summary>
+        public static string NameConnectionString;
         /// <summary> Создание подключения </summary>
         public static SqlConnection connection;
         //Показывает подключились или нет
@@ -18,33 +22,38 @@ namespace Connected
 
         static Connect()
         {
-            
-            _connetionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            NameConnectionString = "DefaultConnection";
+            _connetionString = ConfigurationManager.ConnectionStrings[NameConnectionString].ConnectionString;
             connection = new SqlConnection(_connetionString); 
-            _resultConnection = ConnectString();
+            
         }
 
         /// <summary>
         /// Открывает соединение и вывод результата.
         /// </summary>
         /// <returns> Возвращает строку показывающую установилось соединение</returns>
-        public static string ConnectString()
+        public static string ConnectOpen()
         {
             string res;
 
             try
             {
-                _IsOpen = true;
+                
                 connection.Open();
-                res = "Подключение установлено";
-                return res;
+                _IsOpen = true;
+                res = "Подключение установлено \n";
+                res += $"Database:{connection.Database} \n";
+                _resultConnection = res;
             }
             catch (SqlException ex)
             {
                 _IsOpen = false;
                 res = ex.Message;
-                return res;
+                _resultConnection = res;
+
             }
+            _resultConnection = res;
+            return _resultConnection;
         }
 
 
@@ -56,18 +65,6 @@ namespace Connected
             connection.Close();
         }
 
-
-        ///// <summary>
-        /////  На строку sql выводит dataset
-        ///// </summary>
-        ///// <param name="_SqlString"> Запрос sql</param>
-        ///// <returns> Выводит DataSet из запроса</returns>
-        //private SqlDataAdapter ExecuteCommand(string _SqlString)
-        //{
-
-        //    SqlDataAdapter adapter = new SqlDataAdapter(_SqlString, connection);
-        //    return adapter;
-        //}
 
         public static string ExecAction(string _SqlExecProcedure)
         {

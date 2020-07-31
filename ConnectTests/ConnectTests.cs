@@ -14,7 +14,12 @@ namespace Connected.Tests
         [TestMethod()]
         public void ConnectStringTest()
         {
-            Assert.Fail();
+            Connect.NameConnectionString = "Test";
+            Connect.ConnectOpen();
+
+            string res = "Подключение установлено \nDatabase:Test_Action \n";
+
+            Assert.AreEqual(res, Connect._resultConnection);
         }
 
         [TestMethod()]
