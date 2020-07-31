@@ -16,12 +16,9 @@ namespace BalanceMain
     /// </summary>
     public partial class MainWindow : Window
     {
-        /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        readonly Connect con;
 
-        public MainWindow(Connect con)
+        public MainWindow()
         {
-            this.con = con;
             InitializeComponent();
             /// <summary> словарь для элемента Zip.</summary>
             var DictionaryZip = new List<NameAndIdTable>
@@ -49,7 +46,7 @@ namespace BalanceMain
 
         private void AddDevice_Click(object sender, RoutedEventArgs e)
         {
-            AddDevice addDevice = new AddDevice(con);
+            AddDevice addDevice = new AddDevice();
             addDevice.ShowDialog();
         }
 
@@ -175,7 +172,7 @@ namespace BalanceMain
         /// <returns>  </returns>
         private List<NameAndIdTable> FillDictionary(string _sql)
         {
-            var table = con.GetData(_sql).DefaultView;
+            var table = Connect.GetData(_sql).DefaultView;
             
 
             List<NameAndIdTable> dictionary = new List<NameAndIdTable>();
@@ -228,7 +225,7 @@ namespace BalanceMain
         {
 
 
-            var table = con.GetData(_sql).DefaultView;
+            var table = Connect.GetData(_sql).DefaultView;
             _dataGridView.DataSource = table;
             
             if (_dataGridView == commonDataGridView || _dataGridView == deviceDataGridView)

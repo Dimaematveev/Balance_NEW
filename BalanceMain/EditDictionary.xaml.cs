@@ -9,14 +9,11 @@ namespace BalanceMain
     /// </summary>
     public partial class EditDictionary : Window
     {
-        /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        readonly Connect con;
         /// <summary> таблица с данными </summary>
         DataTable Table;
 
-        public EditDictionary(Connect con)
+        public EditDictionary()
         {
-            this.con = con;
             InitializeComponent();
 
             Add.Click += Add_Click;
@@ -38,7 +35,7 @@ namespace BalanceMain
             if (Type.IsSelected && ViewDictionary.SelectedCells.Count >= 1)
             {
                 var row = Table.Rows[ViewDictionary.SelectedCells[0].RowIndex];
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(con,row);
+                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(row);
                 dictionaryType.ShowDialog();
                 if (!dictionaryType.DialogResult.Value)
                 {
@@ -54,7 +51,7 @@ namespace BalanceMain
         {
             if (Type.IsSelected)
             {
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(con,((DataTable)ViewDictionary.DataSource).NewRow());
+                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(((DataTable)ViewDictionary.DataSource).NewRow());
                 dictionaryType.ShowDialog();
                 if (!dictionaryType.DialogResult.Value)
                 {
@@ -67,7 +64,7 @@ namespace BalanceMain
         private void Type_Selected()
         {
 
-            Table = con.GetData("Select * from dic.Type");
+            Table = Connect.GetData("Select * from dic.Type");
             ViewDictionary.DataSource = Table;
         }
     }

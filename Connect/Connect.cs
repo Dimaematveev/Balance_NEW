@@ -4,17 +4,18 @@ using System.Data.SqlClient;
 
 namespace Connected
 {
-    public class Connect
+    public static class Connect
     {
         /// <summary> Строка соединения с БД </summary>
-        public readonly string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = True; User Id = sa; Password = qwerty";
+        public static readonly string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = False; User Id = sa; Password = qwerty";
         /// <summary> Создание подключения </summary>
-        public SqlConnection connection;
-
+        public static SqlConnection connection;
+        //Показывает подключились или нет
+        public static bool _IsOpen;
         /// <summary> Строка Выводящая получилось ли подключение </summary>
-        public string _resultConnection;
+        public static string _resultConnection;
 
-        public Connect()
+        static Connect()
         {
             connection = new SqlConnection(_connetionString); 
             _resultConnection = ConnectString();
@@ -24,18 +25,20 @@ namespace Connected
         /// Открывает соединение и вывод результата.
         /// </summary>
         /// <returns> Возвращает строку показывающую установилось соединение</returns>
-        public string ConnectString()
+        public static string ConnectString()
         {
             string res;
 
             try
             {
+                _IsOpen = true;
                 connection.Open();
                 res = "Подключение установлено";
                 return res;
             }
             catch (SqlException ex)
             {
+                _IsOpen = false;
                 res = ex.Message;
                 return res;
             }
@@ -45,7 +48,7 @@ namespace Connected
         /// <summary>
         /// Закрывает соединение 
         /// </summary>
-        public void ConnectClose()
+        public static void ConnectClose()
         {
             connection.Close();
         }
@@ -63,7 +66,7 @@ namespace Connected
         //    return adapter;
         //}
 
-        public string ExecAction(string _SqlExecProcedure)
+        public static string ExecAction(string _SqlExecProcedure)
         {
 
             SqlCommand command = new SqlCommand(_SqlExecProcedure, connection)
@@ -89,7 +92,7 @@ namespace Connected
 
         }
 
-        public string ExecuteProcedure(string _SqlExecProcedure, SqlParameter[] sqlParameters)
+        public static string ExecuteProcedure(string _SqlExecProcedure, SqlParameter[] sqlParameters)
         {
 
             SqlCommand command = new SqlCommand(_SqlExecProcedure, connection)
@@ -122,7 +125,7 @@ namespace Connected
         /// </summary>
         /// <param name="_SqlString"> Запрос sql</param>
         /// <returns> Выводит DataSet из запроса</returns>
-        public DataTable GetData(string _SqlString)
+        public static DataTable GetData(string _SqlString)
         {
             DataSet dataSet = new DataSet();
             SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(_SqlString, connection);

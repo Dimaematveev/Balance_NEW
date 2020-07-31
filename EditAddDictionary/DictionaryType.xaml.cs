@@ -12,13 +12,11 @@ namespace EditAddDictionary
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
         private DataRow DR { get; }
-        private readonly Connect Connect;
 
-        public DictionaryType(Connect connect , DataRow dr)
+        public DictionaryType(DataRow dr)
         {
             InitializeComponent();
             DR = dr;
-            Connect = connect;
             Add.Click += Add_Click;
             Cancel.Click += Cancel_Click;
             Loaded += DictionaryType_Loaded;

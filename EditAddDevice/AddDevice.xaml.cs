@@ -12,12 +12,10 @@ namespace EditAddDevice
     /// </summary>
     public partial class AddDevice : Window, ISingleDevice
     {
-        readonly Connect Con;
         private ISingleDevice SpecificDevice;
-        public AddDevice(Connect con)
+        public AddDevice()
         {
             InitializeComponent();
-            Con = con;
             Loaded += AddPrinter_Loaded;
 
             Cancel.Click += Cancel_Click;
@@ -154,7 +152,7 @@ namespace EditAddDevice
                     sqlParameters.AddRange(SpecificDevice.GetSqlParameters());
 
                     string gadgetName = ((DataRowView)AddType.SelectedItem).Row["GadgetName"].ToString();
-                    string exeption = Con.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
+                    string exeption = Connect.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
                     if (exeption != null)
                     {
                         MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -180,15 +178,15 @@ namespace EditAddDevice
 
         private void AddPrinter_Loaded(object sender, RoutedEventArgs e)
         {
-            AddType.ItemsSource = Con.GetData("Select * from dic.Type").DefaultView;
+            AddType.ItemsSource = Connect.GetData("Select * from dic.Type").DefaultView;
             AddType.DisplayMemberPath = "Name";
-            AddModel.ItemsSource = Con.GetData($"select * from dic.[Model]").DefaultView;
+            AddModel.ItemsSource = Connect.GetData($"select * from dic.[Model]").DefaultView;
             AddModel.DisplayMemberPath = "Name";
-            AddSP.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
+            AddSP.ItemsSource = Connect.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
             AddSP.DisplayMemberPath = "Name";
-            AddSI.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
+            AddSI.ItemsSource = Connect.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
             AddSI.DisplayMemberPath = "Name";
-            AddLocation.ItemsSource = Con.GetData($"select * from [dic].[Location]").DefaultView;
+            AddLocation.ItemsSource = Connect.GetData($"select * from [dic].[Location]").DefaultView;
             AddLocation.DisplayMemberPath = "Name";
         }
 

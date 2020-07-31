@@ -8,8 +8,6 @@ namespace BalanceMain
     /// </summary>
     public partial class AdminPanel : Window
     {
-        /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
-        Connect con = new Connect();
         public AdminPanel()
         {
             InitializeComponent();
@@ -17,19 +15,32 @@ namespace BalanceMain
             ViewDevice.Click += ViewDevice_Click;
             DictionaryName.Click += DictionaryName_Click;
 
-           
+            Loaded += AdminPanel_Loaded;
         }
 
+        private void AdminPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Connect._IsOpen)
+            {
+                MessageBox.Show(Connect._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show(Connect._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close();
+            }
+            
+        }
 
         private void DictionaryName_Click(object sender, RoutedEventArgs e)
         {
-            var view = new EditDictionary(con);
+            var view = new EditDictionary();
             view.ShowDialog();
         }
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {
-            var view = new MainWindow(con);
+            var view = new MainWindow();
             view.ShowDialog();
         }
     }
