@@ -40,7 +40,7 @@ namespace BalanceMain
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {
-            var view = new MainWindow();
+            var view = new ViewDevice();
             view.ShowDialog();
         }
     }
