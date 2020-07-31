@@ -8,7 +8,7 @@ namespace Connected
     public static class Connect
     {
         /// <summary> Строка соединения с БД </summary>
-        public static readonly string _connetionString;
+        private static string _connetionString;
         /// <summary>
         /// название используемого соединения
         /// </summary>
@@ -23,8 +23,7 @@ namespace Connected
         static Connect()
         {
             NameConnectionString = "DefaultConnection";
-            _connetionString = ConfigurationManager.ConnectionStrings[NameConnectionString].ConnectionString;
-            connection = new SqlConnection(_connetionString); 
+            
             
         }
 
@@ -38,7 +37,8 @@ namespace Connected
 
             try
             {
-                
+                _connetionString = ConfigurationManager.ConnectionStrings[NameConnectionString].ConnectionString;
+                connection = new SqlConnection(_connetionString);
                 connection.Open();
                 _IsOpen = true;
                 res = "Подключение установлено \n";
