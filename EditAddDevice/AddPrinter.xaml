@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EditAddDevice"
              mc:Ignorable="d" 
-             Height="60">
+             Height="30" >
     <StackPanel Orientation="Vertical">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -14,14 +14,6 @@
             </Grid.ColumnDefinitions>
             <Label Content="Кол-во страниц в минуту" Grid.Column="0"/>
             <TextBox x:Name="AddPagesPerMinute" Grid.Column="1" Background="Bisque"/>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Кол-во страниц в минуту" Grid.Column="0"/>
-            <TextBox x:Name="AddPagesPerMinute1" Grid.Column="1" Background="Bisque"/>
         </Grid>
     </StackPanel>
 </UserControl>

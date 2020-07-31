@@ -17,11 +17,12 @@ using System.Windows.Shapes;
 namespace EditAddDevice
 {
     /// <summary>
-    /// Interaction logic for AddPrinter.xaml
+    /// Interaction logic for AddDevice.xaml
     /// </summary>
-    public partial class AddDevice : Window
+    public partial class AddDevice : Window, ISingleDevice
     {
         readonly Connect Con;
+        private ISingleDevice SpecificDevice;
         public AddDevice(Connect con)
         {
             InitializeComponent();
@@ -33,41 +34,46 @@ namespace EditAddDevice
             Add.Click += Add_Click;
 
             AddType.SelectionChanged += AddType_SelectionChanged;
+            AddModel.SelectionChanged += AddModel_SelectionChanged;
+
         }
-
-        private void AddType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //TODO:надо как-то переделать выбор типа по модели
+        private void AddModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            if (AddType.SelectedItem is DataRowView selectType)
+            if (AddModel.SelectedItem is DataRowView selectModel)
             {
-                if(selectType.Row["GadgetName"].Equals("Printer"))
-                {
+                var typeID = selectModel.Row["TypeID"];
 
-                    AddPrinter addPrinter = new AddPrinter();
-                    this.Height = this.MinHeight;
-                    AddOtherDevice.Children.Clear();
-                    AddOtherDevice.Children.Add(addPrinter);
-                    this.Height += addPrinter.Height;
-                    
-                }
-                else
-                {
-                    this.Height = this.MinHeight;
-                    AddOtherDevice.Children.Clear();
-                }
-                
+                 ((DataView)AddType.ItemsSource).RowFilter = $"ID={typeID}";
+                var findItem = ((DataView)AddType.ItemsSource)[0];
+                ((DataView)AddType.ItemsSource).RowFilter = $"";
+                AddType.SelectedItem = findItem;
             }
+
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Проверка что все обязательные поля заполнены
+        /// </summary>
+        public bool Verification()
         {
-            if (AddModel.SelectedItem != null && AddSN != null && AddYear != null/* && AddPagesPerMinute != null*/)
+            bool check = true;
+            check = check && AddModel != null;
+            check = check && AddSN != null;
+            check = check && AddYear != null;
+            return check;
+        }
+        public List<SqlParameter> GetSqlParameters()
+        {
+            if (Verification())
             {
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
+                //обязательные параметры мы проверили уже
                 sqlParameters.Add(new SqlParameter("@ModelID", (int)(((DataRowView)AddModel.SelectedItem)["ID"])));
-              
                 sqlParameters.Add(new SqlParameter("@SN", AddSN.Text));
                 sqlParameters.Add(new SqlParameter("@Year", AddYear.Text));
+
+                //необязательные параметры не проверяли
                 if (AddSP.SelectedItem is DataRowView sp)
                 {
                     sqlParameters.Add(new SqlParameter("@SpID", (int)sp["ID"]));
@@ -88,8 +94,47 @@ namespace EditAddDevice
                 {
                     sqlParameters.Add(new SqlParameter("@IsBroken", AddIsBroken.IsChecked.Value));
                 }
-                //sqlParameters.Add(new SqlParameter("@PagesPerMinute", int.Parse(AddPagesPerMinute.Text)));
-                string exeption = Con.ExecuteProcedure("[dev].[Add_Printer]", sqlParameters.ToArray());
+                return sqlParameters;
+            }
+            return null;
+        }
+
+        private void AddType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            if (AddType.SelectedItem is DataRowView selectType)
+            {
+
+                if(selectType.Row["GadgetName"].Equals("Printer"))
+                {
+                    var typeID = selectType.Row["ID"];
+                    ((DataView)AddModel.ItemsSource).RowFilter = $"TypeID={typeID}";
+                    SpecificDevice = new AddPrinter();
+                    this.Height = this.MinHeight;
+                    AddOtherDevice.Children.Clear();
+                    AddOtherDevice.Children.Add(SpecificDevice.GetUIElement());
+                    this.Height += SpecificDevice.GetHeight();
+                }
+                else
+                {
+                    SpecificDevice = null;
+                    ((DataView)AddModel.ItemsSource).RowFilter = "";
+                    this.Height = this.MinHeight;
+                    AddOtherDevice.Children.Clear();
+                }
+                
+            }
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            if (SpecificDevice != null && Verification() && SpecificDevice.Verification())
+            {
+                var sqlParameters = GetSqlParameters();
+                sqlParameters.AddRange(SpecificDevice.GetSqlParameters());
+
+                string gadgetName = ((DataRowView)AddType.SelectedItem).Row["GadgetName"].ToString();
+                string exeption = Con.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
                 if (exeption != null)
                 {
                     MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -113,14 +158,25 @@ namespace EditAddDevice
             AddType.ItemsSource = Con.GetData("Select * from dic.Type").DefaultView;
             AddType.DisplayMemberPath = "Name";
 
+            AddModel.ItemsSource = Con.GetData($"select * from dic.[Model]").DefaultView;
             //AddModel.ItemsSource = Con.GetData($"select * from dic.[Model] where [TypeID] = {TypeID.ToString()}").DefaultView;
-            //AddModel.DisplayMemberPath = "Name";
+            AddModel.DisplayMemberPath = "Name";
             AddSP.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
             AddSP.DisplayMemberPath = "Name";
             AddSI.ItemsSource = Con.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
             AddSI.DisplayMemberPath = "Name";
             AddLocation.ItemsSource = Con.GetData($"select * from [dic].[Location]").DefaultView;
             AddLocation.DisplayMemberPath = "Name";
+        }
+
+        public UIElement GetUIElement()
+        {
+            return this;
+        }
+
+        public double GetHeight()
+        {
+            return Height;
         }
     }
 }

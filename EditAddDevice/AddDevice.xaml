@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EditAddDevice"
         mc:Ignorable="d"
-        Title="AddDevice" MinHeight="300" Height="300" Width="300" ResizeMode="CanResize">
+        Title="AddDevice" MinHeight="320" Height="320" Width="300" ResizeMode="CanResize">
     
-    <StackPanel x:Name="StackPanelMain" VerticalAlignment="Center" Orientation="Vertical">
+    <StackPanel x:Name="StackPanelMain" VerticalAlignment="Center" Orientation="Vertical" Margin="10">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -78,12 +78,12 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Content="Сломан" Grid.Column="0"/>
-            <CheckBox x:Name="AddIsBroken" Grid.Column="1"/>
+            <CheckBox x:Name="AddIsBroken" Grid.Column="1" IsThreeState="True" IsChecked="{x:Null}"/>
         </Grid>
         <Grid x:Name="AddOtherDevice"/>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="Add" Content="Добавление" Margin="0" Grid.Column="0"/>
