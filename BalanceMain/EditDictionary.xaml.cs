@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 using Connected;
 
 namespace BalanceMain
@@ -11,7 +12,8 @@ namespace BalanceMain
     {
         /// <summary> таблица с данными </summary>
         DataTable Table;
-
+        /// <summary> Выбранное дерево </summary>
+        TreeViewItem SelectTreeViewItem;
         public EditDictionary()
         {
             InitializeComponent();
@@ -19,53 +21,89 @@ namespace BalanceMain
             Add.Click += Add_Click;
             Edit.Click += Edit_Click; ;
 
-            Type.Selected += (s, e) => { Type_Selected(); };
+            Type.Selected += (s, e) => { SelectTreeViewItem = (TreeViewItem) s; FillTable(); };
+            Model.Selected += (s, e) => { SelectTreeViewItem = (TreeViewItem) s; FillTable(); };
+            Location.Selected += (s, e) => { SelectTreeViewItem = (TreeViewItem) s; FillTable(); };
+            Sp_Si.Selected += (s, e) => { SelectTreeViewItem = (TreeViewItem) s; FillTable(); };
 
-            
+        }
+        
+
+        private Window GetDictionaryOpen(DataRow dataRow)
+        {
+            Window DictionaryOpen;
+            switch (SelectTreeViewItem.Name)
+            {
+                case "Type":
+                    DictionaryOpen = new EditAddDictionary.DictionaryType(dataRow);
+                    break;
+                case "Model":
+                    DictionaryOpen = new EditAddDictionary.DictionaryModel(dataRow);
+                    break;
+                case "Location":
+                    DictionaryOpen = new EditAddDictionary.DictionaryLocation(dataRow);
+                    break;
+                case "Sp_Si":
+                    DictionaryOpen = new EditAddDictionary.DictionarySp_Si(dataRow);
+                    break;
+                default:
+                    DictionaryOpen = null;
+                    MessageBox.Show($"Не предусмотрел - {SelectTreeViewItem.Name}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    break;
+            }
+            return DictionaryOpen;
         }
         //TODO: Нет проверок, sql может выдавать ошибки!!
- 
-
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewDictionary.DataSource == null || ViewDictionary.Rows.Count == 0)
+            if (SelectTreeViewItem == null || ViewDictionary.DataSource == null || ViewDictionary.Rows.Count == 0)
             {
                 return;
             }
-            if (Type.IsSelected && ViewDictionary.SelectedCells.Count >= 1)
+            
+            var row = Table.Rows[ViewDictionary.SelectedCells[0].RowIndex];
+            Window DictionaryOpen = GetDictionaryOpen(row);
+            if (DictionaryOpen==null)
             {
-                var row = Table.Rows[ViewDictionary.SelectedCells[0].RowIndex];
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(row);
-                dictionaryType.ShowDialog();
-                if (!dictionaryType.DialogResult.Value)
+                return;
+            }
+            if (ViewDictionary.SelectedCells.Count >= 1)
+            {
+
+                DictionaryOpen.ShowDialog();
+                if (!DictionaryOpen.DialogResult.Value)
                 {
                     return;
                 }
                 
-                Type_Selected();
+                FillTable();
 
             }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (Type.IsSelected)
+            var row = ((DataTable)ViewDictionary.DataSource).NewRow();
+            Window DictionaryOpen = GetDictionaryOpen(row);
+
+            DictionaryOpen.ShowDialog();
+            if (!DictionaryOpen.DialogResult.Value)
             {
-                EditAddDictionary.DictionaryType dictionaryType = new EditAddDictionary.DictionaryType(((DataTable)ViewDictionary.DataSource).NewRow());
-                dictionaryType.ShowDialog();
-                if (!dictionaryType.DialogResult.Value)
-                {
-                    return;
-                }
-                Type_Selected();
+                return;
             }
+            FillTable();
+            
         }
 
-        private void Type_Selected()
+        private void FillTable()
         {
-
-            Table = Connect.GetData("Select * from dic.Type");
+            if (SelectTreeViewItem == null)
+            {
+                return;
+            }
+            Table = Connect.GetData($"Select * from [dic].[{SelectTreeViewItem.Name}]");
             ViewDictionary.DataSource = Table;
+                
         }
     }
 }

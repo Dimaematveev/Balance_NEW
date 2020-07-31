@@ -27,7 +27,7 @@
                 <TreeViewItem Header="Типы устройств" x:Name="Type"/>
                 <TreeViewItem Header="Модели устройств" x:Name="Model"/>
                 <TreeViewItem Header="Местоположение" x:Name="Location"/>
-                <TreeViewItem Header="СП и СИ" x:Name="SP_SI"/>
+                <TreeViewItem Header="СП и СИ" x:Name="Sp_Si"/>
             </TreeViewItem>
         </TreeView>
         <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>

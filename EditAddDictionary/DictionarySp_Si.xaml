@@ -1,0 +1,53 @@
+﻿<Window x:Class="EditAddDictionary.DictionarySp_Si"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EditAddDictionary"
+        mc:Ignorable="d"
+        Title="DictionarySp_Si" MinHeight="180" Height="180" MaxHeight="180" MinWidth="300" Width="300" ResizeMode="CanResize">
+    <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="10,0">
+
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_RegisterNumber" Grid.Column="0"/>
+            <TextBox x:Name="RegisterNumberName" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_Дело" Grid.Column="0"/>
+            <TextBox x:Name="DealName" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_Страницы" Grid.Column="0"/>
+            <TextBox x:Name="PageName" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_Вид проверки" Grid.Column="0"/>
+            <ComboBox x:Name="TypeCheckName" Grid.Column="1" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Add" Content="Добавление" Grid.Column="0"/>
+            <Button x:Name="Cancel" Content="Отмена" Grid.Column="1"/>
+        </Grid>
+    </StackPanel>
+</Window>

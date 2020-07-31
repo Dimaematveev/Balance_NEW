@@ -48,10 +48,31 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DictionarySp_Si.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DictionaryModel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DictionaryLocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DictionaryType.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="DictionarySp_Si.xaml.cs">
+      <DependentUpon>DictionarySp_Si.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DictionaryModel.xaml.cs">
+      <DependentUpon>DictionaryModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DictionaryLocation.xaml.cs">
+      <DependentUpon>DictionaryLocation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DictionaryType.xaml.cs">
       <DependentUpon>DictionaryType.xaml</DependentUpon>
       <SubType>Code</SubType>
