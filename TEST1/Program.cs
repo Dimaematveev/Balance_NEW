@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Connected;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Linq;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using Connected;
 
 namespace TEST1
 {
@@ -15,8 +14,7 @@ namespace TEST1
         {
             
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            var connect = new Connect();
-            DataContext db = new DataContext(connect._connetionString);
+            DataContext db = new DataContext(Connect._connetionString);
         
             // параметры
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
@@ -24,11 +22,11 @@ namespace TEST1
             sqlParameters.Add(new SqlParameter { ParameterName = "@SN", Value = "M11" });
             sqlParameters.Add(new SqlParameter { ParameterName = "@Year", Value = 2019 });
             sqlParameters.Add(new SqlParameter { ParameterName = "@ScreenResolution", Value = "500x500" });
-            var Procedure = connect.ExecuteProcedure("[dev].[Add_Monitor]", sqlParameters.ToArray());
+            var Procedure = Connect.ExecuteProcedure("[dev].[Add_Monitor]", sqlParameters.ToArray());
             Console.WriteLine();
             Console.WriteLine("PROCEDURE: "+ Procedure);
             Console.WriteLine();
-            var data = connect.GetData("select * from dev.View_Monitor");
+            var data = Connect.GetData("select * from dev.View_Monitor");
             foreach (DataColumn item in data.Columns)
             {
                 Console.Write(item.ColumnName);
