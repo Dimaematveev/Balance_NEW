@@ -2,14 +2,11 @@
 
 using System.Collections.Generic;
 using System.Windows;
-using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Forms.Integration;
-using System.Windows.Input;
 using Connected;
-using System;
 using EditAddDevice;
 
 namespace BalanceMain
