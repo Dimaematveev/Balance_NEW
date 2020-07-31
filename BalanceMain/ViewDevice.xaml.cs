@@ -14,10 +14,10 @@ namespace BalanceMain
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ViewDevice : Window
     {
 
-        public MainWindow()
+        public ViewDevice()
         {
             InitializeComponent();
             /// <summary> словарь для элемента Zip.</summary>

@@ -16,10 +16,17 @@ namespace BalanceMain
             DictionaryName.Click += DictionaryName_Click;
 
             Loaded += AdminPanel_Loaded;
+            Closing += AdminPanel_Closing;
+        }
+
+        private void AdminPanel_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Connect.ConnectClose();
         }
 
         private void AdminPanel_Loaded(object sender, RoutedEventArgs e)
         {
+            Connect.ConnectOpen();
             if (Connect._IsOpen)
             {
                 MessageBox.Show(Connect._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -40,7 +47,7 @@ namespace BalanceMain
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {
-            var view = new MainWindow();
+            var view = new ViewDevice();
             view.ShowDialog();
         }
     }
