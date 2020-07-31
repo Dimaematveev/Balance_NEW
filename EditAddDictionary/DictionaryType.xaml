@@ -5,30 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EditAddDictionary"
         mc:Ignorable="d"
-        Title="DictionaryType" MinHeight="210" Height="210" MaxHeight="210" MinWidth="300" Width="300" ResizeMode="CanResize">
-    <Grid VerticalAlignment="Center" Margin="5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <GridSplitter Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" ShowsPreview="False" Width="3" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-
-        <Label Content="_Имя таблицы" Grid.Row="0" Grid.Column="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <ComboBox x:Name="GadgetName" Grid.Row="0" Grid.Column="2" Margin="10" VerticalAlignment="Center" />
-
-        <Label Content="_Тип устройства" Grid.Row="2" Grid.Column="0" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox x:Name="TypeName" Grid.Row="2" Grid.Column="2" Margin="10" VerticalAlignment="Center"/>
-
-        <Button x:Name="Add" Content="Добавление" Grid.Row="4" Margin="10" Grid.Column="0"/>
-        <Button x:Name="Cancel" Content="Отмена" Grid.Row="4" Margin="10" Grid.Column="2"/>
-    </Grid>
+        Title="DictionaryType" MinHeight="120" Height="120" MaxHeight="120" MinWidth="300" Width="300" ResizeMode="CanResize">
+    <StackPanel VerticalAlignment="Center" Orientation="Vertical" Margin="10,0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_Имя таблицы" Grid.Column="0"/>
+            <ComboBox x:Name="GadgetName" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="_Тип устройства" Grid.Column="0"/>
+            <TextBox x:Name="TypeName" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Add" Content="Добавление" Grid.Column="0"/>
+            <Button x:Name="Cancel" Content="Отмена" Grid.Column="1"/>
+        </Grid>
+    </StackPanel>
 </Window>
