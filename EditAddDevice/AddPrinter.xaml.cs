@@ -17,10 +17,10 @@ namespace EditAddDevice
         {
             List<string> res = new List<string>();
 
-            if (string.IsNullOrEmpty(AddPagesPerMinute.Text) || int.TryParse(AddPagesPerMinute.Text, out int pagesPerMinute) || pagesPerMinute>0) 
+            if (string.IsNullOrEmpty(AddPagesPerMinute.Text) || !int.TryParse(AddPagesPerMinute.Text, out int pagesPerMinute) || pagesPerMinute <= 0) 
             {
                 Grid parent = (Grid)AddPagesPerMinute.Parent;
-                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И это должно быть число > 0.Сейчас:{AddPagesPerMinute.Text.Length}.");
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И это должно быть число > 0.Сейчас:{AddPagesPerMinute.Text}.");
             }
 
 
