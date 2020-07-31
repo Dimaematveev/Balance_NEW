@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace Connected
 {
     public static class Connect
     {
         /// <summary> Строка соединения с БД </summary>
-        public static readonly string _connetionString = @"Data Source=LAPTOP-ASUS; Initial Catalog = BalanceTest; Integrated Security = False; User Id = sa; Password = qwerty";
+        public static readonly string _connetionString;
         /// <summary> Создание подключения </summary>
         public static SqlConnection connection;
         //Показывает подключились или нет
@@ -17,6 +18,8 @@ namespace Connected
 
         static Connect()
         {
+            
+            _connetionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             connection = new SqlConnection(_connetionString); 
             _resultConnection = ConnectString();
         }
