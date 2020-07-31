@@ -51,6 +51,9 @@
     <Compile Include="AddDevice.xaml.cs">
       <DependentUpon>AddDevice.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddMonitor.xaml.cs">
+      <DependentUpon>AddMonitor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AddPrinter.xaml.cs">
       <DependentUpon>AddPrinter.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddDevice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddMonitor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

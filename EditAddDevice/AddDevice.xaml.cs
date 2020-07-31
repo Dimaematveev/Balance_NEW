@@ -117,12 +117,23 @@ namespace EditAddDevice
 
             if (AddType.SelectedItem is DataRowView selectType)
             {
-
-                if(selectType.Row["GadgetName"].Equals("Printer"))
+                var gadgetName = selectType.Row["GadgetName"].ToString();
+                switch (gadgetName)
+                {
+                    case "Printer":
+                        SpecificDevice = new AddPrinter();
+                        break;
+                    case "Monitor":
+                        SpecificDevice = new AddMonitor();
+                        break;
+                    default:
+                        SpecificDevice = null;
+                        break;
+                }
+                if (SpecificDevice!=null)
                 {
                     var typeID = selectType.Row["ID"];
                     ((DataView)AddModel.ItemsSource).RowFilter = $"TypeID={typeID}";
-                    SpecificDevice = new AddPrinter();
                     this.Height = this.MinHeight;
                     AddOtherDevice.Children.Clear();
                     AddOtherDevice.Children.Add(SpecificDevice.GetUIElement());
@@ -130,14 +141,15 @@ namespace EditAddDevice
                 }
                 else
                 {
-                    SpecificDevice = null;
                     ((DataView)AddModel.ItemsSource).RowFilter = "";
                     this.Height = this.MinHeight;
                     AddOtherDevice.Children.Clear();
+                    MessageBox.Show($"Не знаю почему но нету таблицы [{gadgetName}]");
                 }
                 
             }
         }
+
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
