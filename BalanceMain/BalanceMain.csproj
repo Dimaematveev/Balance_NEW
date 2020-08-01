@@ -131,9 +131,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Connect\Connect.csproj">
+    <ProjectReference Include="..\Connect\Connected.csproj">
       <Project>{57a9ba4e-13ae-40d8-be67-ecbc90168620}</Project>
-      <Name>Connect</Name>
+      <Name>Connected</Name>
     </ProjectReference>
     <ProjectReference Include="..\EditAddDevice\EditAddDevice.csproj">
       <Project>{5e765e2d-2dde-472b-a53a-29896d1f3fc5}</Project>

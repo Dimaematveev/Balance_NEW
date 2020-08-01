@@ -102,9 +102,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Connect\Connect.csproj">
+    <ProjectReference Include="..\Connect\Connected.csproj">
       <Project>{57A9BA4E-13AE-40D8-BE67-ECBC90168620}</Project>
-      <Name>Connect</Name>
+      <Name>Connected</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

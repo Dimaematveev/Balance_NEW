@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditAddDictionary", "EditAd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditAddDevice", "EditAddDevice\EditAddDevice.csproj", "{5E765E2D-2DDE-472B-A53A-29896D1F3FC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connect", "Connect\Connect.csproj", "{57A9BA4E-13AE-40D8-BE67-ECBC90168620}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Connected", "Connect\Connected.csproj", "{57A9BA4E-13AE-40D8-BE67-ECBC90168620}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEST1", "TEST1\TEST1.csproj", "{B4744543-3D11-4C18-BEF2-747742F2544E}"
 EndProject

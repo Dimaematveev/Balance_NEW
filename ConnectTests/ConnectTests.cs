@@ -14,12 +14,13 @@ namespace Connected.Tests
         [TestMethod()]
         public void ConnectOpen_resultConnection_ConnectComplited()
         {
-            Connect.NameConnectionString = "Test";
-
-            Connect.ConnectOpen();
-
+            //arrange
             string res = "Подключение установлено \nDatabase:Test_Action \n";
 
+            //act
+            Connect.NameConnectionString = "Test";
+            Connect.ConnectOpen();
+            //assert
             Assert.AreEqual(Connect._resultConnection, res,$"Наше значение _resultConnection = [{Connect._resultConnection}], а должно быть [{res}]. Это успешное соединение!!!");
         }
         [TestMethod()]
