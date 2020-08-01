@@ -12,7 +12,7 @@ namespace Connected.Tests
     public class ConnectTests
     {
         [TestMethod()]
-        public void ConnectOpenTest()
+        public void ConnectOpen_resultConnection_ConnectComplited()
         {
             Connect.NameConnectionString = "Test";
 
@@ -20,14 +20,18 @@ namespace Connected.Tests
 
             string res = "Подключение установлено \nDatabase:Test_Action \n";
 
-            Assert.AreEqual(Connect._resultConnection, res);
+            Assert.AreEqual(Connect._resultConnection, res,$"Наше значение _resultConnection = [{Connect._resultConnection}], а должно быть [{res}]. Это успешное соединение!!!");
+        }
+        [TestMethod()]
+        public void ConnectOpen_IsOpen_True()
+        {
+            Connect.NameConnectionString = "Test";
+
+            Connect.ConnectOpen();
+
+            Assert.IsTrue(Connect._IsOpen, $"Это успешное соединение поэтому IsOpen должно быть true, а у нас [{Connect._IsOpen}].");
         }
 
-        [TestMethod()]
-        public void ConnectCloseTest()
-        {
-            Assert.Fail();
-        }
 
         [TestMethod()]
         public void ExecActionTest()

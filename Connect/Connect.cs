@@ -14,7 +14,7 @@ namespace Connected
         /// </summary>
         public static string NameConnectionString;
         /// <summary> Создание подключения </summary>
-        public static SqlConnection connection;
+        private static SqlConnection connection;
         //Показывает подключились или нет
         public static bool _IsOpen;
         /// <summary> Строка Выводящая получилось ли подключение </summary>
@@ -51,6 +51,12 @@ namespace Connected
                 res = ex.Message;
                 _resultConnection = res;
 
+            }
+            catch (Exception ex)
+            {
+                _IsOpen = false;
+                res = ex.Message;
+                _resultConnection = res;
             }
             _resultConnection = res;
             return _resultConnection;
