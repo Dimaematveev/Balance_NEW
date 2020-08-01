@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1DD42DFD-1A3E-40AA-A04E-63CC373F511F}</ProjectGuid>
+    <ProjectGuid>{5E765E2D-2DDE-472B-A53A-29896D1F3FC5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>EditAddDictionary</RootNamespace>
-    <AssemblyName>EditAddDictionary</AssemblyName>
+    <RootNamespace>EditAddDevice</RootNamespace>
+    <AssemblyName>EditAddDevice</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -48,37 +48,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DictionarySp_Si.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DictionaryModel.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DictionaryLocation.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="DictionaryType.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="DictionarySp_Si.xaml.cs">
-      <DependentUpon>DictionarySp_Si.xaml</DependentUpon>
+    <Compile Include="AddDeviceWPF.xaml.cs">
+      <DependentUpon>AddDeviceWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DictionaryModel.xaml.cs">
-      <DependentUpon>DictionaryModel.xaml</DependentUpon>
+    <Compile Include="AddMonitorWPF.xaml.cs">
+      <DependentUpon>AddMonitorWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DictionaryLocation.xaml.cs">
-      <DependentUpon>DictionaryLocation.xaml</DependentUpon>
+    <Compile Include="AddPrinterWPF.xaml.cs">
+      <DependentUpon>AddPrinterWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DictionaryType.xaml.cs">
-      <DependentUpon>DictionaryType.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +70,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ISingleDevice.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -102,9 +81,23 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Connect\Connected.csproj">
-      <Project>{57A9BA4E-13AE-40D8-BE67-ECBC90168620}</Project>
-      <Name>Connected</Name>
+    <Page Include="AddDeviceWPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddMonitorWPF.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AddPrinterWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Connect\Connected.BL.csproj">
+      <Project>{57a9ba4e-13ae-40d8-be67-ecbc90168620}</Project>
+      <Name>Connected.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

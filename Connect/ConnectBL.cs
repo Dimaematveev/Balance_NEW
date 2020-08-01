@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 
 namespace Connected
 {
-    public static class Connect
+    public static class ConnectBL
     {
         /// <summary> Строка соединения с БД </summary>
         private static string _connetionString;
@@ -20,7 +20,7 @@ namespace Connected
         /// <summary> Строка Выводящая получилось ли подключение </summary>
         public static string _resultConnection;
 
-        static Connect()
+        static ConnectBL()
         {
             NameConnectionString = "DefaultConnection";
             

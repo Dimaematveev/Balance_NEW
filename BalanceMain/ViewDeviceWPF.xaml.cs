@@ -1,30 +1,29 @@
-﻿using Co_Combox = System.Windows.Controls.ComboBox;
-
-using System.Collections.Generic;
-using System.Windows;
-using System.Data;
-using System.Windows.Forms;
-using System.Windows.Controls;
-using System.Windows.Forms.Integration;
-using Connected;
+﻿using Connected;
 using EditAddDevice;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+using Co_Combox = System.Windows.Controls.ComboBox;
 
 namespace BalanceMain
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class ViewDevice : Window
+    public partial class ViewDeviceWPF : Window
     {
 
-        public ViewDevice()
+        public ViewDeviceWPF()
         {
             InitializeComponent();
             /// <summary> словарь для элемента Zip.</summary>
-            var DictionaryZip = new List<NameAndIdTable>
+            var DictionaryZip = new List<NameAndIdTableBL>
             {
-                new NameAndIdTable( true, "Да"),
-                new NameAndIdTable( false, "Нет"),
+                new NameAndIdTableBL( true, "Да"),
+                new NameAndIdTableBL( false, "Нет"),
             };
             ComboBoxIsZip.ItemsSource = DictionaryZip;
 
@@ -32,7 +31,7 @@ namespace BalanceMain
 
             ComboBoxType.PreviewMouseLeftButtonDown += (sender, e) => { ComboBox_Fill((Co_Combox)sender, $"SELECT * FROM dic.Type"); };
             ComboBoxType.SelectionChanged += (sender, e) => { ComboBox_SelectionChangedIsEnable((Co_Combox)sender, ComboBoxModel); };
-            ComboBoxModel.PreviewMouseLeftButtonDown += (sender, e) => { ComboBox_Fill((Co_Combox)sender, $"SELECT * FROM dic.Model where TypeID={((NameAndIdTable)ComboBoxType.SelectedItem).ID}"); };
+            ComboBoxModel.PreviewMouseLeftButtonDown += (sender, e) => { ComboBox_Fill((Co_Combox)sender, $"SELECT * FROM dic.Model where TypeID={((NameAndIdTableBL)ComboBoxType.SelectedItem).ID}"); };
             ComboBoxLocation.PreviewMouseLeftButtonDown += (sender, e) => { ComboBox_Fill((Co_Combox)sender, $"SELECT * FROM dic.Location"); };
 
             Button_ClearAllComboBox.Click += (sender, e) => { Button_ClearAllComboBox_Click(); };
@@ -46,7 +45,7 @@ namespace BalanceMain
 
         private void AddDevice_Click(object sender, RoutedEventArgs e)
         {
-            AddDevice addDevice = new AddDevice();
+            AddDeviceWPF addDevice = new AddDeviceWPF();
             addDevice.ShowDialog();
         }
 
@@ -159,7 +158,7 @@ namespace BalanceMain
         private void ComboBox_Fill(Co_Combox comboBox,  string _sql)
         {
             comboBox.SelectedItem = null;
-            List<NameAndIdTable> dictionary = FillDictionary(_sql);
+            List<NameAndIdTableBL> dictionary = FillDictionary(_sql);
             comboBox.ItemsSource = dictionary;
             comboBox.DisplayMemberPath = "Name";
         }
@@ -170,15 +169,15 @@ namespace BalanceMain
         /// </summary>
         /// <param name="_sql">Запрос из которого заполняется заполнение Dictionary  Key=ID, Value=Name</param>
         /// <returns>  </returns>
-        private List<NameAndIdTable> FillDictionary(string _sql)
+        private List<NameAndIdTableBL> FillDictionary(string _sql)
         {
-            var table = Connect.GetData(_sql).DefaultView;
+            var table = ConnectBL.GetData(_sql).DefaultView;
             
 
-            List<NameAndIdTable> dictionary = new List<NameAndIdTable>();
+            List<NameAndIdTableBL> dictionary = new List<NameAndIdTableBL>();
             foreach (DataRowView item in table)
             {
-                dictionary.Add(new NameAndIdTable((int)item.Row["ID"], (string)item.Row["Name"]));
+                dictionary.Add(new NameAndIdTableBL((int)item.Row["ID"], (string)item.Row["Name"]));
             }
             return dictionary;
         }
@@ -207,7 +206,7 @@ namespace BalanceMain
             {
                 if (ComboBoxType.SelectedItem != null)
                 {
-                    ButtonExecuteSQL($"exec dev.ViewAllColumsInOneTable {((NameAndIdTable)ComboBoxType.SelectedItem).ID}", deviceDataGridView);
+                    ButtonExecuteSQL($"exec dev.ViewAllColumsInOneTable {((NameAndIdTableBL)ComboBoxType.SelectedItem).ID}", deviceDataGridView);
                 }
                 else
                 {
@@ -225,7 +224,7 @@ namespace BalanceMain
         {
 
 
-            var table = Connect.GetData(_sql).DefaultView;
+            var table = ConnectBL.GetData(_sql).DefaultView;
             _dataGridView.DataSource = table;
             
             if (_dataGridView == commonDataGridView || _dataGridView == deviceDataGridView)
@@ -261,7 +260,7 @@ namespace BalanceMain
         {
             if (filter_ComboBox.SelectedItem != null && row.Cells[filter_column].Value != null)
             {
-                var filter_ComboBox_Pair = (NameAndIdTable)filter_ComboBox.SelectedItem;
+                var filter_ComboBox_Pair = (NameAndIdTableBL)filter_ComboBox.SelectedItem;
                 if (filter_ComboBox_Pair.Name != null && !filter_ComboBox_Pair.ID.Equals(row.Cells[filter_column].Value)) 
                 {
                     _dataGridView.CurrentCell = null;

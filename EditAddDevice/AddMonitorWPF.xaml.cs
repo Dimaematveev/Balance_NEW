@@ -8,7 +8,7 @@ namespace EditAddDevice
     /// <summary>
     /// Interaction logic for AddPrinter.xaml
     /// </summary>
-    public partial class AddPrinter : UserControl, ISingleDevice
+    public partial class AddMonitorWPF : UserControl, ISingleDevice
     {
         /// <summary>
         /// Проверка что все обязательные поля заполнены
@@ -17,10 +17,10 @@ namespace EditAddDevice
         {
             List<string> res = new List<string>();
 
-            if (string.IsNullOrEmpty(AddPagesPerMinute.Text) || !int.TryParse(AddPagesPerMinute.Text, out int pagesPerMinute) || pagesPerMinute <= 0) 
+            if (string.IsNullOrEmpty(AddScreenResolution.Text) || AddScreenResolution.Text.Length > 50) 
             {
-                Grid parent = (Grid)AddPagesPerMinute.Parent;
-                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И это должно быть число > 0.Сейчас:{AddPagesPerMinute.Text}.");
+                Grid parent = (Grid)AddScreenResolution.Parent;
+                res.Add($"Поле [{((Label)parent.Children[0]).Content}] должно быть обязательно заполнено! И длина должна быть от 1 до 50 символов.Сейчас:{AddScreenResolution.Text.Length}.");
             }
 
 
@@ -28,7 +28,7 @@ namespace EditAddDevice
             return res; 
         }
 
-        public AddPrinter()
+        public AddMonitorWPF()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace EditAddDevice
             {
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
                 //Обязательные параметры не могут быть null
-                sqlParameters.Add(new SqlParameter("@PagesPerMinute", AddPagesPerMinute.Text));
+                sqlParameters.Add(new SqlParameter("@ScreenResolution", AddScreenResolution.Text));
 
                 //необязательные параметры могут быть null
 

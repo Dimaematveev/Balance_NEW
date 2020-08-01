@@ -69,31 +69,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AdminPanel.xaml">
+    <Page Include="AdminPanelWPF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditDictionary.xaml">
+    <Page Include="EditDictionaryWPF.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewDevice.xaml">
+    <Page Include="ViewDeviceWPF.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AdminPanel.xaml.cs">
-      <DependentUpon>AdminPanel.xaml</DependentUpon>
+    <Compile Include="AdminPanelWPF.xaml.cs">
+      <DependentUpon>AdminPanelWPF.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EditDictionary.xaml.cs">
-      <DependentUpon>EditDictionary.xaml</DependentUpon>
+    <Compile Include="EditDictionaryWPF.xaml.cs">
+      <DependentUpon>EditDictionaryWPF.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NameAndIdTable.cs" />
-    <Compile Include="ViewDevice.xaml.cs">
-      <DependentUpon>ViewDevice.xaml</DependentUpon>
+    <Compile Include="NameAndIdTableBL.cs" />
+    <Compile Include="ViewDeviceWPF.xaml.cs">
+      <DependentUpon>ViewDeviceWPF.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -131,17 +131,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Connect\Connected.csproj">
+    <ProjectReference Include="..\Connect\Connected.BL.csproj">
       <Project>{57a9ba4e-13ae-40d8-be67-ecbc90168620}</Project>
-      <Name>Connected</Name>
+      <Name>Connected.BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EditAddDevice\EditAddDevice.csproj">
+    <ProjectReference Include="..\EditAddDevice\EditAddDevice.WPF.csproj">
       <Project>{5e765e2d-2dde-472b-a53a-29896d1f3fc5}</Project>
-      <Name>EditAddDevice</Name>
+      <Name>EditAddDevice.WPF</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EditAddDictionary\EditAddDictionary.csproj">
+    <ProjectReference Include="..\EditAddDictionary\EditAddDictionary.WPF.csproj">
       <Project>{1dd42dfd-1a3e-40aa-a04e-63cc373f511f}</Project>
-      <Name>EditAddDictionary</Name>
+      <Name>EditAddDictionary.WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

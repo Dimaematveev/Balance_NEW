@@ -10,10 +10,10 @@ namespace EditAddDevice
     /// <summary>
     /// Interaction logic for AddDevice.xaml
     /// </summary>
-    public partial class AddDevice : Window, ISingleDevice
+    public partial class AddDeviceWPF : Window, ISingleDevice
     {
         private ISingleDevice SpecificDevice;
-        public AddDevice()
+        public AddDeviceWPF()
         {
             InitializeComponent();
             Loaded += AddPrinter_Loaded;
@@ -110,10 +110,10 @@ namespace EditAddDevice
                 switch (gadgetName)
                 {
                     case "Printer":
-                        SpecificDevice = new AddPrinter();
+                        SpecificDevice = new AddPrinterWPF();
                         break;
                     case "Monitor":
-                        SpecificDevice = new AddMonitor();
+                        SpecificDevice = new AddMonitorWPF();
                         break;
                     default:
                         SpecificDevice = null;
@@ -152,7 +152,7 @@ namespace EditAddDevice
                     sqlParameters.AddRange(SpecificDevice.GetSqlParameters());
 
                     string gadgetName = ((DataRowView)AddType.SelectedItem).Row["GadgetName"].ToString();
-                    string exeption = Connect.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
+                    string exeption = ConnectBL.ExecuteProcedure($"[dev].[Add_{gadgetName}]", sqlParameters.ToArray());
                     if (exeption != null)
                     {
                         MessageBox.Show(exeption, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -178,15 +178,15 @@ namespace EditAddDevice
 
         private void AddPrinter_Loaded(object sender, RoutedEventArgs e)
         {
-            AddType.ItemsSource = Connect.GetData("Select * from dic.Type").DefaultView;
+            AddType.ItemsSource = ConnectBL.GetData("Select * from dic.Type").DefaultView;
             AddType.DisplayMemberPath = "Name";
-            AddModel.ItemsSource = Connect.GetData($"select * from dic.[Model]").DefaultView;
+            AddModel.ItemsSource = ConnectBL.GetData($"select * from dic.[Model]").DefaultView;
             AddModel.DisplayMemberPath = "Name";
-            AddSP.ItemsSource = Connect.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
+            AddSP.ItemsSource = ConnectBL.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 1").DefaultView;
             AddSP.DisplayMemberPath = "Name";
-            AddSI.ItemsSource = Connect.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
+            AddSI.ItemsSource = ConnectBL.GetData($"select ID, 'RegNum=' + [RegisterNumber] + '; Deal=' + [Deal] + '; Page=' + [Page] as [Name] from dic.[Sp_Si] where [IsSp] = 0").DefaultView;
             AddSI.DisplayMemberPath = "Name";
-            AddLocation.ItemsSource = Connect.GetData($"select * from [dic].[Location]").DefaultView;
+            AddLocation.ItemsSource = ConnectBL.GetData($"select * from [dic].[Location]").DefaultView;
             AddLocation.DisplayMemberPath = "Name";
         }
 

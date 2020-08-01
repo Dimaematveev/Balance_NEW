@@ -8,12 +8,12 @@ namespace EditAddDictionary
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DictionarySp_Si : Window
+    public partial class DictionarySp_SiWPF : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
         private DataRow DR { get; }
 
-        public DictionarySp_Si(DataRow dr)
+        public DictionarySp_SiWPF(DataRow dr)
         {
             InitializeComponent();
             DR = dr;
@@ -54,11 +54,11 @@ namespace EditAddDictionary
             bool isSp = TypeCheckName.SelectedItem.Equals("СП");
             if (DR["ID"] == DBNull.Value)
             {
-                exeption=Connect.ExecAction($"INSERT INTO [dic].[Sp_Si] ([RegisterNumber],[Deal],[Page],[IsSp]) VALUES (N'{RegisterNumberName.Text}',N'{DealName.Text}',N'{PageName.Text}',{isSp.ToString().ToLower()})");
+                exeption=ConnectBL.ExecAction($"INSERT INTO [dic].[Sp_Si] ([RegisterNumber],[Deal],[Page],[IsSp]) VALUES (N'{RegisterNumberName.Text}',N'{DealName.Text}',N'{PageName.Text}',{isSp.ToString().ToLower()})");
             }
             else
             {
-                exeption=Connect.ExecAction($"Update [dic].[Sp_Si] set [RegisterNumber] = N'{RegisterNumberName.Text}', [Deal] = N'{DealName.Text}', [Page] = N'{PageName.Text}', [IsSp] = '{isSp.ToString().ToLower()}' where ID = {DR["ID"]}");
+                exeption=ConnectBL.ExecAction($"Update [dic].[Sp_Si] set [RegisterNumber] = N'{RegisterNumberName.Text}', [Deal] = N'{DealName.Text}', [Page] = N'{PageName.Text}', [IsSp] = '{isSp.ToString().ToLower()}' where ID = {DR["ID"]}");
             }
             if (exeption!=null)
             {

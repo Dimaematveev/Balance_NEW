@@ -55,16 +55,16 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ConnectTests.cs" />
+    <Compile Include="ConnectBLTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Connect\Connected.csproj">
+    <ProjectReference Include="..\Connect\Connected.BL.csproj">
       <Project>{57A9BA4E-13AE-40D8-BE67-ECBC90168620}</Project>
-      <Name>Connected</Name>
+      <Name>Connected.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

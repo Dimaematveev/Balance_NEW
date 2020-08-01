@@ -1,15 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Connected;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Connected.Tests
 {
     [TestClass()]
-    public class ConnectTests
+    public class ConnectBLTests
     {
         [TestMethod()]
         public void ConnectOpen_resultConnection_ConnectComplited()
@@ -18,19 +12,19 @@ namespace Connected.Tests
             string res = "Подключение установлено \nDatabase:Test_Action \n";
 
             //act
-            Connect.NameConnectionString = "Test";
-            Connect.ConnectOpen();
+            ConnectBL.NameConnectionString = "Test";
+            ConnectBL.ConnectOpen();
             //assert
-            Assert.AreEqual(Connect._resultConnection, res,$"Наше значение _resultConnection = [{Connect._resultConnection}], а должно быть [{res}]. Это успешное соединение!!!");
+            Assert.AreEqual(ConnectBL._resultConnection, res,$"Наше значение _resultConnection = [{ConnectBL._resultConnection}], а должно быть [{res}]. Это успешное соединение!!!");
         }
         [TestMethod()]
         public void ConnectOpen_IsOpen_True()
         {
-            Connect.NameConnectionString = "Test";
+            ConnectBL.NameConnectionString = "Test";
 
-            Connect.ConnectOpen();
+            ConnectBL.ConnectOpen();
 
-            Assert.IsTrue(Connect._IsOpen, $"Это успешное соединение поэтому IsOpen должно быть true, а у нас [{Connect._IsOpen}].");
+            Assert.IsTrue(ConnectBL._IsOpen, $"Это успешное соединение поэтому IsOpen должно быть true, а у нас [{ConnectBL._IsOpen}].");
         }
 
 

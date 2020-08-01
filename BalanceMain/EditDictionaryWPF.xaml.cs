@@ -1,20 +1,20 @@
-﻿using System.Data;
+﻿using Connected;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using Connected;
 
 namespace BalanceMain
 {
     /// <summary>
     /// Interaction logic for EditDictionary.xaml
     /// </summary>
-    public partial class EditDictionary : Window
+    public partial class EditDictionaryWPF : Window
     {
         /// <summary> таблица с данными </summary>
         DataTable Table;
         /// <summary> Выбранное дерево </summary>
         TreeViewItem SelectTreeViewItem;
-        public EditDictionary()
+        public EditDictionaryWPF()
         {
             InitializeComponent();
 
@@ -35,16 +35,16 @@ namespace BalanceMain
             switch (SelectTreeViewItem.Name)
             {
                 case "Type":
-                    DictionaryOpen = new EditAddDictionary.DictionaryType(dataRow);
+                    DictionaryOpen = new EditAddDictionary.DictionaryTypeWPF(dataRow);
                     break;
                 case "Model":
-                    DictionaryOpen = new EditAddDictionary.DictionaryModel(dataRow);
+                    DictionaryOpen = new EditAddDictionary.DictionaryModelWPF(dataRow);
                     break;
                 case "Location":
-                    DictionaryOpen = new EditAddDictionary.DictionaryLocation(dataRow);
+                    DictionaryOpen = new EditAddDictionary.DictionaryLocationWPF(dataRow);
                     break;
                 case "Sp_Si":
-                    DictionaryOpen = new EditAddDictionary.DictionarySp_Si(dataRow);
+                    DictionaryOpen = new EditAddDictionary.DictionarySp_SiWPF(dataRow);
                     break;
                 default:
                     DictionaryOpen = null;
@@ -101,7 +101,7 @@ namespace BalanceMain
             {
                 return;
             }
-            Table = Connect.GetData($"Select * from [dic].[{SelectTreeViewItem.Name}]");
+            Table = ConnectBL.GetData($"Select * from [dic].[{SelectTreeViewItem.Name}]");
             ViewDictionary.DataSource = Table;
                 
         }

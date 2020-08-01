@@ -8,12 +8,12 @@ namespace EditAddDictionary
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DictionaryLocation : Window
+    public partial class DictionaryTypeWPF : Window
     {
         /// <summary> подключение к sql. Сюда отправляются запросы и получаются ответы.  </summary>
         private DataRow DR { get; }
 
-        public DictionaryLocation(DataRow dr)
+        public DictionaryTypeWPF(DataRow dr)
         {
             InitializeComponent();
             DR = dr;
@@ -24,7 +24,14 @@ namespace EditAddDictionary
 
         private void DictionaryType_Loaded(object sender, RoutedEventArgs e)
         {
-            LocationName.Text = DR["Name"].ToString();
+            var data = ConnectBL.GetData("exec [dbo].[GetNameTableDevice]").Rows;
+            foreach (DataRow item in data)
+            {
+                GadgetName.Items.Add(item[0]);
+            }
+            
+            GadgetName.SelectedItem = DR["GadgetName"].ToString();
+            TypeName.Text = DR["Name"].ToString();
             if (DR["ID"] != DBNull.Value)
             {
                 Add.Content = "Изменить";
@@ -41,11 +48,11 @@ namespace EditAddDictionary
             string exeption;
             if (DR["ID"] == DBNull.Value)
             {
-                exeption=Connect.ExecAction($"INSERT INTO [dic].[Location] ([Name]) VALUES (N'{LocationName.Text}')");
+                exeption=ConnectBL.ExecAction($"INSERT INTO [dic].[Type] ([GadgetName],[Name]) VALUES (N'{GadgetName.SelectedItem}',N'{TypeName.Text}')");
             }
             else
             {
-                exeption=Connect.ExecAction($"Update [dic].[Location] set [Name] = N'{LocationName.Text}' where ID = {DR["ID"]}");
+                exeption=ConnectBL.ExecAction($"Update [dic].[Type] set [GadgetName] = N'{GadgetName.SelectedItem}', [Name] = N'{TypeName.Text}' where ID = {DR["ID"]}");
             }
             if (exeption!=null)
             {

@@ -1,14 +1,14 @@
-﻿using System.Windows;
-using Connected;
+﻿using Connected;
+using System.Windows;
 
 namespace BalanceMain
 {
     /// <summary>
     /// Логика взаимодействия для AdminPanel.xaml
     /// </summary>
-    public partial class AdminPanel : Window
+    public partial class AdminPanelWPF : Window
     {
-        public AdminPanel()
+        public AdminPanelWPF()
         {
             InitializeComponent();
 
@@ -21,19 +21,19 @@ namespace BalanceMain
 
         private void AdminPanel_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Connect.ConnectClose();
+            ConnectBL.ConnectClose();
         }
 
         private void AdminPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            Connect.ConnectOpen();
-            if (Connect._IsOpen)
+            ConnectBL.ConnectOpen();
+            if (ConnectBL._IsOpen)
             {
-                MessageBox.Show(Connect._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(ConnectBL._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show(Connect._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ConnectBL._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             
@@ -41,13 +41,13 @@ namespace BalanceMain
 
         private void DictionaryName_Click(object sender, RoutedEventArgs e)
         {
-            var view = new EditDictionary();
+            var view = new EditDictionaryWPF();
             view.ShowDialog();
         }
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {
-            var view = new ViewDevice();
+            var view = new ViewDeviceWPF();
             view.ShowDialog();
         }
     }
