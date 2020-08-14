@@ -1,5 +1,4 @@
-﻿using Connected;
-using System.Windows;
+﻿using System.Windows;
 
 namespace BalanceMain
 {
@@ -8,9 +7,11 @@ namespace BalanceMain
     /// </summary>
     public partial class AdminPanelWPF : Window
     {
+        AdminPanelBL AdminPanel;
         public AdminPanelWPF()
         {
             InitializeComponent();
+            AdminPanel = new AdminPanelBL();
 
             ViewDevice.Click += ViewDevice_Click;
             DictionaryName.Click += DictionaryName_Click;
@@ -21,29 +22,31 @@ namespace BalanceMain
 
         private void AdminPanel_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            ConnectBL.ConnectClose();
+            AdminPanel.CloseConnected();
         }
+
 
         private void AdminPanel_Loaded(object sender, RoutedEventArgs e)
         {
-            ConnectBL.ConnectOpen();
-            if (ConnectBL._IsOpen)
+            if (AdminPanel.OpenConnected())
             {
-                MessageBox.Show(ConnectBL._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(AdminPanel.ResultConnect, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Information) ;
             }
             else
             {
-                MessageBox.Show(ConnectBL._resultConnection, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(AdminPanel.ResultConnect, "Подключение к базе", MessageBoxButton.OK, MessageBoxImage.Error);
                 Close();
             }
             
         }
+
 
         private void DictionaryName_Click(object sender, RoutedEventArgs e)
         {
             var view = new EditDictionaryWPF();
             view.ShowDialog();
         }
+
 
         private void ViewDevice_Click(object sender, RoutedEventArgs e)
         {

@@ -131,6 +131,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BalanceMain.BL\BalanceMain.BL.csproj">
+      <Project>{2a4949fe-cb0a-4aba-9b63-6f93075baaf2}</Project>
+      <Name>BalanceMain.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Connect\Connected.BL.csproj">
       <Project>{57a9ba4e-13ae-40d8-be67-ecbc90168620}</Project>
       <Name>Connected.BL</Name>
