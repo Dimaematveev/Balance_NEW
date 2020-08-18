@@ -1,5 +1,6 @@
 ﻿using DataBase.BL;
 using DataBase.BL.Model;
+using DataBase.BL.Procedure;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -47,8 +48,9 @@ namespace Balance.BL
                           window.DataContext = SelectTypeDevice;
                           if (window.ShowDialog().Value)
                           {
-                              Context.TypeDevices.Add(SelectTypeDevice);
-                              Context.SaveChanges();
+                              var procedureAddTypeDevice = new ProcedureAddTypeDevice(Context, SelectTypeDevice);
+                              procedureAddTypeDevice.Add();
+                              Context.TypeDevices.Load();
                           }
                           else
                           {
@@ -80,7 +82,9 @@ namespace Balance.BL
                           window.DataContext = SelectTypeDevice;
                           if (window.ShowDialog().Value)
                           {
-                              Context.SaveChanges();
+                              var procedureAddTypeDevice = new ProcedureAddTypeDevice(Context, SelectTypeDevice);
+                              procedureAddTypeDevice.Update();
+                              Context.TypeDevices.Load();
                           }
                           else
                           {
