@@ -34,6 +34,29 @@ namespace DataBase.BL.Model
         }
 
         /// <summary>
+        /// Скопировать текущий объект в новый
+        /// </summary>
+        /// <returns>Новый объект с такими-же свойствами</returns>
+        public object Clone()
+        {
+            TypeDevice newTypeDevice = new TypeDevice();
+            newTypeDevice.Fill(this);
+            return newTypeDevice;
+        }
+
+        /// <summary>
+        /// Заполнить текущий объект из переданного
+        /// </summary>
+        /// <param name="copy">переданный объект</param>
+        public void Fill(object copy)
+        {
+            if (copy != null && copy is TypeDevice copyDeviceType)
+            {
+                Name = copyDeviceType.Name;
+            }
+        }
+
+        /// <summary>
         /// Событие изменения
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;

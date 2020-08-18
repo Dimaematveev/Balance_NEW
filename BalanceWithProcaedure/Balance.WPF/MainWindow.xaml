@@ -8,16 +8,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox ItemsSource="{Binding TypeDevices}" >
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding ID}" FontSize="16" />
-                        <TextBlock Text=" - " FontSize="13" />
-                        <TextBlock Text="{Binding Name}" FontSize="13" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Column="0" Margin="10" ItemsSource="{Binding TypeDevices}" SelectedItem="{Binding SelectTypeDevice}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding ID}" FontSize="16" />
+                            <TextBlock Text=" - " FontSize="13" />
+                            <TextBlock Text="{Binding Name}" FontSize="13" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+           
+        </Grid>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Content="Добавить" Margin="5" Command="{Binding AddCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
+            <Button Content="Изменить" Margin="5" Command="{Binding EditCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"/>
+        </StackPanel>
     </Grid>
 </Window>
