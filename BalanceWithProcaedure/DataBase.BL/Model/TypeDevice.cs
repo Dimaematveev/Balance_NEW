@@ -56,15 +56,14 @@ namespace DataBase.BL.Model
             }
         }
 
-        /// <summary>
-        /// Событие изменения
-        /// </summary>
+        /// <summary>Событие для извещения об изменения свойства</summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// Воспроизводит событие изменения
+        /// Метод для вызова события извещения об изменении свойства
         /// </summary>
-        /// <param name="prop"> Название Свойства которое изменилось. </param>
+        /// <param name="prop">Изменившееся свойство </param>
+
         public void OnPropertyChanged(string prop)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
