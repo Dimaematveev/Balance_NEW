@@ -60,7 +60,7 @@ namespace Meccanici.DAL.InterfaceRealization
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "car";
+        private const string TABLE_NAME = "Car";
 
         /// <summary>
         /// Загрузить машины из таблицы

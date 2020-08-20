@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Meccanici.View;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 
@@ -92,11 +93,13 @@ namespace Meccanici.ViewModel
         //TODO:не знаю как описать
         public HomeViewModel()
         {
-            Tabs = new ObservableCollection<Tab>();
-            Tabs.Add(new Tab() { Title = "Clienti", Icon = "" });
-            Tabs.Add(new Tab() { Title = "Automobili", Icon = "" });
-            Tabs.Add(new Tab() { Title = "Riparazioni", Icon = "" });
-            Tabs.Add(new Tab() { Title = "Dipendenti", Icon = "" });
+            Tabs = new ObservableCollection<Tab>
+            {
+                new Tab() { Title = "Clienti", Icon = "" },
+                new Tab() { Title = "Automobili", Icon = "" },
+                new Tab() { Title = "Riparazioni", Icon = "" },
+                new Tab() { Title = "Dipendenti", Icon = "" }
+            };
             //Tabs.Add(new Tab() { Title = "Impostazioni",Icon = "" });
         }
 

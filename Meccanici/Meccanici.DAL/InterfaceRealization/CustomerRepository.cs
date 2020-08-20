@@ -49,7 +49,7 @@ namespace Meccanici.DAL.InterfaceRealization
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "person";
+        private const string TABLE_NAME = "Person";
 
         /// <summary>
         /// Загрузить данные клиентов

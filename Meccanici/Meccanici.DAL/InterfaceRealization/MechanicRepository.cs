@@ -45,7 +45,7 @@ namespace Meccanici.DAL.InterfaceRealization
 
        
 
-        private const string TABLE_NAME = "person";
+        private const string TABLE_NAME = "Person";
 
         void LoadMechanics()
         {
