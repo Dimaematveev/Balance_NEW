@@ -33,6 +33,10 @@ namespace Meccanici.Model
             /// Id клиента
             /// </summary>
             internal int id_Cliente;
+            /// <summary>
+            /// удален?
+            /// </summary>
+            internal bool isDelete;
         }
 
       
@@ -101,7 +105,18 @@ namespace Meccanici.Model
             }
         }
 
-
+        /// <summary>
+        /// Удален?
+        /// </summary>
+        public bool IsDelete
+        {
+            get { return carData.isDelete; }
+            set
+            {
+                carData.isDelete = value;
+                OnPropertyChanged("IsDelete");
+            }
+        }
 
         /// <summary>Событие для извещения об изменения свойства</summary>
         public event PropertyChangedEventHandler PropertyChanged;
@@ -147,6 +162,7 @@ namespace Meccanici.Model
                 OnPropertyChanged("Marca");
                 OnPropertyChanged("ID_Cliente");
                 OnPropertyChanged("Modello");
+                OnPropertyChanged("IsDelete");
                 isEditing = false;
                 Console.WriteLine("Cancelled Editing Car {0}", Targa);
             }

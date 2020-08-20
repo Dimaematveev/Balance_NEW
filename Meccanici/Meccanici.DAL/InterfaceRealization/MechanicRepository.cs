@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Meccanici.DAL.InterfaceRealization
 {
+    /// <summary>
+    /// Хранилище Механиков
+    /// </summary>
     public class MechanicRepository : IMechanicRepository
     {
         /// <summary>
@@ -14,6 +17,7 @@ namespace Meccanici.DAL.InterfaceRealization
 
         public void DeleteMechanic(Person mechanic)
         {
+            DBConnection.instance.Delete(TABLE_NAME, $"PersonID = {mechanic.ID}");
             mechanics.Remove(mechanic);
         }
         public void UpdateMechanic(Person mechanic)
@@ -33,21 +37,25 @@ namespace Meccanici.DAL.InterfaceRealization
         {
             if (mechanics == null)
                 LoadMechanics();
-            return mechanics;
+            return mechanics.Where(x=>x.IsDelete==false).ToList();
         }
 
         public Person GetMechanicDetail(int mechanicID)
         {
             if (mechanics == null)
                 LoadMechanics();
-            return mechanics.Where(x => x.ID == mechanicID).FirstOrDefault();
+            return mechanics.Where(x => x.ID == mechanicID && x.IsDelete==false).FirstOrDefault();
         }
 
-       
 
-        private const string TABLE_NAME = "Person";
-
-        void LoadMechanics()
+        /// <summary>
+        /// Имя таблицы с данными
+        /// </summary>
+        private const string TABLE_NAME = "dbo.Person";
+        /// <summary>
+        /// Загрузить механиков из таблицы
+        /// </summary>
+        private void LoadMechanics()
         {
             //mechanics = new List<Person>()
             //{
@@ -55,7 +63,7 @@ namespace Meccanici.DAL.InterfaceRealization
             //    new Person() { ID = 2, Name = "Enzo", Surname = "Ferrari" }
             //};
             mechanics = new List<Person>();
-            var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0} WHERE IsMechanic=1", TABLE_NAME)).Result;
+            var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0} WHERE IsMechanic=1", TABLE_NAME));
             while (res.Read())
             {
                 mechanics.Add(new Person()
@@ -64,7 +72,8 @@ namespace Meccanici.DAL.InterfaceRealization
                     Name = (string)res["Name"],
                     Surname = (string)res["Surname"],
                     Email = (string)res["Email"],
-                    Phone = (string)res["Phone"]
+                    Phone = (string)res["Phone"],
+                    IsDelete = (bool)res["IsDelete"]
                 });
             }
             res.Close();

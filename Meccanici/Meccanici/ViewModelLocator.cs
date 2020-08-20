@@ -6,34 +6,27 @@ using Meccanici.DAL.Interface;
 
 namespace Meccanici
 {
+
     /// <summary>
     /// View-Model абстракция всей системы
     /// </summary>
     public class ViewModelLocator
     {
-        /// <summary>
-        /// View-Model Домашней страницы
-        /// </summary>
-        private static readonly HomeViewModel homeViewModel = new HomeViewModel();
-        /// <summary>
-        /// View-Model клиента
-        /// </summary>
-        private static readonly ClientiViewModel clientiViewModel = new ClientiViewModel(ClientiViewModel.RepositoryType.Customers);
-        /// <summary>
-        /// View-Model механика
-        /// </summary>
-        private static readonly ClientiViewModel meccaniciViewModel = new ClientiViewModel(ClientiViewModel.RepositoryType.Employees);
-        /// <summary>
-        /// View-Model автомобиля
-        /// </summary>
-        private static readonly AutoViewModel autoViewModel = new AutoViewModel();
-        /// <summary>
-        /// View-Model заявки
-        /// </summary>
-        private static readonly FixesViewModel fixesViewModel = new FixesViewModel();
-        /// <summary>
-        /// View-Model Домашней страницы
-        /// </summary>
+        private static HomeViewModel homeViewModel = null;
+        private static ClientiViewModel clientiViewModel = null;
+        private static ClientiViewModel meccaniciViewModel = null;
+        private static AutoViewModel autoViewModel = null;
+        private static FixesViewModel fixesViewModel = null;
+
+        public ViewModelLocator()
+        {
+            homeViewModel = new HomeViewModel();
+            clientiViewModel = new ClientiViewModel(ClientiViewModel.RepositoryType.Customers);
+            meccaniciViewModel = new ClientiViewModel(ClientiViewModel.RepositoryType.Employees);
+            autoViewModel = new AutoViewModel();
+            fixesViewModel = new FixesViewModel();
+    }
+
         public static HomeViewModel HomeViewModel
         {
             get
@@ -41,9 +34,7 @@ namespace Meccanici
                 return homeViewModel;
             }
         }
-        /// <summary>
-        /// View-Model клиента
-        /// </summary>
+
         public static ClientiViewModel ClientiViewModel
         {
             get
@@ -52,20 +43,6 @@ namespace Meccanici
             }
         }
 
-       
-        /// <summary>
-        /// View-Model механика
-        /// </summary>
-        public static ClientiViewModel MeccaniciViewModel
-        {
-            get
-            {
-                return meccaniciViewModel;
-            }
-        }
-        /// <summary>
-        /// View-Model автомобиля
-        /// </summary>
         public static AutoViewModel AutoViewModel
         {
             get
@@ -73,9 +50,14 @@ namespace Meccanici
                 return autoViewModel;
             }
         }
-        /// <summary>
-        /// View-Model заявки
-        /// </summary>
+
+        public static ClientiViewModel MeccaniciViewModel
+        {
+            get
+            {
+                return meccaniciViewModel;
+            }
+        }
         public static FixesViewModel FixesViewModel
         {
             get
@@ -83,5 +65,6 @@ namespace Meccanici
                 return fixesViewModel;
             }
         }
+
     }
 }

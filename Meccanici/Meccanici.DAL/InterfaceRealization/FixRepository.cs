@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Meccanici.DAL.InterfaceRealization
 {
+    /// <summary>
+    /// Хранилище Заявок
+    /// </summary>
     public class FixRepository : IFixRepository
     {
         /// <summary>
@@ -15,6 +18,7 @@ namespace Meccanici.DAL.InterfaceRealization
 
         public void DeleteFix(Riparazione fix)
         {
+            DBConnection.instance.Delete(TABLE_NAME, $"FixID = {fix.ID}");
             fixes.Remove(fix);
         }
         public void NewFix(Riparazione fix)
@@ -26,7 +30,7 @@ namespace Meccanici.DAL.InterfaceRealization
 
         public void UpdateFix(Riparazione fix)
         {
-            Riparazione fixToUpdate = fixes.Where(x => x.ID == fix.ID).FirstOrDefault();
+            Riparazione fixToUpdate = fixes.Where(x => x.ID == fix.ID && x.IsDelete == false).FirstOrDefault();
             fixToUpdate = fix;
         }
 
@@ -34,41 +38,41 @@ namespace Meccanici.DAL.InterfaceRealization
         {
             if (fixes == null)
                 LoadFixes();
-            return fixes;
+            return fixes.Where(x => x.IsDelete == false).ToList();
         }
 
         public List<Riparazione> GetCarFixes(string targa)
         {
             if (fixes == null)
                 LoadFixes();
-            return fixes.Where(x => x.CarID == targa).ToList();
+            return fixes.Where(x => x.CarID == targa && x.IsDelete == false).ToList();
         }
 
         public List<Riparazione> GetMechanicFixes(int mechId)
         {
             if (fixes == null)
                 LoadFixes();
-            return fixes.Where(x => x.MechanicID == mechId).ToList();
+            return fixes.Where(x => x.MechanicID == mechId && x.IsDelete == false).ToList();
         }
 
         public Riparazione GetFixDetail(int fixID)
         {
             if (fixes == null)
                 LoadFixes();
-            return fixes.Where(x => x.ID == fixID).FirstOrDefault();
+            return fixes.Where(x => x.ID == fixID && x.IsDelete == false).FirstOrDefault();
         }
         
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "Fix";
+        private const string TABLE_NAME = "dbo.Fix";
         /// <summary>
         /// Загрузить заявки из таблицы
         /// </summary>
         private void LoadFixes()
         {
             fixes = new List<Riparazione>();
-            var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0}", TABLE_NAME)).Result;
+            var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0}", TABLE_NAME));
             while (res.Read())
             {
                 fixes.Add(new Riparazione()
@@ -77,7 +81,8 @@ namespace Meccanici.DAL.InterfaceRealization
                     Date = (DateTime)res["Date"],
                     Note = (string)res["Notes"],
                     CarID = (string)res["Car_Plate"],
-                    MechanicID = (int)res["Mech_ID"]
+                    MechanicID = (int)res["Mech_ID"],
+                    IsDelete = (bool)res["IsDelete"]
                 });
             }
             res.Close();

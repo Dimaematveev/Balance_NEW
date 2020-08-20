@@ -54,6 +54,10 @@
       <Project>{38144f38-168f-4ccd-945b-e20cce78cd21}</Project>
       <Name>Meccanici.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Meccanici.Model\Meccanici.Model.csproj">
+      <Project>{D69CC434-25F6-41DC-AEF9-0F5FA6478976}</Project>
+      <Name>Meccanici.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

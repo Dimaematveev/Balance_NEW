@@ -28,6 +28,10 @@ namespace Meccanici.Model
         /// Дата и время заявки
         /// </summary>
         private DateTime date;
+        /// <summary>
+        /// удален?
+        /// </summary>
+        internal bool isDelete;
         public Riparazione()
         {
             date = DateTime.Today;
@@ -90,6 +94,18 @@ namespace Meccanici.Model
             {
                 date = value;
                 OnPropertyChanged("Date");
+            }
+        }
+        /// <summary>
+        /// Удален?
+        /// </summary>
+        public bool IsDelete
+        {
+            get { return isDelete; }
+            set
+            {
+                isDelete = value;
+                OnPropertyChanged("IsDelete");
             }
         }
 

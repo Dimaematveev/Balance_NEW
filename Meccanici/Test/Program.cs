@@ -1,4 +1,6 @@
-﻿using Meccanici.DAL.InterfaceRealization;
+﻿using Meccanici.DAL;
+using Meccanici.DAL.InterfaceRealization;
+using Meccanici.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +11,19 @@ namespace Test
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            CarRepository carRepository = new CarRepository();
+            _ = new DBConnection();
+            DBConnection.instance.Connect();
+            var res = DBConnection.instance.ExecuteQuery("SELECT * FROM Person WHERE IsMechanic=1");
+          
+            while (res.Read())
+            {
+                Console.WriteLine((string)res["Name"]);
+                  
+            }
+            Console.WriteLine();
+            Console.ReadLine();
         }
     }
 }

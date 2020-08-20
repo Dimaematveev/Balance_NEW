@@ -37,6 +37,10 @@ namespace Meccanici.Model
             /// Является механиком
             /// </summary>
             internal byte isMechanic;
+            /// <summary>
+            /// удален?
+            /// </summary>
+            internal bool isDelete;
         }
         /// <summary>
         /// Данные человека
@@ -133,20 +137,34 @@ namespace Meccanici.Model
             }
         }
         /// <summary>
+        /// Удален?
+        /// </summary>
+        public bool IsDelete
+        {
+            get { return personData.isDelete; }
+            set
+            {
+                personData.isDelete = value;
+                OnPropertyChanged("IsDelete");
+            }
+        }
+        /// <summary>
         /// Инициалы
         /// </summary>
         public string Initials
         {
             get
             {
-                try
+                string res = "";
+                if (!string.IsNullOrWhiteSpace(Name)) 
                 {
-                    return string.Format("{0}{1}", Name[0], Surname[0]);
+                    res += Name.TrimStart()[0];
                 }
-                catch
+                if (!string.IsNullOrWhiteSpace(Surname))
                 {
-                    return "";
+                    res += Surname.TrimStart()[0];
                 }
+                return res;
             }
         }
         /// <summary>Событие для извещения об изменения свойства</summary>
@@ -192,6 +210,7 @@ namespace Meccanici.Model
                 personData = backupData;
                 OnPropertyChanged("Name");
                 OnPropertyChanged("Surname");
+                OnPropertyChanged("IsDelete");
                 OnPropertyChanged("Initials");
                 isEditing = false;
                 Console.WriteLine("Cancelled Editing Customer ({0} {1}) with ID {2}", Name, Surname, ID);
