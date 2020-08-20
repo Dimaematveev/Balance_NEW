@@ -54,7 +54,7 @@ namespace Meccanici.DAL.InterfaceRealization
         /// <summary>
         /// Загрузить данные клиентов
         /// </summary>
-        private async void LoadCustomers()
+        private void LoadCustomers()
         {
             customers = new List<Person>();
             var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0} WHERE IsMechanic=0", TABLE_NAME)).Result;

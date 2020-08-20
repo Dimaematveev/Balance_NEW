@@ -115,10 +115,7 @@ namespace Meccanici.Model
         /// <param name="prop">Изменившееся свойство </param>
         protected void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>

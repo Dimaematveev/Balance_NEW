@@ -55,6 +55,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\ICarDataService.cs" />
+    <Compile Include="Services\ICustomerDataService.cs" />
+    <Compile Include="Services\IMechanicDataService.cs" />
+    <Compile Include="Utility\CustomCommand.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\AutoViewModel.cs" />
+    <Compile Include="ViewModel\ClientiViewModel.cs" />
+    <Compile Include="ViewModel\FixesViewModel.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,6 +72,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\IdToClustomerConverter.cs" />
+    <Compile Include="Converter\IdToMechanicConverter.cs" />
+    <Compile Include="Converter\InvertBoolConverter.cs" />
+    <Compile Include="Converter\NiceDateConverter.cs" />
+    <Compile Include="Converter\NoHoursDateConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -86,6 +101,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\segmdl2.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +109,25 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Automobili.png" />
+    <Resource Include="Assets\Clienti.png" />
+    <Resource Include="Assets\Dipendenti.png" />
+    <Resource Include="Assets\europe.png" />
+    <Resource Include="Assets\Garage-50.png" />
+    <Resource Include="Assets\Riparazioni.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meccanici.Model\Meccanici.Model.csproj">
+      <Project>{D69CC434-25F6-41DC-AEF9-0F5FA6478976}</Project>
+      <Name>Meccanici.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

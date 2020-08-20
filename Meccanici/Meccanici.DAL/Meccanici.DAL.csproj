@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="InterfaceRealization\CarRepository.cs" />
     <Compile Include="InterfaceRealization\CustomerRepository.cs" />
     <Compile Include="InterfaceRealization\FixRepository.cs" />
@@ -56,6 +58,9 @@
       <Project>{d69cc434-25f6-41dc-aef9-0f5fa6478976}</Project>
       <Name>Meccanici.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

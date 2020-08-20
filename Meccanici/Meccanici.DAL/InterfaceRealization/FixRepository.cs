@@ -65,7 +65,7 @@ namespace Meccanici.DAL.InterfaceRealization
         /// <summary>
         /// Загрузить заявки из таблицы
         /// </summary>
-        private async void LoadFixes()
+        private void LoadFixes()
         {
             fixes = new List<Riparazione>();
             var res = DBConnection.instance.ExecuteQuery(string.Format("SELECT * FROM {0}", TABLE_NAME)).Result;
@@ -93,6 +93,6 @@ namespace Meccanici.DAL.InterfaceRealization
             //};
         }
 
-       
+
     }
 }

@@ -65,7 +65,7 @@ namespace Meccanici.DAL.InterfaceRealization
         /// <summary>
         /// Загрузить машины из таблицы
         /// </summary>
-        private async void LoadCars()
+        private void LoadCars()
         {
             cars = new List<Auto>();
             var res = DBConnection.instance.ExecuteQuery("SELECT * FROM " + TABLE_NAME).Result;
