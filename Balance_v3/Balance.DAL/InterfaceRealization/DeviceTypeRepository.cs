@@ -2,6 +2,8 @@
 using Balance.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -17,20 +19,33 @@ namespace Balance.DAL.InterfaceRealization
         public void Delete(DeviceType deviceType)
         {
             deviceTypes.Remove(deviceType);
+
         }
+
         public void New(DeviceType deviceType)
         {
             if (deviceType != null && deviceTypes != null)
             {
-                //string values = "'" + car.Marca + "','" + car.Modello + "'," + car.Anno + ",'" + car.Targa + "'," + car.ID_Cliente;
-                //DBConnection.instance.InsertInto(TABLE_NAME, "Marca,Modello,Anno,PlateCode,Owner_ID", values);
+                List<SqlParameter> sqlParameters = new List<SqlParameter>();
+
+                sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
+
+                var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME.Replace("_","")}]", sqlParameters);
+                newDeviceType.Read();
+                deviceType.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
                 deviceTypes.Add(deviceType);
             }
         }
-
+       
         public void Update(DeviceType deviceType)
         {
             DeviceType deviceTypeToUpdate = deviceTypes.Where(x => x.ID == deviceType.ID).FirstOrDefault();
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+
+            sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
+            var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME.Replace("_", "")}]", sqlParameters);
+            newDeviceType.Read();
+            deviceType.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
             deviceTypeToUpdate = deviceType;
         }
 
@@ -48,10 +63,15 @@ namespace Balance.DAL.InterfaceRealization
             return deviceTypes.Where(x => x.ID == deviceTypeID).FirstOrDefault();
         }
 
+
+        /// <summary>
+        /// Имя Схемы 
+        /// </summary>
+        private const string SHEMA_NAME = "dic";
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "dic.Device_Type";
+        private const string TABLE_NAME = "Device_Type";
 
         /// <summary>
         /// Загрузить машины из таблицы
@@ -59,18 +79,27 @@ namespace Balance.DAL.InterfaceRealization
         private void LoadDeviceType()
         {
             deviceTypes = new List<DeviceType>();
-            var res = DBConnection.instance.ExecuteQuery("SELECT * FROM " + TABLE_NAME);
+            var res = DBConnection.instance.ExecuteQuery($"SELECT * FROM [{SHEMA_NAME}].[{TABLE_NAME}]");
             while (res.Read())
             {
-                deviceTypes.Add(new DeviceType()
-                {
-                    ID = (int)res["ID"],
-                    Name = (string)res["Name"],
-                    IsDelete = (bool)res["IsDelete"]
-                });
+                deviceTypes.Add(GetDeviceTypeFromDataReader(res));
             }
             res.Close();
         }
-
+        /// <summary>
+        /// Получить [Тип устройства] из таблицы
+        /// </summary>
+        /// <param name="dbDataReader"></param>
+        /// <returns></returns>
+        private DeviceType GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
+        {
+            var newDeviceType = new DeviceType()
+            {
+                ID = (int)dbDataReader["ID"],
+                Name = (string)dbDataReader["Name"],
+                IsDelete = (bool)dbDataReader["IsDelete"]
+            };
+            return newDeviceType;
+        }
     }
 }

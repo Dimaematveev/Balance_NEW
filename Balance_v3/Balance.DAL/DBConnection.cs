@@ -20,11 +20,11 @@ namespace Balance.DAL
         /// <summary>
         /// Подключение к БД
         /// </summary>
-        public SqlConnection connection;
+        private SqlConnection connection;
 
         public DBConnection()
         {
-
+            Connect();
             instance = this;
         }
 
@@ -54,30 +54,31 @@ namespace Balance.DAL
         {
             Connect();
             SqlCommand command = new SqlCommand(query, connection);
-            return command.ExecuteReader();
+            var res = command.ExecuteReader();
+            
+            return res;
+        }
+        /// <summary>
+        /// Выполнить процедуру
+        /// </summary>
+        /// <param name="nameProcedure">Название процедуры</param>
+        /// <param name="sqlParameters">Параметры</param>
+        /// <returns>Вывод результата</returns>
+        public DbDataReader ExecuteProcedure(string nameProcedure, List<SqlParameter> sqlParameters = null)
+        {
+            Connect();
+            SqlCommand command = new SqlCommand(nameProcedure, connection);
+            // указываем, что команда представляет хранимую процедуру
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            if (sqlParameters != null && sqlParameters.Count > 0) 
+            {
+                command.Parameters.AddRange(sqlParameters.ToArray());
+            }
+            var res = command.ExecuteReader();
+           
+            return res;
         }
 
-        /// <summary>
-        /// Вставить данные
-        /// </summary>
-        /// <param name="table">Таблица для вставки</param>
-        /// <param name="names"> Имена столбцов через запятую </param>
-        /// <param name="values"> Значения через запятую</param>
-        public void InsertInto(string table, string names, string values)
-        {
-            string query = string.Format("insert into {0}.{1}({2}) values ({3})", connection.Database, table, names, values);
-            ExecuteQuery(query);
-        }
-        /// <summary>
-        /// Удалить данные
-        /// </summary>
-        /// <param name="table">Таблица для удаления</param>
-        /// <param name="id"> Как можно индефицировать id удаляемого элемента</param>
-        public void Delete(string table, string id)
-        {
-            string query = string.Format("update {0}.{1} set IsDelete=1 where {2}", connection.Database, table, id);
-            ExecuteQuery(query);
-        }
         /// <summary>
         /// Закрыть соединение
         /// </summary>

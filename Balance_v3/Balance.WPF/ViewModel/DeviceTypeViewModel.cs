@@ -66,15 +66,19 @@ namespace Balance.WPF.ViewModel
             get { return selectedDeviceType; }
             set
             {
+                if (SelectedDeviceType != null) 
+                    SelectedDeviceType.CancelEdit();
                 selectedDeviceType = value;
                 OnPropertyChanged(nameof(SelectedDeviceType));
+                
+                IsEditing = false;
             }
         }
         //TODO:Не понимаю
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
-        private string currentEditIcon = "";
+        private string currentEditIcon = "Edit";
         //TODO:Не понимаю
         /// <summary>
         /// текущий значок редактирования
@@ -106,8 +110,6 @@ namespace Balance.WPF.ViewModel
             set
             {
                 isEditing = value;
-                
-                isEditing = value;
                 if (IsEditing)
                     CurrentEditIcon = "";
                 else
@@ -123,6 +125,10 @@ namespace Balance.WPF.ViewModel
         /// Команда добавления Машины
         /// </summary>
         public ICommand AddDeviceTypeCommand { get; set; }
+        /// <summary>
+        /// Команда Изменения Машины
+        /// </summary>
+        public ICommand EditDeviceTypeCommand { get; set; }
         /// <summary>
         /// Команда Сохранения Машины
         /// </summary>
@@ -153,7 +159,18 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(SearchString));
             }
         }
-
+        /// <summary>
+        /// Изменение Клиента
+        /// </summary>
+        /// <param name="obj">Не нужно</param>
+        private void EditDeviceType(object obj)
+        {
+            IsEditing = !IsEditing;
+            if (!IsEditing)
+                SelectedDeviceType.CancelEdit();
+            else
+                SelectedDeviceType.BeginEdit();
+        }
         /// <summary>
         /// Выбрать новую машину
         /// </summary>
@@ -186,16 +203,20 @@ namespace Balance.WPF.ViewModel
         {
             App.deviceTypeDataService.Delete(SelectedDeviceType);
             DeviceTypes.Remove(SelectedDeviceType);
-            SelectedDeviceType = new DeviceType();
+            SelectedDeviceType = null;
+            IsEditing = false;
         }
 
         //TODO:не знаю что написать
         public DeviceTypeViewModel()
         {
+            
             DeviceTypes = new ObservableCollection<DeviceType>(App.deviceTypeDataService.GetAll());
             AddDeviceTypeCommand = new CustomCommand(NewDeviceType, delegate { return true; });
+            EditDeviceTypeCommand = new CustomCommand(EditDeviceType, delegate { return SelectedDeviceType != null; });
             SaveDeviceTypeCommand = new CustomCommand(SaveDeviceType, delegate { return IsEditing; });
             DeleteDeviceTypeCommand = new CustomCommand(DeleteDeviceType, delegate { return SelectedDeviceType != null; });
+            IsEditing = false;
         }
 
 

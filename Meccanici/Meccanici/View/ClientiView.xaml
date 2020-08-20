@@ -164,7 +164,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="0" Height="30" Width="30" Margin="2,2,3,3">
                                 <Ellipse Fill="{StaticResource AccentColor}"/>
-                                <TextBlock Foreground="White" Text="{Binding Initials}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" FontFamily="Segoe UI" FontWeight="Thin" FontStretch="Condensed"/>
+                                <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" FontFamily="Segoe UI" FontWeight="Thin" FontStretch="Condensed"/>
                             </Grid>
                             <StackPanel Grid.Column="1">
                                 <StackPanel Orientation="Horizontal">

@@ -34,6 +34,19 @@ namespace Balance.Model
         private CommonModel backupData;
         public abstract void Fill(CommonModel copy);
         public abstract CommonModel Clone();
+        public void AllFill(CommonModel copy)
+        {
+            Fill(copy);
+            ID = copy.ID;
+            IsDelete = copy.IsDelete;
+        }
+        public CommonModel AllClone()
+        {
+            var clone = Clone();
+            clone.ID = ID;
+            clone.IsDelete = IsDelete;
+            return clone;
+        }
         #endregion
 
         #region IEditableObject
@@ -49,9 +62,7 @@ namespace Balance.Model
             if (!isEditing)
             {
                 isEditing = true;
-                backupData = Clone();
-                backupData._ID = _ID;
-                backupData._IsDelete = _IsDelete;
+                backupData = AllClone();
                 //Console.WriteLine("Started Editing Customer ({0} {1}) with ID {2}", Name, Surname, ID);
             }
             
@@ -63,9 +74,7 @@ namespace Balance.Model
         {
             if (isEditing)
             {
-                this.Fill(backupData);
-                _ID = backupData._ID;
-                _IsDelete = backupData._IsDelete;
+                this.AllFill(backupData);
                 OnPropertyChanged(null);
                 isEditing = false;
                 //Console.WriteLine("Cancelled Editing Customer ({0} {1}) with ID {2}", Name, Surname, ID);
@@ -78,9 +87,7 @@ namespace Balance.Model
         {
             if (isEditing)
             {
-                backupData = Clone();
-                backupData._ID = _ID;
-                backupData._IsDelete = _IsDelete;
+                backupData = AllClone();
                 isEditing = false;
                 //Console.WriteLine("Ended Editing Customer ({0} {1}) with ID {2}", Name, Surname, ID);
             }

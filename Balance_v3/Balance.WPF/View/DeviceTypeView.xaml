@@ -6,7 +6,44 @@
       xmlns:local="clr-namespace:Balance.WPF.View"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
-      >
+       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=DeviceTypeViewModel}"
+      Loaded="Page_Loaded">
+    <Page.Resources>
+        <Storyboard x:Key="StartedEditingAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase x:Name="backEase" EasingMode="EaseOut" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="StoppedEditingAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="70">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        
+    </Page.Resources>
+   
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
@@ -60,17 +97,24 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
-                
-                <Button
+
+                <Button x:Name="button3"
                     Width="40" Height="40"
                     Command="{Binding AddDeviceTypeCommand}"
                     Background="Blue"
                     BorderBrush="Black" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Bottom" 
-                    Margin="0,0,10,10" RenderTransformOrigin="1,0" 
-                >
-                    <TextBlock Text="Add" Foreground="#DDFFFFFF" FontSize="20" />
+                    Margin="0,0,10,10" RenderTransformOrigin="1,0" >
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                    <TextBlock Text="" Foreground="#DDFFFFFF" FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                 </Button>
             </Grid>
         </Grid>
@@ -100,6 +144,10 @@
                     />
                     <TextBox
                         Grid.Column="1"
+                        IsReadOnly="{Binding 
+                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                            Path=DataContext.IsEditing,
+                            Converter={StaticResource invertBoolConverter}}"
                         Text="{Binding Name, Mode=TwoWay}" 
                         Margin="5,0,5,0"
                         BorderBrush="CornflowerBlue"
@@ -120,22 +168,45 @@
                             Command="{Binding DeleteDeviceTypeCommand}"
                             Background="Red"
                             BorderBrush="Black" Margin="0,0,10,0" IsCancel="True" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock Text="Del" Foreground="#DDFFFFFF" FontSize="20"  />
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <TextBlock Text="" Foreground="#DDFFFFFF" FontSize="20"  FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                     </Button>
                     <Button x:Name="button"
                             Width="40" Height="40"
                             Command="{Binding SaveDeviceTypeCommand}"
                             Background="Green"
                             BorderBrush="Black" Margin="0,0,10,0" IsCancel="True" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock Text="Save" Foreground="#DDFFFFFF" FontFamily="/Meccanici;component/Fonts/#Segoe MDL2 Assets"/>
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <TextBlock Text="" Foreground="#DDFFFFFF"  FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                     </Button>
                     <Button x:Name="button2"
                             Width="40" Height="40"
-                            Command="{Binding EditCommand}"
+                            Command="{Binding EditDeviceTypeCommand}"
                             Background="Orange"
                             BorderBrush="Black" RenderTransformOrigin="0.5,0.5">
-                       
-                        <TextBlock Text="Edit" Foreground="#DDFFFFFF" FontSize="20"/>
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                        <TextBlock Text="{Binding CurrentEditIcon}" Foreground="#DDFFFFFF" FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                     </Button>
                 </StackPanel>
             </Grid>
