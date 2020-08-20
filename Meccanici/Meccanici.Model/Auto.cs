@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Meccanici.Model
 {
     /// <summary>
-    /// Класс Автомобиль
+    /// Автомобиль
     /// </summary>
     public class Auto : INotifyPropertyChanged, IEditableObject
     {

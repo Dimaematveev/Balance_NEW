@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meccanici.DAL", "Meccanici.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meccanici.Model", "Meccanici.Model\Meccanici.Model.csproj", "{D69CC434-25F6-41DC-AEF9-0F5FA6478976}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{D69CC434-25F6-41DC-AEF9-0F5FA6478976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D69CC434-25F6-41DC-AEF9-0F5FA6478976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D69CC434-25F6-41DC-AEF9-0F5FA6478976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{38144F38-168F-4CCD-945B-E20CCE78CD21}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Meccanici.DAL</RootNamespace>
-    <AssemblyName>Meccanici.DAL</AssemblyName>
+    <ProjectGuid>{FFA6E488-A7FA-4D34-A5B3-C00742C755CB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,20 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InterfaceRealization\CarRepository.cs" />
-    <Compile Include="InterfaceRealization\CustomerRepository.cs" />
-    <Compile Include="InterfaceRealization\FixRepository.cs" />
-    <Compile Include="InterfaceRealization\MechanicRepository.cs" />
-    <Compile Include="Interface\ICarRepository.cs" />
-    <Compile Include="Interface\ICustomerRepository.cs" />
-    <Compile Include="Interface\IFixRepository.cs" />
-    <Compile Include="Interface\IMechanicRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Meccanici.Model\Meccanici.Model.csproj">
-      <Project>{d69cc434-25f6-41dc-aef9-0f5fa6478976}</Project>
-      <Name>Meccanici.Model</Name>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meccanici.DAL\Meccanici.DAL.csproj">
+      <Project>{38144f38-168f-4ccd-945b-e20cce78cd21}</Project>
+      <Name>Meccanici.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

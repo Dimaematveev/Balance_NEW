@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace Meccanici.Model
 {
     /// <summary>
-    /// Ремонт?? заяка по ремонту?
+    /// Заявка по ремонту
     /// </summary>
     public class Riparazione : INotifyPropertyChanged
     {
         /// <summary>
-        /// ID ремонта
+        /// ID заявки
         /// </summary>
         private int id;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Meccanici.Model
             date = DateTime.Today;
         }
         /// <summary>
-        /// ID ремонта
+        /// ID заявки
         /// </summary>
         public int ID
         {
