@@ -44,12 +44,34 @@
                 SelectedIndex="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding Name}"/>
-                            </StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Width="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" RenderTransformOrigin="0.5,0.5">
+                                    <Ellipse Fill="Blue"/>
+                                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
+                                </Grid>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
+                                    <TextBlock Text="{Binding Name}"/>
+                                </StackPanel>
+                            </Grid>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                
+                <Button
+                    Width="40" Height="40"
+                    Command="{Binding AddDeviceTypeCommand}"
+                    Background="Blue"
+                    BorderBrush="Black" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Bottom" 
+                    Margin="0,0,10,10" RenderTransformOrigin="1,0" 
+                >
+                    <TextBlock Text="Add" Foreground="#DDFFFFFF" FontSize="20" />
+                </Button>
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedDeviceType}">
@@ -64,7 +86,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Column="0" Width="80" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
                     <Ellipse Fill="Blue"/>
-                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Segoe UI" FontWeight="Thin" FontStretch="Condensed"/>
+                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
                 </Grid>
                 <Grid Grid.Column="1" VerticalAlignment="Center" Margin="10">
                     <Grid.ColumnDefinitions>
@@ -84,6 +106,38 @@
                         BorderThickness="1" 
                     />
                 </Grid>
+                <StackPanel
+                        Grid.Row="1" Grid.Column="1"
+                        Margin="0,0,10,20"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Bottom"
+                        DataContext="{Binding 
+                            RelativeSource={RelativeSource FindAncestor,
+                            AncestorType={x:Type Page}}, Path=DataContext}">
+                    <Button x:Name="button1"
+                            Width="40" Height="40"
+                            Command="{Binding DeleteDeviceTypeCommand}"
+                            Background="Red"
+                            BorderBrush="Black" Margin="0,0,10,0" IsCancel="True" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Text="Del" Foreground="#DDFFFFFF" FontSize="20"  />
+                    </Button>
+                    <Button x:Name="button"
+                            Width="40" Height="40"
+                            Command="{Binding SaveDeviceTypeCommand}"
+                            Background="Green"
+                            BorderBrush="Black" Margin="0,0,10,0" IsCancel="True" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock Text="Save" Foreground="#DDFFFFFF" FontFamily="/Meccanici;component/Fonts/#Segoe MDL2 Assets"/>
+                    </Button>
+                    <Button x:Name="button2"
+                            Width="40" Height="40"
+                            Command="{Binding EditCommand}"
+                            Background="Orange"
+                            BorderBrush="Black" RenderTransformOrigin="0.5,0.5">
+                       
+                        <TextBlock Text="Edit" Foreground="#DDFFFFFF" FontSize="20"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

@@ -70,7 +70,29 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(SelectedDeviceType));
             }
         }
-
+        //TODO:Не понимаю
+        /// <summary>
+        /// текущий значок редактирования
+        /// </summary>
+        private string currentEditIcon = "";
+        //TODO:Не понимаю
+        /// <summary>
+        /// текущий значок редактирования
+        /// </summary>
+        public string CurrentEditIcon
+        {
+            get { return currentEditIcon; }
+            set
+            {
+                currentEditIcon = value;
+                OnPropertyChanged("CurrentEditIcon");
+            }
+        }
+        //TODO: Не понимаю
+        /// <summary>
+        /// Редактирование анимации??
+        /// </summary>
+        public Action editingAnimation;
         /// <summary>
         /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
         /// </summary>
@@ -84,7 +106,14 @@ namespace Balance.WPF.ViewModel
             set
             {
                 isEditing = value;
+                
+                isEditing = value;
+                if (IsEditing)
+                    CurrentEditIcon = "";
+                else
+                    CurrentEditIcon = "";
                 OnPropertyChanged(nameof(IsEditing));
+                editingAnimation?.Invoke();
             }
         }
 
@@ -118,9 +147,9 @@ namespace Balance.WPF.ViewModel
             set
             {
                 searchString = value.ToLower();
-                FilteredDeviceTypes = new ObservableCollection<DeviceType>(deviceTypes.Where(x =>
-                x.Name.ToLower().Contains(SearchString)
-                ));
+                FilteredDeviceTypes = new ObservableCollection<DeviceType>(
+                    deviceTypes.Where(x => x.Name.ToLower().Contains(SearchString))
+                );
                 OnPropertyChanged(nameof(SearchString));
             }
         }
@@ -156,6 +185,7 @@ namespace Balance.WPF.ViewModel
         private void DeleteDeviceType(object obj)
         {
             App.deviceTypeDataService.Delete(SelectedDeviceType);
+            DeviceTypes.Remove(SelectedDeviceType);
             SelectedDeviceType = new DeviceType();
         }
 
