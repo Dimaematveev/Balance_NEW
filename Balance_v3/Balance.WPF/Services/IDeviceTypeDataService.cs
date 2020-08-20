@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Balance.DAL.Interface
+namespace Balance.WPF.Services
 {
     /// <summary>
-    /// Интерфейс хранилище [Типов устройств]
+    /// Интерфейс Службы данных [Типов устройств]
     /// </summary>
-    public interface IDeviceTypeRepository
+    public interface IDeviceTypeDataService
     {
         /// <summary>
         /// Удалить [Тип устройства] из хранилища
@@ -21,11 +21,6 @@ namespace Balance.DAL.Interface
         /// </summary>
         /// <param name="deviceType">Обновленный [Тип устройства]</param>
         void Update(DeviceType deviceType);
-        /// <summary>
-        /// Добавить новый [Тип устройства] в хранилище
-        /// </summary>
-        /// <param name="deviceType">Новый [Тип устройства]</param>
-        void New(DeviceType deviceType);
 
 
         /// <summary>
@@ -39,5 +34,6 @@ namespace Balance.DAL.Interface
         /// <param name="deviceTypeID">Id [Типа устройства]</param>
         /// <returns>Машина</returns>
         DeviceType GetDetail(int deviceTypeID);
+
     }
 }

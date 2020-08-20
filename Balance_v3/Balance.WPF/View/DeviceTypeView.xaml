@@ -1,0 +1,90 @@
+﻿<Page x:Class="Balance.WPF.View.DeviceTypeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Balance.WPF.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
+      >
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock  Foreground="Black" Opacity=".56" VerticalAlignment="Center">
+                    <Image Source="/Assets/loupe.jpg" />
+                </TextBlock>
+                <TextBox 
+                    VerticalAlignment="Center" 
+                    BorderBrush="CornflowerBlue" 
+                    Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
+                    Grid.Column="1" 
+                    Margin="8 0 8 0" 
+                    BorderThickness="1"  />
+            </Grid>
+            <Grid Grid.Row="1">
+                <ListBox
+                Background="Transparent"
+                ScrollViewer.CanContentScroll="False"
+                BorderBrush="Transparent"
+                Margin="0,0,0,0"
+                ItemsSource="{Binding FilteredDeviceTypes}"
+                SelectedValue="{Binding SelectedDeviceType}"
+                SelectedIndex="0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedDeviceType}">
+            <Grid Margin="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Width="80" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
+                    <Ellipse Fill="Blue"/>
+                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Segoe UI" FontWeight="Thin" FontStretch="Condensed"/>
+                </Grid>
+                <Grid Grid.Column="1" VerticalAlignment="Center" Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Content="_Тип устройства:"
+                        Margin="0,0,2,0"
+                    />
+                    <TextBox
+                        Grid.Column="1"
+                        Text="{Binding Name, Mode=TwoWay}" 
+                        Margin="5,0,5,0"
+                        BorderBrush="CornflowerBlue"
+                        BorderThickness="1" 
+                    />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -14,11 +14,11 @@ namespace Balance.DAL.InterfaceRealization
         /// </summary>
         private List<DeviceType> deviceTypes;
 
-        public void DeleteCar(DeviceType deviceType)
+        public void Delete(DeviceType deviceType)
         {
             deviceTypes.Remove(deviceType);
         }
-        public void NewCar(DeviceType deviceType)
+        public void New(DeviceType deviceType)
         {
             if (deviceType != null && deviceTypes != null)
             {
@@ -28,20 +28,24 @@ namespace Balance.DAL.InterfaceRealization
             }
         }
 
-        public void UpdateCar(DeviceType deviceType)
+        public void Update(DeviceType deviceType)
         {
             DeviceType deviceTypeToUpdate = deviceTypes.Where(x => x.ID == deviceType.ID).FirstOrDefault();
             deviceTypeToUpdate = deviceType;
         }
 
-        public List<DeviceType> GetAllCars()
+        public List<DeviceType> GetAll()
         {
-            throw new NotImplementedException();
+            if (deviceTypes == null)
+                LoadDeviceType();
+            return deviceTypes.Where(x => x.IsDelete == false).ToList();
         }
 
-        public DeviceType GetCarDetail(string deviceTypeID)
+        public DeviceType GetDetail(int deviceTypeID)
         {
-            throw new NotImplementedException();
+            if(deviceTypes == null)
+                LoadDeviceType();
+            return deviceTypes.Where(x => x.ID == deviceTypeID).FirstOrDefault();
         }
 
         /// <summary>
@@ -60,12 +64,13 @@ namespace Balance.DAL.InterfaceRealization
             {
                 deviceTypes.Add(new DeviceType()
                 {
-                    ID = (string)res["ID"],
+                    ID = (int)res["ID"],
                     Name = (string)res["Name"],
                     IsDelete = (bool)res["IsDelete"]
                 });
             }
             res.Close();
         }
+
     }
 }
