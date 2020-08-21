@@ -103,7 +103,7 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// Иконка
         /// </summary>
-        public object Icon
+        public char Icon
         {
             get; set;
         }

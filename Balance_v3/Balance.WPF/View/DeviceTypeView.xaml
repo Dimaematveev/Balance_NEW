@@ -6,92 +6,16 @@
       xmlns:local="clr-namespace:Balance.WPF.View"
      mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
-       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=DeviceModelViewModel}"
+       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=DeviceTypeViewModel}"
       Loaded="Page_Loaded">
     <Page.Resources>
-        <ControlTemplate x:Key="ButtonTemplate" TargetType="Button">
-            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="100" Background="{Binding 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}},Path=Background}">
-                <ContentPresenter RecognizesAccessKey="True"/>
-            </Border>
-        </ControlTemplate>
-
-        <Style TargetType="Button" x:Key="ButtonStyle">
-            <!-- Просто активная кнопка -->
-            <Style.Setters>
-                <Setter Property="Border.Background" Value="Blue" />
-                <Setter Property="Foreground" Value="White" />
-                <Setter Property="FontFamily" Value="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets" />
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="10" />
-            </Style.Setters>
-            <Style.Triggers>
-                <!-- Наведена мышь и не нажата кнопка-->
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsMouseOver" Value="true"/>
-                        <Condition Property="IsPressed" Value="false"/>
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.Setters>
-                        <Setter Property="Border.Background" Value="CornflowerBlue"/>
-                        <Setter Property="Foreground" Value="Green" />
-                    </MultiTrigger.Setters>
-                </MultiTrigger>
-                <!-- Наведена мышь и нажата кнопка -->
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="IsMouseOver" Value="true"/>
-                        <Condition Property="IsPressed" Value="true"/>
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.Setters>
-                        <Setter Property="Border.Background" Value="BlueViolet"/>
-                        <Setter Property="Foreground" Value="Red" />
-                    </MultiTrigger.Setters>
-                </MultiTrigger>
-                <!-- Кнопка не активна -->
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Border.Background" Value="AliceBlue"/>
-                    <Setter Property="Foreground" Value="Black" />
-                </Trigger>
-
-            </Style.Triggers>
-        </Style>
-
-        <Storyboard x:Key="StartedEditingAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase x:Name="backEase" EasingMode="EaseOut" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="StoppedEditingAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="70">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseIn" Amplitude="0.5"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/ButtonAnimation.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Page.Resources>
-
+    
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>

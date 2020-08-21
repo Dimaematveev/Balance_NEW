@@ -54,64 +54,20 @@ GO
 USE [TesNew]
 GO
 
-/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceModel]    Script Date: 08/21/2020 16:33:21 ******/
+/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceType]    Script Date: 8/21/2020 5:28:48 PM ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
--- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
--- =============================================
-Create PROCEDURE [dic].[WorkingWith_DeviceModel]
-	@ID int = null,
-	@ModelName nvarchar(50) = null,
-	@TypeProcedure nvarchar(10) = 'Select' 
-AS
-BEGIN
-	
-	SET NOCOUNT ON;
-	if @TypeProcedure='Select'
-	begin
-		select * from [dic].[DeviceModel] 
-		return
-	end
-	if @TypeProcedure='Update'
-	begin
-		update [dic].[DeviceModel] set [Name]=@ModelName where [ID]=@ID
-		select * from [dic].[DeviceModel] where [ID]=@ID
-		return
-	end
-	if @TypeProcedure='Insert'
-	begin
-		insert into [dic].[DeviceModel] (Name) Values (@ModelName)
-		select * from [dic].[DeviceModel] where [ID]=SCOPE_IDENTITY()
-		return
-	end
-END
-
-GO
-
-
-USE [TesNew]
-GO
-
-/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceType]    Script Date: 08/21/2020 16:33:28 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
-create PROCEDURE [dic].[WorkingWith_DeviceType]
+CREATE PROCEDURE [dic].[WorkingWith_DeviceType]
 	@ID int = null,
 	@TypeName nvarchar(50) = null,
 	@TypeProcedure nvarchar(10) = 'Select' 
@@ -136,8 +92,70 @@ BEGIN
 		select * from [dic].[DeviceType] where [ID]=SCOPE_IDENTITY()
 		return
 	end
+	if @TypeProcedure='Delete'
+	begin
+		update [dic].[DeviceType] set [IsDelete]=1 where [ID]=@ID
+		select * from [dic].[DeviceType] where [ID]=@ID
+		return
+	end
 END
 
 GO
+
+
+USE [TesNew]
+GO
+
+/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceModel]    Script Date: 8/21/2020 5:29:23 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dic].[WorkingWith_DeviceModel]
+	@ID int = null,
+	@ModelName nvarchar(50) = null,
+	@TypeProcedure nvarchar(10) = 'Select' 
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	if @TypeProcedure='Select'
+	begin
+		select * from [dic].[DeviceModel] 
+		return
+	end
+	if @TypeProcedure='Update'
+	begin
+		update [dic].[DeviceModel] set [Name]=@ModelName where [ID]=@ID
+		select * from [dic].[DeviceModel] where [ID]=@ID
+		return
+	end
+	if @TypeProcedure='Insert'
+	begin
+		insert into [dic].[DeviceModel] (Name) Values (@ModelName)
+		select * from [dic].[DeviceModel] where [ID]=SCOPE_IDENTITY()
+		return
+	end
+	if @TypeProcedure='Delete'
+	begin
+		update [dic].[DeviceModel] set [IsDelete]=1 where [ID]=@ID
+		select * from [dic].[DeviceModel] where [ID]=@ID
+		return
+	end
+END
+
+GO
+
+
+
 
 

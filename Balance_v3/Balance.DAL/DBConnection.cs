@@ -36,7 +36,7 @@ namespace Balance.DAL
 
             if (connection == null)
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnectionWork"].ConnectionString;
+                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 connection = new SqlConnection(connectionString);
             }
             else

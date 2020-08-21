@@ -27,7 +27,15 @@ namespace Balance.DAL.InterfaceRealization
 
         public void Delete(T commonModel)
         {
+            var sqlParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@TypeProcedure", "Delete"),
+                new SqlParameter("@ID", commonModel.ID)
+            };
+            var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
+            newcommonModel.Read();
             commonModels.Remove(commonModel);
+            newcommonModel.Close();
         }
 
         public void New(T commonModel)

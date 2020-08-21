@@ -196,9 +196,9 @@ namespace Balance.WPF.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Delete(object obj)
         {
-            CommonModels.Remove(SelectedCommonModel);
+            
             deviceCommonRepository.Delete(SelectedCommonModel);
-
+            CommonModels.Remove(SelectedCommonModel);
             SelectedCommonModel = null;
             IsEditing = false;
         }

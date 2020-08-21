@@ -37,9 +37,17 @@ namespace Balance.WPF.View
         {
             var viewModel = DataContext as DeviceTypeViewModel;
             if (viewModel.IsEditing)
-                (this.Resources["StartedEditingAnimation"] as Storyboard).Begin();
+            {
+                string nameResourse = "StartedEditingAnimation";
+                var resourse = this.Resources[nameResourse];
+                (resourse as Storyboard).Begin();
+            }
             else
-                (this.Resources["StoppedEditingAnimation"] as Storyboard).Begin();
+            {
+                string nameResourse = "StoppedEditingAnimation";
+                var resourse = this.Resources[nameResourse];
+                (resourse as Storyboard).Begin();
+            }
         }
     }
 }

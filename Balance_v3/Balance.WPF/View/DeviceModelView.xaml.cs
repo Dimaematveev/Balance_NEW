@@ -31,15 +31,22 @@ namespace Balance.WPF.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModelLocator.DeviceModelViewModel.editingAnimation = SetEditing;
-            
         }
         public void SetEditing()
         {
             var viewModel = DataContext as DeviceModelViewModel;
             if (viewModel.IsEditing)
-                (this.Resources["StartedEditingAnimation"] as Storyboard).Begin();
+            {
+                string nameResourse = "StartedEditingAnimation";
+                var resourse = this.Resources[nameResourse];
+                (resourse as Storyboard).Begin();
+            }
             else
-                (this.Resources["StoppedEditingAnimation"] as Storyboard).Begin();
+            {
+                string nameResourse = "StoppedEditingAnimation";
+                var resourse = this.Resources[nameResourse];
+                (resourse as Storyboard).Begin();
+            }
         }
     }
 }
