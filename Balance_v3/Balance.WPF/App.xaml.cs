@@ -1,6 +1,7 @@
 ﻿using Balance.DAL;
 using Balance.DAL.Interface;
 using Balance.DAL.InterfaceRealization;
+using Balance.Model;
 using Balance.WPF.Services;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace Balance.WPF
     /// </summary>
     public partial class App : Application
     {
-        public static IDeviceTypeRepository deviceTypeDataService;
-        public static IDeviceModelRepository deviceModelRepository;
+        public static IDeviceCommonRepository<DeviceType> deviceTypeDataService;
+        public static IDeviceCommonRepository<DeviceModel> deviceModelRepository;
         public App()
         {
             new DBConnection();

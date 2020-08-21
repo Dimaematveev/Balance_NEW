@@ -132,8 +132,8 @@
                 ScrollViewer.CanContentScroll="False"
                 BorderBrush="Transparent"
                 Margin="0,0,0,0"
-                ItemsSource="{Binding FilteredDeviceModels}"
-                SelectedValue="{Binding SelectedDeviceModel}"
+                ItemsSource="{Binding FilteredCommonModels}"
+                SelectedValue="{Binding SelectedCommonModel}"
                 SelectedIndex="0">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
@@ -158,12 +158,12 @@
                         Width="40" Height="40" 
                         Style="{StaticResource ButtonStyle}"
                         Template="{StaticResource ButtonTemplate}"
-                        Command="{Binding AddDeviceModelCommand}">
+                        Command="{Binding AddCommand}">
                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="&#xE109;"/>
                 </Button>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedDeviceModel}">
+        <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedCommonModel}">
             <Grid Margin="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -210,7 +210,7 @@
                             AncestorType={x:Type Page}}, Path=DataContext}">
                     <Button x:Name="button1"
                             Width="40" Height="40"
-                            Command="{Binding DeleteDeviceModelCommand}"
+                            Command="{Binding DeleteCommand}"
                             Style="{StaticResource ButtonStyle}"
                             Template="{StaticResource ButtonTemplate}"
                              IsCancel="True">
@@ -226,7 +226,7 @@
                     </Button>
                     <Button x:Name="button"
                             Width="40" Height="40"
-                            Command="{Binding SaveDeviceModelCommand}"
+                            Command="{Binding SaveCommand}"
                             Style="{StaticResource ButtonStyle}"
                             Template="{StaticResource ButtonTemplate}"
                             IsCancel="True">
@@ -242,7 +242,7 @@
                     </Button>
                     <Button x:Name="button2"
                             Width="40" Height="40"
-                            Command="{Binding EditDeviceModelCommand}"
+                            Command="{Binding EditCommand}"
                             Style="{StaticResource ButtonStyle}"
                             Template="{StaticResource ButtonTemplate}">
                         <Button.RenderTransform>

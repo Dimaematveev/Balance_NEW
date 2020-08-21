@@ -74,6 +74,7 @@
     <Compile Include="Services\IDeviceTypeDataService.cs" />
     <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\DeviceCommonViewModel.cs" />
     <Compile Include="ViewModel\DeviceModelViewModel.cs" />
     <Compile Include="ViewModel\DeviceTypeViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
