@@ -1,0 +1,143 @@
+﻿USE [TesNew]
+GO
+
+/****** Object:  Table [dic].[DeviceModel]    Script Date: 08/21/2020 16:32:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dic].[DeviceModel](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+ CONSTRAINT [PK_DeviceModel] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dic].[DeviceModel] ADD  CONSTRAINT [DF_DeviceModel_IsDelete]  DEFAULT ((0)) FOR [IsDelete]
+GO
+
+
+
+USE [TesNew]
+GO
+
+/****** Object:  Table [dic].[DeviceType]    Script Date: 08/21/2020 16:33:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dic].[DeviceType](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
+	[IsDelete] [bit] NOT NULL,
+ CONSTRAINT [PK_DeviceType] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dic].[DeviceType] ADD  CONSTRAINT [DF_DeviceType_IsDelete]  DEFAULT ((0)) FOR [IsDelete]
+GO
+
+
+USE [TesNew]
+GO
+
+/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceModel]    Script Date: 08/21/2020 16:33:21 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+Create PROCEDURE [dic].[WorkingWith_DeviceModel]
+	@ID int = null,
+	@ModelName nvarchar(50) = null,
+	@TypeProcedure nvarchar(10) = 'Select' 
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	if @TypeProcedure='Select'
+	begin
+		select * from [dic].[DeviceModel] 
+		return
+	end
+	if @TypeProcedure='Update'
+	begin
+		update [dic].[DeviceModel] set [Name]=@ModelName where [ID]=@ID
+		select * from [dic].[DeviceModel] where [ID]=@ID
+		return
+	end
+	if @TypeProcedure='Insert'
+	begin
+		insert into [dic].[DeviceModel] (Name) Values (@ModelName)
+		select * from [dic].[DeviceModel] where [ID]=SCOPE_IDENTITY()
+		return
+	end
+END
+
+GO
+
+
+USE [TesNew]
+GO
+
+/****** Object:  StoredProcedure [dic].[WorkingWith_DeviceType]    Script Date: 08/21/2020 16:33:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+create PROCEDURE [dic].[WorkingWith_DeviceType]
+	@ID int = null,
+	@TypeName nvarchar(50) = null,
+	@TypeProcedure nvarchar(10) = 'Select' 
+AS
+BEGIN
+	
+	SET NOCOUNT ON;
+	if @TypeProcedure='Select'
+	begin
+		select * from [dic].[DeviceType] 
+		return
+	end
+	if @TypeProcedure='Update'
+	begin
+		update [dic].[DeviceType] set [Name]=@TypeName where [ID]=@ID
+		select * from [dic].[DeviceType] where [ID]=@ID
+		return
+	end
+	if @TypeProcedure='Insert'
+	begin
+		insert into [dic].[DeviceType] (Name) Values (@TypeName)
+		select * from [dic].[DeviceType] where [ID]=SCOPE_IDENTITY()
+		return
+	end
+END
+
+GO
+
+
