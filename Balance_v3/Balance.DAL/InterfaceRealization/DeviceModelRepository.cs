@@ -21,7 +21,8 @@ namespace Balance.DAL.InterfaceRealization
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@ModelName", commonModel.Name)
+                new SqlParameter("@ModelName", commonModel.Name),
+                new SqlParameter("@DeviceTypeID", commonModel.DeviceTypeID)
             };
             return sqlParameters;
         }
@@ -34,6 +35,7 @@ namespace Balance.DAL.InterfaceRealization
             {
                 ID = (int)dbDataReader["ID"],
                 Name = (string)dbDataReader["Name"],
+                DeviceTypeID = (int)dbDataReader["DeviceTypeID"],
                 IsDelete = (bool)dbDataReader["IsDelete"]
             };
             return newDeviceModel;

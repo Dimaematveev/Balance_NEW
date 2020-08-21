@@ -15,6 +15,10 @@ namespace Balance.WPF.ViewModel
     /// </summary>
     public class DeviceTypeViewModel : DeviceCommonViewModel<DeviceType>
     {
+     
+        
+
+
         public DeviceTypeViewModel():base(App.deviceTypeDataService)
         {
         }

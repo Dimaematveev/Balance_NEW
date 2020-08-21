@@ -15,8 +15,44 @@ namespace Balance.WPF.ViewModel
     /// </summary>
     public class DeviceModelViewModel : DeviceCommonViewModel<DeviceModel>
     {
+        /// <summary>
+        /// Список [Типов устройств]
+        /// </summary>
+        public List<DeviceType> DeviceTypes
+        {
+            get;set;
+        }
+
+        public override DeviceModel SelectedCommonModel
+        {
+            get { return base.SelectedCommonModel; }
+            set
+            {
+                base.SelectedCommonModel = value;
+                selectedDeviceType = DeviceTypes.Where(x => x.ID == SelectedCommonModel.DeviceTypeID).FirstOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// Клиент выбранной машины
+        /// </summary>
+        private DeviceType selectedDeviceType;
+        /// <summary>
+        /// Клиент выбранной машины
+        /// </summary>
+        public DeviceType SelectedDeviceType
+        {
+            get { return selectedDeviceType; }
+            set
+            {
+                selectedDeviceType = value;
+                OnPropertyChanged(nameof(SelectedDeviceType));
+            }
+        }
+
         public DeviceModelViewModel() : base(App.deviceModelRepository)
         {
+            DeviceTypes= App.deviceTypeDataService.GetAll();
         }
 
         public override string SearchString

@@ -34,13 +34,11 @@
                 <TextBlock 
                     Margin="5,0,0,0" 
                     FontSize="20" 
-                    Foreground="Black" 
-                    Opacity=".56" 
                     VerticalAlignment="Center" 
                     Text="&#xE094;" 
                     FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets">
-
                 </TextBlock>
+                
                 <TextBox 
                     VerticalAlignment="Center" 
                     BorderBrush="CornflowerBlue" 
@@ -70,7 +68,11 @@
                                     <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                                    <TextBlock Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding 
+                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                                        Path=DataContext.SelectedDeviceType.Name}" FontSize="16"/>
+                                    <TextBlock Text="-"/>
+                                    <TextBlock Text="{Binding Name}" FontSize="14"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -101,26 +103,59 @@
                     <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
                 </Grid>
                 <Grid Grid.Column="1" VerticalAlignment="Center" Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Content="_Модель устройства:"
-                        Margin="0,0,2,0"
-                    />
-                    <TextBox
-                        Grid.Column="1"
-                        IsReadOnly="{Binding 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                            Path=DataContext.IsEditing,
-                            Converter={StaticResource invertBoolConverter}}"
-                        Text="{Binding Name, Mode=TwoWay}" 
-                        Margin="5,0,5,0"
-                        BorderBrush="CornflowerBlue"
-                        BorderThickness="1" 
-                    />
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Content="_Тип устройства:"
+                            Margin="0,0,2,0"
+                        />
+                        <ComboBox
+                            Grid.Column="1"
+                            IsEnabled="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                                Path=DataContext.IsEditing}"
+                            ItemsSource="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                                Path=DataContext.DeviceTypes}"
+                           
+                            SelectedValue="{Binding DeviceTypeID}"
+                            DisplayMemberPath="Name"
+                            SelectedValuePath="ID"
+                            Margin="5,0,5,0"
+                            BorderBrush="CornflowerBlue"
+                            BorderThickness="1" 
+                        />
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Content="_Модель устройства:"
+                            Margin="0,0,2,0"
+                        />
+                        <TextBox
+                            Grid.Column="1"
+                            IsReadOnly="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                                Path=DataContext.IsEditing,
+                                Converter={StaticResource invertBoolConverter}}"
+                            Text="{Binding Name, Mode=TwoWay}" 
+                            Margin="5,0,5,0"
+                            BorderBrush="CornflowerBlue"
+                            BorderThickness="1" 
+                        />
+                    </Grid>
                 </Grid>
                 <StackPanel
                         Grid.Row="1" Grid.Column="1"

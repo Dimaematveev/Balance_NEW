@@ -28,6 +28,26 @@ namespace Balance.Model
                 OnPropertyChanged(nameof(IsDelete));
             }
         }
+        private int _DeviceTypeID;
+        public int DeviceTypeID
+        {
+            get { return _DeviceTypeID; }
+            set
+            {
+                _DeviceTypeID = value;
+                OnPropertyChanged(nameof(DeviceTypeID));
+            }
+        }
+        private DeviceType _DeviceType;
+        public DeviceType DeviceType
+        {
+            get { return _DeviceType; }
+            set
+            {
+                _DeviceType = value;
+                OnPropertyChanged(nameof(DeviceType));
+            }
+        }
 
         private string _Name;
         public string Name
@@ -59,6 +79,7 @@ namespace Balance.Model
             if (copy != null && copy is DeviceModel copyDeviceModel)
             {
                 Name = copyDeviceModel.Name;
+                DeviceTypeID = copyDeviceModel.DeviceTypeID;
             }
         }
     }

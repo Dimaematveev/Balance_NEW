@@ -51,7 +51,7 @@ namespace Meccanici.ViewModel
                 OnPropertyChanged("FilteredCars");
             }
         }
-
+        
         /// <summary>
         /// Выбранная машина
         /// </summary>

@@ -63,7 +63,7 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// Выбранная [Тип устройства]
         /// </summary>
-        public T SelectedCommonModel
+        public virtual T SelectedCommonModel
         {
             get { return selectedCommonModel; }
             set
