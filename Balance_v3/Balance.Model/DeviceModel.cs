@@ -46,7 +46,7 @@ namespace Balance.Model
         /// <returns>Новый объект с такими-же свойствами</returns>
         public override CommonModel Clone()
         {
-            DeviceType newTypeDevice = new DeviceType();
+            DeviceModel newTypeDevice = new DeviceModel();
             newTypeDevice.Fill(this);
             return newTypeDevice;
         }
@@ -56,9 +56,9 @@ namespace Balance.Model
         /// <param name="copy">переданный объект</param>
         public override void Fill(CommonModel copy)
         {
-            if (copy != null && copy is DeviceType copyDeviceType)
+            if (copy != null && copy is DeviceModel copyDeviceModel)
             {
-                Name = copyDeviceType.Name;
+                Name = copyDeviceModel.Name;
             }
         }
     }
