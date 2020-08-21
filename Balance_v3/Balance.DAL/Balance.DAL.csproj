@@ -43,10 +43,16 @@
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
     <Compile Include="InterfaceRealization\DeviceCommonRepository.cs" />
+    <Compile Include="InterfaceRealization\DeviceSPSIRepository.cs" />
+    <Compile Include="InterfaceRealization\DeviceLocationRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceModelRepository.cs" />
+    <Compile Include="InterfaceRealization\DeviceGadgetRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceTypeRepository.cs" />
     <Compile Include="Interface\IDeviceCommonRepository.cs" />
+    <Compile Include="Interface\ILocationRepository.cs" />
+    <Compile Include="Interface\ISPSIRepository.cs" />
     <Compile Include="Interface\IDeviceModelRepository.cs" />
+    <Compile Include="Interface\IDeviceGadgetRepository.cs" />
     <Compile Include="Interface\IDeviceTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

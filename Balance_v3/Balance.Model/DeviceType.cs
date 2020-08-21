@@ -21,6 +21,26 @@ namespace Balance.Model
                 OnPropertyChanged(nameof(Name));
             }
         }
+        private int _DeviceGadgetID;
+        public int DeviceGadgetID
+        {
+            get { return _DeviceGadgetID; }
+            set
+            {
+                _DeviceGadgetID = value;
+                OnPropertyChanged(nameof(DeviceGadgetID));
+            }
+        }
+        private DeviceGadget _DeviceGadget;
+        public DeviceGadget DeviceGadget
+        {
+            get { return _DeviceGadget; }
+            set
+            {
+                _DeviceGadget = value;
+                OnPropertyChanged(nameof(DeviceGadget));
+            }
+        }
 
         /// <summary>
         /// Скопировать текущий объект в новый
@@ -40,6 +60,8 @@ namespace Balance.Model
         {
             if (copy != null && copy is DeviceType copyDeviceType)
             {
+                DeviceGadget = copyDeviceType.DeviceGadget;
+                DeviceGadgetID = copyDeviceType.DeviceGadgetID;
                 Name = copyDeviceType.Name;
             }
         }

@@ -30,7 +30,7 @@ namespace Balance.DAL.InterfaceRealization
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
                 new SqlParameter("@ModelName", commonModel.Name),
-                new SqlParameter("@DeviceTypeID", commonModel.DeviceTypeID)
+                new SqlParameter("@TypeID", commonModel.DeviceTypeID)
             };
             return sqlParameters;
         }

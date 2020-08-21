@@ -6,31 +6,10 @@ using System.Text;
 namespace Balance.Model
 {
     /// <summary>
-    /// Модель устройства
+    /// Название Таблицы
     /// </summary>
-    public class DeviceModel : CommonModel
+    public class DeviceGadget : CommonModel
     {
-       
-        private int _DeviceTypeID;
-        public int DeviceTypeID
-        {
-            get { return _DeviceTypeID; }
-            set
-            {
-                _DeviceTypeID = value;
-                OnPropertyChanged(nameof(DeviceTypeID));
-            }
-        }
-        private DeviceType _DeviceType;
-        public DeviceType DeviceType
-        {
-            get { return _DeviceType; }
-            set
-            {
-                _DeviceType = value;
-                OnPropertyChanged(nameof(DeviceType));
-            }
-        }
 
         private string _Name;
         public string Name
@@ -49,7 +28,7 @@ namespace Balance.Model
         /// <returns>Новый объект с такими-же свойствами</returns>
         public override CommonModel Clone()
         {
-            DeviceModel newTypeDevice = new DeviceModel();
+            DeviceGadget newTypeDevice = new DeviceGadget();
             newTypeDevice.Fill(this);
             return newTypeDevice;
         }
@@ -59,12 +38,9 @@ namespace Balance.Model
         /// <param name="copy">переданный объект</param>
         public override void Fill(CommonModel copy)
         {
-            if (copy != null && copy is DeviceModel copyDeviceModel)
+            if (copy != null && copy is DeviceGadget copyDeviceType)
             {
-                
-                DeviceType = copyDeviceModel.DeviceType;
-                DeviceTypeID = copyDeviceModel.DeviceTypeID;
-                Name = copyDeviceModel.Name;
+                Name = copyDeviceType.Name;
             }
         }
     }
