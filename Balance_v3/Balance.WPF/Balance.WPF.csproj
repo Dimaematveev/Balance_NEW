@@ -134,5 +134,8 @@
   <ItemGroup>
     <Resource Include="Assets\loupe.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
