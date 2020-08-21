@@ -194,6 +194,10 @@ namespace Balance.WPF.ViewModel
                 App.deviceTypeDataService.New(SelectedDeviceType);
                 DeviceTypes.Add(SelectedDeviceType);
             }
+            else
+            {
+                App.deviceTypeDataService.Update(SelectedDeviceType);
+            }
         }
         /// <summary>
         /// Удалить выбранный [Тип устройства]

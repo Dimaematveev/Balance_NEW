@@ -194,6 +194,10 @@ namespace Balance.WPF.ViewModel
                 App.deviceModelRepository.New(SelectedDeviceModel);
                 DeviceModels.Add(SelectedDeviceModel);
             }
+            else
+            {
+                App.deviceModelRepository.Update(SelectedDeviceModel);
+            }
         }
         /// <summary>
         /// Удалить выбранный [Тип устройства]
