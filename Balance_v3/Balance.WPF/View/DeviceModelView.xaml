@@ -68,9 +68,7 @@
                                     <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                                    <TextBlock Text="{Binding 
-                                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                                        Path=DataContext.SelectedDeviceType.Name}" FontSize="16"/>
+                                    <TextBlock Text="{Binding DeviceType.Name}" FontSize="16"/>
                                     <TextBlock Text="-"/>
                                     <TextBlock Text="{Binding Name}" FontSize="14"/>
                                 </StackPanel>

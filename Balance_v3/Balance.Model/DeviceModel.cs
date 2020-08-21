@@ -10,24 +10,7 @@ namespace Balance.Model
     /// </summary>
     public class DeviceModel : CommonModel
     {
-        public override int ID
-        {
-            get { return _ID; }
-            set
-            {
-                _ID = value;
-                OnPropertyChanged(nameof(ID));
-            }
-        }
-        public override bool IsDelete
-        {
-            get { return _IsDelete; }
-            set
-            {
-                _IsDelete = value;
-                OnPropertyChanged(nameof(IsDelete));
-            }
-        }
+       
         private int _DeviceTypeID;
         public int DeviceTypeID
         {

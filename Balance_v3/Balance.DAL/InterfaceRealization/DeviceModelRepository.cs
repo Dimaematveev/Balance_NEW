@@ -11,9 +11,17 @@ namespace Balance.DAL.InterfaceRealization
 {
     public class DeviceModelRepository : DeviceCommonRepository<DeviceModel>, IDeviceModelRepository
     {
+        private readonly IDeviceCommonRepository<DeviceType> deviceTypeRepository;
+
+        public DeviceModelRepository(IDeviceCommonRepository<DeviceType> deviceTypeRepository)
+        {
+            this.deviceTypeRepository = deviceTypeRepository;
+        }
+
         protected override string SHEMA_NAME => "dic";
 
         protected override string TABLE_NAME => "DeviceModel";
+
 
 
 
@@ -36,6 +44,7 @@ namespace Balance.DAL.InterfaceRealization
                 ID = (int)dbDataReader["ID"],
                 Name = (string)dbDataReader["Name"],
                 DeviceTypeID = (int)dbDataReader["DeviceTypeID"],
+                DeviceType = deviceTypeRepository.GetDetail((int)dbDataReader["DeviceTypeID"]),
                 IsDelete = (bool)dbDataReader["IsDelete"]
             };
             return newDeviceModel;

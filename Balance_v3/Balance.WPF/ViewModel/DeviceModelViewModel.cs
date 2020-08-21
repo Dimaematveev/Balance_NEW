@@ -29,7 +29,11 @@ namespace Balance.WPF.ViewModel
             set
             {
                 base.SelectedCommonModel = value;
-                selectedDeviceType = DeviceTypes.Where(x => x.ID == SelectedCommonModel.DeviceTypeID).FirstOrDefault();
+                if (SelectedCommonModel != null)
+                {
+                    selectedDeviceType = DeviceTypes.Where(x => x.ID == SelectedCommonModel.DeviceTypeID).FirstOrDefault();
+                }
+               
             }
         }
 

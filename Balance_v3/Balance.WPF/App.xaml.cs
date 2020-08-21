@@ -23,7 +23,7 @@ namespace Balance.WPF
         {
             new DBConnection();
             deviceTypeDataService = new DeviceTypeRepository();
-            deviceModelRepository = new DeviceModelRepository();
+            deviceModelRepository = new DeviceModelRepository(deviceTypeDataService);
         }
     }
 }

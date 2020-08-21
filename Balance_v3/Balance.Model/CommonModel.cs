@@ -11,10 +11,38 @@ namespace Balance.Model
     /// </summary>
     public abstract class CommonModel : INotifyPropertyChanged, IEditableObject
     {
-        internal int _ID;
-        public abstract int ID { get; set; }
-        internal bool _IsDelete;
-        public abstract bool IsDelete { get; set; }
+        private int _ID;
+        public int ID
+        {
+            get { return _ID; }
+            set
+            {
+                _ID = value;
+                OnPropertyChanged(nameof(ID));
+            }
+        }
+
+        private bool _IsDelete;
+        public bool IsDelete
+        {
+            get { return _IsDelete; }
+            set
+            {
+                _IsDelete = value;
+                OnPropertyChanged(nameof(IsDelete));
+            }
+        }
+
+        private DateTime _LastModified;
+        public DateTime LastModified
+        {
+            get { return _LastModified; }
+            set
+            {
+                _LastModified = value;
+                OnPropertyChanged(nameof(LastModified));
+            }
+        }
 
 
         #region INotifyPropertyChanged
@@ -24,14 +52,14 @@ namespace Balance.Model
         /// Метод для вызова события извещения об изменении свойства
         /// </summary>
         /// <param name="prop">Изменившееся свойство </param>
-        protected void OnPropertyChanged(string propertyName)
+        protected internal void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
 
         #region Копирование
-        private CommonModel backupData;
+        
         public abstract void Fill(CommonModel copy);
         public abstract CommonModel Clone();
         public void AllFill(CommonModel copy)
@@ -50,6 +78,7 @@ namespace Balance.Model
         #endregion
 
         #region IEditableObject
+        private CommonModel backupData;
         /// <summary>
         /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
         /// </summary>
