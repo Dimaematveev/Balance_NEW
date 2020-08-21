@@ -25,9 +25,10 @@ namespace Balance.DAL.InterfaceRealization
         {
             if (deviceType != null && deviceTypes != null)
             {
-                List<SqlParameter> sqlParameters = new List<SqlParameter>();
-
-                sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
+                List<SqlParameter> sqlParameters = new List<SqlParameter>
+                {
+                    new SqlParameter("@TypeName", deviceType.Name)
+                };
 
                 var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME}]", sqlParameters);
                 newDeviceType.Read();
@@ -39,9 +40,11 @@ namespace Balance.DAL.InterfaceRealization
         public void Update(DeviceType deviceType)
         {
             DeviceType deviceTypeToUpdate = deviceTypes.Where(x => x.ID == deviceType.ID).FirstOrDefault();
-            List<SqlParameter> sqlParameters = new List<SqlParameter>();
-
-            sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
+            List<SqlParameter> sqlParameters = new List<SqlParameter>
+            {
+                new SqlParameter("@ID", deviceType.ID),
+                new SqlParameter("@TypeName", deviceType.Name)
+            };
             var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME}]", sqlParameters);
             newDeviceType.Read();
             deviceType.AllFill(GetDeviceTypeFromDataReader(newDeviceType));

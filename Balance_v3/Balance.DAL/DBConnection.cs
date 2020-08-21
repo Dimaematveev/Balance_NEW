@@ -67,9 +67,11 @@ namespace Balance.DAL
         public DbDataReader ExecuteProcedure(string nameProcedure, List<SqlParameter> sqlParameters = null)
         {
             Connect();
-            SqlCommand command = new SqlCommand(nameProcedure, connection);
-            // указываем, что команда представляет хранимую процедуру
-            command.CommandType = System.Data.CommandType.StoredProcedure;
+            SqlCommand command = new SqlCommand(nameProcedure, connection)
+            {
+                // указываем, что команда представляет хранимую процедуру
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
             if (sqlParameters != null && sqlParameters.Count > 0) 
             {
                 command.Parameters.AddRange(sqlParameters.ToArray());

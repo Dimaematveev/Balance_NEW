@@ -44,6 +44,7 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="InterfaceRealization\DeviceModelRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceTypeRepository.cs" />
+    <Compile Include="Interface\IDeviceCommonRepository.cs" />
     <Compile Include="Interface\IDeviceModelRepository.cs" />
     <Compile Include="Interface\IDeviceTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
