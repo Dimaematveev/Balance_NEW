@@ -62,18 +62,30 @@ namespace Balance.Model
         
         public abstract void Fill(CommonModel copy);
         public abstract CommonModel Clone();
+        /// <summary>
+        /// Заполнить текущий объект из переданного
+        /// </summary>
+        /// <param name="copy">переданный объект</param>
         public void AllFill(CommonModel copy)
         {
-            Fill(copy);
-            ID = copy.ID;
-            IsDelete = copy.IsDelete;
+            if (copy != null )
+            {
+                Fill(copy);
+                ID = copy.ID;
+                IsDelete = copy.IsDelete;
+                LastModified = copy.LastModified;
+            }
+
         }
+        /// <summary>
+        /// Скопировать текущий объект в новый
+        /// </summary>
+        /// <returns>Новый объект с такими-же свойствами</returns>
         public CommonModel AllClone()
         {
-            var clone = Clone();
-            clone.ID = ID;
-            clone.IsDelete = IsDelete;
-            return clone;
+            CommonModel newCommonModel = Clone();
+            newCommonModel.AllFill(this);
+            return newCommonModel;
         }
         #endregion
 

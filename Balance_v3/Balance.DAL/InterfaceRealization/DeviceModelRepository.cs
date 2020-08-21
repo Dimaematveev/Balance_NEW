@@ -39,13 +39,21 @@ namespace Balance.DAL.InterfaceRealization
 
         internal override DeviceModel GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
+            var curID = (int)dbDataReader["ID"];
+            var curName = (string)dbDataReader["Name"];
+            var curDeviceTypeID = (int)dbDataReader["DeviceTypeID"];
+            var curDeviceType = deviceTypeRepository.GetDetail(curDeviceTypeID);
+            var curIsDelete = (bool)dbDataReader["IsDelete"];
+            var curLastModified = (DateTime)dbDataReader["LastModified"];
+
             var newDeviceModel = new DeviceModel()
             {
-                ID = (int)dbDataReader["ID"],
-                Name = (string)dbDataReader["Name"],
-                DeviceTypeID = (int)dbDataReader["DeviceTypeID"],
-                DeviceType = deviceTypeRepository.GetDetail((int)dbDataReader["DeviceTypeID"]),
-                IsDelete = (bool)dbDataReader["IsDelete"]
+                ID = curID,
+                Name = curName,
+                DeviceTypeID = curDeviceTypeID,
+                DeviceType = curDeviceType,
+                IsDelete = curIsDelete,
+                LastModified = curLastModified,
             };
             return newDeviceModel;
         }

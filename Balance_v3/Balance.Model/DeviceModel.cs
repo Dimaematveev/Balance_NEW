@@ -62,6 +62,7 @@ namespace Balance.Model
             if (copy != null && copy is DeviceModel copyDeviceModel)
             {
                 Name = copyDeviceModel.Name;
+                DeviceType = copyDeviceModel.DeviceType;
                 DeviceTypeID = copyDeviceModel.DeviceTypeID;
             }
         }

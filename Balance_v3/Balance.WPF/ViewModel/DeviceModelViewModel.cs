@@ -66,7 +66,10 @@ namespace Balance.WPF.ViewModel
             {
                 searchString = value.ToLower();
                 FilteredCommonModels = new ObservableCollection<DeviceModel>(
-                    CommonModels.Where(x => x.Name.ToLower().Contains(SearchString))
+                    CommonModels.Where(x => 
+                        x.Name.ToLower().Contains(SearchString) ||
+                        x.DeviceType.Name.ToLower().Contains(SearchString)
+                        )
                 );
                 OnPropertyChanged(nameof(SearchString));
             }
