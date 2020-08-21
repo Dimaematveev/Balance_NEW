@@ -43,8 +43,8 @@
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
     <Compile Include="InterfaceRealization\DeviceCommonRepository.cs" />
-    <Compile Include="InterfaceRealization\DeviceSPSIRepository.cs" />
-    <Compile Include="InterfaceRealization\DeviceLocationRepository.cs" />
+    <Compile Include="InterfaceRealization\SPSIRepository.cs" />
+    <Compile Include="InterfaceRealization\LocationRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceModelRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceGadgetRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceTypeRepository.cs" />

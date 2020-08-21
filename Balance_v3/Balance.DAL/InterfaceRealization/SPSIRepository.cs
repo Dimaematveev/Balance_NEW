@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class DeviceSPSIRepository : DeviceCommonRepository<SPSI>, ISPSIRepository
+    public class SPSIRepository : DeviceCommonRepository<SPSI>, ISPSIRepository
     {
         protected override string SHEMA_NAME => "dic";
 

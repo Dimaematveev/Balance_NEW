@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class DeviceLocationRepository : DeviceCommonRepository<Location>, ILocationRepository
+    public class LocationRepository : DeviceCommonRepository<Location>, ILocationRepository
     {
         protected override string SHEMA_NAME => "dic";
 

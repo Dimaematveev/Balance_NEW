@@ -17,13 +17,19 @@ namespace Balance.WPF
     /// </summary>
     public partial class App : Application
     {
+        public static IDeviceCommonRepository<DeviceGadget> deviceGadgetDataService;
         public static IDeviceCommonRepository<DeviceType> deviceTypeDataService;
         public static IDeviceCommonRepository<DeviceModel> deviceModelRepository;
+        public static IDeviceCommonRepository<Location> locationRepository;
+        public static IDeviceCommonRepository<SPSI> SPSIRepository;
         public App()
         {
             new DBConnection();
-            deviceTypeDataService = new DeviceTypeRepository();
+            deviceGadgetDataService = new DeviceGadgetRepository();
+            deviceTypeDataService = new DeviceTypeRepository(deviceGadgetDataService);
             deviceModelRepository = new DeviceModelRepository(deviceTypeDataService);
+            locationRepository = new LocationRepository();
+            SPSIRepository = new SPSIRepository();
         }
     }
 }
