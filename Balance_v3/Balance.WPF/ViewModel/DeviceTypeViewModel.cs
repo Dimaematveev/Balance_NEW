@@ -78,18 +78,18 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
-        private string currentEditIcon = "Edit";
+        private object currentEditIcon = '\uE104';
         //TODO:Не понимаю
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
-        public string CurrentEditIcon
+        public object CurrentEditIcon
         {
             get { return currentEditIcon; }
             set
             {
                 currentEditIcon = value;
-                OnPropertyChanged("CurrentEditIcon");
+                OnPropertyChanged(nameof(CurrentEditIcon));
             }
         }
         //TODO: Не понимаю
@@ -111,9 +111,9 @@ namespace Balance.WPF.ViewModel
             {
                 isEditing = value;
                 if (IsEditing)
-                    CurrentEditIcon = "";
+                    CurrentEditIcon = '\uE106';
                 else
-                    CurrentEditIcon = "";
+                    CurrentEditIcon = '\uE104';
                 OnPropertyChanged(nameof(IsEditing));
                 editingAnimation?.Invoke();
             }
@@ -212,7 +212,7 @@ namespace Balance.WPF.ViewModel
         {
             
             DeviceTypes = new ObservableCollection<DeviceType>(App.deviceTypeDataService.GetAll());
-            AddDeviceTypeCommand = new CustomCommand(NewDeviceType, delegate { return true; });
+            AddDeviceTypeCommand = new CustomCommand(NewDeviceType, delegate { return SelectedDeviceType==null || SelectedDeviceType.ID != 0; });
             EditDeviceTypeCommand = new CustomCommand(EditDeviceType, delegate { return SelectedDeviceType != null; });
             SaveDeviceTypeCommand = new CustomCommand(SaveDeviceType, delegate { return IsEditing; });
             DeleteDeviceTypeCommand = new CustomCommand(DeleteDeviceType, delegate { return SelectedDeviceType != null; });

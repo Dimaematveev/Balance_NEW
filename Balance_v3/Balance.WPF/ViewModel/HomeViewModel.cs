@@ -83,9 +83,11 @@ namespace Balance.WPF.ViewModel
         //TODO:не знаю как описать
         public HomeViewModel()
         {
+            
             Tabs = new ObservableCollection<Tab>
             {
-                new Tab() { Title = "Типы устройств", Image="Clienti", Icon = "" },
+                new Tab() { Title = "Типы устройств", Icon =  '\uEE65' },
+                
             };
             //Tabs.Add(new Tab() { Title = "Impostazioni",Icon = "" });
         }
@@ -115,25 +117,11 @@ namespace Balance.WPF.ViewModel
         {
             get; set;
         }
-        private string image;
-        /// <summary>
-        /// Изображение
-        /// </summary>
-        public string Image
-        {
-            get
-            {
-                return "/Assets/" + image + ".png";
-            }
-            set
-            {
-                image = value;
-            }
-        }
+       
         /// <summary>
         /// Иконка
         /// </summary>
-        public string Icon
+        public object Icon
         {
             get; set;
         }

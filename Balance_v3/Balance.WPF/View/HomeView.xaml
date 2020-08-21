@@ -38,7 +38,7 @@
                         <TextBlock
                             FontSize="32"
                             Text="{Binding Icon}"
-                            FontFamily="/Meccanici;component/Fonts/#Segoe MDL2 Assets"
+                            FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"
                             HorizontalAlignment="Center" />
                         <!--</Grid>-->
                         <TextBlock

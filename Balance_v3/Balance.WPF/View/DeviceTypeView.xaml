@@ -59,8 +59,15 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <TextBlock  Foreground="Black" Opacity=".56" VerticalAlignment="Center">
-                    <Image Source="/Assets/loupe.jpg" />
+                <TextBlock 
+                    Margin="5,0,0,0" 
+                    FontSize="20" 
+                    Foreground="Black" 
+                    Opacity=".56" 
+                    VerticalAlignment="Center" 
+                    Text="&#xE094;" 
+                    FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets">
+                   
                 </TextBlock>
                 <TextBox 
                     VerticalAlignment="Center" 
@@ -114,7 +121,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Button.RenderTransform>
-                    <TextBlock Text="" Foreground="#DDFFFFFF" FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
+                    <TextBlock Text="&#xE109;" Foreground="#DDFFFFFF" FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                 </Button>
             </Grid>
         </Grid>
@@ -176,7 +183,7 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Button.RenderTransform>
-                        <TextBlock Text="" Foreground="#DDFFFFFF" FontSize="20"  FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
+                        <TextBlock Text="&#xE107;" Foreground="#DDFFFFFF" FontSize="20"  FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                     </Button>
                     <Button x:Name="button"
                             Width="40" Height="40"
@@ -191,7 +198,7 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Button.RenderTransform>
-                        <TextBlock Text="" Foreground="#DDFFFFFF"  FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
+                        <TextBlock Text="&#xE105;" Foreground="#DDFFFFFF"  FontSize="20" FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"/>
                     </Button>
                     <Button x:Name="button2"
                             Width="40" Height="40"

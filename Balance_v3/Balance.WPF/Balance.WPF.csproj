@@ -122,9 +122,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Clienti.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Balance.DAL\Balance.DAL.csproj">
       <Project>{807bb36e-fdfa-4683-bc5e-2490dfdd8e3d}</Project>
       <Name>Balance.DAL</Name>
