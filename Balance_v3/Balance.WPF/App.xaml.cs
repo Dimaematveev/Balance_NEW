@@ -17,10 +17,12 @@ namespace Balance.WPF
     public partial class App : Application
     {
         public static IDeviceTypeRepository deviceTypeDataService;
+        public static IDeviceModelRepository deviceModelRepository;
         public App()
         {
             new DBConnection();
             deviceTypeDataService = new DeviceTypeRepository();
+            deviceModelRepository = new DeviceModelRepository();
         }
     }
 }

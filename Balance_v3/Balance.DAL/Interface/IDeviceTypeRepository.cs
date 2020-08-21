@@ -37,7 +37,7 @@ namespace Balance.DAL.Interface
         /// Получить подробную информацию об [Типе устройства]
         /// </summary>
         /// <param name="deviceTypeID">Id [Типа устройства]</param>
-        /// <returns>Машина</returns>
+        /// <returns>[Типа устройства]</returns>
         DeviceType GetDetail(int deviceTypeID);
     }
 }

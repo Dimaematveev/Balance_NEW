@@ -6,24 +6,24 @@ using System.Text;
 namespace Balance.Model
 {
     /// <summary>
-    /// Тип устройства
+    /// Модель устройства
     /// </summary>
-    public class DeviceType : CommonModel
+    public class DeviceModel : CommonModel
     {
-        public override int ID 
+        public override int ID
         {
             get { return _ID; }
-            set 
-            { 
+            set
+            {
                 _ID = value;
                 OnPropertyChanged(nameof(ID));
-            } 
+            }
         }
         public override bool IsDelete
         {
             get { return _IsDelete; }
-            set 
-            { 
+            set
+            {
                 _IsDelete = value;
                 OnPropertyChanged(nameof(IsDelete));
             }

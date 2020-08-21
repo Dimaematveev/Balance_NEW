@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
+    <Compile Include="InterfaceRealization\DeviceModelRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceTypeRepository.cs" />
+    <Compile Include="Interface\IDeviceModelRepository.cs" />
     <Compile Include="Interface\IDeviceTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -13,64 +13,64 @@ namespace Balance.WPF.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceTypeViewModel : INotifyPropertyChanged
+    public class DeviceModelViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Динамическая коллекция [Типов устройств]
         /// </summary>
-        private ObservableCollection<DeviceType> deviceTypes;
+        private ObservableCollection<DeviceModel> deviceModels;
 
         /// <summary>
         /// Динамическая коллекция [Типов устройств]
         /// </summary>
-        public ObservableCollection<DeviceType> DeviceTypes
+        public ObservableCollection<DeviceModel> DeviceModels
         {
-            get { return deviceTypes; }
+            get { return deviceModels; }
             set
             {
-                deviceTypes = value;
-                OnPropertyChanged(nameof(DeviceTypes));
+                deviceModels = value;
+                OnPropertyChanged(nameof(DeviceModels));
             }
         }
         /// <summary>
         /// Динамическая коллекция отфильтрованных [Типов устройств]
         /// </summary>
-        private ObservableCollection<DeviceType> filteredDeviceTypes;
+        private ObservableCollection<DeviceModel> filteredDeviceModels;
 
         /// <summary>
         /// Динамическая коллекция отфильтрованных [Типов устройств]
         /// </summary>
-        public ObservableCollection<DeviceType> FilteredDeviceTypes
+        public ObservableCollection<DeviceModel> FilteredDeviceModels
         {
             get
             {
-                return filteredDeviceTypes ?? DeviceTypes;
+                return filteredDeviceModels ?? DeviceModels;
             }
             set
             {
-                filteredDeviceTypes = value;
-                SelectedDeviceType = filteredDeviceTypes.FirstOrDefault();
-                OnPropertyChanged(nameof(FilteredDeviceTypes));
+                filteredDeviceModels = value;
+                SelectedDeviceModel = filteredDeviceModels.FirstOrDefault();
+                OnPropertyChanged(nameof(FilteredDeviceModels));
             }
         }
 
         /// <summary>
         /// Выбранный [Тип устройства]
         /// </summary>
-        private DeviceType selectedDeviceType;
+        private DeviceModel selectedDeviceModel;
         /// <summary>
         /// Выбранная [Тип устройства]
         /// </summary>
-        public DeviceType SelectedDeviceType
+        public DeviceModel SelectedDeviceModel
         {
-            get { return selectedDeviceType; }
+            get { return selectedDeviceModel; }
             set
             {
-                if (SelectedDeviceType != null) 
-                    SelectedDeviceType.CancelEdit();
-                selectedDeviceType = value;
-                OnPropertyChanged(nameof(SelectedDeviceType));
-                
+                if (SelectedDeviceModel != null)
+                    SelectedDeviceModel.CancelEdit();
+                selectedDeviceModel = value;
+                OnPropertyChanged(nameof(SelectedDeviceModel));
+
                 IsEditing = false;
             }
         }
@@ -124,19 +124,19 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// Команда добавления [Типа устройства]
         /// </summary>
-        public ICommand AddDeviceTypeCommand { get; set; }
+        public ICommand AddDeviceModelCommand { get; set; }
         /// <summary>
         /// Команда Изменения [Типа устройства]
         /// </summary>
-        public ICommand EditDeviceTypeCommand { get; set; }
+        public ICommand EditDeviceModelCommand { get; set; }
         /// <summary>
         /// Команда Сохранения [Типа устройства]
         /// </summary>
-        public ICommand SaveDeviceTypeCommand { get; set; }
+        public ICommand SaveDeviceModelCommand { get; set; }
         /// <summary>
         /// Команда Удаления [Типа устройства]
         /// </summary>
-        public ICommand DeleteDeviceTypeCommand { get; set; }
+        public ICommand DeleteDeviceModelCommand { get; set; }
 
         //TODO:Не уверен
         /// <summary>
@@ -153,8 +153,8 @@ namespace Balance.WPF.ViewModel
             set
             {
                 searchString = value.ToLower();
-                FilteredDeviceTypes = new ObservableCollection<DeviceType>(
-                    deviceTypes.Where(x => x.Name.ToLower().Contains(SearchString))
+                FilteredDeviceModels = new ObservableCollection<DeviceModel>(
+                    deviceModels.Where(x => x.Name.ToLower().Contains(SearchString))
                 );
                 OnPropertyChanged(nameof(SearchString));
             }
@@ -163,59 +163,59 @@ namespace Balance.WPF.ViewModel
         /// Изменение [Типа устройства]
         /// </summary>
         /// <param name="obj">Не нужно</param>
-        private void EditDeviceType(object obj)
+        private void EditDeviceModel(object obj)
         {
             IsEditing = !IsEditing;
             if (!IsEditing)
-                SelectedDeviceType.CancelEdit();
+                SelectedDeviceModel.CancelEdit();
             else
-                SelectedDeviceType.BeginEdit();
+                SelectedDeviceModel.BeginEdit();
         }
         /// <summary>
         /// Выбрать новый [Тип устройства]
         /// </summary>
         /// <param name="obj">Не нужно</param>
-        private void NewDeviceType(object obj)
+        private void NewDeviceModel(object obj)
         {
-            SelectedDeviceType = new DeviceType();
+            SelectedDeviceModel = new DeviceModel();
             IsEditing = true;
         }
         /// <summary>
         /// Сохранить [Тип устройства]
         /// </summary>
         /// <param name="obj">Не нужно</param>
-        private void SaveDeviceType(object obj)
+        private void SaveDeviceModel(object obj)
         {
-            
-            SelectedDeviceType.EndEdit();
+
+            SelectedDeviceModel.EndEdit();
             IsEditing = false;
-            if (!DeviceTypes.Contains(SelectedDeviceType))
+            if (!DeviceModels.Contains(SelectedDeviceModel))
             {
-                App.deviceTypeDataService.New(SelectedDeviceType);
-                DeviceTypes.Add(SelectedDeviceType);
+                App.deviceModelRepository.New(SelectedDeviceModel);
+                DeviceModels.Add(SelectedDeviceModel);
             }
         }
         /// <summary>
         /// Удалить выбранный [Тип устройства]
         /// </summary>
         /// <param name="obj">Не нужно</param>
-        private void DeleteDeviceType(object obj)
+        private void DeleteDeviceModel(object obj)
         {
-            App.deviceTypeDataService.Delete(SelectedDeviceType);
-            DeviceTypes.Remove(SelectedDeviceType);
-            SelectedDeviceType = null;
+            App.deviceModelRepository.Delete(SelectedDeviceModel);
+            DeviceModels.Remove(SelectedDeviceModel);
+            SelectedDeviceModel = null;
             IsEditing = false;
         }
 
         //TODO:не знаю что написать
-        public DeviceTypeViewModel()
+        public DeviceModelViewModel()
         {
-            
-            DeviceTypes = new ObservableCollection<DeviceType>(App.deviceTypeDataService.GetAll());
-            AddDeviceTypeCommand = new CustomCommand(NewDeviceType, delegate { return SelectedDeviceType==null || SelectedDeviceType.ID != 0; });
-            EditDeviceTypeCommand = new CustomCommand(EditDeviceType, delegate { return SelectedDeviceType != null; });
-            SaveDeviceTypeCommand = new CustomCommand(SaveDeviceType, delegate { return IsEditing; });
-            DeleteDeviceTypeCommand = new CustomCommand(DeleteDeviceType, delegate { return SelectedDeviceType != null; });
+
+            DeviceModels = new ObservableCollection<DeviceModel>(App.deviceModelRepository.GetAll());
+            AddDeviceModelCommand = new CustomCommand(NewDeviceModel, delegate { return SelectedDeviceModel == null || SelectedDeviceModel.ID != 0; });
+            EditDeviceModelCommand = new CustomCommand(EditDeviceModel, delegate { return SelectedDeviceModel != null; });
+            SaveDeviceModelCommand = new CustomCommand(SaveDeviceModel, delegate { return IsEditing; });
+            DeleteDeviceModelCommand = new CustomCommand(DeleteDeviceModel, delegate { return SelectedDeviceModel != null; });
             IsEditing = false;
         }
 

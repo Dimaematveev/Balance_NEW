@@ -74,8 +74,12 @@
     <Compile Include="Services\IDeviceTypeDataService.cs" />
     <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\DeviceModelViewModel.cs" />
     <Compile Include="ViewModel\DeviceTypeViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="View\DeviceModelView.xaml.cs">
+      <DependentUpon>DeviceModelView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DeviceTypeView.xaml.cs">
       <DependentUpon>DeviceTypeView.xaml</DependentUpon>
     </Compile>
@@ -86,6 +90,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\DeviceModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\DeviceTypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,10 +140,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\loupe.jpg" />
+    <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
+    <Folder Include="Assets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

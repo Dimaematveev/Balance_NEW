@@ -44,7 +44,7 @@ namespace Balance.WPF.ViewModel
             {
                 selectedTab = value;
                 OnPropertyChanged(nameof(SelectedTab));
-                LoadFrame();
+                TabPage = selectedTab.OpenNewPage();
             }
         }
         /// <summary>
@@ -63,33 +63,15 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(TabPage));
             }
         }
-
-        /// <summary>
-        /// Загрузить Страницу по Вкладке
-        /// </summary>
-        void LoadFrame()
-        {
-            switch (SelectedTab.Title)
-            {
-                case "Типы устройств":
-                    TabPage = new DeviceTypeView();
-                    break;
-                default:
-                    TabPage = new Page();
-                    break;
-            }
-        }
-
         //TODO:не знаю как описать
         public HomeViewModel()
         {
-            
+
             Tabs = new ObservableCollection<Tab>
             {
-                new Tab() { Title = "Типы устройств", Icon =  '\uEE65' },
-                
+                new Tab() { Title = "Типы устройств", Icon = '\uEE65', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(); }) },
+                new Tab() { Title = "Модели устройств", Icon = '\uEDA4', OpenNewPage=new Func<Page>( () => {return new DeviceModelView(); }) },
             };
-            //Tabs.Add(new Tab() { Title = "Impostazioni",Icon = "" });
         }
 
         /// <summary>Событие для извещения об изменения свойства</summary>
@@ -128,7 +110,7 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// Страница
         /// </summary>
-        public Page Page
+        public Func<Page> OpenNewPage
         {
             get; set;
         }
