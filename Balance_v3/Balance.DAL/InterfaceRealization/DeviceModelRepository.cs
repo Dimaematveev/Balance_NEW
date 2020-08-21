@@ -19,7 +19,6 @@ namespace Balance.DAL.InterfaceRealization
         public void Delete(DeviceModel deviceModel)
         {
             deviceModels.Remove(deviceModel);
-
         }
 
         public void New(DeviceModel deviceModel)
@@ -28,9 +27,9 @@ namespace Balance.DAL.InterfaceRealization
             {
                 List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
-                sqlParameters.Add(new SqlParameter("@TypeName", deviceModel.Name));
+                sqlParameters.Add(new SqlParameter("@ModelName", deviceModel.Name));
 
-                var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME.Replace("_", "")}]", sqlParameters);
+                var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME}]", sqlParameters);
                 newDeviceType.Read();
                 deviceModel.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
                 deviceModels.Add(deviceModel);
@@ -42,8 +41,8 @@ namespace Balance.DAL.InterfaceRealization
             DeviceModel deviceModelToUpdate = deviceModels.Where(x => x.ID == deviceModel.ID).FirstOrDefault();
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
-            sqlParameters.Add(new SqlParameter("@TypeName", deviceModel.Name));
-            var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME.Replace("_", "")}]", sqlParameters);
+            sqlParameters.Add(new SqlParameter("@ModelName", deviceModel.Name));
+            var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME}]", sqlParameters);
             newDeviceType.Read();
             deviceModel.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
             deviceModelToUpdate = deviceModel;
@@ -71,7 +70,7 @@ namespace Balance.DAL.InterfaceRealization
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "Device_Model";
+        private const string TABLE_NAME = "DeviceModel";
 
         /// <summary>
         /// Загрузить машины из таблицы

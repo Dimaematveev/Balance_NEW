@@ -201,8 +201,9 @@ namespace Balance.WPF.ViewModel
         /// <param name="obj">Не нужно</param>
         private void DeleteDeviceType(object obj)
         {
-            App.deviceTypeDataService.Delete(SelectedDeviceType);
             DeviceTypes.Remove(SelectedDeviceType);
+            App.deviceTypeDataService.Delete(SelectedDeviceType);
+            
             SelectedDeviceType = null;
             IsEditing = false;
         }

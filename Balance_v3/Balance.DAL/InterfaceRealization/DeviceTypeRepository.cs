@@ -19,7 +19,6 @@ namespace Balance.DAL.InterfaceRealization
         public void Delete(DeviceType deviceType)
         {
             deviceTypes.Remove(deviceType);
-
         }
 
         public void New(DeviceType deviceType)
@@ -30,7 +29,7 @@ namespace Balance.DAL.InterfaceRealization
 
                 sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
 
-                var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME.Replace("_","")}]", sqlParameters);
+                var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Add_{TABLE_NAME}]", sqlParameters);
                 newDeviceType.Read();
                 deviceType.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
                 deviceTypes.Add(deviceType);
@@ -43,7 +42,7 @@ namespace Balance.DAL.InterfaceRealization
             List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             sqlParameters.Add(new SqlParameter("@TypeName", deviceType.Name));
-            var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME.Replace("_", "")}]", sqlParameters);
+            var newDeviceType = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[Update_{TABLE_NAME}]", sqlParameters);
             newDeviceType.Read();
             deviceType.AllFill(GetDeviceTypeFromDataReader(newDeviceType));
             deviceTypeToUpdate = deviceType;
@@ -71,7 +70,7 @@ namespace Balance.DAL.InterfaceRealization
         /// <summary>
         /// Имя таблицы с данными
         /// </summary>
-        private const string TABLE_NAME = "Device_Type";
+        private const string TABLE_NAME = "DeviceType";
 
         /// <summary>
         /// Загрузить машины из таблицы

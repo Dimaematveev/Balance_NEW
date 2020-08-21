@@ -201,8 +201,8 @@ namespace Balance.WPF.ViewModel
         /// <param name="obj">Не нужно</param>
         private void DeleteDeviceModel(object obj)
         {
-            App.deviceModelRepository.Delete(SelectedDeviceModel);
             DeviceModels.Remove(SelectedDeviceModel);
+            App.deviceModelRepository.Delete(SelectedDeviceModel);
             SelectedDeviceModel = null;
             IsEditing = false;
         }
