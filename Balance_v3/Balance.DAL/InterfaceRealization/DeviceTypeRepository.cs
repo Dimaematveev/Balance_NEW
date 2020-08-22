@@ -39,15 +39,16 @@ namespace Balance.DAL.InterfaceRealization
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];
             var curDeviceGadgetID = (int)dbDataReader["DeviceGadgetID"];
-           // var curDeviceGadget = deviceGadgetRepository.GetDetail(curDeviceGadgetID);
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
+
+            var curDeviceGadget = deviceGadgetRepository.GetDetail(curDeviceGadgetID);
             var newDeviceType = new DeviceType()
             {
                 ID = curID,
                 Name = curName,
                 DeviceGadgetID = curDeviceGadgetID,
-               // DeviceGadget = curDeviceGadget,
+                DeviceGadget = curDeviceGadget,
                 IsDelete = curIsDelete,
                 LastModified = curLastModified,
             };

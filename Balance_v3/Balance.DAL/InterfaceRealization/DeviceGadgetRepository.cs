@@ -21,7 +21,7 @@ namespace Balance.DAL.InterfaceRealization
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@TypeName", commonModel.Name)
+                new SqlParameter("@GadgetName", commonModel.Name)
             };
             return sqlParameters;
         }

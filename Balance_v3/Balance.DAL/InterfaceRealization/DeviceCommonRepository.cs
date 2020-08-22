@@ -70,7 +70,7 @@ namespace Balance.DAL.InterfaceRealization
         {
             if (commonModels == null)
                 LoadCommonModels();
-            return commonModels.Where(x => x.IsDelete == false).ToList();
+            return commonModels.ToList();
         }
 
         public T GetDetail(int commonModelID)

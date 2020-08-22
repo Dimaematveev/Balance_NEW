@@ -69,7 +69,8 @@ namespace Balance.WPF.ViewModel
 
             Tabs = new ObservableCollection<Tab>
             {
-                new Tab() { Title = "Типы устройств", Icon = '\uEE65', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(); }) },
+                new Tab() { Title = "Названия таблиц", Icon = '\uE155', OpenNewPage=new Func<Page>( () => {return new DeviceGadgetView(); }) },
+                new Tab() { Title = "Типы устройств", Icon = '\uE8CC', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(); }) },
                 new Tab() { Title = "Модели устройств", Icon = '\uEDA4', OpenNewPage=new Func<Page>( () => {return new DeviceModelView(); }) },
             };
         }

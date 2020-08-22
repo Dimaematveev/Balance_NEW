@@ -24,27 +24,15 @@ namespace Balance.DAL
 
         public DBConnection()
         {
-            Connect();
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnectionWork"].ConnectionString;
+            connection = new SqlConnection(connectionString);
+            Open();
             instance = this;
         }
 
-        /// <summary>
-        /// Открыть соединение с БД
-        /// </summary>
-        public void Connect()
-        {
+        
 
-            if (connection == null)
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnectionWork"].ConnectionString;
-                connection = new SqlConnection(connectionString);
-            }
-            else
-            {
-                connection.Close();
-            }
-            connection.Open();
-        }
+
         /// <summary>
         /// Выполнить запрос
         /// </summary>
@@ -52,7 +40,6 @@ namespace Balance.DAL
         /// <returns>Вывод данных</returns>
         public DbDataReader ExecuteQuery(string query)
         {
-            Connect();
             SqlCommand command = new SqlCommand(query, connection);
             var res = command.ExecuteReader();
             
@@ -66,7 +53,6 @@ namespace Balance.DAL
         /// <returns>Вывод результата</returns>
         public DbDataReader ExecuteProcedure(string nameProcedure, List<SqlParameter> sqlParameters = null)
         {
-            Connect();
             SqlCommand command = new SqlCommand(nameProcedure, connection)
             {
                 // указываем, что команда представляет хранимую процедуру
@@ -82,11 +68,19 @@ namespace Balance.DAL
         }
 
         /// <summary>
+        /// Открыть соединение
+        /// </summary>
+        public void Open()
+        {
+            connection.Open();
+        }
+        /// <summary>
         /// Закрыть соединение
         /// </summary>
         public void Close()
         {
             connection.Close();
         }
+
     }
 }

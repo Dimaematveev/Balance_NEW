@@ -75,11 +75,15 @@
     <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\DeviceCommonViewModel.cs" />
+    <Compile Include="ViewModel\DeviceGadgetViewModel.cs" />
     <Compile Include="ViewModel\DeviceModelViewModel.cs" />
     <Compile Include="ViewModel\DeviceTypeViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="View\DeviceModelView.xaml.cs">
       <DependentUpon>DeviceModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceGadgetView.xaml.cs">
+      <DependentUpon>DeviceGadgetView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DeviceTypeView.xaml.cs">
       <DependentUpon>DeviceTypeView.xaml</DependentUpon>
@@ -94,8 +98,14 @@
     <Compile Include="View\UserControls\Common\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml.cs">
+      <DependentUpon>DeviceGadgetEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml.cs">
       <DependentUpon>DeviceModelEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\DeviceGadgetView.xaml.cs">
+      <DependentUpon>DeviceGadgetView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\ElementViews\DeviceModelView.xaml.cs">
       <DependentUpon>DeviceModelView.xaml</DependentUpon>
@@ -121,6 +131,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\DeviceGadgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\DeviceTypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,9 +147,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\DeviceGadgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\UserControls\ElementViews\DeviceModelView.xaml">
       <SubType>Designer</SubType>

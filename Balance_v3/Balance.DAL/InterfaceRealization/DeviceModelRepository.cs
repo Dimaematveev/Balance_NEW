@@ -42,10 +42,10 @@ namespace Balance.DAL.InterfaceRealization
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];
             var curDeviceTypeID = (int)dbDataReader["DeviceTypeID"];
-            var curDeviceType = deviceTypeRepository.GetDetail(curDeviceTypeID);
+            
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
-
+            var curDeviceType = deviceTypeRepository.GetDetail(curDeviceTypeID);
             var newDeviceModel = new DeviceModel()
             {
                 ID = curID,
