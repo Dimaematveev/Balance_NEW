@@ -51,7 +51,7 @@
             </Grid>
             <Grid Grid.Row="1">
                 <UCViews:DeviceGadgetView/>
-                <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedCommonModel}">
@@ -62,7 +62,7 @@
                 </Grid.RowDefinitions>
 
                 <UCEdit:DeviceGadgetEdit Grid.Row="0" />
-                <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
             </Grid>
         </Grid>
     </Grid>
