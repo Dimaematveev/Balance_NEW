@@ -2,12 +2,6 @@
 using Balance.DAL.Interface;
 using Balance.DAL.InterfaceRealization;
 using Balance.Model;
-using Balance.WPF.Services;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
 
 namespace Balance.WPF
