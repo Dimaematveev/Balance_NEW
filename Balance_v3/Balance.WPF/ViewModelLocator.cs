@@ -1,8 +1,10 @@
 ﻿using Balance.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace Balance.WPF
 {
@@ -17,6 +19,9 @@ namespace Balance.WPF
 
         public ViewModelLocator()
         {
+            //Простое решение — проверять, не бежим ли мы в дизайнере.
+            if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                return;
             homeViewModel = new HomeViewModel();
             deviceTypeViewModel = new DeviceTypeViewModel();
             deviceModelViewModel = new DeviceModelViewModel();

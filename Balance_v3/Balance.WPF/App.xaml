@@ -10,8 +10,9 @@
                 <ResourceDictionary Source="Resources/ButtonCircle.xaml" />
             </ResourceDictionary.MergedDictionaries>
             
-            <local:ViewModelLocator x:Key="mainViewModelLocator"/>
+            
             <converter:InvertBoolConverter x:Key="invertBoolConverter"/>
+            <local:ViewModelLocator x:Key="mainViewModelLocator"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

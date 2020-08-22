@@ -46,6 +46,7 @@
     <Content Include="SQL.txt" />
     <Content Include="SQL\Процедуры.sql" />
     <Content Include="SQL\Таблицы.sql" />
+    <Content Include="SQL\Тестовые Данные.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

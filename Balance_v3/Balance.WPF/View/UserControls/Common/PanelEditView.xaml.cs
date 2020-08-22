@@ -35,14 +35,14 @@ namespace Balance.WPF.View.UserControls.Common
                 if (viewModel.IsEditing)
                 {
                     string nameResourse = "StartedEditingAnimation";
-                    var resourse = Resources[nameResourse];
-                    (resourse as Storyboard).Begin();
+                    var resourse = TryFindResource(nameResourse) as Storyboard;
+                    resourse.Begin();
                 }
                 else
                 {
                     string nameResourse = "StoppedEditingAnimation";
-                    var resourse = Resources[nameResourse];
-                    (resourse as Storyboard).Begin();
+                    var resourse = TryFindResource(nameResourse) as Storyboard;
+                    resourse.Begin();
                 }
             }
            

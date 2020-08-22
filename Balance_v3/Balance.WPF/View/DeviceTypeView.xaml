@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Balance.WPF.View"
+      
       xmlns:UCEdit="clr-namespace:Balance.WPF.View.UserControls.ElementEdit"
       xmlns:UCViews="clr-namespace:Balance.WPF.View.UserControls.ElementViews"
       xmlns:UCCommon="clr-namespace:Balance.WPF.View.UserControls.Common"
@@ -49,7 +50,7 @@
                     BorderThickness="1"  />
             </Grid>
             <Grid Grid.Row="1">
-                <UCViews:DeviceModelView/>
+                <UCViews:DeviceTypeView/>
                 <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>

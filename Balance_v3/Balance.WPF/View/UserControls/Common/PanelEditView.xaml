@@ -8,13 +8,10 @@
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/./Resources/ButtonAnimation.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+        <ResourceDictionary Source="/Balance.WPF;component/Resources/ButtonAnimation.xaml"/>
     </UserControl.Resources>
     <Grid>
+        
     <StackPanel
                         Orientation="Horizontal"
                         DataContext="{Binding 
