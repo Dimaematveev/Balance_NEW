@@ -116,7 +116,7 @@ BEGIN
 
 	if @TypeProcedure='Select'
 	begin
-		select * from [dic].[SpSi] 
+		select * from [dic].[SpSi] where [ID] > 0
 		return
 	end
 	if @TypeProcedure='Update'
@@ -150,7 +150,7 @@ BEGIN
 
 	if @TypeProcedure='Select'
 	begin
-		select * from [dic].[Location] 
+		select * from [dic].[Location] where [ID] > 0
 		return
 	end
 	if @TypeProcedure='Update'

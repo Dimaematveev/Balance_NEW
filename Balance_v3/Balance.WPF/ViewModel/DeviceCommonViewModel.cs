@@ -58,6 +58,20 @@ namespace Balance.WPF.ViewModel
         /// Выбранный [Тип устройства]
         /// </summary>
         private T selectedCommonModel;
+
+        /// <summary>
+        /// Получить строку для сравнения в фильтре
+        /// </summary>
+        /// <param name="obj">Объект преобразуемый в строку</param>
+        /// <returns>Полученная строка</returns>
+        protected string GetStringForComparison(object obj)
+        {
+            if (obj == null)
+            {
+                return "";
+            }
+            return obj.ToString().ToLower();
+        }
         /// <summary>
         /// Выбранная [Тип устройства]
         /// </summary>
@@ -187,6 +201,7 @@ namespace Balance.WPF.ViewModel
             {
                 deviceCommonRepository.Update(SelectedCommonModel);
             }
+            SearchString = searchString;
         }
         /// <summary>
         /// Удалить выбранный [Тип устройства]
@@ -194,11 +209,11 @@ namespace Balance.WPF.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Delete(object obj)
         {
-            
             deviceCommonRepository.Delete(SelectedCommonModel);
             CommonModels.Remove(SelectedCommonModel);
             SelectedCommonModel = null;
             IsEditing = false;
+            SearchString = searchString;
         }
 
         //TODO:не знаю что написать

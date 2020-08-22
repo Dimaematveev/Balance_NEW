@@ -23,20 +23,22 @@ namespace Balance.WPF.ViewModel
             get { return searchString; }
             set
             {
-                searchString = value.ToLower();
+                searchString = GetStringForComparison(value);
+
                 FilteredCommonModels = new ObservableCollection<SPSI>(
                     CommonModels.Where(x => 
                         x.IsDelete.Equals(false) && (
-                            x.RegisterNumber.ToLower().Contains(SearchString) ||
-                            x.Deal.ToLower().Contains(SearchString) ||
-                            x.Page.ToLower().Contains(SearchString)
+                            GetStringForComparison(x.RegisterNumber).Contains(SearchString) ||
+                            GetStringForComparison(x.Deal).Contains(SearchString) ||
+                            GetStringForComparison(x.Page).Contains(SearchString)
                         ))
                 );
                 OnPropertyChanged(nameof(SearchString));
             }
         }
+       
     }
-
+   
     public class CheckType
     {
         public static readonly List<CheckType> checkTypes = new List<CheckType>()

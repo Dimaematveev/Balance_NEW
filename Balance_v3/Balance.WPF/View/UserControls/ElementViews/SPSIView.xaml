@@ -7,31 +7,27 @@
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox
+        <DataGrid
                 Background="Transparent"
                 ScrollViewer.CanContentScroll="False"
                 BorderBrush="Transparent"
                 Margin="0,0,0,0"
                 ItemsSource="{Binding FilteredCommonModels}"
-                SelectedValue="{Binding SelectedCommonModel}"
+                SelectedValue="{Binding SelectedCommonModel, Mode=TwoWay}"
+                AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single"
                 SelectedIndex="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="0" Width="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" RenderTransformOrigin="0.5,0.5">
-                            <Ellipse Fill="Blue"/>
-                            <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
-                        </Grid>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                            <TextBlock Text="{Binding RegisterNumber}" FontSize="14"/>
-                        </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            <DataGrid.Resources>
+                <Style x:Key="CenterAlign" TargetType="TextBlock">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}" ElementStyle="{StaticResource CenterAlign}" />
+                <DataGridTextColumn Header="RegisterNumber" Binding="{Binding RegisterNumber}" ElementStyle="{StaticResource CenterAlign}" />
+                <DataGridTextColumn Header="Deal" Binding="{Binding Deal}" ElementStyle="{StaticResource CenterAlign}" />
+                <DataGridTextColumn Header="Page" Binding="{Binding Page}" ElementStyle="{StaticResource CenterAlign}" />
+                <DataGridTextColumn Header="IsSp" Binding="{Binding IsSp}" ElementStyle="{StaticResource CenterAlign}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
