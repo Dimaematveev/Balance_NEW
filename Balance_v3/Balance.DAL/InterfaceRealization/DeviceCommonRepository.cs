@@ -16,6 +16,7 @@ namespace Balance.DAL.InterfaceRealization
         /// </summary>
         protected List<T> commonModels;
 
+
         /// <summary>
         /// Имя Схемы 
         /// </summary>

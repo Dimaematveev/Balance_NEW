@@ -4,17 +4,15 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Balance.WPF.View"
+      xmlns:UCEdit="clr-namespace:Balance.WPF.View.UserControls.ElementEdit"
+      xmlns:UCViews="clr-namespace:Balance.WPF.View.UserControls.ElementViews"
+      xmlns:UCCommon="clr-namespace:Balance.WPF.View.UserControls.Common"
+      
      mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
        DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=DeviceTypeViewModel}"
       Loaded="Page_Loaded">
-    <Page.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Resources/ButtonAnimation.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Page.Resources>
+    
     
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -51,135 +49,19 @@
                     BorderThickness="1"  />
             </Grid>
             <Grid Grid.Row="1">
-                <ListBox
-                Background="Transparent"
-                ScrollViewer.CanContentScroll="False"
-                BorderBrush="Transparent"
-                Margin="0,0,0,0"
-                ItemsSource="{Binding FilteredCommonModels}"
-                SelectedValue="{Binding SelectedCommonModel}"
-                SelectedIndex="0">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0" Width="15" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" RenderTransformOrigin="0.5,0.5">
-                                    <Ellipse Fill="Blue"/>
-                                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10"/>
-                                </Grid>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="5">
-                                    <TextBlock Text="{Binding Name}"/>
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-                <Button x:Name="button3"
-                        HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                        Width="40" Height="40" 
-                        Style="{StaticResource ButtonStyle}"
-                        Template="{StaticResource ButtonTemplate}"
-                        Command="{Binding AddCommand}">
-                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="&#xE109;"/>
-                </Button>
+                <UCViews:DeviceModelView/>
+                <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedCommonModel}">
             <Grid Margin="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Column="0" Width="80" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
-                    <Ellipse Fill="Blue"/>
-                    <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
-                </Grid>
-                <Grid Grid.Column="1" VerticalAlignment="Center" Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Label
-                        Grid.Column="0"
-                        Content="_Модель устройства:"
-                        Margin="0,0,2,0"
-                    />
-                    <TextBox
-                        Grid.Column="1"
-                        IsReadOnly="{Binding 
-                            RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                            Path=DataContext.IsEditing,
-                            Converter={StaticResource invertBoolConverter}}"
-                        Text="{Binding Name, Mode=TwoWay}" 
-                        Margin="5,0,5,0"
-                        BorderBrush="CornflowerBlue"
-                        BorderThickness="1" 
-                    />
-                </Grid>
-                <StackPanel
-                        Grid.Row="1" Grid.Column="1"
-                        Margin="0,0,10,20"
-                        HorizontalAlignment="Right"
-                        Orientation="Horizontal"
-                        VerticalAlignment="Bottom"
-                        DataContext="{Binding 
-                            RelativeSource={RelativeSource FindAncestor,
-                            AncestorType={x:Type Page}}, Path=DataContext}">
-                    <Button x:Name="button1"
-                            Width="40" Height="40"
-                            Command="{Binding DeleteCommand}"
-                            Style="{StaticResource ButtonStyle}"
-                            Template="{StaticResource ButtonTemplate}"
-                             IsCancel="True">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="&#xE107;" />
-                    </Button>
-                    <Button x:Name="button"
-                            Width="40" Height="40"
-                            Command="{Binding SaveCommand}"
-                            Style="{StaticResource ButtonStyle}"
-                            Template="{StaticResource ButtonTemplate}"
-                            IsCancel="True">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="&#xE105;" />
-                    </Button>
-                    <Button x:Name="button2"
-                            Width="40" Height="40"
-                            Command="{Binding EditCommand}"
-                            Style="{StaticResource ButtonStyle}"
-                            Template="{StaticResource ButtonTemplate}">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                        <TextBlock VerticalAlignment="Center"  HorizontalAlignment="Center" Text="{Binding CurrentEditIcon}"/>
-                    </Button>
-                </StackPanel>
+
+                <UCEdit:DeviceTypeEdit Grid.Row="0" />
+                <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>
     </Grid>

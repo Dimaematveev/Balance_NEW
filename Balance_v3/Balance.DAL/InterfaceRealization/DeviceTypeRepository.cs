@@ -33,13 +33,13 @@ namespace Balance.DAL.InterfaceRealization
         }
 
 
-       
+       //TODO:Кое-чо закоментил
         internal override DeviceType GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];
             var curDeviceGadgetID = (int)dbDataReader["DeviceGadgetID"];
-            var curDeviceGadget = deviceGadgetRepository.GetDetail(curDeviceGadgetID);
+           // var curDeviceGadget = deviceGadgetRepository.GetDetail(curDeviceGadgetID);
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
             var newDeviceType = new DeviceType()
@@ -47,7 +47,7 @@ namespace Balance.DAL.InterfaceRealization
                 ID = curID,
                 Name = curName,
                 DeviceGadgetID = curDeviceGadgetID,
-                DeviceGadget = curDeviceGadget,
+               // DeviceGadget = curDeviceGadget,
                 IsDelete = curIsDelete,
                 LastModified = curLastModified,
             };

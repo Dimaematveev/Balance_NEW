@@ -1,6 +1,4 @@
-﻿using Balance.Model;
-using Balance.WPF.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,33 +8,20 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Balance.WPF.View
+namespace Balance.WPF.View.UserControls.ElementViews
 {
     /// <summary>
     /// Interaction logic for DeviceTypeView.xaml
     /// </summary>
-    public partial class DeviceTypeView : Page
+    public partial class DeviceTypeView : UserControl
     {
         public DeviceTypeView()
         {
-            
             InitializeComponent();
-            SetEditing();
-
-        }
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            ViewModelLocator.DeviceTypeViewModel.editingAnimation = SetEditing;
-            
-        }
-        public void SetEditing()
-        {
-            PanelEditView.SetEditing<DeviceType>(DataContext);
         }
     }
 }

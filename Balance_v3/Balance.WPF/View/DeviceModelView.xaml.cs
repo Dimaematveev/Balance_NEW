@@ -1,4 +1,5 @@
-﻿using Balance.WPF.ViewModel;
+﻿using Balance.Model;
+using Balance.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,19 +35,7 @@ namespace Balance.WPF.View
         }
         public void SetEditing()
         {
-            var viewModel = DataContext as DeviceModelViewModel;
-            if (viewModel.IsEditing)
-            {
-                string nameResourse = "StartedEditingAnimation";
-                var resourse = this.Resources[nameResourse];
-                (resourse as Storyboard).Begin();
-            }
-            else
-            {
-                string nameResourse = "StoppedEditingAnimation";
-                var resourse = this.Resources[nameResourse];
-                (resourse as Storyboard).Begin();
-            }
+            PanelEditView.SetEditing<DeviceModel>(DataContext);
         }
     }
 }
