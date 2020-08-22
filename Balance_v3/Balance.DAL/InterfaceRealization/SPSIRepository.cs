@@ -35,9 +35,9 @@ namespace Balance.DAL.InterfaceRealization
         {
             var curID = (int)dbDataReader["ID"];
             var curRegisterNumber = (string)dbDataReader["RegisterNumber"];
-            var curDeal = (string)dbDataReader["Deal"];
-            var curPage = (string)dbDataReader["Page"];
-            var curIsSp = (bool)dbDataReader["IsSp"];
+            var curDeal = dbDataReader["Deal"] as string;
+            var curPage = dbDataReader["Page"] as string;
+            var curIsSp = dbDataReader["IsSp"] as bool?;
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
             var newSPSI = new SPSI()

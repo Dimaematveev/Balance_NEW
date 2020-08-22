@@ -1,0 +1,69 @@
+﻿<Page x:Class="Balance.WPF.View.SPSIView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Balance.WPF.View"
+      
+      xmlns:UCEdit="clr-namespace:Balance.WPF.View.UserControls.ElementEdit"
+      xmlns:UCViews="clr-namespace:Balance.WPF.View.UserControls.ElementViews"
+      xmlns:UCCommon="clr-namespace:Balance.WPF.View.UserControls.Common"
+      
+     mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
+       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=SPSIViewModel}"
+      Loaded="Page_Loaded">
+    
+    
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock 
+                    Margin="5,0,0,0" 
+                    FontSize="20" 
+                    Foreground="Black" 
+                    Opacity=".56" 
+                    VerticalAlignment="Center" 
+                    Text="&#xE094;" 
+                    FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets">
+
+                </TextBlock>
+                <TextBox 
+                    VerticalAlignment="Center" 
+                    BorderBrush="CornflowerBlue" 
+                    Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
+                    Grid.Column="1" 
+                    Margin="8 0 8 0" 
+                    BorderThickness="1"  />
+            </Grid>
+            <Grid Grid.Row="1">
+                <UCViews:SPSIView/>
+                <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedCommonModel}">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <UCEdit:SPSIEdit Grid.Row="0" />
+                <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

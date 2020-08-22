@@ -17,6 +17,8 @@ namespace Balance.WPF
         private static DeviceTypeViewModel deviceTypeViewModel = null;
         private static DeviceModelViewModel deviceModelViewModel = null;
         private static DeviceGadgetViewModel deviceGadgetViewModel = null;
+        private static LocationViewModel locationViewModel = null;
+        private static SPSIViewModel sPSIViewModel = null;
 
         public ViewModelLocator()
         {
@@ -27,6 +29,9 @@ namespace Balance.WPF
             deviceTypeViewModel = new DeviceTypeViewModel();
             deviceModelViewModel = new DeviceModelViewModel();
             deviceGadgetViewModel = new DeviceGadgetViewModel();
+            locationViewModel = new LocationViewModel();
+            sPSIViewModel = new SPSIViewModel();
+
         }
 
         public static HomeViewModel HomeViewModel
@@ -55,6 +60,20 @@ namespace Balance.WPF
             get
             {
                 return deviceGadgetViewModel;
+            }
+        }
+        public static LocationViewModel LocationViewModel
+        {
+            get
+            {
+                return locationViewModel;
+            }
+        }
+        public static SPSIViewModel SPSIViewModel
+        {
+            get
+            {
+                return sPSIViewModel;
             }
         }
     }

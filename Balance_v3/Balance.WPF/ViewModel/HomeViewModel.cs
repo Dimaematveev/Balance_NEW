@@ -72,6 +72,8 @@ namespace Balance.WPF.ViewModel
                 new Tab() { Title = "Названия таблиц", Icon = '\uE155', OpenNewPage=new Func<Page>( () => {return new DeviceGadgetView(); }) },
                 new Tab() { Title = "Типы устройств", Icon = '\uE8CC', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(); }) },
                 new Tab() { Title = "Модели устройств", Icon = '\uEDA4', OpenNewPage=new Func<Page>( () => {return new DeviceModelView(); }) },
+                new Tab() { Title = "Местоположение", Icon = '\uE726', OpenNewPage=new Func<Page>( () => {return new LocationView(); }) },
+                new Tab() { Title = "СП и СИ", Icon = '\uE1DE', OpenNewPage=new Func<Page>( () => {return new SPSIView(); }) },
             };
         }
 

@@ -75,10 +75,18 @@
     <Compile Include="Utility\CustomCommand.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\DeviceCommonViewModel.cs" />
+    <Compile Include="ViewModel\LocationViewModel.cs" />
+    <Compile Include="ViewModel\SPSIViewModel.cs" />
     <Compile Include="ViewModel\DeviceGadgetViewModel.cs" />
     <Compile Include="ViewModel\DeviceModelViewModel.cs" />
     <Compile Include="ViewModel\DeviceTypeViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="View\SPSIView.xaml.cs">
+      <DependentUpon>SPSIView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocationView.xaml.cs">
+      <DependentUpon>LocationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DeviceModelView.xaml.cs">
       <DependentUpon>DeviceModelView.xaml</DependentUpon>
     </Compile>
@@ -98,6 +106,12 @@
     <Compile Include="View\UserControls\Common\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\ElementEdit\SPSIEdit.xaml.cs">
+      <DependentUpon>SPSIEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\LocationEdit.xaml.cs">
+      <DependentUpon>LocationEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml.cs">
       <DependentUpon>DeviceGadgetEdit.xaml</DependentUpon>
     </Compile>
@@ -106,6 +120,12 @@
     </Compile>
     <Compile Include="View\UserControls\ElementViews\DeviceGadgetView.xaml.cs">
       <DependentUpon>DeviceGadgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\SPSIView.xaml.cs">
+      <DependentUpon>SPSIView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\LocationView.xaml.cs">
+      <DependentUpon>LocationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\UserControls\ElementViews\DeviceModelView.xaml.cs">
       <DependentUpon>DeviceModelView.xaml</DependentUpon>
@@ -127,6 +147,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SPSIView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LocationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\DeviceModelView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -147,6 +175,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\UserControls\ElementEdit\SPSIEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\LocationEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,6 +192,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\ElementViews\DeviceGadgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\SPSIView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\LocationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

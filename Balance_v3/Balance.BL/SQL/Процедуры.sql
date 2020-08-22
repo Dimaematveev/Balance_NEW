@@ -103,7 +103,7 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE [dic].[WorkingWith_SpSi]
+CREATE PROCEDURE [dic].[WorkingWith_SPSI]
 	@ID int = null,
 	@RegisterNumber nvarchar(150)=NULL,
 	@Deal nvarchar(50)=NULL,

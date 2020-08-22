@@ -30,8 +30,8 @@ namespace Balance.Model
                 OnPropertyChanged(nameof(Deal));
             }
         }
-        private bool _IsSp;
-        public bool IsSp
+        private bool? _IsSp;
+        public bool? IsSp
         {
             get { return _IsSp; }
             set
