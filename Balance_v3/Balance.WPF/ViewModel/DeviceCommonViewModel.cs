@@ -213,8 +213,9 @@ namespace Balance.WPF.ViewModel
             SaveCommand = new CustomCommand(Save, delegate { return IsEditing; });
             DeleteCommand = new CustomCommand(Delete, delegate { return SelectedCommonModel != null; });
             IsEditing = false;
+           
         }
-
+        
 
         /// <summary>Событие для извещения об изменения свойства</summary>
         public event PropertyChangedEventHandler PropertyChanged;

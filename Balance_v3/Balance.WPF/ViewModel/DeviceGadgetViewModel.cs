@@ -20,7 +20,7 @@ namespace Balance.WPF.ViewModel
      
         public DeviceGadgetViewModel() : base(App.deviceGadgetDataService)
         {
-           
+            SearchString = "";
         }
 
         public override string SearchString
@@ -31,9 +31,9 @@ namespace Balance.WPF.ViewModel
                 searchString = value.ToLower();
                 FilteredCommonModels = new ObservableCollection<DeviceGadget>(
                     CommonModels.Where(x => 
-                        x.IsDelete = false ||
-                        x.Name.ToLower().Contains(SearchString) 
-                        )
+                        x.IsDelete.Equals(false) && (
+                            x.Name.ToLower().Contains(SearchString) 
+                        ))
                 );
                 OnPropertyChanged(nameof(SearchString));
             }

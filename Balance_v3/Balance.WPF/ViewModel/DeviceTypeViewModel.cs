@@ -32,7 +32,7 @@ namespace Balance.WPF.ViewModel
                 base.SelectedCommonModel = value;
                 if (SelectedCommonModel != null)
                 {
-                    SelectedDeviceGadget = DeviceGadgets.Where(x => x.ID == SelectedCommonModel.DeviceGadgetID).FirstOrDefault();
+                    SelectedDeviceGadget = DeviceGadgets.Where(x => x.ID == SelectedCommonModel.DeviceGadgetID && x.IsDelete.Equals(false)).FirstOrDefault();
                 }
 
             }
@@ -57,7 +57,8 @@ namespace Balance.WPF.ViewModel
 
         public DeviceTypeViewModel() : base(App.deviceTypeDataService)
         {
-            DeviceGadgets = App.deviceGadgetDataService.GetAll();
+            DeviceGadgets = App.deviceGadgetDataService.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();
+            SearchString = "";
         }
 
         public override string SearchString 
@@ -68,10 +69,10 @@ namespace Balance.WPF.ViewModel
                 searchString = value.ToLower();
                 FilteredCommonModels = new ObservableCollection<DeviceType>(
                     CommonModels.Where(x =>
-                        x.IsDelete = false ||
-                        x.Name.ToLower().Contains(SearchString) ||
-                        x.DeviceGadget.Name.ToLower().Contains(SearchString)
-                        )
+                        x.IsDelete.Equals(false) && (
+                            x.Name.ToLower().Contains(SearchString) ||
+                            x.DeviceGadget.Name.ToLower().Contains(SearchString)
+                        ))
                 );
                 OnPropertyChanged(nameof(SearchString));
             }

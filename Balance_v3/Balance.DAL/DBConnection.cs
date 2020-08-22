@@ -20,7 +20,7 @@ namespace Balance.DAL
         /// <summary>
         /// Подключение к БД
         /// </summary>
-        private SqlConnection connection;
+        private readonly SqlConnection connection;
 
         public DBConnection()
         {
