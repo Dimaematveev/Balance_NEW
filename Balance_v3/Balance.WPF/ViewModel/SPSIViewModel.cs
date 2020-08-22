@@ -15,8 +15,8 @@ namespace Balance.WPF.ViewModel
     /// </summary>
     public class SPSIViewModel : DeviceCommonViewModel<SPSI>
     {
-      
 
+        public List<CheckType> CheckTypes { get => CheckType.checkTypes; }
      
         public SPSIViewModel() : base(App.SPSIRepository)
         {
@@ -40,5 +40,34 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(SearchString));
             }
         }
+    }
+
+    public class CheckType
+    {
+        public static readonly List<CheckType> checkTypes = new List<CheckType>()
+        {
+            new CheckType("СП", true ),
+            new CheckType("СИ", false ),
+            new CheckType("Неизвестно", null ),
+        };
+        public string Name { get; set; }
+        public bool? IsSp { get; set; }
+        public static List<CheckType> CheckTypes
+        {
+            get { return checkTypes; }
+        }
+
+        private CheckType(string name, bool? isSP)
+        {
+            Name = name;
+            IsSp = isSP;
+        }
+
+        public static CheckType GetCheckType(bool? IsSp)
+        {
+            return checkTypes.First(x => x.IsSp == IsSp);
+        }
+
+
     }
 }
