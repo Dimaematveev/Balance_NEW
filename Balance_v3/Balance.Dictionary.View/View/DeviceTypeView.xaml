@@ -1,0 +1,44 @@
+﻿<Page x:Class="Balance.Dictionary.View.View.DeviceTypeView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:UCCommon="clr-namespace:Balance.Dictionary.View.View.UserControls.Common"
+      xmlns:UCEdit="clr-namespace:Balance.Dictionary.View.View.UserControls.ElementEdit"
+      xmlns:UCViews="clr-namespace:Balance.Dictionary.View.View.UserControls.ElementViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
+       DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=DeviceTypeViewModel}"
+      Loaded="Page_Loaded">
+    
+    
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <UCCommon:SearchLineView Grid.Row="0"/>
+            <Grid Grid.Row="1">
+                <UCViews:ViewAllDeviceType/>
+                <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Margin="0"  DataContext="{Binding SelectedCommonModel}">
+            <Grid Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <UCEdit:DeviceTypeEdit Grid.Row="0" />
+                <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
