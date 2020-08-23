@@ -106,6 +106,9 @@
     <Compile Include="View\UserControls\Common\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\UserControls\Common\SearchLineView.xaml.cs">
+      <DependentUpon>SearchLineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\UserControls\ElementEdit\SPSIEdit.xaml.cs">
       <DependentUpon>SPSIEdit.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\Common\AddView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\Common\SearchLineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

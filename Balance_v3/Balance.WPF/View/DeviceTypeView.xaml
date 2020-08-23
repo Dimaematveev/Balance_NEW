@@ -23,29 +23,7 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <TextBlock 
-                    Margin="5,0,0,0" 
-                    FontSize="20" 
-                    Foreground="Black" 
-                    Opacity=".56" 
-                    VerticalAlignment="Center" 
-                    Text="&#xE094;" 
-                    FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets">
-
-                </TextBlock>
-                <TextBox 
-                    VerticalAlignment="Center" 
-                    BorderBrush="CornflowerBlue" 
-                    Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
-                    Grid.Column="1" 
-                    Margin="8 0 8 0" 
-                    BorderThickness="1"  />
-            </Grid>
+            <UCCommon:SearchLineView Grid.Row="0"/>
             <Grid Grid.Row="1">
                 <UCViews:DeviceTypeView/>
                 <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20"/>
