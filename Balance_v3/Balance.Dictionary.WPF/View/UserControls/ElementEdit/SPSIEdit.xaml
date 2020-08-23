@@ -7,18 +7,15 @@
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Width="80" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Width="80" Height="80" HorizontalAlignment="Center" Margin="0" RenderTransformOrigin="0.5,0.5">
             <Ellipse Fill="Blue"/>
             <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
         </Grid>
-
-
-
-        <StackPanel VerticalAlignment="Center" Margin="10" Grid.Column="1">
+        <StackPanel  Margin="10" Grid.Row="1">
             <Grid Grid.Row="1" Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -86,7 +83,7 @@
                 </Grid.ColumnDefinitions>
                 <Label
                     Grid.Column="0"
-                    Content="_Является СП:"
+                    Content="_Тип проверки:"
                     Margin="0,0,2,0"/>
                 <ComboBox
                     

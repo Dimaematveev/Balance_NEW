@@ -10,12 +10,11 @@
       d:DesignHeight="300" d:DesignWidth="600" Title="Clienti"
        DataContext="{Binding Source={StaticResource mainViewModelLocator},  Path=SPSIViewModel}"
       Loaded="Page_Loaded">
-    
-    
+
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
 
