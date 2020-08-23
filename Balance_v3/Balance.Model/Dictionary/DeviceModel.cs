@@ -1,4 +1,4 @@
-﻿namespace Balance.Model
+﻿namespace Balance.Model.Dictionary
 {
     /// <summary>
     /// Модель устройства
@@ -6,16 +6,7 @@
     public class DeviceModel : CommonModel
     {
        
-        private int _DeviceTypeID;
-        public int DeviceTypeID
-        {
-            get { return _DeviceTypeID; }
-            set
-            {
-                _DeviceTypeID = value;
-                OnPropertyChanged(nameof(DeviceTypeID));
-            }
-        }
+       
         private DeviceType _DeviceType;
         public DeviceType DeviceType
         {
@@ -58,7 +49,6 @@
             {
                 
                 DeviceType = copyDeviceModel.DeviceType;
-                DeviceTypeID = copyDeviceModel.DeviceTypeID;
                 Name = copyDeviceModel.Name;
             }
         }

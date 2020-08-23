@@ -1,4 +1,4 @@
-﻿using Balance.Model;
+﻿using Balance.Model.Dictionary;
 using System.Windows;
 using System.Windows.Controls;
 

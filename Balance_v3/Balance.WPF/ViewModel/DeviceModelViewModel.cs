@@ -1,4 +1,4 @@
-﻿using Balance.Model;
+﻿using Balance.Model.Dictionary;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -24,9 +24,23 @@ namespace Balance.WPF.ViewModel
             set
             {
                 base.SelectedCommonModel = value;
+
+              
                 if (SelectedCommonModel != null)
                 {
-                    selectedDeviceType = DeviceTypes.Where(x => x.ID == SelectedCommonModel.DeviceTypeID && x.IsDelete.Equals(false)).FirstOrDefault();
+                    if (SelectedCommonModel.DeviceType == null)
+                    {
+                        SelectedDeviceType = null;
+                    }
+                    else
+                    {
+                        SelectedDeviceType = DeviceTypes
+                                                .Where(x =>
+                                                        x.ID == SelectedCommonModel.DeviceType.ID &&
+                                                        x.IsDelete.Equals(false)
+                                                      )
+                                                .FirstOrDefault();
+                    }
                 }
                
             }

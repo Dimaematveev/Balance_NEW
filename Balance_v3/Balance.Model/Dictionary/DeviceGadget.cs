@@ -1,9 +1,9 @@
-﻿namespace Balance.Model
+﻿namespace Balance.Model.Dictionary
 {
     /// <summary>
-    /// Тип устройства
+    /// Название Таблицы
     /// </summary>
-    public class DeviceType : CommonModel
+    public class DeviceGadget : CommonModel
     {
 
         private string _Name;
@@ -16,26 +16,6 @@
                 OnPropertyChanged(nameof(Name));
             }
         }
-        private int _DeviceGadgetID;
-        public int DeviceGadgetID
-        {
-            get { return _DeviceGadgetID; }
-            set
-            {
-                _DeviceGadgetID = value;
-                OnPropertyChanged(nameof(DeviceGadgetID));
-            }
-        }
-        private DeviceGadget _DeviceGadget;
-        public DeviceGadget DeviceGadget
-        {
-            get { return _DeviceGadget; }
-            set
-            {
-                _DeviceGadget = value;
-                OnPropertyChanged(nameof(DeviceGadget));
-            }
-        }
 
         /// <summary>
         /// Скопировать текущий объект в новый
@@ -43,7 +23,7 @@
         /// <returns>Новый объект с такими-же свойствами</returns>
         public override CommonModel Clone()
         {
-            DeviceType newTypeDevice = new DeviceType();
+            DeviceGadget newTypeDevice = new DeviceGadget();
             newTypeDevice.Fill(this);
             return newTypeDevice;
         }
@@ -53,10 +33,8 @@
         /// <param name="copy">переданный объект</param>
         public override void Fill(CommonModel copy)
         {
-            if (copy != null && copy is DeviceType copyDeviceType)
+            if (copy != null && copy is DeviceGadget copyDeviceType)
             {
-                DeviceGadget = copyDeviceType.DeviceGadget;
-                DeviceGadgetID = copyDeviceType.DeviceGadgetID;
                 Name = copyDeviceType.Name;
             }
         }

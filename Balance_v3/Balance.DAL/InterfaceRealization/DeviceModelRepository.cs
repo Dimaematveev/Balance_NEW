@@ -1,5 +1,5 @@
 ﻿using Balance.DAL.Interface;
-using Balance.Model;
+using Balance.Model.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -28,7 +28,7 @@ namespace Balance.DAL.InterfaceRealization
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
                 new SqlParameter("@ModelName", commonModel.Name),
-                new SqlParameter("@TypeID", commonModel.DeviceTypeID)
+                new SqlParameter("@TypeID", commonModel.DeviceType.ID)
             };
             return sqlParameters;
         }
@@ -40,7 +40,6 @@ namespace Balance.DAL.InterfaceRealization
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];
             var curDeviceTypeID = (int)dbDataReader["DeviceTypeID"];
-            
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
             var curDeviceType = deviceTypeRepository.GetDetail(curDeviceTypeID);
@@ -48,7 +47,6 @@ namespace Balance.DAL.InterfaceRealization
             {
                 ID = curID,
                 Name = curName,
-                DeviceTypeID = curDeviceTypeID,
                 DeviceType = curDeviceType,
                 IsDelete = curIsDelete,
                 LastModified = curLastModified,

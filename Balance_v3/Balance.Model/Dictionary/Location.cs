@@ -1,4 +1,4 @@
-﻿namespace Balance.Model
+﻿namespace Balance.Model.Dictionary
 {
     /// <summary>
     /// Местоположение

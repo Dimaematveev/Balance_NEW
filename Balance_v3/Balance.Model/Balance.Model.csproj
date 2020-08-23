@@ -41,12 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModel.cs" />
-    <Compile Include="DeviceModel.cs" />
-    <Compile Include="DeviceGadget.cs" />
-    <Compile Include="DeviceType.cs" />
-    <Compile Include="Location.cs" />
+    <Compile Include="Dictionary\DeviceModel.cs" />
+    <Compile Include="Dictionary\DeviceGadget.cs" />
+    <Compile Include="Dictionary\DeviceType.cs" />
+    <Compile Include="Dictionary\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SPSI.cs" />
+    <Compile Include="Dictionary\SPSI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

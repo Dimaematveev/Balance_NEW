@@ -1,7 +1,7 @@
 ﻿using Balance.DAL;
 using Balance.DAL.Interface;
 using Balance.DAL.InterfaceRealization;
-using Balance.Model;
+using Balance.Model.Dictionary;
 using System.Windows;
 
 namespace Balance.WPF

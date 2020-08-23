@@ -1,4 +1,4 @@
-﻿using Balance.Model;
+﻿using Balance.Model.Dictionary;
 using System.Collections.Generic;
 
 namespace Balance.WPF.Services

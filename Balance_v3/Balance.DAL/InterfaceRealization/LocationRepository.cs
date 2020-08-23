@@ -1,5 +1,5 @@
 ﻿using Balance.DAL.Interface;
-using Balance.Model;
+using Balance.Model.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

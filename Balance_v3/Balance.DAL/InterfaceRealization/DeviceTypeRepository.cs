@@ -1,5 +1,5 @@
 ﻿using Balance.DAL.Interface;
-using Balance.Model;
+using Balance.Model.Dictionary;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -25,7 +25,7 @@ namespace Balance.DAL.InterfaceRealization
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
                 new SqlParameter("@TypeName", commonModel.Name),
-                new SqlParameter("@GadgetID", commonModel.DeviceGadgetID),
+                new SqlParameter("@GadgetID", commonModel.DeviceGadget.ID),
             };
             return sqlParameters;
         }
@@ -45,7 +45,6 @@ namespace Balance.DAL.InterfaceRealization
             {
                 ID = curID,
                 Name = curName,
-                DeviceGadgetID = curDeviceGadgetID,
                 DeviceGadget = curDeviceGadget,
                 IsDelete = curIsDelete,
                 LastModified = curLastModified,

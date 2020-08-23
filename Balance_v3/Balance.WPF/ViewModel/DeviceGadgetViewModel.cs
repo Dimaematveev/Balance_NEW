@@ -1,4 +1,4 @@
-﻿using Balance.Model;
+﻿using Balance.Model.Dictionary;
 using System.Collections.ObjectModel;
 using System.Linq;
 
