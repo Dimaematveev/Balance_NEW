@@ -2,6 +2,7 @@
 using Balance.Dictionary.View.ViewModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using Balance.Dictionary.ViewModel.ViewModel;
 
 namespace Balance.Dictionary.View.View.UserControls.Common
 {

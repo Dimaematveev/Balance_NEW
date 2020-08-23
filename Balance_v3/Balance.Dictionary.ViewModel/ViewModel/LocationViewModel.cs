@@ -3,14 +3,17 @@ using Balance.Model.Dictionary;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Balance.Dictionary.View.ViewModel
+namespace Balance.Dictionary.ViewModel.ViewModel
 {
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceGadgetViewModel : DeviceCommonViewModel<DeviceGadget>
+    public class LocationViewModel : DeviceCommonViewModel<Location>
     {
-        public DeviceGadgetViewModel(IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceGadgetRepository)
+
+
+
+        public LocationViewModel(IDeviceCommonRepository<Location> locationRepository) : base(locationRepository)
         {
             SearchString = "";
         }
@@ -21,7 +24,7 @@ namespace Balance.Dictionary.View.ViewModel
             set
             {
                 searchString = value.ToLower();
-                FilteredCommonModels = new ObservableCollection<DeviceGadget>(
+                FilteredCommonModels = new ObservableCollection<Location>(
                     CommonModels.Where(x =>
                         x.IsDelete.Equals(false) && (
                             x.Name.ToLower().Contains(SearchString)

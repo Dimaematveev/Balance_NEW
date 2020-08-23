@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Balance.Dictionary.View.ViewModel
+namespace Balance.Dictionary.ViewModel.ViewModel
 {
     /// <summary>
     /// View-Model  [Типа устройства]

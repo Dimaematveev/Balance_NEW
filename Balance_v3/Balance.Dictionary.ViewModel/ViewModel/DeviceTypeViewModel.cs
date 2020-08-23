@@ -4,41 +4,39 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Balance.Dictionary.View.ViewModel
+namespace Balance.Dictionary.ViewModel.ViewModel
 {
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceModelViewModel : DeviceCommonViewModel<DeviceModel>
+    public class DeviceTypeViewModel : DeviceCommonViewModel<DeviceType>
     {
-        private readonly IDeviceCommonRepository<DeviceType> deviceTypeRepository;
+        private readonly IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository;
         /// <summary>
         /// Список [Типов устройств]
         /// </summary>
-        public List<DeviceType> DeviceTypes
+        public List<DeviceGadget> DeviceGadgets
         {
             get; set;
         }
 
-        public override DeviceModel SelectedCommonModel
+        public override DeviceType SelectedCommonModel
         {
             get { return base.SelectedCommonModel; }
             set
             {
                 base.SelectedCommonModel = value;
-
-
                 if (SelectedCommonModel != null)
                 {
-                    if (SelectedCommonModel.DeviceType == null)
+                    if (SelectedCommonModel.DeviceGadget == null)
                     {
-                        SelectedDeviceType = null;
+                        SelectedDeviceGadget = null;
                     }
                     else
                     {
-                        SelectedDeviceType = DeviceTypes
+                        SelectedDeviceGadget = DeviceGadgets
                                                 .Where(x =>
-                                                        x.ID == SelectedCommonModel.DeviceType.ID &&
+                                                        x.ID == SelectedCommonModel.DeviceGadget.ID &&
                                                         x.IsDelete.Equals(false)
                                                       )
                                                 .FirstOrDefault();
@@ -51,24 +49,24 @@ namespace Balance.Dictionary.View.ViewModel
         /// <summary>
         /// Клиент выбранной машины
         /// </summary>
-        private DeviceType selectedDeviceType;
+        private DeviceGadget selectedDeviceGadget;
         /// <summary>
         /// Клиент выбранной машины
         /// </summary>
-        public DeviceType SelectedDeviceType
+        public DeviceGadget SelectedDeviceGadget
         {
-            get { return selectedDeviceType; }
+            get { return selectedDeviceGadget; }
             set
             {
-                selectedDeviceType = value;
-                OnPropertyChanged(nameof(SelectedDeviceType));
+                selectedDeviceGadget = value;
+                OnPropertyChanged(nameof(SelectedDeviceGadget));
             }
         }
 
-        public DeviceModelViewModel(IDeviceCommonRepository<DeviceModel> deviceModelRepository,IDeviceCommonRepository<DeviceType> deviceTypeRepository) : base(deviceModelRepository)
+        public DeviceTypeViewModel(IDeviceCommonRepository<DeviceType> deviceTypeRepository, IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceTypeRepository)
         {
-            this.deviceTypeRepository = deviceTypeRepository;
-            DeviceTypes = this.deviceTypeRepository.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();
+            this.deviceGadgetRepository = deviceGadgetRepository;
+            DeviceGadgets = this.deviceGadgetRepository.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();
             SearchString = "";
         }
 
@@ -78,11 +76,11 @@ namespace Balance.Dictionary.View.ViewModel
             set
             {
                 searchString = value.ToLower();
-                FilteredCommonModels = new ObservableCollection<DeviceModel>(
+                FilteredCommonModels = new ObservableCollection<DeviceType>(
                     CommonModels.Where(x =>
                         x.IsDelete.Equals(false) && (
                             x.Name.ToLower().Contains(SearchString) ||
-                            x.DeviceType.Name.ToLower().Contains(SearchString)
+                            x.DeviceGadget.Name.ToLower().Contains(SearchString)
                         ))
                 );
                 OnPropertyChanged(nameof(SearchString));

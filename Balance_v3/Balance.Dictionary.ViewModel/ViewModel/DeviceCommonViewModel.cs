@@ -1,13 +1,13 @@
-﻿using Balance.DAL.Interface;
+﻿using Balance.BL.Utility;
+using Balance.DAL.Interface;
 using Balance.Model;
-using Balance.Dictionary.View.Utility;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Balance.Dictionary.View.ViewModel
+namespace Balance.Dictionary.ViewModel.ViewModel
 {
     /// <summary>
     /// View-Model  [Чего-то]

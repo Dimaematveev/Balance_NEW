@@ -1,4 +1,5 @@
 ﻿using Balance.Dictionary.View.ViewModel;
+using Balance.Dictionary.ViewModel.ViewModel;
 using System.ComponentModel;
 using System.Windows;
 

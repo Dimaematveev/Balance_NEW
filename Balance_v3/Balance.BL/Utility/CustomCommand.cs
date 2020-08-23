@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Balance.Dictionary.View.Utility
+namespace Balance.BL.Utility
 {
     /// <summary>
     /// Класс для действий, Реализует ICommand.
