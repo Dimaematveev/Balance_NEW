@@ -1,4 +1,5 @@
-﻿using Balance.Model.Dictionary;
+﻿using Balance.DAL.Interface;
+using Balance.Model.Dictionary;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Balance.Dictionary.View.ViewModel
     /// </summary>
     public class DeviceModelViewModel : DeviceCommonViewModel<DeviceModel>
     {
+        private readonly IDeviceCommonRepository<DeviceType> deviceTypeRepository;
         /// <summary>
         /// Список [Типов устройств]
         /// </summary>
@@ -63,9 +65,10 @@ namespace Balance.Dictionary.View.ViewModel
             }
         }
 
-        public DeviceModelViewModel() : base(App.deviceModelRepository)
+        public DeviceModelViewModel(IDeviceCommonRepository<DeviceModel> deviceModelRepository,IDeviceCommonRepository<DeviceType> deviceTypeRepository) : base(deviceModelRepository)
         {
-            DeviceTypes = App.deviceTypeDataService.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();
+            this.deviceTypeRepository = deviceTypeRepository;
+            DeviceTypes = this.deviceTypeRepository.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();
             SearchString = "";
         }
 

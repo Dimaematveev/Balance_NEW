@@ -1,4 +1,5 @@
-﻿using Balance.Model.Dictionary;
+﻿using Balance.DAL.Interface;
+using Balance.Model.Dictionary;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -12,7 +13,7 @@ namespace Balance.Dictionary.View.ViewModel
 
 
 
-        public LocationViewModel() : base(App.locationRepository)
+        public LocationViewModel(IDeviceCommonRepository<Location> locationRepository) : base(locationRepository)
         {
             SearchString = "";
         }

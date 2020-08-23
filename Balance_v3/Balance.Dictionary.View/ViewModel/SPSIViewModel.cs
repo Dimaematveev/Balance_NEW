@@ -1,4 +1,5 @@
-﻿using Balance.Model.Dictionary;
+﻿using Balance.DAL.Interface;
+using Balance.Model.Dictionary;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Balance.Dictionary.View.ViewModel
 
         public List<CheckType> CheckTypes { get => CheckType.checkTypes; }
 
-        public SPSIViewModel() : base(App.SPSIRepository)
+        public SPSIViewModel(IDeviceCommonRepository<SPSI> sPSIRepository) : base(sPSIRepository)
         {
             SearchString = "";
         }

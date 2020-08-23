@@ -22,11 +22,11 @@ namespace Balance.Dictionary.View
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
             homeViewModel = new HomeViewModel();
-            deviceTypeViewModel = new DeviceTypeViewModel();
-            deviceModelViewModel = new DeviceModelViewModel();
-            deviceGadgetViewModel = new DeviceGadgetViewModel();
-            locationViewModel = new LocationViewModel();
-            sPSIViewModel = new SPSIViewModel();
+            deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService,App.deviceGadgetDataService);
+            deviceModelViewModel = new DeviceModelViewModel(App.deviceModelRepository, App.deviceTypeDataService);
+            deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
+            locationViewModel = new LocationViewModel(App.locationRepository);
+            sPSIViewModel = new SPSIViewModel(App.SPSIRepository);
 
         }
 

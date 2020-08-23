@@ -1,4 +1,5 @@
-﻿using Balance.Model.Dictionary;
+﻿using Balance.DAL.Interface;
+using Balance.Model.Dictionary;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -9,10 +10,7 @@ namespace Balance.Dictionary.View.ViewModel
     /// </summary>
     public class DeviceGadgetViewModel : DeviceCommonViewModel<DeviceGadget>
     {
-
-
-
-        public DeviceGadgetViewModel() : base(App.deviceGadgetDataService)
+        public DeviceGadgetViewModel(IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceGadgetRepository)
         {
             SearchString = "";
         }

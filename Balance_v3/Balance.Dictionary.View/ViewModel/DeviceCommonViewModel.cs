@@ -14,7 +14,7 @@ namespace Balance.Dictionary.View.ViewModel
     /// </summary>
     public abstract class DeviceCommonViewModel<T> : INotifyPropertyChanged where T : CommonModel, new()
     {
-        private readonly IDeviceCommonRepository<T> deviceCommonRepository;
+        protected readonly IDeviceCommonRepository<T> deviceCommonRepository;
         /// <summary>
         /// Динамическая коллекция [Типов устройств] commonModels
         /// </summary>
