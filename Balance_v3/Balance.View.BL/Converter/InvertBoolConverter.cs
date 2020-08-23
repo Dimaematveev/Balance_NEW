@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace Balance.Dictionary.View.Converter
+namespace Balance.View.BL.Converter
 {
     /// <summary>
     /// Конвертер инвертирует bool

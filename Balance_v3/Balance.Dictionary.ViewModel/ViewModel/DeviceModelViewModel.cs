@@ -65,7 +65,7 @@ namespace Balance.Dictionary.ViewModel.ViewModel
             }
         }
 
-        public DeviceModelViewModel(IDeviceCommonRepository<DeviceModel> deviceModelRepository,IDeviceCommonRepository<DeviceType> deviceTypeRepository) : base(deviceModelRepository)
+        public DeviceModelViewModel(IDeviceCommonRepository<DeviceModel> deviceModelRepository, IDeviceCommonRepository<DeviceType> deviceTypeRepository) : base(deviceModelRepository)
         {
             this.deviceTypeRepository = deviceTypeRepository;
             DeviceTypes = this.deviceTypeRepository.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();

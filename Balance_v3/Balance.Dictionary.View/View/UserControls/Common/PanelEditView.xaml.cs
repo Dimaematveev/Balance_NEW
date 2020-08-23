@@ -1,8 +1,7 @@
-﻿using Balance.Model;
-using Balance.Dictionary.View.ViewModel;
+﻿using Balance.Dictionary.ViewModel.ViewModel;
+using Balance.Model;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using Balance.Dictionary.ViewModel.ViewModel;
 
 namespace Balance.Dictionary.View.View.UserControls.Common
 {

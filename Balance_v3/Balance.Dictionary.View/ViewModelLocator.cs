@@ -23,7 +23,7 @@ namespace Balance.Dictionary.View
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
             homeViewModel = new HomeViewModel();
-            deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService,App.deviceGadgetDataService);
+            deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService, App.deviceGadgetDataService);
             deviceModelViewModel = new DeviceModelViewModel(App.deviceModelRepository, App.deviceTypeDataService);
             deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
             locationViewModel = new LocationViewModel(App.locationRepository);

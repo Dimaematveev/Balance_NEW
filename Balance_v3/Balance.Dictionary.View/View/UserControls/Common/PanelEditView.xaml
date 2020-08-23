@@ -7,7 +7,7 @@
              Background="Transparent"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <ResourceDictionary Source="/Balance.Dictionary.View;component/Resources/ButtonAnimation.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/ButtonAnimation.xaml"/>
     </UserControl.Resources>
     <Grid Margin="0">
         <StackPanel d:LayoutOverrides="CenterVerticalAlignment"

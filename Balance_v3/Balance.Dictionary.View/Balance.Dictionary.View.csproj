@@ -50,6 +50,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,8 +88,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converter\InvertBoolConverter.cs" />
-    <Compile Include="Services\IDeviceTypeDataService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="View\SPSIView.xaml.cs">
@@ -150,14 +151,6 @@
     <Compile Include="View\UserControls\Common\PanelEditView.xaml.cs">
       <DependentUpon>PanelEditView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Resources\ButtonAnimation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\ButtonCircle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\SPSIView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -254,7 +247,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
-    <Resource Include="Fonts\segmdl2.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -274,13 +266,12 @@
       <Project>{DD40722B-F3A4-4D1C-B393-5B81AA973075}</Project>
       <Name>Balance.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Balance.View.BL\Balance.View.BL.csproj">
+      <Project>{f188140e-0fc1-4578-9d81-b43dc587ecc0}</Project>
+      <Name>Balance.View.BL</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>

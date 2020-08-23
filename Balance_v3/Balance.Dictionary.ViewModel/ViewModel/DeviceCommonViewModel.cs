@@ -212,7 +212,7 @@ namespace Balance.Dictionary.ViewModel.ViewModel
             SearchString = searchString;
         }
 
-      
+
         public DeviceCommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
         {
             this.deviceCommonRepository = deviceCommonRepository;

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,14 +12,14 @@ namespace Balance.Dictionary.View.View.UserControls.ElementViews
         public ViewAllDeviceGadget()
         {
             InitializeComponent();
-            
-           
+
+
         }
         public IEnumerable ItemsSource
         {
             get
-            { 
-               return (IEnumerable)GetValue(ItemsSourceProperty);
+            {
+                return (IEnumerable)GetValue(ItemsSourceProperty);
             }
             set
             {
@@ -28,10 +27,10 @@ namespace Balance.Dictionary.View.View.UserControls.ElementViews
             }
         }
 
-       
+
         public static readonly DependencyProperty ItemsSourceProperty =
         DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(ViewAllDeviceGadget));
-      
+
 
     }
 }
