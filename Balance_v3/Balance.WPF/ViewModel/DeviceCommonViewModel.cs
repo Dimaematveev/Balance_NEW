@@ -88,12 +88,11 @@ namespace Balance.WPF.ViewModel
                 IsEditing = false;
             }
         }
-        //TODO:Не понимаю
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
         private object currentEditIcon = '\uE104';
-        //TODO:Не понимаю
+
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
@@ -106,9 +105,8 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(CurrentEditIcon));
             }
         }
-        //TODO: Не понимаю
         /// <summary>
-        /// Редактирование анимации??
+        /// Анимация кнопок Удаление и сохранения
         /// </summary>
         public Action editingAnimation;
         /// <summary>
@@ -152,12 +150,10 @@ namespace Balance.WPF.ViewModel
         /// </summary>
         public ICommand DeleteCommand { get; set; }
 
-        //TODO:Не уверен
         /// <summary>
         /// Поисковая строка
         /// </summary>
         protected string searchString;
-        //TODO:Не уверен
         /// <summary>
         /// Поисковая строка
         /// </summary>
@@ -216,7 +212,7 @@ namespace Balance.WPF.ViewModel
             SearchString = searchString;
         }
 
-        //TODO:не знаю что написать
+      
         public DeviceCommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
         {
             this.deviceCommonRepository = deviceCommonRepository;

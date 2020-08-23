@@ -31,7 +31,6 @@ namespace Balance.DAL.InterfaceRealization
         }
 
 
-        //TODO:Кое-чо закоментил
         internal override DeviceType GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];

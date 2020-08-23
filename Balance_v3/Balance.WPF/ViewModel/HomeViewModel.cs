@@ -60,7 +60,6 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(TabPage));
             }
         }
-        //TODO:не знаю как описать
         public HomeViewModel()
         {
 
