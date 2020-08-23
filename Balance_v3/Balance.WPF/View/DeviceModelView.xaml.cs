@@ -11,7 +11,7 @@ namespace Balance.WPF.View
     {
         public DeviceModelView()
         {
-            
+
             InitializeComponent();
             SetEditing();
 

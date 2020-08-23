@@ -99,7 +99,7 @@ namespace Balance.WPF.ViewModel
         {
             get; set;
         }
-       
+
         /// <summary>
         /// Иконка
         /// </summary>

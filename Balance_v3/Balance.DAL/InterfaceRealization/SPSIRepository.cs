@@ -13,7 +13,7 @@ namespace Balance.DAL.InterfaceRealization
 
         protected override string TABLE_NAME => "SPSI";
 
-       
+
 
         internal override List<SqlParameter> GetSqlParameters(SPSI commonModel)
         {
@@ -28,7 +28,7 @@ namespace Balance.DAL.InterfaceRealization
         }
 
 
-       
+
         internal override SPSI GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];

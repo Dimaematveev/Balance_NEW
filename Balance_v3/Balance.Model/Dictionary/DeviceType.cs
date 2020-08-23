@@ -16,7 +16,7 @@
                 OnPropertyChanged(nameof(Name));
             }
         }
-       
+
         private DeviceGadget _DeviceGadget;
         public DeviceGadget DeviceGadget
         {
@@ -47,7 +47,7 @@
             if (copy != null && copy is DeviceType copyDeviceType)
             {
                 DeviceGadget = copyDeviceType.DeviceGadget;
-              
+
                 Name = copyDeviceType.Name;
             }
         }

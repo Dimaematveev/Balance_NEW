@@ -11,7 +11,7 @@ namespace Balance.WPF.View
     {
         public SPSIView()
         {
-            
+
             InitializeComponent();
             SetEditing();
 
@@ -19,7 +19,7 @@ namespace Balance.WPF.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModelLocator.SPSIViewModel.editingAnimation = SetEditing;
-            
+
         }
         public void SetEditing()
         {

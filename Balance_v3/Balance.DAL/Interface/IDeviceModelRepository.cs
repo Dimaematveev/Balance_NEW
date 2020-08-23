@@ -7,6 +7,6 @@ namespace Balance.DAL.Interface
     /// </summary>
     public interface IDeviceModelRepository : IDeviceCommonRepository<DeviceModel>
     {
-        
+
     }
 }

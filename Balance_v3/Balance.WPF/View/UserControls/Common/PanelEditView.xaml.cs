@@ -13,10 +13,10 @@ namespace Balance.WPF.View.UserControls.Common
         public PanelEditView()
         {
             InitializeComponent();
-            
+
         }
 
-        public void SetEditing<T>(object dataContext) where T: CommonModel,new()
+        public void SetEditing<T>(object dataContext) where T : CommonModel, new()
         {
             if (dataContext is DeviceCommonViewModel<T> viewModel)
             {
@@ -33,7 +33,7 @@ namespace Balance.WPF.View.UserControls.Common
                     resourse.Begin();
                 }
             }
-           
+
         }
     }
 }

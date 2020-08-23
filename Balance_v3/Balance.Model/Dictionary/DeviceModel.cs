@@ -5,8 +5,8 @@
     /// </summary>
     public class DeviceModel : CommonModel
     {
-       
-       
+
+
         private DeviceType _DeviceType;
         public DeviceType DeviceType
         {
@@ -47,7 +47,7 @@
         {
             if (copy != null && copy is DeviceModel copyDeviceModel)
             {
-                
+
                 DeviceType = copyDeviceModel.DeviceType;
                 Name = copyDeviceModel.Name;
             }

@@ -34,8 +34,8 @@ namespace Balance.WPF.ViewModel
                     else
                     {
                         SelectedDeviceGadget = DeviceGadgets
-                                                .Where(x => 
-                                                        x.ID == SelectedCommonModel.DeviceGadget.ID && 
+                                                .Where(x =>
+                                                        x.ID == SelectedCommonModel.DeviceGadget.ID &&
                                                         x.IsDelete.Equals(false)
                                                       )
                                                 .FirstOrDefault();
@@ -68,7 +68,7 @@ namespace Balance.WPF.ViewModel
             SearchString = "";
         }
 
-        public override string SearchString 
+        public override string SearchString
         {
             get { return searchString; }
             set

@@ -15,7 +15,7 @@ namespace Balance.WPF.ViewModel
         /// </summary>
         public List<DeviceType> DeviceTypes
         {
-            get;set;
+            get; set;
         }
 
         public override DeviceModel SelectedCommonModel
@@ -25,7 +25,7 @@ namespace Balance.WPF.ViewModel
             {
                 base.SelectedCommonModel = value;
 
-              
+
                 if (SelectedCommonModel != null)
                 {
                     if (SelectedCommonModel.DeviceType == null)
@@ -42,7 +42,7 @@ namespace Balance.WPF.ViewModel
                                                 .FirstOrDefault();
                     }
                 }
-               
+
             }
         }
 
@@ -76,10 +76,10 @@ namespace Balance.WPF.ViewModel
             {
                 searchString = value.ToLower();
                 FilteredCommonModels = new ObservableCollection<DeviceModel>(
-                    CommonModels.Where(x => 
+                    CommonModels.Where(x =>
                         x.IsDelete.Equals(false) && (
                             x.Name.ToLower().Contains(SearchString) ||
-                            x.DeviceType.Name.ToLower().Contains(SearchString) 
+                            x.DeviceType.Name.ToLower().Contains(SearchString)
                         ))
                 );
                 OnPropertyChanged(nameof(SearchString));

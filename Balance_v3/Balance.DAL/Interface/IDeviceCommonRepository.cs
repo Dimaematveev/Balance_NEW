@@ -6,7 +6,7 @@ namespace Balance.DAL.Interface
     /// <summary>
     /// Интерфейс хранилище Общее
     /// </summary>
-    public interface IDeviceCommonRepository<T> where T: CommonModel
+    public interface IDeviceCommonRepository<T> where T : CommonModel
     {
         /// <summary>
         /// Удалить [Что-то] из хранилища

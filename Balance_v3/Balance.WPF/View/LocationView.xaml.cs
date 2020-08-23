@@ -11,7 +11,7 @@ namespace Balance.WPF.View
     {
         public LocationView()
         {
-            
+
             InitializeComponent();
             SetEditing();
 
@@ -19,7 +19,7 @@ namespace Balance.WPF.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModelLocator.LocationViewModel.editingAnimation = SetEditing;
-            
+
         }
         public void SetEditing()
         {

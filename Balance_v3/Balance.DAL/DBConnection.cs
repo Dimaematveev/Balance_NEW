@@ -27,7 +27,7 @@ namespace Balance.DAL
             instance = this;
         }
 
-        
+
 
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Balance.DAL
         {
             SqlCommand command = new SqlCommand(query, connection);
             var res = command.ExecuteReader();
-            
+
             return res;
         }
         /// <summary>
@@ -55,12 +55,12 @@ namespace Balance.DAL
                 // указываем, что команда представляет хранимую процедуру
                 CommandType = System.Data.CommandType.StoredProcedure
             };
-            if (sqlParameters != null && sqlParameters.Count > 0) 
+            if (sqlParameters != null && sqlParameters.Count > 0)
             {
                 command.Parameters.AddRange(sqlParameters.ToArray());
             }
             var res = command.ExecuteReader();
-           
+
             return res;
         }
 

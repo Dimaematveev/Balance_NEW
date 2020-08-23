@@ -18,7 +18,7 @@ namespace Balance.DAL.InterfaceRealization
 
         protected override string TABLE_NAME => "DeviceType";
 
-       
+
 
         internal override List<SqlParameter> GetSqlParameters(DeviceType commonModel)
         {
@@ -31,7 +31,7 @@ namespace Balance.DAL.InterfaceRealization
         }
 
 
-       //TODO:Кое-чо закоментил
+        //TODO:Кое-чо закоментил
         internal override DeviceType GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];

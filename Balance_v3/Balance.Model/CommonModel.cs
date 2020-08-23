@@ -56,7 +56,7 @@ namespace Balance.Model
         #endregion
 
         #region Копирование
-        
+
         public abstract void Fill(CommonModel copy);
         public abstract CommonModel Clone();
         /// <summary>
@@ -65,7 +65,7 @@ namespace Balance.Model
         /// <param name="copy">переданный объект</param>
         public void AllFill(CommonModel copy)
         {
-            if (copy != null )
+            if (copy != null)
             {
                 Fill(copy);
                 ID = copy.ID;
@@ -95,7 +95,7 @@ namespace Balance.Model
         /// <summary>
         /// Начинает редактирование объекта.
         /// </summary>
-        public  void BeginEdit()
+        public void BeginEdit()
         {
             if (!isEditing)
             {
@@ -103,7 +103,7 @@ namespace Balance.Model
                 backupData = AllClone();
                 //Console.WriteLine("Started Editing Customer ({0} {1}) with ID {2}", Name, Surname, ID);
             }
-            
+
         }
         /// <summary>
         /// Уничтожает изменения, выполненные после последнего вызова метода BeginEdit().

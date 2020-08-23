@@ -12,7 +12,7 @@ namespace Balance.WPF.ViewModel
     {
 
         public List<CheckType> CheckTypes { get => CheckType.checkTypes; }
-     
+
         public SPSIViewModel() : base(App.SPSIRepository)
         {
             SearchString = "";
@@ -26,7 +26,7 @@ namespace Balance.WPF.ViewModel
                 searchString = GetStringForComparison(value);
 
                 FilteredCommonModels = new ObservableCollection<SPSI>(
-                    CommonModels.Where(x => 
+                    CommonModels.Where(x =>
                         x.IsDelete.Equals(false) && (
                             GetStringForComparison(x.RegisterNumber).Contains(SearchString) ||
                             GetStringForComparison(x.Deal).Contains(SearchString) ||
@@ -36,9 +36,9 @@ namespace Balance.WPF.ViewModel
                 OnPropertyChanged(nameof(SearchString));
             }
         }
-       
+
     }
-   
+
     public class CheckType
     {
         public static readonly List<CheckType> checkTypes = new List<CheckType>()

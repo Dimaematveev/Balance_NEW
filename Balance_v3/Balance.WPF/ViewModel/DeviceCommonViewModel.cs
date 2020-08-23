@@ -12,7 +12,7 @@ namespace Balance.WPF.ViewModel
     /// <summary>
     /// View-Model  [Чего-то]
     /// </summary>
-    public abstract class DeviceCommonViewModel<T> : INotifyPropertyChanged where T:CommonModel,new()
+    public abstract class DeviceCommonViewModel<T> : INotifyPropertyChanged where T : CommonModel, new()
     {
         private readonly IDeviceCommonRepository<T> deviceCommonRepository;
         /// <summary>
@@ -161,7 +161,7 @@ namespace Balance.WPF.ViewModel
         /// <summary>
         /// Поисковая строка
         /// </summary>
-         public abstract string SearchString { get; set; }
+        public abstract string SearchString { get; set; }
         /// <summary>
         /// Изменение [Типа устройства]
         /// </summary>
@@ -226,9 +226,9 @@ namespace Balance.WPF.ViewModel
             SaveCommand = new CustomCommand(Save, delegate { return IsEditing; });
             DeleteCommand = new CustomCommand(Delete, delegate { return SelectedCommonModel != null; });
             IsEditing = false;
-           
+
         }
-        
+
 
         /// <summary>Событие для извещения об изменения свойства</summary>
         public event PropertyChangedEventHandler PropertyChanged;

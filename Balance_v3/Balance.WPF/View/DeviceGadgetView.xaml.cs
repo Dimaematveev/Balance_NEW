@@ -11,7 +11,7 @@ namespace Balance.WPF.View
     {
         public DeviceGadgetView()
         {
-            
+
             InitializeComponent();
             SetEditing();
 
@@ -19,7 +19,7 @@ namespace Balance.WPF.View
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ViewModelLocator.DeviceGadgetViewModel.editingAnimation = SetEditing;
-            
+
         }
         public void SetEditing()
         {

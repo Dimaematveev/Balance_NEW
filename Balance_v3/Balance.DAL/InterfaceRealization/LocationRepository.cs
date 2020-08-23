@@ -13,7 +13,7 @@ namespace Balance.DAL.InterfaceRealization
 
         protected override string TABLE_NAME => "Location";
 
-       
+
 
         internal override List<SqlParameter> GetSqlParameters(Location commonModel)
         {
@@ -25,7 +25,7 @@ namespace Balance.DAL.InterfaceRealization
         }
 
 
-       
+
         internal override Location GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];
