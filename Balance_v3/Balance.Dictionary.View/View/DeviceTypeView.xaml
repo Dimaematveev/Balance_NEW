@@ -3,7 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:UCCommon="clr-namespace:Balance.Dictionary.View.View.UserControls.Common"
+      xmlns:UCCommon="clr-namespace:Balance.View.BL.UserControls.Common;assembly=Balance.View.BL"
       xmlns:UCEdit="clr-namespace:Balance.Dictionary.View.View.UserControls.ElementEdit"
       xmlns:UCViews="clr-namespace:Balance.Dictionary.View.View.UserControls.ElementViews"
       mc:Ignorable="d" 

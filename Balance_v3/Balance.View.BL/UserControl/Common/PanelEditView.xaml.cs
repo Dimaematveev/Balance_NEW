@@ -3,7 +3,7 @@ using Balance.Model;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace Balance.Dictionary.View.View.UserControls.Common
+namespace Balance.View.BL.UserControls.Common
 {
     /// <summary>
     /// Interaction logic for PanelEditView.xaml

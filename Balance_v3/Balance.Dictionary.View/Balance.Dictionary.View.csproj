@@ -112,12 +112,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\UserControls\Common\AddView.xaml.cs">
-      <DependentUpon>AddView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserControls\Common\SearchLineView.xaml.cs">
-      <DependentUpon>SearchLineView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\UserControls\ElementEdit\SPSIEdit.xaml.cs">
       <DependentUpon>SPSIEdit.xaml</DependentUpon>
     </Compile>
@@ -148,9 +142,6 @@
     <Compile Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml.cs">
       <DependentUpon>ViewAllDeviceType.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\Common\PanelEditView.xaml.cs">
-      <DependentUpon>PanelEditView.xaml</DependentUpon>
-    </Compile>
     <Page Include="View\SPSIView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,14 +163,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\HomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControls\Common\AddView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControls\Common\SearchLineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,10 +203,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserControls\Common\PanelEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

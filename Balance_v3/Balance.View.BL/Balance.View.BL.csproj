@@ -69,11 +69,32 @@
   <ItemGroup>
     <Compile Include="Converter\InvertBoolConverter.cs" />
     <Compile Include="Services\IDeviceTypeDataService.cs" />
+    <Compile Include="UserControl\Common\AddView.xaml.cs">
+      <DependentUpon>AddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Common\PanelEditView.xaml.cs">
+      <DependentUpon>PanelEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Common\SearchLineView.xaml.cs">
+      <DependentUpon>SearchLineView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Resources\ButtonAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\ButtonCircle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControl\Common\AddView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControl\Common\PanelEditView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControl\Common\SearchLineView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -107,6 +128,10 @@
     <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Balance.Dictionary.ViewModel\Balance.Dictionary.ViewModel.csproj">
+      <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>
+      <Name>Balance.Dictionary.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Balance.Model\Balance.Model.csproj">
       <Project>{DD40722B-F3A4-4D1C-B393-5B81AA973075}</Project>
       <Name>Balance.Model</Name>

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Balance.Dictionary.View.View.UserControls.Common
+namespace Balance.View.BL.UserControls.Common
 {
     /// <summary>
     /// Interaction logic for SearchLineView.xaml
