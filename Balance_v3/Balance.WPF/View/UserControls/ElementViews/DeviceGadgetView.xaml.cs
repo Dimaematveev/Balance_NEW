@@ -1,4 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Balance.WPF.View.UserControls.ElementViews
 {
@@ -10,6 +13,25 @@ namespace Balance.WPF.View.UserControls.ElementViews
         public DeviceGadgetView()
         {
             InitializeComponent();
+            
+           
         }
+        public IEnumerable ItemsSource
+        {
+            get
+            { 
+               return (IEnumerable)GetValue(ItemsSourceProperty);
+            }
+            set
+            {
+                SetValue(ItemsSourceProperty, value);
+            }
+        }
+
+       
+        public static readonly DependencyProperty ItemsSourceProperty =
+        DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(DeviceGadgetView));
+      
+
     }
 }
