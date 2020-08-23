@@ -1,19 +1,18 @@
-﻿<UserControl x:Class="Balance.WPF.View.UserControls.ElementViews.DeviceGadgetView"
+﻿<UserControl x:Class="Balance.Dictionary.WPF.View.UserControls.ElementViews.ViewAllLocation"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              Background="White"
-             Name="Control"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <ListBox x:Name="ListBox"
+        <ListBox
                 Background="Transparent"
                 ScrollViewer.CanContentScroll="False"
                 BorderBrush="Transparent"
                 Margin="0,0,0,0"
-                ItemsSource="{Binding ItemsSource, ElementName=Control}"
+                ItemsSource="{Binding FilteredCommonModels}"
                 SelectedValue="{Binding SelectedCommonModel}"
                 SelectedIndex="0">
             <ListBox.ItemTemplate>
@@ -33,7 +32,6 @@
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
-            
         </ListBox>
     </Grid>
 </UserControl>

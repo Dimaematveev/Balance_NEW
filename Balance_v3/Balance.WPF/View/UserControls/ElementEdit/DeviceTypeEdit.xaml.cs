@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Balance.WPF.View.UserControls.ElementEdit
+namespace Balance.Dictionary.WPF.View.UserControls.ElementEdit
 {
     /// <summary>
     /// Interaction logic for DeviceTypeEdit.xaml

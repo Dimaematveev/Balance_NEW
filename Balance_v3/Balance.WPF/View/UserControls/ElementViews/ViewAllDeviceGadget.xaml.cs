@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Balance.WPF.View.UserControls.ElementViews
+namespace Balance.Dictionary.WPF.View.UserControls.ElementViews
 {
     /// <summary>
     /// Interaction logic for DeviceGadgetView.xaml
     /// </summary>
-    public partial class DeviceGadgetView : UserControl
+    public partial class ViewAllDeviceGadget : UserControl
     {
-        public DeviceGadgetView()
+        public ViewAllDeviceGadget()
         {
             InitializeComponent();
             
@@ -30,7 +30,7 @@ namespace Balance.WPF.View.UserControls.ElementViews
 
        
         public static readonly DependencyProperty ItemsSourceProperty =
-        DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(DeviceGadgetView));
+        DependencyProperty.Register("ItemsSource", typeof(IEnumerable), typeof(ViewAllDeviceGadget));
       
 
     }

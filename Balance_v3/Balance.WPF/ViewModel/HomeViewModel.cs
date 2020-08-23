@@ -1,10 +1,10 @@
-﻿using Balance.WPF.View;
+﻿using Balance.Dictionary.WPF.View;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 
-namespace Balance.WPF.ViewModel
+namespace Balance.Dictionary.WPF.ViewModel
 {
     /// <summary>
     /// View-Model Домашней страницы

@@ -13,7 +13,7 @@
         <Style.Setters>
             <Setter Property="Border.Background" Value="Blue" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontFamily" Value="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets" />
+            <Setter Property="FontFamily" Value="/Balance.Dictionary.WPF;component/Fonts/#Segoe MDL2 Assets" />
             <Setter Property="FontSize" Value="20" />
             <Setter Property="Margin" Value="10" />
         </Style.Setters>

@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Balance.WPF.View.UserControls.Common
+namespace Balance.Dictionary.WPF.View.UserControls.Common
 {
     /// <summary>
     /// Interaction logic for SearchLineView.xaml

@@ -1,7 +1,7 @@
 ﻿using Balance.Model.Dictionary;
 using System.Collections.Generic;
 
-namespace Balance.WPF.Services
+namespace Balance.Dictionary.WPF.Services
 {
     /// <summary>
     /// Интерфейс Службы данных [Типов устройств]

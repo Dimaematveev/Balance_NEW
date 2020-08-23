@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Balance.WPF.ViewModel
+namespace Balance.Dictionary.WPF.ViewModel
 {
     /// <summary>
     /// View-Model  [Типа устройства]

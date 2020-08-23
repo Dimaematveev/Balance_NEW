@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace Balance.WPF.View.UserControls.ElementViews
+namespace Balance.Dictionary.WPF.View.UserControls.ElementViews
 {
     /// <summary>
     /// Interaction logic for DeviceGadgetView.xaml
     /// </summary>
-    public partial class SPSIView : UserControl
+    public partial class ViewAllSPSI : UserControl
     {
-        public SPSIView()
+        public ViewAllSPSI()
         {
             InitializeComponent();
         }

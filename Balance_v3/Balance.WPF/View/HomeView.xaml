@@ -1,4 +1,4 @@
-﻿<Window x:Class="Balance.WPF.View.HomeView"
+﻿<Window x:Class="Balance.Dictionary.WPF.View.HomeView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -37,7 +37,7 @@
                         <TextBlock
                             FontSize="32"
                             Text="{Binding Icon}"
-                            FontFamily="/Balance.WPF;component/Fonts/#Segoe MDL2 Assets"
+                            FontFamily="/Balance.Dictionary.WPF;component/Fonts/#Segoe MDL2 Assets"
                             HorizontalAlignment="Center" />
                         <!--</Grid>-->
                         <TextBlock

@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace Balance.WPF.View.UserControls.ElementViews
+namespace Balance.Dictionary.WPF.View.UserControls.ElementViews
 {
     /// <summary>
     /// Interaction logic for DeviceGadgetView.xaml
     /// </summary>
-    public partial class LocationView : UserControl
+    public partial class ViewAllLocation : UserControl
     {
-        public LocationView()
+        public ViewAllLocation()
         {
             InitializeComponent();
         }

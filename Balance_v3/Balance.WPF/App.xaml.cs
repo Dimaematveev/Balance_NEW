@@ -4,7 +4,7 @@ using Balance.DAL.InterfaceRealization;
 using Balance.Model.Dictionary;
 using System.Windows;
 
-namespace Balance.WPF
+namespace Balance.Dictionary.WPF
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,8 +1,8 @@
-﻿using Balance.WPF.ViewModel;
+﻿using Balance.Dictionary.WPF.ViewModel;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Balance.WPF
+namespace Balance.Dictionary.WPF
 {
     /// <summary>
     /// View-Model абстракция всей системы

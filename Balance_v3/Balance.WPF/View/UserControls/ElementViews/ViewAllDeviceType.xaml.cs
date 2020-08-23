@@ -1,13 +1,13 @@
 ﻿using System.Windows.Controls;
 
-namespace Balance.WPF.View.UserControls.ElementViews
+namespace Balance.Dictionary.WPF.View.UserControls.ElementViews
 {
     /// <summary>
     /// Interaction logic for DeviceTypeView.xaml
     /// </summary>
-    public partial class DeviceTypeView : UserControl
+    public partial class ViewAllDeviceType : UserControl
     {
-        public DeviceTypeView()
+        public ViewAllDeviceType()
         {
             InitializeComponent();
         }

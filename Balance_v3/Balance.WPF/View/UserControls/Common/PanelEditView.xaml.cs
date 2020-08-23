@@ -1,9 +1,9 @@
 ﻿using Balance.Model;
-using Balance.WPF.ViewModel;
+using Balance.Dictionary.WPF.ViewModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
-namespace Balance.WPF.View.UserControls.Common
+namespace Balance.Dictionary.WPF.View.UserControls.Common
 {
     /// <summary>
     /// Interaction logic for PanelEditView.xaml

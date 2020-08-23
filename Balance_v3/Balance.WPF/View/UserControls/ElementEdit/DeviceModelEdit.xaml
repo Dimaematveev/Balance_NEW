@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Balance.WPF.View.UserControls.ElementEdit.DeviceModelEdit"
+﻿<UserControl x:Class="Balance.Dictionary.WPF.View.UserControls.ElementEdit.DeviceModelEdit"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

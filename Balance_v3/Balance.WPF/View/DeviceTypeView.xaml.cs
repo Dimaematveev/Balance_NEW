@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Balance.WPF.View
+namespace Balance.Dictionary.WPF.View
 {
     /// <summary>
     /// Interaction logic for DeviceTypeView.xaml

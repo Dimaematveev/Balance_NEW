@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Balance.WPF.View
+namespace Balance.Dictionary.WPF.View
 {
     /// <summary>
     /// Interaction logic for HomeView.xaml
