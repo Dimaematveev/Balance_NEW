@@ -1,8 +1,8 @@
 ﻿using Balance.BL.Interfaces;
 using Balance.BL.Utility;
 using Balance.DAL.Interface;
-using Balance.ViewModel.Dictionary.InterfaceRealization;
 using Balance.Model;
+using Balance.ViewModel.Dictionary.InterfaceRealization;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -139,7 +139,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         }
 
 
-        
+
 
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
             if (!IsEditing)
             {
                 SelectedCommonModel.CancelEdit();
-                 messageShow.ShowMessage("Редактирование отменено", TypeMessage.Question);
+                messageShow.ShowMessage("Редактирование отменено", TypeMessage.Question);
             }
             else
                 SelectedCommonModel.BeginEdit();

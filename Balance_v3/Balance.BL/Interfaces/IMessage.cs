@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Balance.BL.Interfaces
+﻿namespace Balance.BL.Interfaces
 {
     public abstract class IMessage
     {
         public abstract void ShowMessage(string message, TypeMessage typeMessage);
         public bool Result { get; set; }
-        public void ShowMessage(string message) 
+        public void ShowMessage(string message)
         {
-            ShowMessage(message,TypeMessage.None);
+            ShowMessage(message, TypeMessage.None);
         }
 
-        
+
     }
     public enum TypeMessage
     {

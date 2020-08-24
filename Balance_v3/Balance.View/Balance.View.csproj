@@ -52,6 +52,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -88,6 +91,10 @@
     <Content Include="Fonts\FontForge-2020-03-14-Windows.exe" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\ButtonAnimation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

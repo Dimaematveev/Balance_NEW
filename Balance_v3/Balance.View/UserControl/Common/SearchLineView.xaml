@@ -17,7 +17,7 @@
                 Opacity=".56" 
                 VerticalAlignment="Center" 
                 Text="&#xE094;" 
-                FontFamily="pack://application:,,,/Balance.View;component/Fonts/#Segoe MDL2 Assets">
+                FontFamily="{StaticResource IconsFont}">
         </TextBlock>
         <TextBox 
                 VerticalAlignment="Center" 
