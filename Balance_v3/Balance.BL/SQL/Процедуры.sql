@@ -6,7 +6,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceGadget]
 	@TypeProcedure nvarchar(10) = 'Select' 
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET XACT_ABORT, NOCOUNT ON
 	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
@@ -41,7 +41,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceType]
 	@TypeProcedure nvarchar(10) = 'Select' 
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET XACT_ABORT, NOCOUNT ON
 	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
@@ -75,7 +75,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceModel]
 	@TypeProcedure nvarchar(10) = 'Select' 
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET XACT_ABORT, NOCOUNT ON
 	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
@@ -112,7 +112,7 @@ CREATE PROCEDURE [dic].[WorkingWith_SPSI]
 	@TypeProcedure nvarchar(10) = 'Select' 
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET XACT_ABORT, NOCOUNT ON
 	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
@@ -146,7 +146,7 @@ CREATE PROCEDURE [dic].[WorkingWith_Location]
 	@TypeProcedure nvarchar(10) = 'Select' 
 AS
 BEGIN
-	SET NOCOUNT ON;
+	SET XACT_ABORT, NOCOUNT ON
 	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
