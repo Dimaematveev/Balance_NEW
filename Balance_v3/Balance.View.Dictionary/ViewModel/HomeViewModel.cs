@@ -1,4 +1,9 @@
-﻿using Balance.View.Dictionary.View;
+﻿using Balance.BL.Interfaces;
+using Balance.Model;
+using Balance.View.Dictionary.View;
+using Balance.ViewModel.Interface;
+using Balance.ViewModel.InterfaceRealization;
+using Balance.ViewModel.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -28,6 +33,11 @@ namespace Balance.View.Dictionary.ViewModel
             }
         }
         /// <summary>
+        /// Вывод сообщений
+        /// </summary>
+        private readonly IMessage messageShow;
+
+        /// <summary>
         /// Выбранная вкладка
         /// </summary>
         private Tab selectedTab;
@@ -39,6 +49,18 @@ namespace Balance.View.Dictionary.ViewModel
             get { return selectedTab; }
             set
             {
+                if (TabPage?.DataContext is ICommonViewModel commonViewModel)
+                {
+                    if (commonViewModel.IsEditing)
+                    {
+                        messageShow.ShowMessage("Вы переходите на другую вкладку. Все изменения будут потеряны. Продолжить?", "Переход", TypeMessage.Question);
+                        if (!messageShow.Result)
+                        {
+                            return;
+                        }
+                    }
+                   
+                }
                 selectedTab = value;
                 OnPropertyChanged(nameof(SelectedTab));
                 TabPage = selectedTab.OpenNewPage();
@@ -62,7 +84,7 @@ namespace Balance.View.Dictionary.ViewModel
         }
         public HomeViewModel()
         {
-
+            messageShow = new MessageShow();
             Tabs = new ObservableCollection<Tab>
             {
                 new Tab() { Title = "Названия таблиц", Icon = '\uE155', OpenNewPage=new Func<Page>( () => {return new DeviceGadgetView(); }) },

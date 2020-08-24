@@ -133,6 +133,10 @@
       <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>
       <Name>Balance.ViewModel.Dictionary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel\Balance.ViewModel.csproj">
+      <Project>{C448BABA-514E-4B12-9AB7-8956B30E5CC9}</Project>
+      <Name>Balance.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

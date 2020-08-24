@@ -79,8 +79,8 @@ namespace Balance.DAL.InterfaceRealization
                 return false;
             }
             newcommonModel.Read();
-            commonModel.AllFill(GetDeviceTypeFromDataReader(newcommonModel));
-            commonModelToUpdate = commonModel;
+            commonModel.Fill(GetDeviceTypeFromDataReader(newcommonModel));
+            commonModelToUpdate.Fill(commonModel);
             newcommonModel.Close();
             return true;
         }

@@ -217,6 +217,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Balance.BL\Balance.BL.csproj">
+      <Project>{B02E8EBB-7759-43D5-8456-A641029E1C8F}</Project>
+      <Name>Balance.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Balance.DAL\Balance.DAL.csproj">
       <Project>{807BB36E-FDFA-4683-BC5E-2490DFDD8E3D}</Project>
       <Name>Balance.DAL</Name>
@@ -232,6 +236,10 @@
     <ProjectReference Include="..\Balance.ViewModel.Dictionary\Balance.ViewModel.Dictionary.csproj">
       <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>
       <Name>Balance.ViewModel.Dictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel\Balance.ViewModel.csproj">
+      <Project>{C448BABA-514E-4B12-9AB7-8956B30E5CC9}</Project>
+      <Name>Balance.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Balance.View\Balance.View.csproj">
       <Project>{b2ba44a2-ab3b-4c91-8f66-fe3e34fb0f15}</Project>

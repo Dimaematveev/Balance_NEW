@@ -2,29 +2,29 @@
 using Balance.BL.Utility;
 using Balance.DAL.Interface;
 using Balance.Model;
-using Balance.ViewModel.Dictionary.InterfaceRealization;
+using Balance.ViewModel.Interface;
+using Balance.ViewModel.InterfaceRealization;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace Balance.ViewModel.Dictionary.ViewModel
+namespace Balance.ViewModel.ViewModel
 {
     /// <summary>
     /// View-Model  [Чего-то]
     /// </summary>
-    public abstract class DeviceCommonViewModel<T> : INotifyPropertyChanged where T : CommonModel, new()
+    public abstract class CommonViewModel<T> : INotifyPropertyChanged, ICommonViewModel<T>, ICommonViewModel where T : CommonModel, new()
     {
+        //TODO:Не могу сформулировать
         protected readonly IDeviceCommonRepository<T> deviceCommonRepository;
         /// <summary>
         /// Динамическая коллекция [Типов устройств] commonModels
         /// </summary>
         private ObservableCollection<T> commonModels;
 
-        /// <summary>
-        /// Динамическая коллекция [Типов устройств]
-        /// </summary>
+    
         public ObservableCollection<T> CommonModels
         {
             get { return commonModels; }
@@ -39,9 +39,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// </summary>
         private ObservableCollection<T> filteredCommonModels;
 
-        /// <summary>
-        /// Динамическая коллекция отфильтрованных [Типов устройств]
-        /// </summary>
+  
         public ObservableCollection<T> FilteredCommonModels
         {
             get
@@ -51,16 +49,9 @@ namespace Balance.ViewModel.Dictionary.ViewModel
             set
             {
                 filteredCommonModels = value;
-                SelectedCommonModel = filteredCommonModels.FirstOrDefault();
                 OnPropertyChanged(nameof(FilteredCommonModels));
             }
         }
-
-        /// <summary>
-        /// Выбранный [Тип устройства]
-        /// </summary>
-        private T selectedCommonModel;
-
         /// <summary>
         /// Получить строку для сравнения в фильтре
         /// </summary>
@@ -75,15 +66,30 @@ namespace Balance.ViewModel.Dictionary.ViewModel
             return obj.ToString().ToLower();
         }
         /// <summary>
-        /// Выбранная [Тип устройства]
+        /// Выбранный [Тип устройства]
         /// </summary>
+        private T selectedCommonModel;
+
+        
+       
         public virtual T SelectedCommonModel
         {
             get { return selectedCommonModel; }
             set
             {
                 if (SelectedCommonModel != null)
+                {
+                    if (IsEditing)
+                    {
+                        messageShow.ShowMessage("Вы переходите на другую вкладку. Все изменения будут потеряны. Продолжить?", "Переход", TypeMessage.Question);
+                        if (!messageShow.Result)
+                        {
+                            return;
+                        }
+                    }
+                   
                     SelectedCommonModel.CancelEdit();
+                }
                 selectedCommonModel = value;
                 OnPropertyChanged(nameof(SelectedCommonModel));
 
@@ -95,12 +101,10 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
-        private object currentEditIcon = '\uE104';
+        private char currentEditIcon = '\uE104';
 
-        /// <summary>
-        /// текущий значок редактирования
-        /// </summary>
-        public object CurrentEditIcon
+   
+        public char CurrentEditIcon
         {
             get { return currentEditIcon; }
             set
@@ -115,17 +119,13 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// </summary>
         private readonly IMessage messageShow;
 
-        /// <summary>
-        /// Анимация кнопок Удаление и сохранения
-        /// </summary>
-        public Action editingAnimation;
+        
+        public Action EditingAnimation { get; set; }
         /// <summary>
         /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
         /// </summary>
         private bool isEditing;
-        /// <summary>
-        /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
-        /// </summary>
+       
         public bool IsEditing
         {
             get { return isEditing; }
@@ -137,38 +137,24 @@ namespace Balance.ViewModel.Dictionary.ViewModel
                 else
                     CurrentEditIcon = '\uE104';
                 OnPropertyChanged(nameof(IsEditing));
-                editingAnimation?.Invoke();
+                EditingAnimation?.Invoke();
             }
         }
 
 
-
-
-
-        /// <summary>
-        /// Команда добавления [Типа устройства]
-        /// </summary>
         public ICommand AddCommand { get; set; }
-        /// <summary>
-        /// Команда Изменения [Типа устройства]
-        /// </summary>
+        
         public ICommand EditCommand { get; set; }
-        /// <summary>
-        /// Команда Сохранения [Типа устройства]
-        /// </summary>
+      
         public ICommand SaveCommand { get; set; }
-        /// <summary>
-        /// Команда Удаления [Типа устройства]
-        /// </summary>
+       
         public ICommand DeleteCommand { get; set; }
 
         /// <summary>
         /// Поисковая строка
         /// </summary>
         protected string searchString;
-        /// <summary>
-        /// Поисковая строка
-        /// </summary>
+       
         public abstract string SearchString { get; set; }
         /// <summary>
         /// Изменение [Типа устройства]
@@ -266,7 +252,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         }
 
 
-        public DeviceCommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
+        public CommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
         {
             this.deviceCommonRepository = deviceCommonRepository;
             CommonModels = new ObservableCollection<T>(deviceCommonRepository.GetAll());

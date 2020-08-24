@@ -1,5 +1,6 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model.Dictionary;
+using Balance.ViewModel.ViewModel;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class SPSIViewModel : DeviceCommonViewModel<SPSI>
+    public class SPSIViewModel : CommonViewModel<SPSI>
     {
 
 

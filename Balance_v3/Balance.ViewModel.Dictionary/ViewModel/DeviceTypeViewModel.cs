@@ -1,5 +1,6 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model.Dictionary;
+using Balance.ViewModel.ViewModel;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceTypeViewModel : DeviceCommonViewModel<DeviceType>
+    public class DeviceTypeViewModel : CommonViewModel<DeviceType>
     {
         private readonly IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository;
         /// <summary>

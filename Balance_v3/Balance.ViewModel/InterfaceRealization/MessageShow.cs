@@ -3,7 +3,7 @@ using Balance.BL.Interfaces;
 using System;
 using System.Windows;
 
-namespace Balance.ViewModel.Dictionary.InterfaceRealization
+namespace Balance.ViewModel.InterfaceRealization
 {
     public class MessageShow : IMessage
     {

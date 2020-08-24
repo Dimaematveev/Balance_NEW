@@ -1,5 +1,6 @@
 ﻿using Balance.Model;
 using Balance.ViewModel.Dictionary.ViewModel;
+using Balance.ViewModel.ViewModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 
@@ -18,7 +19,7 @@ namespace Balance.View.UserControls.Common
 
         public void SetEditing<T>(object dataContext) where T : CommonModel, new()
         {
-            if (dataContext is DeviceCommonViewModel<T> viewModel)
+            if (dataContext is CommonViewModel<T> viewModel)
             {
                 if (viewModel.IsEditing)
                 {

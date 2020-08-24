@@ -18,7 +18,7 @@ namespace Balance.View.Dictionary.View
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelLocator.SPSIViewModel.editingAnimation = SetEditing;
+            ViewModelLocator.SPSIViewModel.EditingAnimation = SetEditing;
 
         }
         public void SetEditing()
