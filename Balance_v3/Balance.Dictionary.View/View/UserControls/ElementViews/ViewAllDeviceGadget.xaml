@@ -6,22 +6,18 @@
              mc:Ignorable="d" 
              Background="White"
              Name="Control"
-             d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/TempResource.xaml"/>
-    </UserControl.Resources>
+             d:DataContext="{StaticResource DeviceGadgetMany}"
+             d:DesignHeight="300" d:DesignWidth="250">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="107*"/>
-            <RowDefinition Height="118*"/>
-        </Grid.RowDefinitions>
-        <ListBox x:Name="ListBox"
+        <ListBox
                 Background="Transparent"
                 ScrollViewer.CanContentScroll="False"
                 BorderBrush="Transparent"
                 Margin="0,0,0,0"
-                ItemsSource="{Binding ItemsSource, ElementName=Control}"
-                SelectedValue="{Binding SelectedCommonModel}"
+                ItemsSource="{Binding Path=DataContext, ElementName=Control}"
+                SelectedValue="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.SelectedCommonModel}"
                 SelectedIndex="0" Grid.RowSpan="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>

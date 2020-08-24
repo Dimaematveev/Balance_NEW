@@ -8,13 +8,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/ButtonCircle.xaml"/>
-                
+                <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/StaticResources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/TempResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <converter:InvertBoolConverter x:Key="invertBoolConverter"/>
             <local:ViewModelLocator x:Key="mainViewModelLocator"/>
             <FontFamily  x:Key="IconsFont">pack://application:,,,/Balance.View.BL;component/Fonts/#Segoe MDL2 Assets</FontFamily>
 
-            <UserControl x:Key="AddView">pack://application:,,,/Balance.View.BL;component/Fonts/#Segoe MDL2 Assets</UserControl>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

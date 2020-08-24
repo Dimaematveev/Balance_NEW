@@ -70,4 +70,17 @@
             }
         }
     }
+
+
+    public class CheckType
+    {
+        public string Name { get; set; }
+        public bool? IsSp { get; set; }
+
+        public string this[bool? isSp] { get => Name; set => Name = value; }
+        public bool? this[string Name] { get => IsSp; set => IsSp = value; }
+
+
+
+    }
 }

@@ -5,15 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              Background="White"
-             d:DesignHeight="450" d:DesignWidth="800">
+             Name="Control"
+             d:DataContext="{StaticResource LocationMany}"
+             d:DesignHeight="300" d:DesignWidth="250">
     <Grid>
         <ListBox
                 Background="Transparent"
                 ScrollViewer.CanContentScroll="False"
                 BorderBrush="Transparent"
                 Margin="0,0,0,0"
-                ItemsSource="{Binding FilteredCommonModels}"
-                SelectedValue="{Binding SelectedCommonModel}"
+               ItemsSource="{Binding Path=DataContext, ElementName=Control}"
+                SelectedValue="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.SelectedCommonModel}"
                 SelectedIndex="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>

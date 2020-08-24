@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Collections;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Balance.Dictionary.View.View.UserControls.ElementViews
 {
@@ -11,5 +13,6 @@ namespace Balance.Dictionary.View.View.UserControls.ElementViews
         {
             InitializeComponent();
         }
+      
     }
 }

@@ -5,11 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              Background="White"
+             d:DataContext="{StaticResource SPSIOne}"
              d:DesignHeight="250" d:DesignWidth="400">
-    <UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/TempResource.xaml"/>
-    </UserControl.Resources>
-    <Grid d:DataContext="{StaticResource SPSIOne}">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
@@ -89,14 +87,11 @@
                     Content="_Тип проверки:"
                     Margin="0,0,2,0"/>
                 <ComboBox
-                    
                     Grid.Column="1"
                     IsEnabled="{Binding 
                         RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
                         Path=DataContext.IsEditing}"
-                   ItemsSource="{Binding 
-                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                        Path=DataContext.CheckTypes}"
+                   ItemsSource="{StaticResource CheckTypes}"
                            
                     SelectedValue="{Binding IsSp}"
                     DisplayMemberPath="Name"

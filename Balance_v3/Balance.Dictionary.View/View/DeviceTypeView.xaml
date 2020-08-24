@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
             <UCCommon:SearchLineView Grid.Row="0"/>
             <Grid Grid.Row="1">
-                <UCViews:ViewAllDeviceType/>
+                <UCViews:ViewAllDeviceType DataContext="{Binding FilteredCommonModels}" d:DataContext="{StaticResource DeviceTypeMany}"/>
                 <UCCommon:AddView HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20"/>
             </Grid>
         </Grid>
@@ -36,7 +36,7 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <UCEdit:DeviceTypeEdit Grid.Row="0" />
+                <UCEdit:DeviceTypeEdit d:DataContext="{StaticResource DeviceTypeOne}" Grid.Row="0" />
                 <UCCommon:PanelEditView x:Name="PanelEditView" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10"/>
             </Grid>
         </Grid>

@@ -5,11 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" 
              Background="White"
+             d:DataContext="{StaticResource LocationOne}"
              d:DesignHeight="100" d:DesignWidth="500">
-    <UserControl.Resources>
-        <ResourceDictionary Source="pack://application:,,,/Balance.View.BL;component/Resources/TempResource.xaml"/>
-    </UserControl.Resources>
-    <Grid d:DataContext="{StaticResource LocationOne}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition/>
