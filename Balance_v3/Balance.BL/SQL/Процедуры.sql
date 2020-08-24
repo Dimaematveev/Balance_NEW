@@ -7,7 +7,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceGadget]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
 		select * from [dic].[DeviceGadget] 
@@ -42,7 +42,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceType]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
 		select * from [dic].[DeviceType] 
@@ -76,7 +76,7 @@ CREATE PROCEDURE [dic].[WorkingWith_DeviceModel]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
 		select * from [dic].[DeviceModel] 
@@ -113,7 +113,7 @@ CREATE PROCEDURE [dic].[WorkingWith_SPSI]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
 		select * from [dic].[SpSi] where [ID] > 0
@@ -147,7 +147,7 @@ CREATE PROCEDURE [dic].[WorkingWith_Location]
 AS
 BEGIN
 	SET NOCOUNT ON;
-
+	SET LANGUAGE Russian
 	if @TypeProcedure='Select'
 	begin
 		select * from [dic].[Location] where [ID] > 0
