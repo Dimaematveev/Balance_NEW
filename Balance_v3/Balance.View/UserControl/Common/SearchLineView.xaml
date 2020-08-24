@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Balance.View.UserControls.Common.SearchLineView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock 
+                Margin="5,0,0,0" 
+                FontSize="18" 
+                Foreground="Gray" 
+                Opacity=".56" 
+                VerticalAlignment="Center" 
+                Text="&#xE094;" 
+                FontFamily="pack://application:,,,/Balance.View;component/Fonts/#Segoe MDL2 Assets">
+        </TextBlock>
+        <TextBox 
+                VerticalAlignment="Center" 
+                BorderBrush="CornflowerBlue" 
+                Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
+                Grid.Column="1" 
+                Margin="8 0 8 0" 
+                BorderThickness="1"  />
+    </Grid>
+
+</UserControl>

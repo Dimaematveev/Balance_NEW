@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C43E7A9-A418-4DA0-AFEA-8DB244C66B01}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Balance.View.Dictionary</RootNamespace>
+    <AssemblyName>Balance.View.Dictionary</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="View\SPSIView.xaml.cs">
+      <DependentUpon>SPSIView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LocationView.xaml.cs">
+      <DependentUpon>LocationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceModelView.xaml.cs">
+      <DependentUpon>DeviceModelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceGadgetView.xaml.cs">
+      <DependentUpon>DeviceGadgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeviceTypeView.xaml.cs">
+      <DependentUpon>DeviceTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\SPSIEdit.xaml.cs">
+      <DependentUpon>SPSIEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\LocationEdit.xaml.cs">
+      <DependentUpon>LocationEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml.cs">
+      <DependentUpon>DeviceGadgetEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml.cs">
+      <DependentUpon>DeviceModelEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceGadget.xaml.cs">
+      <DependentUpon>ViewAllDeviceGadget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\ViewAllSPSI.xaml.cs">
+      <DependentUpon>ViewAllSPSI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\ViewAllLocation.xaml.cs">
+      <DependentUpon>ViewAllLocation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceModel.xaml.cs">
+      <DependentUpon>ViewAllDeviceModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementEdit\DeviceTypeEdit.xaml.cs">
+      <DependentUpon>DeviceTypeEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml.cs">
+      <DependentUpon>ViewAllDeviceType.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\SPSIView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\LocationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DeviceModelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DeviceGadgetView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DeviceTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\SPSIEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\LocationEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\ViewAllDeviceGadget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\ViewAllSPSI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\ViewAllLocation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\ViewAllDeviceModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ElementEdit\DeviceTypeEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Balance.DAL\Balance.DAL.csproj">
+      <Project>{807BB36E-FDFA-4683-BC5E-2490DFDD8E3D}</Project>
+      <Name>Balance.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.Model\Balance.Model.csproj">
+      <Project>{DD40722B-F3A4-4D1C-B393-5B81AA973075}</Project>
+      <Name>Balance.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.View.BL\Balance.View.BL.csproj">
+      <Project>{f188140e-0fc1-4578-9d81-b43dc587ecc0}</Project>
+      <Name>Balance.View.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel.Dictionary\Balance.ViewModel.Dictionary.csproj">
+      <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>
+      <Name>Balance.ViewModel.Dictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.View\Balance.View.csproj">
+      <Project>{b2ba44a2-ab3b-4c91-8f66-fe3e34fb0f15}</Project>
+      <Name>Balance.View</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

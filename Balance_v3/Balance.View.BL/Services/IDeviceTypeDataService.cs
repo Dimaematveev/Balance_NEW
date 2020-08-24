@@ -1,7 +1,7 @@
 ﻿using Balance.Model.Dictionary;
 using System.Collections.Generic;
 
-namespace Balance.Dictionary.View.Services
+namespace Balance.View.Dictionary.Services
 {
     /// <summary>
     /// Интерфейс Службы данных [Типов устройств]

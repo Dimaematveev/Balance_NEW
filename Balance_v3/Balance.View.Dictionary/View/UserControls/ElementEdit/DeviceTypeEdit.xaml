@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Balance.View.Dictionary.View.UserControls.ElementEdit.DeviceTypeEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             Background="White"
+             d:DataContext="{StaticResource DeviceTypeOne}"
+             d:DesignHeight="100" d:DesignWidth="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Width="80" Height="80" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" RenderTransformOrigin="0.5,0.5">
+            <Ellipse Fill="Blue"/>
+            <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
+        </Grid>
+
+
+
+        <Grid VerticalAlignment="Center" Margin="10" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label
+                            Grid.Column="0"
+                            Content="_Название таблицы:"
+                            Margin="0,0,2,0"
+                        />
+                <ComboBox
+                    Grid.Column="1"
+                    IsEnabled="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.IsEditing}"
+                    ItemsSource="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.DeviceGadgets}"
+                           
+                    SelectedValue="{Binding DeviceGadget}"
+                    DisplayMemberPath="Name"
+                    IsEditable="True"
+                    Text="{Binding DeviceGadget.Name}"
+                    Margin="5,0,5,0"
+                    BorderBrush="CornflowerBlue"
+                    BorderThickness="1" 
+                />
+            </Grid>
+            <Grid Grid.Row="1" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label
+                            Grid.Column="0"
+                            Content="_Тип устройства:"
+                            Margin="0,0,2,0"
+                        />
+                <TextBox
+                            Grid.Column="1"
+                            IsReadOnly="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                                Path=DataContext.IsEditing,
+                                Converter={StaticResource invertBoolConverter}}"
+                            Text="{Binding Name, Mode=TwoWay}" 
+                            Margin="5,0,5,0"
+                            BorderBrush="CornflowerBlue"
+                            BorderThickness="1" 
+                        />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
