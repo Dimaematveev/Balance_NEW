@@ -10,6 +10,7 @@ namespace Balance.Dictionary.View
     /// </summary>
     public class ViewModelLocator
     {
+        
         private static HomeViewModel homeViewModel = null;
         private static DeviceTypeViewModel deviceTypeViewModel = null;
         private static DeviceModelViewModel deviceModelViewModel = null;
@@ -28,7 +29,8 @@ namespace Balance.Dictionary.View
             deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
             locationViewModel = new LocationViewModel(App.locationRepository);
             sPSIViewModel = new SPSIViewModel(App.SPSIRepository);
-
+           
+            
         }
 
         public static HomeViewModel HomeViewModel

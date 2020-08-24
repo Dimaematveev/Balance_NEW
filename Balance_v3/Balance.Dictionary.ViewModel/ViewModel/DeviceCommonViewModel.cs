@@ -1,5 +1,7 @@
-﻿using Balance.BL.Utility;
+﻿using Balance.BL.Interfaces;
+using Balance.BL.Utility;
 using Balance.DAL.Interface;
+using Balance.Dictionary.ViewModel.InterfaceRealization;
 using Balance.Model;
 using System;
 using System.Collections.ObjectModel;
@@ -88,6 +90,8 @@ namespace Balance.Dictionary.ViewModel.ViewModel
                 IsEditing = false;
             }
         }
+
+
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
@@ -105,6 +109,9 @@ namespace Balance.Dictionary.ViewModel.ViewModel
                 OnPropertyChanged(nameof(CurrentEditIcon));
             }
         }
+
+        private readonly IMessage messageShow;
+
         /// <summary>
         /// Анимация кнопок Удаление и сохранения
         /// </summary>
@@ -131,6 +138,8 @@ namespace Balance.Dictionary.ViewModel.ViewModel
             }
         }
 
+
+        
 
 
         /// <summary>
@@ -166,7 +175,10 @@ namespace Balance.Dictionary.ViewModel.ViewModel
         {
             IsEditing = !IsEditing;
             if (!IsEditing)
+            {
                 SelectedCommonModel.CancelEdit();
+                 messageShow.ShowMessage("Редактирование отменено", TypeMessage.Question);
+            }
             else
                 SelectedCommonModel.BeginEdit();
         }
@@ -221,6 +233,7 @@ namespace Balance.Dictionary.ViewModel.ViewModel
             EditCommand = new CustomCommand(Edit, delegate { return SelectedCommonModel != null; });
             SaveCommand = new CustomCommand(Save, delegate { return IsEditing; });
             DeleteCommand = new CustomCommand(Delete, delegate { return SelectedCommonModel != null; });
+            messageShow = new MessageShow();
             IsEditing = false;
 
         }
