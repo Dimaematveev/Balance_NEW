@@ -7,7 +7,6 @@ using Balance.ViewModel.InterfaceRealization;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Input;
 
 namespace Balance.ViewModel.ViewModel
@@ -24,7 +23,7 @@ namespace Balance.ViewModel.ViewModel
         /// </summary>
         private ObservableCollection<T> commonModels;
 
-    
+
         public ObservableCollection<T> CommonModels
         {
             get { return commonModels; }
@@ -39,7 +38,7 @@ namespace Balance.ViewModel.ViewModel
         /// </summary>
         private ObservableCollection<T> filteredCommonModels;
 
-  
+
         public ObservableCollection<T> FilteredCommonModels
         {
             get
@@ -70,8 +69,8 @@ namespace Balance.ViewModel.ViewModel
         /// </summary>
         private T selectedCommonModel;
 
-        
-       
+
+
         public virtual T SelectedCommonModel
         {
             get { return selectedCommonModel; }
@@ -87,7 +86,7 @@ namespace Balance.ViewModel.ViewModel
                             return;
                         }
                     }
-                   
+
                     SelectedCommonModel.CancelEdit();
                 }
                 selectedCommonModel = value;
@@ -103,7 +102,7 @@ namespace Balance.ViewModel.ViewModel
         /// </summary>
         private char currentEditIcon = '\uE104';
 
-   
+
         public char CurrentEditIcon
         {
             get { return currentEditIcon; }
@@ -119,13 +118,13 @@ namespace Balance.ViewModel.ViewModel
         /// </summary>
         private readonly IMessage messageShow;
 
-        
+
         public Action EditingAnimation { get; set; }
         /// <summary>
         /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
         /// </summary>
         private bool isEditing;
-       
+
         public bool IsEditing
         {
             get { return isEditing; }
@@ -143,18 +142,18 @@ namespace Balance.ViewModel.ViewModel
 
 
         public ICommand AddCommand { get; set; }
-        
+
         public ICommand EditCommand { get; set; }
-      
+
         public ICommand SaveCommand { get; set; }
-       
+
         public ICommand DeleteCommand { get; set; }
 
         /// <summary>
         /// Поисковая строка
         /// </summary>
         protected string searchString;
-       
+
         public abstract string SearchString { get; set; }
         /// <summary>
         /// Изменение [Типа устройства]
@@ -193,7 +192,7 @@ namespace Balance.ViewModel.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Save(object obj)
         {
-            
+
             if (!CommonModels.Contains(SelectedCommonModel))
             {
                 if (deviceCommonRepository.AddNew(SelectedCommonModel))
@@ -244,7 +243,7 @@ namespace Balance.ViewModel.ViewModel
                 messageShow.ShowMessage(deviceCommonRepository.ErrorText, "Ошибка удаления", TypeMessage.Error);
                 return;
             }
-           
+
             CommonModels.Remove(SelectedCommonModel);
             SelectedCommonModel = null;
             IsEditing = false;

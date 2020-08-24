@@ -1,5 +1,4 @@
 ﻿using Balance.Model;
-using Balance.ViewModel.Dictionary.ViewModel;
 using Balance.ViewModel.ViewModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;

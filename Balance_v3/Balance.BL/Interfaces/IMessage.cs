@@ -8,7 +8,7 @@
         /// <param name="message">Сообщение</param>
         /// <param name="header">Заголовок</param>
         /// <param name="typeMessage">Тип сообщения</param>
-        public abstract void ShowMessage(string message, string header, TypeMessage typeMessage); 
+        public abstract void ShowMessage(string message, string header, TypeMessage typeMessage);
         /// <summary>
         /// Результат сообщения
         /// </summary>

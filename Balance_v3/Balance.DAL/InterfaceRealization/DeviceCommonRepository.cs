@@ -60,7 +60,7 @@ namespace Balance.DAL.InterfaceRealization
                 commonModel.AllFill(GetDeviceTypeFromDataReader(newcommonModel));
                 commonModels.Add(commonModel);
                 newcommonModel.Close();
-                
+
             }
             return true;
         }

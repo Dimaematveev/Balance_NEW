@@ -1,9 +1,7 @@
 ﻿using Balance.BL.Interfaces;
-using Balance.Model;
 using Balance.View.Dictionary.View;
 using Balance.ViewModel.Interface;
 using Balance.ViewModel.InterfaceRealization;
-using Balance.ViewModel.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -59,7 +57,7 @@ namespace Balance.View.Dictionary.ViewModel
                             return;
                         }
                     }
-                   
+
                 }
                 selectedTab = value;
                 OnPropertyChanged(nameof(SelectedTab));
