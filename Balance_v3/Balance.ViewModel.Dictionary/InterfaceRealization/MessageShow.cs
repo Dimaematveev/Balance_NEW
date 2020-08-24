@@ -1,47 +1,51 @@
 ﻿
 using Balance.BL.Interfaces;
+using System;
 using System.Windows;
 
 namespace Balance.ViewModel.Dictionary.InterfaceRealization
 {
     public class MessageShow : IMessage
     {
-        public override void ShowMessage(string message, TypeMessage typeMessage)
+        public override void ShowMessage(string message, string header, TypeMessage typeMessage)
         {
-            string header = "";
+            if (header == null)
+            {
+                if (typeMessage == TypeMessage.None)
+                {
+                    header = "";
+                }
+                else
+                {
+                    header = Enum.GetName(typeof(TypeMessage), typeMessage);
+                }
+            }
+
             MessageBoxButton messageBoxButton = MessageBoxButton.OK;
             MessageBoxImage messageBoxImage = MessageBoxImage.None;
             switch (typeMessage)
             {
                 case TypeMessage.None:
-                    header = "";
-                    messageBoxButton = MessageBoxButton.OK;
                     messageBoxImage = MessageBoxImage.None;
                     break;
                 case TypeMessage.Warning:
-                    header = "Warning";
-                    messageBoxButton = MessageBoxButton.OK;
                     messageBoxImage = MessageBoxImage.Warning;
                     break;
                 case TypeMessage.Information:
-                    header = "Information";
-                    messageBoxButton = MessageBoxButton.OK;
                     messageBoxImage = MessageBoxImage.Information;
                     break;
                 case TypeMessage.Error:
-                    header = "Error";
-                    messageBoxButton = MessageBoxButton.OK;
                     messageBoxImage = MessageBoxImage.Error;
                     break;
                 case TypeMessage.Question:
-                    header = "Question";
                     messageBoxButton = MessageBoxButton.YesNo;
-                    messageBoxImage = MessageBoxImage.Error;
+                    messageBoxImage = MessageBoxImage.Question;
                     break;
                 default:
                     break;
             }
-            Result = MessageBox.Show(message, header, messageBoxButton, messageBoxImage, MessageBoxResult.OK) != MessageBoxResult.No;
+            var resultMessage = MessageBox.Show(message, header, messageBoxButton, messageBoxImage, MessageBoxResult.OK);
+            Result = !(resultMessage.Equals(MessageBoxResult.No));
         }
     }
 }

@@ -9,12 +9,11 @@ namespace Balance.DAL.InterfaceRealization
 {
     public abstract class DeviceCommonRepository<T> : IDeviceCommonRepository<T> where T : CommonModel
     {
+        public string ErrorText { get; private set; }
         /// <summary>
         /// Список [Чего-то]
         /// </summary>
         protected List<T> commonModels;
-
-
         /// <summary>
         /// Имя Схемы 
         /// </summary>
@@ -24,44 +23,66 @@ namespace Balance.DAL.InterfaceRealization
         /// </summary>
         protected abstract string TABLE_NAME { get; }
 
-        public void Delete(T commonModel)
+        public bool Delete(T commonModel)
         {
+            ErrorText = null;
             var sqlParameters = new List<SqlParameter>
             {
                 new SqlParameter("@TypeProcedure", "Delete"),
                 new SqlParameter("@ID", commonModel.ID)
             };
             var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
+            if (DBConnection.instance.ThereIsError)
+            {
+                ErrorText = DBConnection.instance.ErrorText;
+                return false;
+            }
             newcommonModel.Read();
             commonModels.Remove(commonModel);
             newcommonModel.Close();
+            return true;
         }
 
-        public void New(T commonModel)
+        public bool AddNew(T commonModel)
         {
+            ErrorText = null;
             if (commonModel != null && commonModels != null)
             {
                 var sqlParameters = GetSqlParameters(commonModel);
                 sqlParameters.Add(new SqlParameter("@TypeProcedure", "Insert"));
                 var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
+                if (DBConnection.instance.ThereIsError)
+                {
+                    ErrorText = DBConnection.instance.ErrorText;
+                    return false;
+                }
                 newcommonModel.Read();
                 commonModel.AllFill(GetDeviceTypeFromDataReader(newcommonModel));
                 commonModels.Add(commonModel);
                 newcommonModel.Close();
+                
             }
+            return true;
         }
 
-        public void Update(T commonModel)
+        public bool Update(T commonModel)
         {
+            ErrorText = null;
             T commonModelToUpdate = commonModels.Where(x => x.ID == commonModel.ID).FirstOrDefault();
             var sqlParameters = GetSqlParameters(commonModel);
             sqlParameters.Add(new SqlParameter("@TypeProcedure", "Update"));
             sqlParameters.Add(new SqlParameter("@ID", commonModel.ID));
             var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
+            if (DBConnection.instance.ThereIsError)
+            {
+                ErrorText = DBConnection.instance.ErrorText;
+                return false;
+            }
             newcommonModel.Read();
             commonModel.AllFill(GetDeviceTypeFromDataReader(newcommonModel));
             commonModelToUpdate = commonModel;
             newcommonModel.Close();
+            return true;
         }
 
         public List<T> GetAll()

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace Balance.DAL
 {
@@ -10,6 +12,15 @@ namespace Balance.DAL
     /// </summary>
     public class DBConnection
     {
+        /// <summary>
+        /// Имеются ошибки запроса
+        /// </summary>
+        public bool ThereIsError;
+        /// <summary>
+        /// Текст ошибки
+        /// </summary>
+        public string ErrorText;
+
         /// <summary>
         /// экземпляр объекта Соединения с БД
         /// </summary>
@@ -38,10 +49,17 @@ namespace Balance.DAL
         public DbDataReader ExecuteQuery(string query)
         {
             SqlCommand command = new SqlCommand(query, connection);
-            var res = command.ExecuteReader();
-
+            var res = ExecuteReader(command);
+            if (ThereIsError)
+            {
+                return null;
+            }
             return res;
+
         }
+
+        
+
         /// <summary>
         /// Выполнить процедуру
         /// </summary>
@@ -59,8 +77,44 @@ namespace Balance.DAL
             {
                 command.Parameters.AddRange(sqlParameters.ToArray());
             }
-            var res = command.ExecuteReader();
+            var res = ExecuteReader(command);
+            if (ThereIsError)
+            {
+                return null;
+            }
+            return res;
+        }
 
+        private DbDataReader ExecuteReader(SqlCommand command)
+        {
+            ThereIsError = false;
+            ErrorText = null;
+            DbDataReader res = null;
+
+            try
+            {
+                res = command.ExecuteReader();
+            }
+            catch (SqlException sqlException)
+            {
+                ThereIsError = true;
+                StringBuilder errorMessages = new StringBuilder();
+                for (int i = 0; i < sqlException.Errors.Count; i++)
+                {
+                    errorMessages.Append(
+                        "Индекс #" + i + "\n" +
+                        "Сообщение: " + sqlException.Errors[i].Message + "\n" +
+                        "Номер строки: " + sqlException.Errors[i].LineNumber + "\n" +
+                        "Процедура: " + sqlException.Errors[i].Procedure + "\n" + "\n"
+                    );
+                }
+                ErrorText = errorMessages.ToString();
+            }
+            catch (Exception ex)
+            {
+                ThereIsError = true;
+                ErrorText = ex.Message;
+            }
             return res;
         }
 

@@ -2,13 +2,43 @@
 {
     public abstract class IMessage
     {
-        public abstract void ShowMessage(string message, TypeMessage typeMessage);
+        /// <summary>
+        /// Вывести сообщение на экран
+        /// </summary>
+        /// <param name="message">Сообщение</param>
+        /// <param name="header">Заголовок</param>
+        /// <param name="typeMessage">Тип сообщения</param>
+        public abstract void ShowMessage(string message, string header, TypeMessage typeMessage); 
+        /// <summary>
+        /// Результат сообщения
+        /// </summary>
         public bool Result { get; set; }
+        /// <summary>
+        /// Вывести сообщение на экран
+        /// </summary>
+        /// <param name="message">Сообщение</param>
         public void ShowMessage(string message)
         {
-            ShowMessage(message, TypeMessage.None);
+            ShowMessage(message, null, TypeMessage.None);
         }
-
+        /// <summary>
+        /// Вывести сообщение на экран
+        /// </summary>
+        /// <param name="message">Сообщение</param>
+        /// <param name="header">Заголовок</param>
+        public void ShowMessage(string message, string header)
+        {
+            ShowMessage(message, header, TypeMessage.None);
+        }
+        /// <summary>
+        /// Вывести сообщение на экран
+        /// </summary>
+        /// <param name="message">Сообщение</param>
+        /// <param name="typeMessage">Тип сообщения</param>
+        public void ShowMessage(string message, TypeMessage typeMessage)
+        {
+            ShowMessage(message, null, typeMessage);
+        }
 
     }
     public enum TypeMessage

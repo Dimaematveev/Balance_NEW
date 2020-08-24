@@ -8,21 +8,25 @@ namespace Balance.DAL.Interface
     /// </summary>
     public interface IDeviceCommonRepository<T> where T : CommonModel
     {
+        string ErrorText { get; }
         /// <summary>
         /// Удалить [Что-то] из хранилища
         /// </summary>
         /// <param name="commonModel">[Что-то] для удаления</param>
-        void Delete(T commonModel);
+        /// <returns>Без ошибок - true, С ошибкой - false</returns>
+        bool Delete(T commonModel);
         /// <summary>
         /// Обновить [Что-то] в хранилище
         /// </summary>
         /// <param name="commonModel">Обновленный [Что-то]</param>
-        void Update(T commonModel);
+        /// <returns>Без ошибок - true, С ошибкой - false</returns>
+        bool Update(T commonModel);
         /// <summary>
         /// Добавить новый [Что-то] в хранилище
         /// </summary>
         /// <param name="commonModel">Новый [Что-то]</param>
-        void New(T commonModel);
+        /// <returns>Без ошибок - true, С ошибкой - false</returns>
+        bool AddNew(T commonModel);
 
 
         /// <summary>

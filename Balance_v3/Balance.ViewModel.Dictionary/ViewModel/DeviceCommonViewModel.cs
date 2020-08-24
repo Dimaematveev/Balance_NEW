@@ -110,6 +110,9 @@ namespace Balance.ViewModel.Dictionary.ViewModel
             }
         }
 
+        /// <summary>
+        /// Вывод сообщений
+        /// </summary>
         private readonly IMessage messageShow;
 
         /// <summary>
@@ -173,20 +176,27 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Edit(object obj)
         {
-            IsEditing = !IsEditing;
-            if (!IsEditing)
+            if (IsEditing)
             {
+                messageShow.ShowMessage("Все изменения будут потеряны. Продолжить?", "Отмена", TypeMessage.Question);
+                if (!messageShow.Result)
+                {
+                    return;
+                }
+                IsEditing = false;
                 SelectedCommonModel.CancelEdit();
-                messageShow.ShowMessage("Редактирование отменено", TypeMessage.Question);
             }
             else
+            {
+                IsEditing = true;
                 SelectedCommonModel.BeginEdit();
+            }
         }
         /// <summary>
         /// Выбрать новый [Тип устройства]
         /// </summary>
         /// <param name="obj">Не нужно</param>
-        private void New(object obj)
+        private void AddNew(object obj)
         {
             SelectedCommonModel = new T();
             IsEditing = true;
@@ -197,18 +207,35 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Save(object obj)
         {
-
-            SelectedCommonModel.EndEdit();
-            IsEditing = false;
+            
             if (!CommonModels.Contains(SelectedCommonModel))
             {
-                deviceCommonRepository.New(SelectedCommonModel);
-                CommonModels.Add(SelectedCommonModel);
+                if (deviceCommonRepository.AddNew(SelectedCommonModel))
+                {
+                    CommonModels.Add(SelectedCommonModel);
+                    messageShow.ShowMessage("Данные добавлены!", "Добавление", TypeMessage.Information);
+                }
+                else
+                {
+                    messageShow.ShowMessage(deviceCommonRepository.ErrorText, "Ошибка добавления", TypeMessage.Error);
+                    return;
+                }
             }
             else
             {
-                deviceCommonRepository.Update(SelectedCommonModel);
+                if (deviceCommonRepository.Update(SelectedCommonModel))
+                {
+                    messageShow.ShowMessage("Данные обновлены!", "Обновление", TypeMessage.Information);
+                }
+                else
+                {
+                    messageShow.ShowMessage(deviceCommonRepository.ErrorText, "Ошибка обновления", TypeMessage.Error);
+                    return;
+                }
+
             }
+            SelectedCommonModel.EndEdit();
+            IsEditing = false;
             SearchString = searchString;
         }
         /// <summary>
@@ -217,7 +244,21 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         /// <param name="obj">Не нужно</param>
         private void Delete(object obj)
         {
-            deviceCommonRepository.Delete(SelectedCommonModel);
+            messageShow.ShowMessage("Данные будут удалены. Продолжить?", "Удаление", TypeMessage.Question);
+            if (!messageShow.Result)
+            {
+                return;
+            }
+            if (deviceCommonRepository.Delete(SelectedCommonModel))
+            {
+                messageShow.ShowMessage("Данные удалены!", "Удаление", TypeMessage.Information);
+            }
+            else
+            {
+                messageShow.ShowMessage(deviceCommonRepository.ErrorText, "Ошибка удаления", TypeMessage.Error);
+                return;
+            }
+           
             CommonModels.Remove(SelectedCommonModel);
             SelectedCommonModel = null;
             IsEditing = false;
@@ -229,7 +270,7 @@ namespace Balance.ViewModel.Dictionary.ViewModel
         {
             this.deviceCommonRepository = deviceCommonRepository;
             CommonModels = new ObservableCollection<T>(deviceCommonRepository.GetAll());
-            AddCommand = new CustomCommand(New, delegate { return SelectedCommonModel == null || SelectedCommonModel.ID != 0; });
+            AddCommand = new CustomCommand(AddNew, delegate { return SelectedCommonModel == null || SelectedCommonModel.ID != 0; });
             EditCommand = new CustomCommand(Edit, delegate { return SelectedCommonModel != null; });
             SaveCommand = new CustomCommand(Save, delegate { return IsEditing; });
             DeleteCommand = new CustomCommand(Delete, delegate { return SelectedCommonModel != null; });

@@ -19,10 +19,10 @@ namespace Balance.DAL.InterfaceRealization
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@RegisterNumber", commonModel.RegisterNumber),
-                new SqlParameter("@Deal", commonModel.Deal),
-                new SqlParameter("@Page", commonModel.Page),
-                new SqlParameter("@IsSp", commonModel.IsSp),
+                new SqlParameter("@RegisterNumber", commonModel?.RegisterNumber),
+                new SqlParameter("@Deal", commonModel?.Deal),
+                new SqlParameter("@Page", commonModel?.Page),
+                new SqlParameter("@IsSp", commonModel?.IsSp),
             };
             return sqlParameters;
         }

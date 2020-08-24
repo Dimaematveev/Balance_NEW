@@ -19,7 +19,7 @@ namespace Balance.DAL.InterfaceRealization
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@LocationName", commonModel.Name)
+                new SqlParameter("@LocationName", commonModel?.Name)
             };
             return sqlParameters;
         }
