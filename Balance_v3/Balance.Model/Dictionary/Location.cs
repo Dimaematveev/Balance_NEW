@@ -5,8 +5,13 @@
     /// </summary>
     public class Location : CommonModel
     {
-
+        /// <summary>
+        /// Название Местоположения
+        /// </summary>
         private string _Name;
+        /// <summary>
+        /// Название Местоположения
+        /// </summary>
         public string Name
         {
             get { return _Name; }

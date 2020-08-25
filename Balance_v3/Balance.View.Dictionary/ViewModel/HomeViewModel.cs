@@ -33,7 +33,7 @@ namespace Balance.View.Dictionary.ViewModel
         /// <summary>
         /// Вывод сообщений
         /// </summary>
-        private readonly IMessage messageShow;
+        private readonly MyMessage messageShow;
 
         /// <summary>
         /// Выбранная вкладка
@@ -54,6 +54,7 @@ namespace Balance.View.Dictionary.ViewModel
                         messageShow.ShowMessage("Вы переходите на другую вкладку. Все изменения будут потеряны. Продолжить?", "Переход", TypeMessage.Question);
                         if (!messageShow.Result)
                         {
+                            OnPropertyChanged(nameof(SelectedTab));
                             return;
                         }
                     }
@@ -112,7 +113,7 @@ namespace Balance.View.Dictionary.ViewModel
     public class Tab
     {
         /// <summary>
-        /// Заглавие
+        /// Заглавие Страницы
         /// </summary>
         public string Title
         {
@@ -120,14 +121,14 @@ namespace Balance.View.Dictionary.ViewModel
         }
 
         /// <summary>
-        /// Иконка
+        /// Иконка Страницы
         /// </summary>
         public char Icon
         {
             get; set;
         }
         /// <summary>
-        /// Страница
+        /// Функция создания новой Страницы
         /// </summary>
         public Func<Page> OpenNewPage
         {

@@ -5,7 +5,7 @@ using System.Windows.Controls;
 namespace Balance.View.Dictionary.View
 {
     /// <summary>
-    /// Interaction logic for DeviceGadgetView.xaml
+    ///  Просмотр редактирование и изменение Местоположений
     /// </summary>
     public partial class LocationView : Page
     {

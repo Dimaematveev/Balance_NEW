@@ -1,6 +1,6 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model.Dictionary;
-using Balance.ViewModel.ViewModel;
+using Balance.ViewModel.Interface;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -9,10 +9,13 @@ namespace Balance.ViewModel.Dictionary.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class SPSIViewModel : CommonViewModel<SPSI>
+    public class SPSIViewModel : MyCommonViewModel<SPSI>
     {
 
-
+        /// <summary>
+        /// Конструктор ViewModel
+        /// </summary>
+        /// <param name="sPSIRepository">Хранилище СП и СИ</param>
         public SPSIViewModel(IDeviceCommonRepository<SPSI> sPSIRepository) : base(sPSIRepository)
         {
             SearchString = "";

@@ -8,7 +8,11 @@ namespace Balance.DAL.Interface
     /// </summary>
     public interface IDeviceCommonRepository<T> where T : CommonModel
     {
+        /// <summary>
+        /// Сообщение ошибки. Если была.
+        /// </summary>
         string ErrorText { get; }
+
         /// <summary>
         /// Удалить [Что-то] из хранилища
         /// </summary>

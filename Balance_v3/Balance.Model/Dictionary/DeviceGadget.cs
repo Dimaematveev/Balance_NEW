@@ -7,6 +7,9 @@
     {
 
         private string _Name;
+        /// <summary>
+        /// Имя таблицы
+        /// </summary>
         public string Name
         {
             get { return _Name; }

@@ -7,7 +7,10 @@ using System.Data.SqlClient;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class SPSIRepository : DeviceCommonRepository<SPSI>, ISPSIRepository
+    /// <summary>
+    /// Хранилище СП и СИ
+    /// </summary>
+    public class SPSIRepository : MyDeviceCommonRepository<SPSI>, ISPSIRepository
     {
         protected override string SHEMA_NAME => "dic";
 

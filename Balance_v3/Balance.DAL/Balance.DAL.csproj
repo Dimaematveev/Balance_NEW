@@ -42,18 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="InterfaceRealization\DeviceCommonRepository.cs" />
-    <Compile Include="InterfaceRealization\SPSIRepository.cs" />
-    <Compile Include="InterfaceRealization\LocationRepository.cs" />
-    <Compile Include="InterfaceRealization\DeviceModelRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionary\MyDeviceCommonRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionary\SPSIRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionary\LocationRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionary\DeviceModelRepository.cs" />
     <Compile Include="InterfaceRealization\DeviceGadgetRepository.cs" />
-    <Compile Include="InterfaceRealization\DeviceTypeRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionary\DeviceTypeRepository.cs" />
     <Compile Include="Interface\IDeviceCommonRepository.cs" />
-    <Compile Include="Interface\ILocationRepository.cs" />
-    <Compile Include="Interface\ISPSIRepository.cs" />
-    <Compile Include="Interface\IDeviceModelRepository.cs" />
-    <Compile Include="Interface\IDeviceGadgetRepository.cs" />
-    <Compile Include="Interface\IDeviceTypeRepository.cs" />
+    <Compile Include="Interface\Dictionary\ILocationRepository.cs" />
+    <Compile Include="Interface\Dictionary\ISPSIRepository.cs" />
+    <Compile Include="Interface\Dictionary\IDeviceModelRepository.cs" />
+    <Compile Include="Interface\Dictionary\IDeviceGadgetRepository.cs" />
+    <Compile Include="Interface\Dictionary\IDeviceTypeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

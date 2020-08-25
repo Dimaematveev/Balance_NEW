@@ -1,11 +1,12 @@
 ﻿using Balance.Model.Dictionary;
+using Balance.View.UserControls.Common;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace Balance.View.Dictionary.View
 {
     /// <summary>
-    /// Interaction logic for DeviceGadgetView.xaml
+    ///  Просмотр редактирование и изменение СП и СИ
     /// </summary>
     public partial class SPSIView : Page
     {

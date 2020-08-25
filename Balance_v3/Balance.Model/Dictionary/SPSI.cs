@@ -5,7 +5,13 @@
     /// </summary>
     public class SPSI : CommonModel
     {
+        /// <summary>
+        /// Регистрационный номер
+        /// </summary>
         private string _RegisterNumber;
+        /// <summary>
+        /// Регистрационный номер
+        /// </summary>
         public string RegisterNumber
         {
             get { return _RegisterNumber; }
@@ -15,7 +21,13 @@
                 OnPropertyChanged(nameof(RegisterNumber));
             }
         }
+        /// <summary>
+        /// Дело
+        /// </summary>
         private string _Deal;
+        /// <summary>
+        /// Дело
+        /// </summary>
         public string Deal
         {
             get { return _Deal; }
@@ -25,7 +37,13 @@
                 OnPropertyChanged(nameof(Deal));
             }
         }
+        /// <summary>
+        /// Является СП
+        /// </summary>
         private bool? _IsSp;
+        /// <summary>
+        /// Является СП
+        /// </summary>
         public bool? IsSp
         {
             get { return _IsSp; }
@@ -35,7 +53,13 @@
                 OnPropertyChanged(nameof(IsSp));
             }
         }
+        /// <summary>
+        /// Страницы
+        /// </summary>
         private string _Page;
+        /// <summary>
+        /// Страницы
+        /// </summary>
         public string Page
         {
             get { return _Page; }

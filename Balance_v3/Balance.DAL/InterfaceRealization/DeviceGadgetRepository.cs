@@ -7,7 +7,10 @@ using System.Data.SqlClient;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class DeviceGadgetRepository : DeviceCommonRepository<DeviceGadget>, IDeviceGadgetRepository
+    /// <summary>
+    /// Хранилище Имен таблиц
+    /// </summary>
+    public class DeviceGadgetRepository : MyDeviceCommonRepository<DeviceGadget>, IDeviceGadgetRepository
     {
         protected override string SHEMA_NAME => "dic";
 

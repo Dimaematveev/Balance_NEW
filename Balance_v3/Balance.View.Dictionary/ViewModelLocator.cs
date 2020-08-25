@@ -10,12 +10,29 @@ namespace Balance.View.Dictionary
     /// </summary>
     public class ViewModelLocator
     {
-
+        /// <summary>
+        /// ViewModel Домашней страницы
+        /// </summary>
         private static HomeViewModel homeViewModel = null;
+        /// <summary>
+        /// ViewModel Типов устройств
+        /// </summary>
         private static DeviceTypeViewModel deviceTypeViewModel = null;
+        /// <summary>
+        /// ViewModel Моделей устройств
+        /// </summary>
         private static DeviceModelViewModel deviceModelViewModel = null;
+        /// <summary>
+        /// ViewModel Названия таблиц
+        /// </summary>
         private static DeviceGadgetViewModel deviceGadgetViewModel = null;
+        /// <summary>
+        /// ViewModel Местоположений
+        /// </summary>
         private static LocationViewModel locationViewModel = null;
+        /// <summary>
+        /// ViewModel СП и СИ
+        /// </summary>
         private static SPSIViewModel sPSIViewModel = null;
 
         public ViewModelLocator()
@@ -32,7 +49,9 @@ namespace Balance.View.Dictionary
 
 
         }
-
+        /// <summary>
+        /// ViewModel Домашней страницы
+        /// </summary>
         public static HomeViewModel HomeViewModel
         {
             get
@@ -40,6 +59,9 @@ namespace Balance.View.Dictionary
                 return homeViewModel;
             }
         }
+        /// <summary>
+        /// ViewModel  Типов устройств
+        /// </summary>
         public static DeviceTypeViewModel DeviceTypeViewModel
         {
             get
@@ -47,6 +69,9 @@ namespace Balance.View.Dictionary
                 return deviceTypeViewModel;
             }
         }
+        /// <summary>
+        /// ViewModel  Моделей устройств
+        /// </summary>
         public static DeviceModelViewModel DeviceModelViewModel
         {
             get
@@ -54,6 +79,9 @@ namespace Balance.View.Dictionary
                 return deviceModelViewModel;
             }
         }
+        /// <summary>
+        /// ViewModel Названия таблиц
+        /// </summary>
         public static DeviceGadgetViewModel DeviceGadgetViewModel
         {
             get
@@ -61,6 +89,9 @@ namespace Balance.View.Dictionary
                 return deviceGadgetViewModel;
             }
         }
+        /// <summary>
+        /// ViewModel Местоположений
+        /// </summary>
         public static LocationViewModel LocationViewModel
         {
             get
@@ -68,6 +99,9 @@ namespace Balance.View.Dictionary
                 return locationViewModel;
             }
         }
+        /// <summary>
+        /// ViewModel СП и СИ
+        /// </summary>
         public static SPSIViewModel SPSIViewModel
         {
             get

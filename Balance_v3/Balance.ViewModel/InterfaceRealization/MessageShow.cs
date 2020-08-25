@@ -5,7 +5,10 @@ using System.Windows;
 
 namespace Balance.ViewModel.InterfaceRealization
 {
-    public class MessageShow : IMessage
+    /// <summary>
+    /// Реализован класс Вывода сообщений
+    /// </summary>
+    public class MessageShow : MyMessage
     {
         public override void ShowMessage(string message, string header, TypeMessage typeMessage)
         {

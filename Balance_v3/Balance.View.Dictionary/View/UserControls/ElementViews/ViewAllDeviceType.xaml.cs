@@ -3,7 +3,7 @@
 namespace Balance.View.Dictionary.View.UserControls.ElementViews
 {
     /// <summary>
-    /// Interaction logic for DeviceTypeView.xaml
+    /// Просмотр Типов устройств
     /// </summary>
     public partial class ViewAllDeviceType : UserControl
     {

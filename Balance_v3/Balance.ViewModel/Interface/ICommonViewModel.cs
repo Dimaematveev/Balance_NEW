@@ -6,9 +6,11 @@ using System.Windows.Input;
 
 namespace Balance.ViewModel.Interface
 {
+    /// <summary>
+    /// Интерфейс для Общей ViewModel
+    /// </summary>
     public interface ICommonViewModel : INotifyPropertyChanged
     {
-
         /// <summary>
         /// текущий значок редактирования
         /// </summary>
@@ -46,6 +48,10 @@ namespace Balance.ViewModel.Interface
         /// </summary>
         string SearchString { get; set; }
     }
+    /// <summary>
+    /// Интерфейс для Общей ViewModel
+    /// </summary>
+    /// <typeparam name="T"> Общая модель из БАзы </typeparam>
     public interface ICommonViewModel<T> : INotifyPropertyChanged where T : CommonModel, new()
     {
         /// <summary>

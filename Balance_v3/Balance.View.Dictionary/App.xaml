@@ -11,7 +11,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Balance.View;component/Resources/StaticResources.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Balance.View;component/Resources/TempResource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
+                
             <converter:InvertBoolConverter x:Key="invertBoolConverter"/>
             <local:ViewModelLocator x:Key="mainViewModelLocator"/>
 

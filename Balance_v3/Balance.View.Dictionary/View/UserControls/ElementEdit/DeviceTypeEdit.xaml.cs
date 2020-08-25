@@ -3,7 +3,7 @@
 namespace Balance.View.Dictionary.View.UserControls.ElementEdit
 {
     /// <summary>
-    /// Interaction logic for DeviceTypeEdit.xaml
+    /// Изменение Типов устройств
     /// </summary>
     public partial class DeviceTypeEdit : UserControl
     {

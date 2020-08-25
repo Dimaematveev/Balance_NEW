@@ -8,7 +8,13 @@ namespace Balance.Model
     /// </summary>
     public abstract class CommonModel : INotifyPropertyChanged, IEditableObject
     {
+        /// <summary>
+        /// ID общей модели
+        /// </summary>
         private int _ID;
+        /// <summary>
+        /// ID общей модели
+        /// </summary>
         public int ID
         {
             get { return _ID; }
@@ -18,8 +24,13 @@ namespace Balance.Model
                 OnPropertyChanged(nameof(ID));
             }
         }
-
+        /// <summary>
+        /// Флаг удаления
+        /// </summary>
         private bool _IsDelete;
+        /// <summary>
+        /// Флаг удаления
+        /// </summary>
         public bool IsDelete
         {
             get { return _IsDelete; }
@@ -29,8 +40,13 @@ namespace Balance.Model
                 OnPropertyChanged(nameof(IsDelete));
             }
         }
-
+        /// <summary>
+        /// Время последней модификации
+        /// </summary>
         private DateTime _LastModified;
+        /// <summary>
+        /// Время последней модификации
+        /// </summary>
         public DateTime LastModified
         {
             get { return _LastModified; }

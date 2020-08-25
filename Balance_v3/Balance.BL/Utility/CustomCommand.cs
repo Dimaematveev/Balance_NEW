@@ -23,6 +23,11 @@ namespace Balance.BL.Utility
             this.canExecute = canExecute;
         }
 
+        /// <summary>
+        /// Можно ли выполнить действие
+        /// </summary>
+        /// <param name="parameter">Переданный параметр</param>
+        /// <returns>true/false</returns>
         public bool CanExecute(object parameter)
         {
             bool b = canExecute == null || canExecute(parameter);
@@ -41,6 +46,10 @@ namespace Balance.BL.Utility
             }
         }
 
+        /// <summary>
+        /// Выполнить действие
+        /// </summary>
+        /// <param name="parameter">Переданный параметр</param>
         public void Execute(object parameter)
         {
             execute(parameter);

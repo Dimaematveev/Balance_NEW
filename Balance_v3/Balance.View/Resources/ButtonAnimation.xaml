@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    <!-- Анимация Опускание элемента -->
     <Storyboard x:Key="StartedEditingAnimation">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
             <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
@@ -17,7 +17,7 @@
             </EasingDoubleKeyFrame>
         </DoubleAnimationUsingKeyFrames>
     </Storyboard>
-    
+    <!-- Анимация Подъем элемента -->
     <Storyboard x:Key="StoppedEditingAnimation">
         <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="button1">
             <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70">

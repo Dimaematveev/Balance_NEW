@@ -32,7 +32,7 @@ namespace Balance.DAL
 
         public DBConnection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnectionWork"].ConnectionString;
             connection = new SqlConnection(connectionString);
             Open();
             instance = this;
@@ -84,7 +84,11 @@ namespace Balance.DAL
             }
             return res;
         }
-
+        /// <summary>
+        /// Выполнить команду
+        /// </summary>
+        /// <param name="command">Инструкции SQL</param>
+        /// <returns>Вывод результата</returns>
         private DbDataReader ExecuteReader(SqlCommand command)
         {
             ThereIsError = false;

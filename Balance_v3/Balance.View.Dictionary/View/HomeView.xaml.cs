@@ -3,7 +3,7 @@
 namespace Balance.View.Dictionary.View
 {
     /// <summary>
-    /// Interaction logic for HomeView.xaml
+    /// Домашняя страница
     /// </summary>
     public partial class HomeView : Window
     {

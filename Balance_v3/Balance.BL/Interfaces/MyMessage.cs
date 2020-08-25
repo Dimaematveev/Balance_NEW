@@ -1,6 +1,9 @@
 ﻿namespace Balance.BL.Interfaces
 {
-    public abstract class IMessage
+    /// <summary>
+    /// Абстрактный класс вывода сообщения
+    /// </summary>
+    public abstract class MyMessage
     {
         /// <summary>
         /// Вывести сообщение на экран
@@ -14,7 +17,7 @@
         /// </summary>
         public bool Result { get; set; }
         /// <summary>
-        /// Вывести сообщение на экран
+        /// Вывести сообщение на экран c пустым заголовком и без значка
         /// </summary>
         /// <param name="message">Сообщение</param>
         public void ShowMessage(string message)
@@ -22,7 +25,7 @@
             ShowMessage(message, null, TypeMessage.None);
         }
         /// <summary>
-        /// Вывести сообщение на экран
+        /// Вывести сообщение на экран без значка
         /// </summary>
         /// <param name="message">Сообщение</param>
         /// <param name="header">Заголовок</param>
@@ -31,7 +34,7 @@
             ShowMessage(message, header, TypeMessage.None);
         }
         /// <summary>
-        /// Вывести сообщение на экран
+        /// Вывести сообщение на экран с заголовком соответствующему типу сообщения
         /// </summary>
         /// <param name="message">Сообщение</param>
         /// <param name="typeMessage">Тип сообщения</param>

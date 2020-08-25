@@ -2,12 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:model="clr-namespace:Balance.Model.Dictionary;assembly=Balance.Model"
                     xmlns:col="clr-namespace:System.Collections;assembly=mscorlib">
+    <!-- Варианты Проверки-->
     <col:ArrayList x:Key="CheckTypes">
         <model:CheckType Name="СП" IsSp="True"/>
         <model:CheckType Name="СИ" IsSp="false"/>
         <model:CheckType Name="Неизвестно" IsSp="{x:Null}"/>
     </col:ArrayList>
-    
+    <!-- Стиль текста с иконками-->
     <FontFamily x:Key="IconsFont">pack://application:,,,/Balance.View;component/Fonts/#Segoe MDL2 Assets</FontFamily>
     
 </ResourceDictionary>

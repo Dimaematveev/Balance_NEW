@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:model="clr-namespace:Balance.Model.Dictionary;assembly=Balance.Model"
                     xmlns:col="clr-namespace:System.Collections;assembly=mscorlib">
+    <!-- Ресурс для проверки UserControl-->
     <model:DeviceGadget x:Key="DeviceGadgetOne" ID="1" Name="DeviceGadgetName"/>
     <model:DeviceType x:Key="DeviceTypeOne" ID="1" Name="DeviceTypeName" DeviceGadget="{StaticResource DeviceGadgetOne}"/>
     <model:DeviceModel x:Key="DeviceModelOne" ID="1" Name="DeviceModelName" DeviceType="{StaticResource DeviceTypeOne}"/>

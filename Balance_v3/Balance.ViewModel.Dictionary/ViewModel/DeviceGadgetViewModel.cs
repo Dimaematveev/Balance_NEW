@@ -1,6 +1,6 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model.Dictionary;
-using Balance.ViewModel.ViewModel;
+using Balance.ViewModel.Interface;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -9,8 +9,12 @@ namespace Balance.ViewModel.Dictionary.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceGadgetViewModel : CommonViewModel<DeviceGadget>
+    public class DeviceGadgetViewModel : MyCommonViewModel<DeviceGadget>
     {
+        /// <summary>
+        /// Конструктор ViewModel
+        /// </summary>
+        /// <param name="deviceGadgetRepository">Хранилище Названий таблиц</param>
         public DeviceGadgetViewModel(IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceGadgetRepository)
         {
             SearchString = "";

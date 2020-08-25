@@ -5,7 +5,7 @@ using System.Windows.Controls;
 namespace Balance.View.Dictionary.View
 {
     /// <summary>
-    /// Interaction logic for DeviceTypeView.xaml
+    /// Просмотр редактирование и изменение Моделей устройств
     /// </summary>
     public partial class DeviceModelView : Page
     {

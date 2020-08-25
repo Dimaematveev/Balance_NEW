@@ -3,7 +3,7 @@
 namespace Balance.View.UserControls.Common
 {
     /// <summary>
-    /// Interaction logic for AddView.xaml
+    /// Кнопка Добавление нового элемента
     /// </summary>
     public partial class AddView : UserControl
     {

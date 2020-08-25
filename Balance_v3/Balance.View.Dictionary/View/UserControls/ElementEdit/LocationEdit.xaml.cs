@@ -3,7 +3,7 @@
 namespace Balance.View.Dictionary.View.UserControls.ElementEdit
 {
     /// <summary>
-    /// Interaction logic for DeviceModelEdit.xaml
+    /// Изменение Местоположения
     /// </summary>
     public partial class LocationEdit : UserControl
     {

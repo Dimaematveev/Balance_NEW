@@ -6,8 +6,13 @@
     public class DeviceModel : CommonModel
     {
 
-
+        /// <summary>
+        /// Тип устройства
+        /// </summary>
         private DeviceType _DeviceType;
+        /// <summary>
+        /// Тип устройства
+        /// </summary>
         public DeviceType DeviceType
         {
             get { return _DeviceType; }
@@ -17,8 +22,13 @@
                 OnPropertyChanged(nameof(DeviceType));
             }
         }
-
+        /// <summary>
+        /// Название модели устройства
+        /// </summary>
         private string _Name;
+        /// <summary>
+        /// Название модели устройства
+        /// </summary>
         public string Name
         {
             get { return _Name; }

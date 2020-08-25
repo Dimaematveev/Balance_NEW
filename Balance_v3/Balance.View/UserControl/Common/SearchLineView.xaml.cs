@@ -3,7 +3,7 @@
 namespace Balance.View.UserControls.Common
 {
     /// <summary>
-    /// Interaction logic for SearchLineView.xaml
+    /// Поисковая строка
     /// </summary>
     public partial class SearchLineView : UserControl
     {

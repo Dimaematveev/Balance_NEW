@@ -3,7 +3,7 @@
 namespace Balance.View.Dictionary.View.UserControls.ElementViews
 {
     /// <summary>
-    /// Interaction logic for DeviceGadgetView.xaml
+    /// Просмотр СП и СИ
     /// </summary>
     public partial class ViewAllSPSI : UserControl
     {

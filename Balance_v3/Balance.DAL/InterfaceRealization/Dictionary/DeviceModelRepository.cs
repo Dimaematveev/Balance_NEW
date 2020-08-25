@@ -7,7 +7,10 @@ using System.Data.SqlClient;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class DeviceModelRepository : DeviceCommonRepository<DeviceModel>, IDeviceModelRepository
+    /// <summary>
+    /// Хранилище Моделей устройств
+    /// </summary>
+    public class DeviceModelRepository : MyDeviceCommonRepository<DeviceModel>, IDeviceModelRepository
     {
         private readonly IDeviceCommonRepository<DeviceType> deviceTypeRepository;
 

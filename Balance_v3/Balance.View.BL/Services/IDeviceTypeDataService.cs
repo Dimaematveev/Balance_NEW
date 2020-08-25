@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Balance.View.Dictionary.Services
 {
+    //TODO:Не использую
     /// <summary>
     /// Интерфейс Службы данных [Типов устройств]
     /// </summary>

@@ -7,7 +7,10 @@ using System.Data.SqlClient;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public class LocationRepository : DeviceCommonRepository<Location>, ILocationRepository
+    /// <summary>
+    /// Хранилище Местоположений
+    /// </summary>
+    public class LocationRepository : MyDeviceCommonRepository<Location>, ILocationRepository
     {
         protected override string SHEMA_NAME => "dic";
 

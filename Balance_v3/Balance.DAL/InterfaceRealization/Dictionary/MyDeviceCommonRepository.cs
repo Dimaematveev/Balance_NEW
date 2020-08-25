@@ -7,7 +7,11 @@ using System.Linq;
 
 namespace Balance.DAL.InterfaceRealization
 {
-    public abstract class DeviceCommonRepository<T> : IDeviceCommonRepository<T> where T : CommonModel
+    /// <summary>
+    /// Общее Хранилище
+    /// </summary>
+    /// <typeparam name="T">Тип того что хранится</typeparam>
+    public abstract class MyDeviceCommonRepository<T> : IDeviceCommonRepository<T> where T : CommonModel
     {
         public string ErrorText { get; private set; }
         /// <summary>

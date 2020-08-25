@@ -2,19 +2,18 @@
 using Balance.BL.Utility;
 using Balance.DAL.Interface;
 using Balance.Model;
-using Balance.ViewModel.Interface;
 using Balance.ViewModel.InterfaceRealization;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
-namespace Balance.ViewModel.ViewModel
+namespace Balance.ViewModel.Interface
 {
     /// <summary>
-    /// View-Model  [Чего-то]
+    /// абстрактный класс для общей View-Model  [Чего-то]
     /// </summary>
-    public abstract class CommonViewModel<T> : INotifyPropertyChanged, ICommonViewModel<T>, ICommonViewModel where T : CommonModel, new()
+    public abstract class MyCommonViewModel<T> : INotifyPropertyChanged, ICommonViewModel<T>, ICommonViewModel where T : CommonModel, new()
     {
         //TODO:Не могу сформулировать
         protected readonly IDeviceCommonRepository<T> deviceCommonRepository;
@@ -116,7 +115,7 @@ namespace Balance.ViewModel.ViewModel
         /// <summary>
         /// Вывод сообщений
         /// </summary>
-        private readonly IMessage messageShow;
+        private readonly MyMessage messageShow;
 
 
         public Action EditingAnimation { get; set; }
@@ -251,7 +250,11 @@ namespace Balance.ViewModel.ViewModel
         }
 
 
-        public CommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
+        /// <summary>
+        /// Конструктор ViewModel
+        /// </summary>
+        /// <param name="deviceCommonRepository">Хранилище Чего-то</param>
+        public MyCommonViewModel(IDeviceCommonRepository<T> deviceCommonRepository)
         {
             this.deviceCommonRepository = deviceCommonRepository;
             CommonModels = new ObservableCollection<T>(deviceCommonRepository.GetAll());

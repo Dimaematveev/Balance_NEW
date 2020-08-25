@@ -1,6 +1,6 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model.Dictionary;
-using Balance.ViewModel.ViewModel;
+using Balance.ViewModel.Interface;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -10,8 +10,11 @@ namespace Balance.ViewModel.Dictionary.ViewModel
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceTypeViewModel : CommonViewModel<DeviceType>
+    public class DeviceTypeViewModel : MyCommonViewModel<DeviceType>
     {
+        /// <summary>
+        /// Хранилище Названий таблиц
+        /// </summary>
         private readonly IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository;
         /// <summary>
         /// Список [Типов устройств]
@@ -63,7 +66,11 @@ namespace Balance.ViewModel.Dictionary.ViewModel
                 OnPropertyChanged(nameof(SelectedDeviceGadget));
             }
         }
-
+        /// <summary>
+        /// Конструктор ViewModel
+        /// </summary>
+        /// <param name="deviceTypeRepository">Хранилище Типов устройств</param>
+        /// <param name="deviceGadgetRepository">Хранилище Названий таблиц</param>
         public DeviceTypeViewModel(IDeviceCommonRepository<DeviceType> deviceTypeRepository, IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceTypeRepository)
         {
             this.deviceGadgetRepository = deviceGadgetRepository;
