@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace Balance.Model
 {
@@ -41,11 +42,11 @@ namespace Balance.Model
             }
         }
         /// <summary>
-        /// Время последней модификации
+        /// Время последнего изменения
         /// </summary>
         private DateTime _LastModified;
         /// <summary>
-        /// Время последней модификации
+        /// Время последнего изменения
         /// </summary>
         public DateTime LastModified
         {
@@ -57,6 +58,8 @@ namespace Balance.Model
             }
         }
 
+    
+
 
         #region INotifyPropertyChanged
         /// <summary>Событие для извещения об изменения свойства</summary>
@@ -64,7 +67,7 @@ namespace Balance.Model
         /// <summary>
         /// Метод для вызова события извещения об изменении свойства
         /// </summary>
-        /// <param name="prop">Изменившееся свойство </param>
+        /// <param name="prop">Название изменившегося свойства </param>
         protected internal void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -72,9 +75,18 @@ namespace Balance.Model
         #endregion
 
         #region Копирование
-
+        /// <summary>
+        /// Заполнить текущий объект из переданного, кроме общих свойств
+        /// </summary>
+        /// <param name="copy">переданный объект</param>
         public abstract void Fill(CommonModel copy);
+
+        /// <summary>
+        /// Скопировать текущий объект в новый, кроме общих свойств
+        /// </summary>
+        /// <returns>Новый объект с такими-же свойствами</returns>
         public abstract CommonModel Clone();
+
         /// <summary>
         /// Заполнить текущий объект из переданного
         /// </summary>
@@ -103,13 +115,16 @@ namespace Balance.Model
         #endregion
 
         #region IEditableObject
+        /// <summary>
+        /// Объект с изначальными данными
+        /// </summary>
         private CommonModel backupData;
         /// <summary>
         /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
         /// </summary>
         private bool isEditing;
         /// <summary>
-        /// Начинает редактирование объекта.
+        /// Начать редактирование объекта.
         /// </summary>
         public void BeginEdit()
         {
@@ -122,7 +137,7 @@ namespace Balance.Model
 
         }
         /// <summary>
-        /// Уничтожает изменения, выполненные после последнего вызова метода BeginEdit().
+        /// Откат изменений, выполненных после последнего вызова метода BeginEdit().
         /// </summary>
         public void CancelEdit()
         {
