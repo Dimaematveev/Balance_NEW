@@ -3,10 +3,37 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:validationrules="clr-namespace:Balance.View.ValidationRules;assembly=Balance.View"
              mc:Ignorable="d" 
              Background="White"
              d:DataContext="{StaticResource DeviceModelOne}"
              d:DesignHeight="100" d:DesignWidth="500">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0,2,40,2" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Background="Red" Grid.Column="1" Margin="5,0,0,0" Width="20"  CornerRadius="10"
+                                    ToolTip="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}">
+                                <TextBlock Text="!" VerticalAlignment="center" HorizontalAlignment="center" FontWeight="Bold" Foreground="white">
+                                </TextBlock>
+                            </Border>
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="red" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -61,16 +88,27 @@
                                 Margin="0,0,2,0"
                             />
                 <TextBox
-                                Grid.Column="1"
-                                IsReadOnly="{Binding 
-                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                                    Path=DataContext.IsEditing,
-                                    Converter={StaticResource invertBoolConverter}}"
-                                Text="{Binding Name, Mode=TwoWay}" 
-                                Margin="5,0,5,0"
-                                BorderBrush="CornflowerBlue"
-                                BorderThickness="1" 
-                            />
+                    Grid.Column="1"
+                    IsReadOnly="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.IsEditing,
+                        Converter={StaticResource invertBoolConverter}}"
+                    Margin="5,0,20,0"
+                    BorderBrush="CornflowerBlue"
+                    BorderThickness="1" 
+                    ToolTip="{Binding Validation.HasError}">
+                    <TextBox.Text>
+
+                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules >
+                                <validationrules:StringNotNullValidationRule/>
+                                
+                            </Binding.ValidationRules>
+                        </Binding>
+                        
+                        
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
         </Grid>
     </Grid>
