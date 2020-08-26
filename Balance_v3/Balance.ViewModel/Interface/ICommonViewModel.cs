@@ -8,12 +8,15 @@ namespace Balance.ViewModel.Interface
 {
     /// <summary>
     /// Интерфейс для Общей ViewModel
+    ///  <para>Реализован интерфейс <seealso cref="INotifyPropertyChanged"/></para> 
     /// </summary>
     public interface ICommonViewModel : INotifyPropertyChanged
     {
         /// <summary>
-        /// текущий значок редактирования
+        /// Текущий значок редактирования
         /// </summary>
+        /// <returns>Символ в Unicode кодировке</returns>
+        /// <value>Символ в Unicode кодировке </value>
         char CurrentEditIcon { get; set; }
 
         /// <summary>
@@ -22,8 +25,13 @@ namespace Balance.ViewModel.Interface
         Action EditingAnimation { get; set; }
 
         /// <summary>
-        /// Показывает находится ли сейчас объект на редактировании. То есть можно-ли сохранить или отменить изменения
+        /// Показывает находится ли сейчас объект на редактировании
+        /// <para>То есть можно-ли сохранить или отменить изменения</para>
         /// </summary>
+        /// <value>
+        /// <c>true</c> - Объект на редактировании
+        ///  <para><c>false</c> - Объект не на редактировании</para>
+        /// </value>
         bool IsEditing { get; set; }
 
         /// <summary>
@@ -51,7 +59,7 @@ namespace Balance.ViewModel.Interface
     /// <summary>
     /// Интерфейс для Общей ViewModel
     /// </summary>
-    /// <typeparam name="T"> Общая модель из БАзы </typeparam>
+    /// <typeparam name="T"> Общая модель из Базы </typeparam>
     public interface ICommonViewModel<T> : INotifyPropertyChanged where T : CommonModel, new()
     {
         /// <summary>

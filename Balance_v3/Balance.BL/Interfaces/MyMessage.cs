@@ -12,9 +12,15 @@
         /// <param name="header">Заголовок</param>
         /// <param name="typeMessage">Тип сообщения</param>
         public abstract void ShowMessage(string message, string header, TypeMessage typeMessage);
+
         /// <summary>
         /// Результат сообщения
         /// </summary>
+        /// <returns>true/false</returns>
+        /// <value> 
+        /// <para><c>true</c> - нажато Да/OK</para>
+        /// <para><c>false</c> - нажато Нет</para>
+        /// </value>
         public bool Result { get; set; }
         /// <summary>
         /// Вывести сообщение на экран c пустым заголовком и без значка

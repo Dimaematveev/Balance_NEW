@@ -7,6 +7,7 @@ namespace Balance.ViewModel.InterfaceRealization
 {
     /// <summary>
     /// Реализован класс Вывода сообщений
+    /// <para> На основе <seealso cref="MyMessage"/></para>
     /// </summary>
     public class MessageShow : MyMessage
     {

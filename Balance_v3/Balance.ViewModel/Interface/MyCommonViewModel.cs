@@ -11,7 +11,7 @@ using System.Windows.Input;
 namespace Balance.ViewModel.Interface
 {
     /// <summary>
-    /// абстрактный класс для общей View-Model  [Чего-то]
+    /// абстрактный класс для общей View-Model  [Чего-то] 
     /// </summary>
     public abstract class MyCommonViewModel<T> : INotifyPropertyChanged, ICommonViewModel<T>, ICommonViewModel where T : CommonModel, new()
     {
@@ -51,10 +51,28 @@ namespace Balance.ViewModel.Interface
             }
         }
         /// <summary>
-        /// Получить строку для сравнения в фильтре
+        /// Получить строку для сравнения в фильтре <see cref="GetStringForComparison(object)"/>
+        /// <list type="table">
+        /// <listheader>
+        ///    <term>term1</term>
+        ///    <description>description1</description>
+        ///</listheader>
+        ///<item>
+        ///    <term>term2</term>
+        ///    <description>description2</description>
+        ///</item>
+        /// </list>
         /// </summary>
+
         /// <param name="obj">Объект преобразуемый в строку</param>
         /// <returns>Полученная строка</returns>
+        /// 
+        /// <value>Свойство Name получает / устанавливает значение строкового поля _name. </value>
+        /// <remarks>
+        /// Доп инфо <see cref="GetStringForComparison"/> 
+        /// </remarks>
+        /// <exception cref="System.Exception"> Когда возникает исключение </exception>
+
         protected string GetStringForComparison(object obj)
         {
             if (obj == null)
@@ -65,7 +83,10 @@ namespace Balance.ViewModel.Interface
         }
         /// <summary>
         /// Выбранный [Тип устройства]
+        /// <para>Вот как можно сделать второй абзац в описании. <see cref="System.Console.WriteLine(System.String)"/> для получения информации об операторах вывода. </para>
+        /// Смотреть также <seealso cref = "SelectedCommonModel" />
         /// </summary>
+        /// 
         private T selectedCommonModel;
 
 
@@ -154,8 +175,10 @@ namespace Balance.ViewModel.Interface
         protected string searchString;
 
         public abstract string SearchString { get; set; }
+        /// <permission cref="System.Security.PermissionSet">Everyone can access this method.</permission>
         /// <summary>
         /// Изменение [Типа устройства]
+        /// The <paramref name="obj"/> parameter takes a number.
         /// </summary>
         /// <param name="obj">Не нужно</param>
         private void Edit(object obj)
