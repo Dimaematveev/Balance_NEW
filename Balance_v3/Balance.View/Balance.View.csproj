@@ -77,7 +77,6 @@
     <Compile Include="UserControl\Common\SearchLineView.xaml.cs">
       <DependentUpon>SearchLineView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ValidationRules\StringNotNullValidationRule.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -107,6 +106,10 @@
     <Page Include="Resources\StaticResources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\StyleResourseDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\TempResource.xaml">
       <Generator>MSBuild:Compile</Generator>

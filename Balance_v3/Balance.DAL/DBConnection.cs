@@ -32,7 +32,7 @@ namespace Balance.DAL
 
         public DBConnection()
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnectionWork"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             connection = new SqlConnection(connectionString);
             Open();
             instance = this;

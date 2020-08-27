@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Converter\InvertBoolConverter.cs" />
     <Compile Include="Services\IDeviceTypeDataService.cs" />
+    <Compile Include="ValidationRules\StringNotNullValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
