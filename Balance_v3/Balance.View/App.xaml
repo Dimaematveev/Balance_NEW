@@ -6,6 +6,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Balance.View;component/Resources/ButtonCircle.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Balance.View;component/Resources/StaticResources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Balance.View;component/Resources/StyleResourseDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 

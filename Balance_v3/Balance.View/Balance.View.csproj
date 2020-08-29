@@ -68,14 +68,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UserControl\Common\AddView.xaml.cs">
+    <Compile Include="UserControls\Common\AddView.xaml.cs">
       <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Common\PanelEditView.xaml.cs">
+    <Compile Include="UserControls\Common\PanelEditView.xaml.cs">
       <DependentUpon>PanelEditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\Common\SearchLineView.xaml.cs">
+    <Compile Include="UserControls\Common\SearchLineView.xaml.cs">
       <DependentUpon>SearchLineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TextBox\UserTextBoxWithErrorEmpty.xaml.cs">
+      <DependentUpon>UserTextBoxWithErrorEmpty.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,23 +118,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControl\Common\AddView.xaml">
+    <Page Include="UserControls\Common\AddView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControl\Common\PanelEditView.xaml">
+    <Page Include="UserControls\Common\PanelEditView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControl\Common\SearchLineView.xaml">
+    <Page Include="UserControls\Common\SearchLineView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TextBox\UserTextBoxWithErrorEmpty.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Balance.Model\Balance.Model.csproj">
       <Project>{dd40722b-f3a4-4d1c-b393-5b81aa973075}</Project>
       <Name>Balance.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.View.BL\Balance.View.BL.csproj">
+      <Project>{f188140e-0fc1-4578-9d81-b43dc587ecc0}</Project>
+      <Name>Balance.View.BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Balance.ViewModel.Dictionary\Balance.ViewModel.Dictionary.csproj">
       <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>

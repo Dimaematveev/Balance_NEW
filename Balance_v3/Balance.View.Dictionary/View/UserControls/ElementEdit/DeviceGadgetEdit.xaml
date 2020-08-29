@@ -25,27 +25,33 @@
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1" Margin="5">
+            <Grid Grid.Row="1" Margin="5,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Label
-                                Grid.Column="0"
-                                Content="_Название Таблицы:"
-                                Margin="0,0,2,0"
-                            />
+                    Grid.Column="0"
+                    Content="_Название Таблицы:"
+                    Margin="0,0,2,0"/>
                 <TextBox
-                                Grid.Column="1"
-                                IsReadOnly="{Binding 
-                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
-                                    Path=DataContext.IsEditing,
-                                    Converter={StaticResource invertBoolConverter}}"
-                                Text="{Binding Name, Mode=TwoWay}" 
-                                Margin="5,0,5,0"
-                                BorderBrush="CornflowerBlue"
-                                BorderThickness="1" 
-                            />
+                    Grid.Column="1"
+                    IsReadOnly="{Binding 
+                        RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Page}},
+                        Path=DataContext.IsEditing,
+                        Converter={StaticResource invertBoolConverter}}" 
+                    Margin="5,0,5,0"
+                    BorderBrush="CornflowerBlue"
+                    BorderThickness="1" 
+                    Style="{StaticResource Validation}">
+                    <TextBox.Text>
+                        <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules >
+                                <validationrules:StringNotNullValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </Grid>
         </Grid>
     </Grid>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Background="White"
              d:DataContext="{StaticResource SPSIOne}"
-             d:DesignHeight="250" d:DesignWidth="400">
+             d:DesignHeight="280" d:DesignWidth="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,7 +18,7 @@
             <TextBlock Foreground="White" Text="{Binding ID}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
         </Grid>
         <StackPanel  Margin="10" Grid.Row="1">
-            <Grid Grid.Row="1" Margin="5">
+            <Grid Grid.Row="1" Margin="5,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
@@ -48,7 +48,7 @@
                     </TextBox.Text>
                 </TextBox>
             </Grid>
-            <Grid Grid.Row="1" Margin="5">
+            <Grid Grid.Row="1" Margin="5,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
@@ -68,15 +68,11 @@
                     BorderThickness="1"
                     Style="{StaticResource Validation}">
                     <TextBox.Text>
-                        <Binding Path="Deal" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                            <Binding.ValidationRules >
-                                <validationrules:StringNotNullValidationRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
+                        <Binding Path="Deal" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="False"/>
                     </TextBox.Text>
                 </TextBox>
             </Grid>
-            <Grid Grid.Row="1" Margin="5">
+            <Grid Grid.Row="1" Margin="5,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
@@ -96,15 +92,11 @@
                     BorderThickness="1" 
                     Style="{StaticResource Validation}">
                     <TextBox.Text>
-                        <Binding Path="Page" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
-                            <Binding.ValidationRules >
-                                <validationrules:StringNotNullValidationRule/>
-                            </Binding.ValidationRules>
-                        </Binding>
+                        <Binding Path="Page" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="False"/>
                     </TextBox.Text>
                 </TextBox>
             </Grid>
-            <Grid Grid.Row="1" Margin="5">
+            <Grid Grid.Row="1" Margin="5,15,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
