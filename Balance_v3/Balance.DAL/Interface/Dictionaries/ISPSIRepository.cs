@@ -1,11 +1,11 @@
 ﻿using Balance.Model.Dictionaries;
 
-namespace Balance.DAL.Interface
+namespace Balance.DAL.Interface.Dictionaries
 {
     /// <summary>
     /// Интерфейс хранилище [Типов устройств]
     /// </summary>
-    public interface IDeviceTypeRepository : IDeviceCommonRepository<DeviceType>
+    public interface ISPSIRepository : IDeviceCommonRepository<SPSI>
     {
 
     }

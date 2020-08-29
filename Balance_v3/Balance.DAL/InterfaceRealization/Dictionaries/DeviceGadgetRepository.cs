@@ -1,5 +1,4 @@
-﻿using Balance.DAL.Interface;
-using Balance.DAL.InterfaceRealization.Dictionaries;
+﻿using Balance.DAL.Interface.Dictionaries;
 using Balance.Model.Dictionaries;
 using System;
 using System.Collections.Generic;
@@ -19,7 +18,7 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
 
 
 
-        internal override List<SqlParameter> GetSqlParameters(DeviceGadget commonModel)
+        protected override List<SqlParameter> GetSqlParameters(DeviceGadget commonModel)
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
@@ -30,7 +29,7 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
 
 
 
-        internal override DeviceGadget GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
+        protected override DeviceGadget GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];

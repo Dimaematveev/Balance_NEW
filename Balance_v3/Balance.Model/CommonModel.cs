@@ -57,7 +57,7 @@ namespace Balance.Model
             }
         }
 
-    
+
 
 
         #region INotifyPropertyChanged
@@ -75,6 +75,11 @@ namespace Balance.Model
 
         #region Копирование
         /// <summary>
+        /// Получить новый класс CommonModel
+        /// </summary>
+        /// <returns>Создает новый класс</returns>
+        public abstract CommonModel CreateNewCommonModel();
+        /// <summary>
         /// Заполнить текущий объект из переданного, кроме общих свойств
         /// </summary>
         /// <param name="copy">переданный объект</param>
@@ -84,7 +89,12 @@ namespace Balance.Model
         /// Скопировать текущий объект в новый, кроме общих свойств
         /// </summary>
         /// <returns>Новый объект с такими-же свойствами</returns>
-        public abstract CommonModel Clone();
+        public CommonModel Clone()
+        {
+            CommonModel newCommonModel = CreateNewCommonModel();
+            newCommonModel.Fill(this);
+            return newCommonModel;
+        }
 
         /// <summary>
         /// Заполнить текущий объект из переданного

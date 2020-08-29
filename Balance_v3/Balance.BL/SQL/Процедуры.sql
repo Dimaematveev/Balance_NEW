@@ -503,3 +503,118 @@ END
 GO
 
 
+
+USE [TesNew]
+GO
+
+/****** Object:  StoredProcedure [dev].[WorkingWith_Device]    Script Date: 8/29/2020 7:34:58 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dev].[WorkingWith_Device]
+	@ID int = null,
+	@ModelID int = null,
+	@LocationID int = null,
+	@TypeProcedure nvarchar(10) = 'Select' 
+AS
+BEGIN
+	SET XACT_ABORT, NOCOUNT ON
+	SET LANGUAGE Russian
+
+	DECLARE @msg nvarchar(2048)
+	set @msg = N'Процедура ['+ OBJECT_SCHEMA_NAME(@@PROCID) + N'].[' + OBJECT_NAME(@@PROCID) + N'].'
+	DECLARE @thereIsError bit = 0
+
+	if @TypeProcedure='Select'
+	begin
+		set @msg = @msg + N' Просмотр.'
+		select * from [dev].[Device] 
+		return
+	end
+	if @TypeProcedure='Update'
+	begin
+		set @msg= @msg + N' Обновление.'
+		if @ID is null 
+		begin
+			set @msg = @msg + N' Параметр @ID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @ModelID is null 
+		begin
+			set @msg = @msg + N' Параметр @ModelID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @LocationID is null 
+		begin
+			set @msg = @msg + N' Параметр @LocationID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @thereIsError = 1
+		begin
+			RAISERROR (@msg, 16, 1)
+			return
+		end
+		update [dev].[Device] set [ModelID]=@ModelID, [LocationID]=@LocationID, [LastModified] = GETDATE() where [ID]=@ID
+		select * from [dev].[Device] where [ID]=@ID
+		return
+	end
+	if @TypeProcedure='Insert'
+	begin
+		set @msg= @msg + N' Вставка.'
+		if @ModelID is null 
+		begin
+			set @msg = @msg + N' Параметр @ModelID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @LocationID is null 
+		begin
+			set @msg = @msg + N' Параметр @LocationID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @thereIsError = 1
+		begin
+			RAISERROR (@msg, 16, 1)
+			return
+		end
+		insert into [dev].[Device] ([ModelID],[LocationID]) Values (@ModelID,@LocationID)
+		select * from [dev].[Device] where [ID]=SCOPE_IDENTITY()
+		return
+	end
+	if @TypeProcedure='Delete'
+	begin
+	
+		set @msg= @msg + N' Удаление.'
+		if @ID is null 
+		begin
+			set @msg = @msg + N' Параметр @ID не должен быть равен NULL.'
+			set @thereIsError = 1
+		end
+		if @thereIsError = 1
+		begin
+			RAISERROR (@msg, 16, 1)
+			return
+		end
+		update [dev].[Device] set [IsDelete]=1, [LastModified] = GETDATE() where [ID]=@ID
+		select * from [dev].[Device] where [ID]=@ID
+		return
+	end
+
+	set @msg=@msg + N' Неизвестная команда.'
+		
+	set @msg = @msg + N' Параметр @TypeProcedure имеет неизвестное значение=['
+					+ @TypeProcedure
+					+ N']. Возможные варианты "Select", "Update", "Insert", "Delete".' 
+						 
+	RAISERROR (@msg, 16, 1)
+	return
+
+END
+GO
+
+
+
+

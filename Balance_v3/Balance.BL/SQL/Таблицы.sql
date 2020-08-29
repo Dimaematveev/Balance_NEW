@@ -9,6 +9,8 @@
 	go
 	create schema [dic];
 	GO
+	create schema [dev]
+	GO
 */
 begin try
 	begin transaction Create_Database
@@ -60,7 +62,20 @@ begin try
 		insert into [dic].[SpSi] ([RegisterNumber]) values (N'В обработке')
 		insert into [dic].[SpSi] ([RegisterNumber]) values (N'Отсутствует')
 		
-
+		create table [dev].[Device]  (
+							  [ID] int primary key IDENTITY
+							 ,[ModelID] int NOT NULL  FOREIGN KEY REFERENCES [dic].[DeviceModel]([ID])
+							 ,[LocationID] int NOT NULL Default(0) FOREIGN KEY([LocationID]) references [dic].[Location]([ID])
+							 ,[LastModified] datetime2(7) Default(GetDate()) NOT NULL 
+							 ,[IsDelete] bit Default(0) NOT NULL
+							 )	
+		
+		create table [dev].[Printer] (
+							  [DeviceID] int primary key foreign key([DeviceID]) references [dev].[Device]([ID])
+							 ,[PagesPerMinute] int
+							 ,[LastModified] datetime2(7) Default(GetDate()) NOT NULL 
+							 ,[IsDelete] bit Default(0) NOT NULL
+							 )
 
 	COMMIT TRANSACTION Create_Database;
 END TRY

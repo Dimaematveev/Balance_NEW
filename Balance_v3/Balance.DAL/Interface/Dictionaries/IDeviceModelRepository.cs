@@ -1,6 +1,6 @@
 ﻿using Balance.Model.Dictionaries;
 
-namespace Balance.DAL.Interface
+namespace Balance.DAL.Interface.Dictionaries
 {
     /// <summary>
     /// Интерфейс хранилище [Моделей устройств]

@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModel.cs" />
+    <Compile Include="Devices\GeneralDevice.cs" />
+    <Compile Include="Devices\Printer.cs" />
     <Compile Include="Dictionaries\DeviceModel.cs" />
     <Compile Include="Dictionaries\DeviceGadget.cs" />
     <Compile Include="Dictionaries\DeviceType.cs" />
@@ -51,8 +53,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Devices\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,7 @@
 ﻿using Balance.DAL.Interface;
 using Balance.Model;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
@@ -33,8 +34,10 @@ namespace Balance.DAL.InterfaceRealization
             var sqlParameters = new List<SqlParameter>
             {
                 new SqlParameter("@TypeProcedure", "Delete"),
-                new SqlParameter("@ID", commonModel.ID)
+                new SqlParameter("@ID", commonModel.ID),
+                new SqlParameter("@IDChange","null")
             };
+            sqlParameters.Last().Direction = ParameterDirection.Output;
             var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
             if (DBConnection.instance.ThereIsError)
             {
@@ -54,6 +57,8 @@ namespace Balance.DAL.InterfaceRealization
             {
                 var sqlParameters = GetSqlParameters(commonModel);
                 sqlParameters.Add(new SqlParameter("@TypeProcedure", "Insert"));
+                sqlParameters.Add(new SqlParameter("@IDChange", "null"));
+                sqlParameters.Last().Direction = ParameterDirection.Output;
                 var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
                 if (DBConnection.instance.ThereIsError)
                 {
@@ -76,6 +81,8 @@ namespace Balance.DAL.InterfaceRealization
             var sqlParameters = GetSqlParameters(commonModel);
             sqlParameters.Add(new SqlParameter("@TypeProcedure", "Update"));
             sqlParameters.Add(new SqlParameter("@ID", commonModel.ID));
+            sqlParameters.Add(new SqlParameter("@IDChange","null"));
+            sqlParameters.Last().Direction = ParameterDirection.Output;
             var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
             if (DBConnection.instance.ThereIsError)
             {
@@ -111,8 +118,10 @@ namespace Balance.DAL.InterfaceRealization
             commonModels = new List<T>();
             var sqlParameters = new List<SqlParameter>
             {
-                new SqlParameter("@TypeProcedure", "Select")
+                new SqlParameter("@TypeProcedure", "Select"),
+                new SqlParameter("@IDChange","null")
             };
+            sqlParameters.Last().Direction = ParameterDirection.Output;
             var allCommonModels = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
             while (allCommonModels.Read())
             {
@@ -126,13 +135,13 @@ namespace Balance.DAL.InterfaceRealization
         /// </summary>
         /// <param name="commonModel">По чему делать Параметры</param>
         /// <returns>Список sql параметров</returns>
-        internal abstract List<SqlParameter> GetSqlParameters(T commonModel);
+        protected abstract List<SqlParameter> GetSqlParameters(T commonModel);
 
         /// <summary>
         /// Получить [Что-то] из таблицы
         /// </summary>
         /// <param name="dbDataReader"></param>
         /// <returns></returns>
-        internal abstract T GetDeviceTypeFromDataReader(DbDataReader dbDataReader);
+        protected abstract T GetDeviceTypeFromDataReader(DbDataReader dbDataReader);
     }
 }

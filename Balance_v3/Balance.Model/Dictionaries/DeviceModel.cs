@@ -39,20 +39,11 @@
             }
         }
 
-        /// <summary>
-        /// Скопировать текущий объект в новый
-        /// </summary>
-        /// <returns>Новый объект с такими-же свойствами</returns>
-        public override CommonModel Clone()
+        public override CommonModel CreateNewCommonModel()
         {
-            DeviceModel newTypeDevice = new DeviceModel();
-            newTypeDevice.Fill(this);
-            return newTypeDevice;
+            return new DeviceModel();
         }
-        /// <summary>
-        /// Заполнить текущий объект из переданного
-        /// </summary>
-        /// <param name="copy">переданный объект</param>
+
         public override void Fill(CommonModel copy)
         {
             if (copy != null && copy is DeviceModel copyDeviceModel)

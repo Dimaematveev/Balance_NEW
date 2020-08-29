@@ -69,20 +69,11 @@
                 OnPropertyChanged(nameof(Page));
             }
         }
-        /// <summary>
-        /// Скопировать текущий объект в новый
-        /// </summary>
-        /// <returns>Новый объект с такими-же свойствами</returns>
-        public override CommonModel Clone()
+        public override CommonModel CreateNewCommonModel()
         {
-            SPSI newTypeDevice = new SPSI();
-            newTypeDevice.Fill(this);
-            return newTypeDevice;
+            return new SPSI();
         }
-        /// <summary>
-        /// Заполнить текущий объект из переданного
-        /// </summary>
-        /// <param name="copy">переданный объект</param>
+
         public override void Fill(CommonModel copy)
         {
             if (copy != null && copy is SPSI copyDeviceType)
