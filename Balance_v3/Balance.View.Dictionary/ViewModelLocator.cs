@@ -1,5 +1,5 @@
-﻿using Balance.View.Dictionary.ViewModel;
-using Balance.ViewModel.Dictionary.ViewModel;
+﻿using Balance.View.Dictionary.ViewModels;
+using Balance.ViewModel.Dictionary.ViewModels;
 using System.ComponentModel;
 using System.Windows;
 

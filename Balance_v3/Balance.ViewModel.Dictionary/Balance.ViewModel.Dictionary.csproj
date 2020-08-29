@@ -43,11 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\DeviceGadgetViewModel.cs" />
-    <Compile Include="ViewModel\DeviceModelViewModel.cs" />
-    <Compile Include="ViewModel\DeviceTypeViewModel.cs" />
-    <Compile Include="ViewModel\LocationViewModel.cs" />
-    <Compile Include="ViewModel\SPSIViewModel.cs" />
+    <Compile Include="ViewModels\DeviceGadgetViewModel.cs" />
+    <Compile Include="ViewModels\DeviceModelViewModel.cs" />
+    <Compile Include="ViewModels\DeviceTypeViewModel.cs" />
+    <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\SPSIViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Balance.BL\Balance.BL.csproj">

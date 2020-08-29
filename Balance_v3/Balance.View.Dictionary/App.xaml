@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Balance.View.Dictionary"
              xmlns:converter="clr-namespace:Balance.View.BL.Converter;assembly=Balance.View.BL"
-             StartupUri="View/HomeView.xaml">
+             StartupUri="Views/HomeView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

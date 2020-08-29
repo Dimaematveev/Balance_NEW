@@ -1,7 +1,8 @@
 ﻿using Balance.DAL;
 using Balance.DAL.Interface;
 using Balance.DAL.InterfaceRealization;
-using Balance.Model.Dictionary;
+using Balance.DAL.InterfaceRealization.Dictionaries;
+using Balance.Model.Dictionaries;
 using System.Windows;
 
 namespace Balance.View.Dictionary

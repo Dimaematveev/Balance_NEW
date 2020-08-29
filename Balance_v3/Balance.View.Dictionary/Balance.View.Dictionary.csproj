@@ -74,120 +74,120 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="View\SPSIView.xaml.cs">
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="Views\SPSIView.xaml.cs">
       <DependentUpon>SPSIView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LocationView.xaml.cs">
+    <Compile Include="Views\LocationView.xaml.cs">
       <DependentUpon>LocationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DeviceModelView.xaml.cs">
+    <Compile Include="Views\DeviceModelView.xaml.cs">
       <DependentUpon>DeviceModelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DeviceGadgetView.xaml.cs">
+    <Compile Include="Views\DeviceGadgetView.xaml.cs">
       <DependentUpon>DeviceGadgetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\DeviceTypeView.xaml.cs">
+    <Compile Include="Views\DeviceTypeView.xaml.cs">
       <DependentUpon>DeviceTypeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HomeView.xaml.cs">
+    <Compile Include="Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\UserControls\ElementEdit\SPSIEdit.xaml.cs">
+    <Compile Include="Views\UserControls\ElementEdit\SPSIEdit.xaml.cs">
       <DependentUpon>SPSIEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementEdit\LocationEdit.xaml.cs">
+    <Compile Include="Views\UserControls\ElementEdit\LocationEdit.xaml.cs">
       <DependentUpon>LocationEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml.cs">
+    <Compile Include="Views\UserControls\ElementEdit\DeviceGadgetEdit.xaml.cs">
       <DependentUpon>DeviceGadgetEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml.cs">
+    <Compile Include="Views\UserControls\ElementEdit\DeviceModelEdit.xaml.cs">
       <DependentUpon>DeviceModelEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceGadget.xaml.cs">
+    <Compile Include="Views\UserControls\ElementViews\ViewAllDeviceGadget.xaml.cs">
       <DependentUpon>ViewAllDeviceGadget.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementViews\ViewAllSPSI.xaml.cs">
+    <Compile Include="Views\UserControls\ElementViews\ViewAllSPSI.xaml.cs">
       <DependentUpon>ViewAllSPSI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementViews\ViewAllLocation.xaml.cs">
+    <Compile Include="Views\UserControls\ElementViews\ViewAllLocation.xaml.cs">
       <DependentUpon>ViewAllLocation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceModel.xaml.cs">
+    <Compile Include="Views\UserControls\ElementViews\ViewAllDeviceModel.xaml.cs">
       <DependentUpon>ViewAllDeviceModel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementEdit\DeviceTypeEdit.xaml.cs">
+    <Compile Include="Views\UserControls\ElementEdit\DeviceTypeEdit.xaml.cs">
       <DependentUpon>DeviceTypeEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml.cs">
+    <Compile Include="Views\UserControls\ElementViews\ViewAllDeviceType.xaml.cs">
       <DependentUpon>ViewAllDeviceType.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\SPSIView.xaml">
+    <Page Include="Views\SPSIView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\LocationView.xaml">
+    <Page Include="Views\LocationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\DeviceModelView.xaml">
+    <Page Include="Views\DeviceModelView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\DeviceGadgetView.xaml">
+    <Page Include="Views\DeviceGadgetView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\DeviceTypeView.xaml">
+    <Page Include="Views\DeviceTypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HomeView.xaml">
+    <Page Include="Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ElementEdit\SPSIEdit.xaml">
+    <Page Include="Views\UserControls\ElementEdit\SPSIEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementEdit\LocationEdit.xaml">
+    <Page Include="Views\UserControls\ElementEdit\LocationEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementEdit\DeviceGadgetEdit.xaml">
+    <Page Include="Views\UserControls\ElementEdit\DeviceGadgetEdit.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementEdit\DeviceModelEdit.xaml">
+    <Page Include="Views\UserControls\ElementEdit\DeviceModelEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ElementViews\ViewAllDeviceGadget.xaml">
+    <Page Include="Views\UserControls\ElementViews\ViewAllDeviceGadget.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementViews\ViewAllSPSI.xaml">
+    <Page Include="Views\UserControls\ElementViews\ViewAllSPSI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementViews\ViewAllLocation.xaml">
+    <Page Include="Views\UserControls\ElementViews\ViewAllLocation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\UserControls\ElementViews\ViewAllDeviceModel.xaml">
+    <Page Include="Views\UserControls\ElementViews\ViewAllDeviceModel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ElementEdit\DeviceTypeEdit.xaml">
+    <Page Include="Views\UserControls\ElementEdit\DeviceTypeEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\UserControls\ElementViews\ViewAllDeviceType.xaml">
+    <Page Include="Views\UserControls\ElementViews\ViewAllDeviceType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

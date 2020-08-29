@@ -41,15 +41,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonModel.cs" />
-    <Compile Include="Dictionary\DeviceModel.cs" />
-    <Compile Include="Dictionary\DeviceGadget.cs" />
-    <Compile Include="Dictionary\DeviceType.cs" />
-    <Compile Include="Dictionary\Location.cs" />
+    <Compile Include="Dictionaries\DeviceModel.cs" />
+    <Compile Include="Dictionaries\DeviceGadget.cs" />
+    <Compile Include="Dictionaries\DeviceType.cs" />
+    <Compile Include="Dictionaries\Location.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Dictionary\SPSI.cs" />
+    <Compile Include="Dictionaries\SPSI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Devices\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

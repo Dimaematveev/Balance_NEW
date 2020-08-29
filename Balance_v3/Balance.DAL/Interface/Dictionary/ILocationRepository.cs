@@ -1,4 +1,4 @@
-﻿using Balance.Model.Dictionary;
+﻿using Balance.Model.Dictionaries;
 
 namespace Balance.DAL.Interface
 {

@@ -42,12 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnection.cs" />
-    <Compile Include="InterfaceRealization\Dictionary\MyDeviceCommonRepository.cs" />
-    <Compile Include="InterfaceRealization\Dictionary\SPSIRepository.cs" />
-    <Compile Include="InterfaceRealization\Dictionary\LocationRepository.cs" />
-    <Compile Include="InterfaceRealization\Dictionary\DeviceModelRepository.cs" />
-    <Compile Include="InterfaceRealization\DeviceGadgetRepository.cs" />
-    <Compile Include="InterfaceRealization\Dictionary\DeviceTypeRepository.cs" />
+    <Compile Include="InterfaceRealization\MyDeviceCommonRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionaries\SPSIRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionaries\LocationRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionaries\DeviceModelRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionaries\DeviceGadgetRepository.cs" />
+    <Compile Include="InterfaceRealization\Dictionaries\DeviceTypeRepository.cs" />
     <Compile Include="Interface\IDeviceCommonRepository.cs" />
     <Compile Include="Interface\Dictionary\ILocationRepository.cs" />
     <Compile Include="Interface\Dictionary\ISPSIRepository.cs" />
