@@ -53,6 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="Views\HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -65,6 +70,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -90,9 +99,26 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModels\" />
     <Folder Include="Views\UserControls\ElementEdit\" />
     <Folder Include="Views\UserControls\ElementViews\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Balance.BL\Balance.BL.csproj">
+      <Project>{B02E8EBB-7759-43D5-8456-A641029E1C8F}</Project>
+      <Name>Balance.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.Model\Balance.Model.csproj">
+      <Project>{DD40722B-F3A4-4D1C-B393-5B81AA973075}</Project>
+      <Name>Balance.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel.Device\Balance.ViewModel.Device.csproj">
+      <Project>{7272073C-345E-4D46-959B-CB624A8C05D7}</Project>
+      <Name>Balance.ViewModel.Device</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel\Balance.ViewModel.csproj">
+      <Project>{C448BABA-514E-4B12-9AB7-8956B30E5CC9}</Project>
+      <Name>Balance.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
