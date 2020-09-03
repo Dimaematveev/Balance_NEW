@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balance.ViewModel.Device", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balance.View.Device", "Balance.View.Device\Balance.View.Device.csproj", "{4BEB0925-0576-4318-90A5-7DF3AD9E218C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Balance.View.Main", "Balance.View.Main\Balance.View.Main.csproj", "{10DE01B5-FE36-4386-9813-7B4080E30475}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{4BEB0925-0576-4318-90A5-7DF3AD9E218C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BEB0925-0576-4318-90A5-7DF3AD9E218C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BEB0925-0576-4318-90A5-7DF3AD9E218C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10DE01B5-FE36-4386-9813-7B4080E30475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10DE01B5-FE36-4386-9813-7B4080E30475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10DE01B5-FE36-4386-9813-7B4080E30475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10DE01B5-FE36-4386-9813-7B4080E30475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{C448BABA-514E-4B12-9AB7-8956B30E5CC9} = {E871E480-6997-4931-8E3F-4CDC114B058C}
 		{7272073C-345E-4D46-959B-CB624A8C05D7} = {E871E480-6997-4931-8E3F-4CDC114B058C}
 		{4BEB0925-0576-4318-90A5-7DF3AD9E218C} = {1AA8A6C5-E382-47AF-BBED-DB4225C78D45}
+		{10DE01B5-FE36-4386-9813-7B4080E30475} = {1AA8A6C5-E382-47AF-BBED-DB4225C78D45}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E88FEE6-B9CE-4BA3-862E-9B24B3DF0C0C}
