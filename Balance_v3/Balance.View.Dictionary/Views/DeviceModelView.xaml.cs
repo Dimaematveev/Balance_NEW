@@ -1,4 +1,6 @@
 ﻿using Balance.Model.Dictionaries;
+using Balance.View.Views;
+using Balance.ViewModel.Interface;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,8 +9,9 @@ namespace Balance.View.Dictionary.Views
     /// <summary>
     /// Просмотр редактирование и изменение Моделей устройств
     /// </summary>
-    public partial class DeviceModelView : Page
+    public partial class DeviceModelView : Page, IPageView<DeviceModel>
     {
+        public MyCommonViewModel<DeviceModel> myCommonViewModel { get; }
         public DeviceModelView()
         {
 
@@ -16,9 +19,14 @@ namespace Balance.View.Dictionary.Views
             SetEditing();
 
         }
+        public DeviceModelView(MyCommonViewModel<DeviceModel> myCommonViewModel) : base()
+        {
+            this.myCommonViewModel = myCommonViewModel;
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelLocator.DeviceModelViewModel.EditingAnimation = SetEditing;
+            myCommonViewModel.EditingAnimation = SetEditing;
+
         }
         public void SetEditing()
         {

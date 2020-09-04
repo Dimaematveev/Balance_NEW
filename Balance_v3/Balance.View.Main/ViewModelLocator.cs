@@ -3,7 +3,7 @@ using Balance.ViewModel.Dictionary.ViewModels;
 using System.ComponentModel;
 using System.Windows;
 
-namespace Balance.View.Dictionary
+namespace Balance.View.Main
 {
     /// <summary>
     /// View-Model абстракция всей системы
@@ -37,6 +37,7 @@ namespace Balance.View.Dictionary
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
             deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService, App.deviceGadgetDataService);
+            
             deviceModelViewModel = new DeviceModelViewModel(App.deviceModelRepository, App.deviceTypeDataService);
             deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
             locationViewModel = new LocationViewModel(App.locationRepository);

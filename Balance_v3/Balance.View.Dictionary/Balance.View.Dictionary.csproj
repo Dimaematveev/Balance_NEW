@@ -73,8 +73,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\SPSIView.xaml.cs">
       <DependentUpon>SPSIView.xaml</DependentUpon>
     </Compile>

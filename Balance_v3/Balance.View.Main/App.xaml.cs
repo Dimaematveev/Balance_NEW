@@ -16,7 +16,7 @@ namespace Balance.View.Main
     /// </summary>
     public partial class App : Application
     {
-        public static IDeviceCommonRepository<DeviceGadget> deviceGadgetDataService;
+        public static IDeviceCommonRepository<DeviceType> deviceGadgetDataService;
         public static IDeviceCommonRepository<DeviceType> deviceTypeDataService;
         public static IDeviceCommonRepository<DeviceModel> deviceModelRepository;
         public static IDeviceCommonRepository<Location> locationRepository;

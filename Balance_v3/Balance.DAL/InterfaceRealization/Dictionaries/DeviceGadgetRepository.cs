@@ -10,7 +10,7 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
     /// <summary>
     /// Хранилище Имен таблиц
     /// </summary>
-    public class DeviceGadgetRepository : MyDeviceCommonRepository<DeviceGadget>, IDeviceGadgetRepository
+    public class DeviceGadgetRepository : MyDeviceCommonRepository<DeviceType>, IDeviceGadgetRepository
     {
         protected override string SHEMA_NAME => "dic";
 
@@ -18,7 +18,7 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
 
 
 
-        protected override List<SqlParameter> GetSqlParameters(DeviceGadget commonModel)
+        protected override List<SqlParameter> GetSqlParameters(DeviceType commonModel)
         {
             List<SqlParameter> sqlParameters = new List<SqlParameter>
             {
@@ -29,13 +29,13 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
 
 
 
-        protected override DeviceGadget GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
+        protected override DeviceType GetDeviceTypeFromDataReader(DbDataReader dbDataReader)
         {
             var curID = (int)dbDataReader["ID"];
             var curName = (string)dbDataReader["Name"];
             var curIsDelete = (bool)dbDataReader["IsDelete"];
             var curLastModified = (DateTime)dbDataReader["LastModified"];
-            var newDeviceGadget = new DeviceGadget()
+            var newDeviceGadget = new DeviceType()
             {
                 ID = curID,
                 Name = curName,

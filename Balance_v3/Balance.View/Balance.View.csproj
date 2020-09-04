@@ -80,6 +80,7 @@
     <Compile Include="UserControls\TextBox\UserTextBoxWithErrorEmpty.xaml.cs">
       <DependentUpon>UserTextBoxWithErrorEmpty.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IPageView.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

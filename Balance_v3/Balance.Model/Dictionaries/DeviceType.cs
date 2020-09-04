@@ -24,11 +24,11 @@
         /// <summary>
         /// Таблица устройства
         /// </summary>
-        private DeviceGadget _DeviceGadget;
+        private DeviceType _DeviceGadget;
         /// <summary>
         /// Таблица устройства
         /// </summary>
-        public DeviceGadget DeviceGadget
+        public DeviceType DeviceGadget
         {
             get { return _DeviceGadget; }
             set

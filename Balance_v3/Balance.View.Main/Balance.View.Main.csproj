@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\HomeDeviceViewModel.cs" />
     <Compile Include="ViewModels\HomeDictionaryViewModel.cs" />
     <Compile Include="ViewModels\Tab.cs" />
@@ -119,6 +120,10 @@
     <ProjectReference Include="..\Balance.View.Dictionary\Balance.View.Dictionary.csproj">
       <Project>{6c43e7a9-a418-4da0-afea-8db244c66b01}</Project>
       <Name>Balance.View.Dictionary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.ViewModel.Dictionary\Balance.ViewModel.Dictionary.csproj">
+      <Project>{C229E17F-0601-49CB-9089-6FC037C74B2C}</Project>
+      <Name>Balance.ViewModel.Dictionary</Name>
     </ProjectReference>
     <ProjectReference Include="..\Balance.ViewModel\Balance.ViewModel.csproj">
       <Project>{C448BABA-514E-4B12-9AB7-8956B30E5CC9}</Project>

@@ -13,8 +13,8 @@ namespace Balance.DAL.InterfaceRealization.Dictionaries
     /// </summary>
     public class DeviceTypeRepository : MyDeviceCommonRepository<DeviceType>, IDeviceTypeRepository
     {
-        private readonly IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository;
-        public DeviceTypeRepository(IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository)
+        private readonly IDeviceCommonRepository<DeviceType> deviceGadgetRepository;
+        public DeviceTypeRepository(IDeviceCommonRepository<DeviceType> deviceGadgetRepository)
         {
             this.deviceGadgetRepository = deviceGadgetRepository;
         }

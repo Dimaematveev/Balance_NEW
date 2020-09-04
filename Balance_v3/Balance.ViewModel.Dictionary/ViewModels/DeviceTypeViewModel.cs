@@ -15,11 +15,11 @@ namespace Balance.ViewModel.Dictionary.ViewModels
         /// <summary>
         /// Хранилище Названий таблиц
         /// </summary>
-        private readonly IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository;
+        private readonly IDeviceCommonRepository<DeviceType> deviceGadgetRepository;
         /// <summary>
         /// Список [Типов устройств]
         /// </summary>
-        public List<DeviceGadget> DeviceGadgets
+        public List<DeviceType> DeviceGadgets
         {
             get; set;
         }
@@ -53,11 +53,11 @@ namespace Balance.ViewModel.Dictionary.ViewModels
         /// <summary>
         /// Клиент выбранной машины
         /// </summary>
-        private DeviceGadget selectedDeviceGadget;
+        private DeviceType selectedDeviceGadget;
         /// <summary>
         /// Клиент выбранной машины
         /// </summary>
-        public DeviceGadget SelectedDeviceGadget
+        public DeviceType SelectedDeviceGadget
         {
             get { return selectedDeviceGadget; }
             set
@@ -71,7 +71,7 @@ namespace Balance.ViewModel.Dictionary.ViewModels
         /// </summary>
         /// <param name="deviceTypeRepository">Хранилище Типов устройств</param>
         /// <param name="deviceGadgetRepository">Хранилище Названий таблиц</param>
-        public DeviceTypeViewModel(IDeviceCommonRepository<DeviceType> deviceTypeRepository, IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceTypeRepository)
+        public DeviceTypeViewModel(IDeviceCommonRepository<DeviceType> deviceTypeRepository, IDeviceCommonRepository<DeviceType> deviceGadgetRepository) : base(deviceTypeRepository)
         {
             this.deviceGadgetRepository = deviceGadgetRepository;
             DeviceGadgets = this.deviceGadgetRepository.GetAll().Where(x => x.IsDelete.Equals(false)).ToList();

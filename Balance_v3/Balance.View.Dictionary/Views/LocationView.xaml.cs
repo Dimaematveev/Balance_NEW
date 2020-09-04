@@ -1,4 +1,6 @@
 ﻿using Balance.Model.Dictionaries;
+using Balance.View.Views;
+using Balance.ViewModel.Interface;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,8 +9,9 @@ namespace Balance.View.Dictionary.Views
     /// <summary>
     ///  Просмотр редактирование и изменение Местоположений
     /// </summary>
-    public partial class LocationView : Page
+    public partial class LocationView : Page, IPageView<Location>
     {
+        public MyCommonViewModel<Location> myCommonViewModel { get; }
         public LocationView()
         {
 
@@ -16,9 +19,13 @@ namespace Balance.View.Dictionary.Views
             SetEditing();
 
         }
+        public LocationView(MyCommonViewModel<Location> myCommonViewModel) : base()
+        {
+            this.myCommonViewModel = myCommonViewModel;
+        }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ViewModelLocator.LocationViewModel.EditingAnimation = SetEditing;
+            myCommonViewModel.EditingAnimation = SetEditing;
 
         }
         public void SetEditing()

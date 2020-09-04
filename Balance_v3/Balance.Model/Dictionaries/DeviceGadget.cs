@@ -3,7 +3,7 @@
     /// <summary>
     /// Название Таблицы
     /// </summary>
-    public class DeviceGadget : CommonModel
+    public class DeviceType : CommonModel
     {
 
         private string _Name;
@@ -22,12 +22,12 @@
 
         public override CommonModel CreateNewCommonModel()
         {
-            return new DeviceGadget();
+            return new DeviceType();
         }
 
         public override void Fill(CommonModel copy)
         {
-            if (copy != null && copy is DeviceGadget copyDeviceType)
+            if (copy != null && copy is DeviceType copyDeviceType)
             {
                 Name = copyDeviceType.Name;
             }

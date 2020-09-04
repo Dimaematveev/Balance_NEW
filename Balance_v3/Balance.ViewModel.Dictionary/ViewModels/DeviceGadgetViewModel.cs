@@ -9,13 +9,13 @@ namespace Balance.ViewModel.Dictionary.ViewModels
     /// <summary>
     /// View-Model  [Типа устройства]
     /// </summary>
-    public class DeviceGadgetViewModel : MyCommonViewModel<DeviceGadget>
+    public class DeviceGadgetViewModel : MyCommonViewModel<DeviceType>
     {
         /// <summary>
         /// Конструктор ViewModel
         /// </summary>
         /// <param name="deviceGadgetRepository">Хранилище Названий таблиц</param>
-        public DeviceGadgetViewModel(IDeviceCommonRepository<DeviceGadget> deviceGadgetRepository) : base(deviceGadgetRepository)
+        public DeviceGadgetViewModel(IDeviceCommonRepository<DeviceType> deviceGadgetRepository) : base(deviceGadgetRepository)
         {
             SearchString = "";
         }
@@ -26,7 +26,7 @@ namespace Balance.ViewModel.Dictionary.ViewModels
             set
             {
                 searchString = value.ToLower();
-                FilteredCommonModels = new ObservableCollection<DeviceGadget>(
+                FilteredCommonModels = new ObservableCollection<DeviceType>(
                     CommonModels.Where(x =>
                         x.IsDelete.Equals(false) && (
                             x.Name.ToLower().Contains(SearchString)
