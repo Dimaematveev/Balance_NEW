@@ -37,7 +37,6 @@ namespace Balance.View.Main
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
             deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService, App.deviceGadgetDataService);
-            
             deviceModelViewModel = new DeviceModelViewModel(App.deviceModelRepository, App.deviceTypeDataService);
             deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
             locationViewModel = new LocationViewModel(App.locationRepository);

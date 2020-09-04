@@ -2,11 +2,9 @@
 using Balance.Model.Devices;
 using Balance.Model.Dictionaries;
 using Balance.ViewModel.Interface;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace Balance.ViewModel.Device.ViewModels
 {
@@ -45,7 +43,7 @@ namespace Balance.ViewModel.Device.ViewModels
 
                 if (SelectedCommonModel != null)
                 {
-                    if (SelectedCommonModel.DeviceModel == null )
+                    if (SelectedCommonModel.DeviceModel == null)
                     {
                         selectedDeviceModel = null;
                     }
@@ -130,12 +128,12 @@ namespace Balance.ViewModel.Device.ViewModels
                         x.IsDelete.Equals(false) && (
                             x.DeviceModel.Name.ToLower().Contains(SearchString) ||
                             x.DeviceModel.DeviceType.Name.ToLower().Contains(SearchString) ||
-                            x.Location.Name.ToLower().Contains(SearchString) 
+                            x.Location.Name.ToLower().Contains(SearchString)
                         ))
                 );
                 OnPropertyChanged(nameof(SearchString));
             }
         }
-       
+
     }
 }

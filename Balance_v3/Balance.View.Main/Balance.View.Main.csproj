@@ -94,6 +94,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,6 +114,10 @@
       <Project>{DD40722B-F3A4-4D1C-B393-5B81AA973075}</Project>
       <Name>Balance.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Balance.View.BL\Balance.View.BL.csproj">
+      <Project>{f188140e-0fc1-4578-9d81-b43dc587ecc0}</Project>
+      <Name>Balance.View.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Balance.View.Device\Balance.View.Device.csproj">
       <Project>{4beb0925-0576-4318-90a5-7df3ad9e218c}</Project>
       <Name>Balance.View.Device</Name>
@@ -128,6 +133,10 @@
     <ProjectReference Include="..\Balance.ViewModel\Balance.ViewModel.csproj">
       <Project>{C448BABA-514E-4B12-9AB7-8956B30E5CC9}</Project>
       <Name>Balance.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Balance.View\Balance.View.csproj">
+      <Project>{b2ba44a2-ab3b-4c91-8f66-fe3e34fb0f15}</Project>
+      <Name>Balance.View</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

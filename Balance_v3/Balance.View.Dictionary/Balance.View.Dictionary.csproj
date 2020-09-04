@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6C43E7A9-A418-4DA0-AFEA-8DB244C66B01}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Balance.View.Dictionary</RootNamespace>
     <AssemblyName>Balance.View.Dictionary</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>

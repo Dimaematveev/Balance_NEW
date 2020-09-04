@@ -86,11 +86,11 @@ namespace Balance.View.Main.ViewModels
             messageShow = new MessageShow();
             Tabs = new ObservableCollection<Tab>
             {
-                new Tab() { Title = "Названия таблиц", Icon = '\uE155', OpenNewPage=new Func<Page>( () => {return new DeviceGadgetView(); }) },
-                new Tab() { Title = "Типы устройств", Icon = '\uE8CC', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(); }) },
-                new Tab() { Title = "Модели устройств", Icon = '\uEDA4', OpenNewPage=new Func<Page>( () => {return new DeviceModelView(); }) },
-                new Tab() { Title = "Местоположение", Icon = '\uE726', OpenNewPage=new Func<Page>( () => {return new LocationView(); }) },
-                new Tab() { Title = "СП и СИ", Icon = '\uE1DE', OpenNewPage=new Func<Page>( () => {return new SPSIView(); }) },
+                new Tab() { Title = "Названия таблиц", Icon = '\uE155', OpenNewPage=new Func<Page>( () => {return new DeviceGadgetView(ViewModelLocator.DeviceGadgetViewModel); }) },
+                new Tab() { Title = "Типы устройств", Icon = '\uE8CC', OpenNewPage=new Func<Page>( () => {return new DeviceTypeView(ViewModelLocator.DeviceTypeViewModel); }) },
+                new Tab() { Title = "Модели устройств", Icon = '\uEDA4', OpenNewPage=new Func<Page>( () => {return new DeviceModelView(ViewModelLocator.DeviceModelViewModel); }) },
+                new Tab() { Title = "Местоположение", Icon = '\uE726', OpenNewPage=new Func<Page>( () => {return new LocationView(ViewModelLocator.LocationViewModel); }) },
+                new Tab() { Title = "СП и СИ", Icon = '\uE1DE', OpenNewPage=new Func<Page>( () => {return new SPSIView(ViewModelLocator.SPSIViewModel); }) },
             };
         }
 
@@ -107,5 +107,5 @@ namespace Balance.View.Main.ViewModels
     }
 
 
-  
+
 }

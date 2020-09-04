@@ -1,6 +1,5 @@
 ﻿using Balance.DAL.Interface;
 using Balance.DAL.Interface.Devices;
-using Balance.DAL.InterfaceRealization.Dictionaries;
 using Balance.Model.Devices;
 using Balance.Model.Dictionaries;
 using System;
@@ -10,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Balance.DAL.InterfaceRealization.Devices
 {
-    public class GeneralDeviceRepository<T> : MyDeviceCommonRepository<T>, IGeneralDeviceRepository<T> where T:GeneralDevice
+    public class GeneralDeviceRepository<T> : MyDeviceCommonRepository<T>, IGeneralDeviceRepository<T> where T : GeneralDevice
     {
         private readonly IDeviceCommonRepository<DeviceModel> deviceModelRepository;
         private readonly IDeviceCommonRepository<Location> locationRepository;

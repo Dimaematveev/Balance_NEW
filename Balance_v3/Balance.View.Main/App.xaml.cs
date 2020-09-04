@@ -2,11 +2,6 @@
 using Balance.DAL.Interface;
 using Balance.DAL.InterfaceRealization.Dictionaries;
 using Balance.Model.Dictionaries;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Windows;
 
 namespace Balance.View.Main

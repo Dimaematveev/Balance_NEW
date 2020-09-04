@@ -1,9 +1,8 @@
-﻿<Application x:Class="Balance.View.Dictionary.App"
+﻿<Application 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Balance.View.Dictionary"
-             xmlns:converter="clr-namespace:Balance.View.BL.Converter;assembly=Balance.View.BL"
-             StartupUri="Views/HomeView.xaml">
+             xmlns:converter="clr-namespace:Balance.View.BL.Converter;assembly=Balance.View.BL">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

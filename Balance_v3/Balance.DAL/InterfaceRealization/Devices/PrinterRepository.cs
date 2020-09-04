@@ -2,7 +2,6 @@
 using Balance.DAL.Interface.Devices;
 using Balance.Model.Devices;
 using Balance.Model.Dictionaries;
-using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -12,7 +11,7 @@ namespace Balance.DAL.InterfaceRealization.Devices
     public class PrinterRepository : GeneralDeviceRepository<Printer>, IPrinterRepository
     {
 
-        public PrinterRepository(IDeviceCommonRepository<DeviceModel> deviceModelRepository, IDeviceCommonRepository<Location> locationRepository):base(deviceModelRepository, locationRepository)
+        public PrinterRepository(IDeviceCommonRepository<DeviceModel> deviceModelRepository, IDeviceCommonRepository<Location> locationRepository) : base(deviceModelRepository, locationRepository)
         {
         }
         protected override string SHEMA_NAME => "dev";

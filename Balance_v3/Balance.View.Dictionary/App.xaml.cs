@@ -1,8 +1,4 @@
-﻿using Balance.DAL;
-using Balance.DAL.Interface;
-using Balance.DAL.InterfaceRealization.Dictionaries;
-using Balance.Model.Dictionaries;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Balance.View.Dictionary
 {
@@ -11,10 +7,10 @@ namespace Balance.View.Dictionary
     /// </summary>
     public partial class App : Application
     {
-       
+
         public App()
         {
-           
+
         }
     }
 }

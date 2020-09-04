@@ -21,7 +21,7 @@ namespace Balance.View.Dictionary.Views
             SetEditing();
 
         }
-        public DeviceGadgetView(MyCommonViewModel<DeviceType> myCommonViewModel):base()
+        public DeviceGadgetView(MyCommonViewModel<DeviceType> myCommonViewModel) : base()
         {
             this.myCommonViewModel = myCommonViewModel;
         }

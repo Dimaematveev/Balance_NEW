@@ -3,7 +3,7 @@
     /// <summary>
     /// Название Таблицы
     /// </summary>
-    public class DeviceType : CommonModel
+    public class DeviceGadget : CommonModel
     {
 
         private string _Name;

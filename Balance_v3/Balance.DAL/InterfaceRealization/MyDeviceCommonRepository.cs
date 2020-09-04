@@ -81,7 +81,7 @@ namespace Balance.DAL.InterfaceRealization
             var sqlParameters = GetSqlParameters(commonModel);
             sqlParameters.Add(new SqlParameter("@TypeProcedure", "Update"));
             sqlParameters.Add(new SqlParameter("@ID", commonModel.ID));
-            sqlParameters.Add(new SqlParameter("@IDChange","null"));
+            sqlParameters.Add(new SqlParameter("@IDChange", "null"));
             sqlParameters.Last().Direction = ParameterDirection.Output;
             var newcommonModel = DBConnection.instance.ExecuteProcedure($"[{SHEMA_NAME}].[WorkingWith_{TABLE_NAME}]", sqlParameters);
             if (DBConnection.instance.ThereIsError)

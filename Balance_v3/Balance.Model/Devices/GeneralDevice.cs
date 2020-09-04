@@ -39,7 +39,7 @@ namespace Balance.Model.Devices
                 OnPropertyChanged(nameof(Location));
             }
         }
-       
+
         public override void Fill(CommonModel copy)
         {
 
