@@ -7,12 +7,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
 
-namespace Balance.View.Dictionary.ViewModels
+namespace Balance.View.Main.ViewModels
 {
     /// <summary>
     /// View-Model Домашней страницы
     /// </summary>
-    public class HomeViewModel : INotifyPropertyChanged
+    public class HomeDictionaryViewModel : INotifyPropertyChanged
     {
         /// <summary>
         /// Динамическая коллекция вкладок
@@ -81,7 +81,7 @@ namespace Balance.View.Dictionary.ViewModels
                 OnPropertyChanged(nameof(TabPage));
             }
         }
-        public HomeViewModel()
+        public HomeDictionaryViewModel()
         {
             messageShow = new MessageShow();
             Tabs = new ObservableCollection<Tab>
@@ -107,32 +107,5 @@ namespace Balance.View.Dictionary.ViewModels
     }
 
 
-    /// <summary>
-    /// Вкладка
-    /// </summary>
-    public class Tab
-    {
-        /// <summary>
-        /// Заглавие Страницы
-        /// </summary>
-        public string Title
-        {
-            get; set;
-        }
-
-        /// <summary>
-        /// Иконка Страницы
-        /// </summary>
-        public char Icon
-        {
-            get; set;
-        }
-        /// <summary>
-        /// Функция создания новой Страницы
-        /// </summary>
-        public Func<Page> OpenNewPage
-        {
-            get; set;
-        }
-    }
+  
 }

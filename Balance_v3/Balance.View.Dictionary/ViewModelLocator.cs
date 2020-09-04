@@ -1,4 +1,4 @@
-﻿using Balance.View.Dictionary.ViewModels;
+﻿
 using Balance.ViewModel.Dictionary.ViewModels;
 using System.ComponentModel;
 using System.Windows;
@@ -10,10 +10,6 @@ namespace Balance.View.Dictionary
     /// </summary>
     public class ViewModelLocator
     {
-        /// <summary>
-        /// ViewModel Домашней страницы
-        /// </summary>
-        private static HomeViewModel homeViewModel = null;
         /// <summary>
         /// ViewModel Типов устройств
         /// </summary>
@@ -40,7 +36,6 @@ namespace Balance.View.Dictionary
             //Простое решение — проверять, не бежим ли мы в дизайнере.
             if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
                 return;
-            homeViewModel = new HomeViewModel();
             deviceTypeViewModel = new DeviceTypeViewModel(App.deviceTypeDataService, App.deviceGadgetDataService);
             deviceModelViewModel = new DeviceModelViewModel(App.deviceModelRepository, App.deviceTypeDataService);
             deviceGadgetViewModel = new DeviceGadgetViewModel(App.deviceGadgetDataService);
@@ -48,16 +43,6 @@ namespace Balance.View.Dictionary
             sPSIViewModel = new SPSIViewModel(App.SPSIRepository);
 
 
-        }
-        /// <summary>
-        /// ViewModel Домашней страницы
-        /// </summary>
-        public static HomeViewModel HomeViewModel
-        {
-            get
-            {
-                return homeViewModel;
-            }
         }
         /// <summary>
         /// ViewModel  Типов устройств

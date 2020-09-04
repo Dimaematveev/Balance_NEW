@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Balance.DAL;
+using Balance.DAL.Interface;
+using Balance.DAL.InterfaceRealization.Dictionaries;
+using Balance.Model.Dictionaries;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,5 +16,19 @@ namespace Balance.View.Main
     /// </summary>
     public partial class App : Application
     {
+        public static IDeviceCommonRepository<DeviceGadget> deviceGadgetDataService;
+        public static IDeviceCommonRepository<DeviceType> deviceTypeDataService;
+        public static IDeviceCommonRepository<DeviceModel> deviceModelRepository;
+        public static IDeviceCommonRepository<Location> locationRepository;
+        public static IDeviceCommonRepository<SPSI> SPSIRepository;
+        public App()
+        {
+            new DBConnection();
+            deviceGadgetDataService = new DeviceGadgetRepository();
+            deviceTypeDataService = new DeviceTypeRepository(deviceGadgetDataService);
+            deviceModelRepository = new DeviceModelRepository(deviceTypeDataService);
+            locationRepository = new LocationRepository();
+            SPSIRepository = new SPSIRepository();
+        }
     }
 }
