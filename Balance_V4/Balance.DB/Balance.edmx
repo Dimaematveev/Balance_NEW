@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Balance_V2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="IDDevice" />
+          </Key>
+          <Property Name="IDDevice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModelOfDeviceID" Type="int" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeviceWithAdditionalField">
+          <Key>
+            <PropertyRef Name="IDDeviceWithAdditionalField" />
+          </Key>
+          <Property Name="IDDeviceWithAdditionalField" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="TypeOfDeviceID" Type="int" Nullable="false" />
+          <Property Name="AdditionalFieldID" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdditionalField">
+          <Key>
+            <PropertyRef Name="IDAdditionalField" />
+          </Key>
+          <Property Name="IDAdditionalField" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdditionalFieldForDevice">
+          <Key>
+            <PropertyRef Name="TypeOfDeviceID" />
+            <PropertyRef Name="AdditionalFieldID" />
+          </Key>
+          <Property Name="TypeOfDeviceID" Type="int" Nullable="false" />
+          <Property Name="AdditionalFieldID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="IDKit" />
+          </Key>
+          <Property Name="IDKit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="IDLocation" />
+          </Key>
+          <Property Name="IDLocation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModelOfDevice">
+          <Key>
+            <PropertyRef Name="IDModelOfDevice" />
+          </Key>
+          <Property Name="IDModelOfDevice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeOfDeviceID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfDevice">
+          <Key>
+            <PropertyRef Name="IDTypeOfDevice" />
+          </Key>
+          <Property Name="IDTypeOfDevice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FillingTheKit">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="KitID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KitLoction">
+          <Key>
+            <PropertyRef Name="KitID" />
+          </Key>
+          <Property Name="KitID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="CompName" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice">
+          <End Role="TypeOfDevice" Type="Self.TypeOfDevice" Multiplicity="1" />
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfDevice">
+              <PropertyRef Name="IDTypeOfDevice" />
+            </Principal>
+            <Dependent Role="AdditionalFieldForDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField">
+          <End Role="AdditionalField" Type="Self.AdditionalField" Multiplicity="1" />
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalField">
+              <PropertyRef Name="IDAdditionalField" />
+            </Principal>
+            <Dependent Role="AdditionalFieldForDevice">
+              <PropertyRef Name="AdditionalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Device1_ModelOfDeviceID_ModelOfDevice">
+          <End Role="ModelOfDevice" Type="Self.ModelOfDevice" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelOfDevice">
+              <PropertyRef Name="IDModelOfDevice" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="ModelOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceWithAdditionalField1_DeviceID_Device">
+          <End Role="Device" Type="Self.Device" Multiplicity="1" />
+          <End Role="DeviceWithAdditionalField" Type="Self.DeviceWithAdditionalField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="IDDevice" />
+            </Principal>
+            <Dependent Role="DeviceWithAdditionalField">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice">
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="1" />
+          <End Role="DeviceWithAdditionalField" Type="Self.DeviceWithAdditionalField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalFieldForDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+              <PropertyRef Name="AdditionalFieldID" />
+            </Principal>
+            <Dependent Role="DeviceWithAdditionalField">
+              <PropertyRef Name="TypeOfDeviceID" />
+              <PropertyRef Name="AdditionalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FillingTheKit1_DeviceID_Device">
+          <End Role="Device" Type="Self.Device" Multiplicity="1" />
+          <End Role="FillingTheKit" Type="Self.FillingTheKit" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="IDDevice" />
+            </Principal>
+            <Dependent Role="FillingTheKit">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FillingTheKit2_KitID_Kit">
+          <End Role="Kit" Type="Self.Kit" Multiplicity="1" />
+          <End Role="FillingTheKit" Type="Self.FillingTheKit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kit">
+              <PropertyRef Name="IDKit" />
+            </Principal>
+            <Dependent Role="FillingTheKit">
+              <PropertyRef Name="KitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitLoction1_KitID_Kit">
+          <End Role="Kit" Type="Self.Kit" Multiplicity="1" />
+          <End Role="KitLoction" Type="Self.KitLoction" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kit">
+              <PropertyRef Name="IDKit" />
+            </Principal>
+            <Dependent Role="KitLoction">
+              <PropertyRef Name="KitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitLoction2_LocationID_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="KitLoction" Type="Self.KitLoction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="IDLocation" />
+            </Principal>
+            <Dependent Role="KitLoction">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice">
+          <End Role="TypeOfDevice" Type="Self.TypeOfDevice" Multiplicity="1" />
+          <End Role="ModelOfDevice" Type="Self.ModelOfDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfDevice">
+              <PropertyRef Name="IDTypeOfDevice" />
+            </Principal>
+            <Dependent Role="ModelOfDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Balance_V2ModelStoreContainer">
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dev" store:Type="Tables" />
+          <EntitySet Name="DeviceWithAdditionalField" EntityType="Self.DeviceWithAdditionalField" Schema="dev" store:Type="Tables" />
+          <EntitySet Name="AdditionalField" EntityType="Self.AdditionalField" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="AdditionalFieldForDevice" EntityType="Self.AdditionalFieldForDevice" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="Kit" EntityType="Self.Kit" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="ModelOfDevice" EntityType="Self.ModelOfDevice" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="TypeOfDevice" EntityType="Self.TypeOfDevice" Schema="dic" store:Type="Tables" />
+          <EntitySet Name="FillingTheKit" EntityType="Self.FillingTheKit" Schema="kit" store:Type="Tables" />
+          <EntitySet Name="KitLoction" EntityType="Self.KitLoction" Schema="kit" store:Type="Tables" />
+          <AssociationSet Name="FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice" Association="Self.FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice">
+            <End Role="TypeOfDevice" EntitySet="TypeOfDevice" />
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField" Association="Self.FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField">
+            <End Role="AdditionalField" EntitySet="AdditionalField" />
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Device1_ModelOfDeviceID_ModelOfDevice" Association="Self.FK_Device1_ModelOfDeviceID_ModelOfDevice">
+            <End Role="ModelOfDevice" EntitySet="ModelOfDevice" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceWithAdditionalField1_DeviceID_Device" Association="Self.FK_DeviceWithAdditionalField1_DeviceID_Device">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="DeviceWithAdditionalField" EntitySet="DeviceWithAdditionalField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice" Association="Self.FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice">
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevice" />
+            <End Role="DeviceWithAdditionalField" EntitySet="DeviceWithAdditionalField" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FillingTheKit1_DeviceID_Device" Association="Self.FK_FillingTheKit1_DeviceID_Device">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="FillingTheKit" EntitySet="FillingTheKit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FillingTheKit2_KitID_Kit" Association="Self.FK_FillingTheKit2_KitID_Kit">
+            <End Role="Kit" EntitySet="Kit" />
+            <End Role="FillingTheKit" EntitySet="FillingTheKit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitLoction1_KitID_Kit" Association="Self.FK_KitLoction1_KitID_Kit">
+            <End Role="Kit" EntitySet="Kit" />
+            <End Role="KitLoction" EntitySet="KitLoction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitLoction2_LocationID_Location" Association="Self.FK_KitLoction2_LocationID_Location">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="KitLoction" EntitySet="KitLoction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice" Association="Self.FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice">
+            <End Role="TypeOfDevice" EntitySet="TypeOfDevice" />
+            <End Role="ModelOfDevice" EntitySet="ModelOfDevice" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Balance_V2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="IDDevice" />
+          </Key>
+          <Property Name="IDDevice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModelOfDeviceID" Type="Int32" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ModelOfDevice" Relationship="Self.FK_Device1_ModelOfDeviceID_ModelOfDevice" FromRole="Device" ToRole="ModelOfDevice" />
+          <NavigationProperty Name="DeviceWithAdditionalFields" Relationship="Self.FK_DeviceWithAdditionalField1_DeviceID_Device" FromRole="Device" ToRole="DeviceWithAdditionalField" />
+          <NavigationProperty Name="Kit" Relationship="Self.FillingTheKit" FromRole="Device" ToRole="Kit" />
+        </EntityType>
+        <EntityType Name="DeviceWithAdditionalField">
+          <Key>
+            <PropertyRef Name="IDDeviceWithAdditionalField" />
+          </Key>
+          <Property Name="IDDeviceWithAdditionalField" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <Property Name="TypeOfDeviceID" Type="Int32" Nullable="false" />
+          <Property Name="AdditionalFieldID" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Device" Relationship="Self.FK_DeviceWithAdditionalField1_DeviceID_Device" FromRole="DeviceWithAdditionalField" ToRole="Device" />
+          <NavigationProperty Name="AdditionalFieldForDevice" Relationship="Self.FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice" FromRole="DeviceWithAdditionalField" ToRole="AdditionalFieldForDevice" />
+        </EntityType>
+        <EntityType Name="AdditionalField">
+          <Key>
+            <PropertyRef Name="IDAdditionalField" />
+          </Key>
+          <Property Name="IDAdditionalField" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AdditionalFieldForDevices" Relationship="Self.FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField" FromRole="AdditionalField" ToRole="AdditionalFieldForDevice" />
+        </EntityType>
+        <EntityType Name="AdditionalFieldForDevice">
+          <Key>
+            <PropertyRef Name="TypeOfDeviceID" />
+            <PropertyRef Name="AdditionalFieldID" />
+          </Key>
+          <Property Name="TypeOfDeviceID" Type="Int32" Nullable="false" />
+          <Property Name="AdditionalFieldID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DeviceWithAdditionalFields" Relationship="Self.FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice" FromRole="AdditionalFieldForDevice" ToRole="DeviceWithAdditionalField" />
+          <NavigationProperty Name="AdditionalField" Relationship="Self.FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField" FromRole="AdditionalFieldForDevice" ToRole="AdditionalField" />
+          <NavigationProperty Name="TypeOfDevice" Relationship="Self.FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice" FromRole="AdditionalFieldForDevice" ToRole="TypeOfDevice" />
+        </EntityType>
+        <EntityType Name="Kit">
+          <Key>
+            <PropertyRef Name="IDKit" />
+          </Key>
+          <Property Name="IDKit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KitLoction" Relationship="Self.FK_KitLoction1_KitID_Kit" FromRole="Kit" ToRole="KitLoction" />
+          <NavigationProperty Name="Devices" Relationship="Self.FillingTheKit" FromRole="Kit" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="IDLocation" />
+          </Key>
+          <Property Name="IDLocation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KitLoctions" Relationship="Self.FK_KitLoction2_LocationID_Location" FromRole="Location" ToRole="KitLoction" />
+        </EntityType>
+        <EntityType Name="ModelOfDevice">
+          <Key>
+            <PropertyRef Name="IDModelOfDevice" />
+          </Key>
+          <Property Name="IDModelOfDevice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfDeviceID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK_Device1_ModelOfDeviceID_ModelOfDevice" FromRole="ModelOfDevice" ToRole="Device" />
+          <NavigationProperty Name="TypeOfDevice" Relationship="Self.FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice" FromRole="ModelOfDevice" ToRole="TypeOfDevice" />
+        </EntityType>
+        <EntityType Name="TypeOfDevice">
+          <Key>
+            <PropertyRef Name="IDTypeOfDevice" />
+          </Key>
+          <Property Name="IDTypeOfDevice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AdditionalFieldForDevices" Relationship="Self.FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice" FromRole="TypeOfDevice" ToRole="AdditionalFieldForDevice" />
+          <NavigationProperty Name="ModelOfDevices" Relationship="Self.FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice" FromRole="TypeOfDevice" ToRole="ModelOfDevice" />
+        </EntityType>
+        <EntityType Name="KitLoction">
+          <Key>
+            <PropertyRef Name="KitID" />
+          </Key>
+          <Property Name="KitID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="CompName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Kit" Relationship="Self.FK_KitLoction1_KitID_Kit" FromRole="KitLoction" ToRole="Kit" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_KitLoction2_LocationID_Location" FromRole="KitLoction" ToRole="Location" />
+        </EntityType>
+        <Association Name="FK_Device1_ModelOfDeviceID_ModelOfDevice">
+          <End Role="ModelOfDevice" Type="Self.ModelOfDevice" Multiplicity="1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelOfDevice">
+              <PropertyRef Name="IDModelOfDevice" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="ModelOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceWithAdditionalField1_DeviceID_Device">
+          <End Role="Device" Type="Self.Device" Multiplicity="1" />
+          <End Role="DeviceWithAdditionalField" Type="Self.DeviceWithAdditionalField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="IDDevice" />
+            </Principal>
+            <Dependent Role="DeviceWithAdditionalField">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice">
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="1" />
+          <End Role="DeviceWithAdditionalField" Type="Self.DeviceWithAdditionalField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalFieldForDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+              <PropertyRef Name="AdditionalFieldID" />
+            </Principal>
+            <Dependent Role="DeviceWithAdditionalField">
+              <PropertyRef Name="TypeOfDeviceID" />
+              <PropertyRef Name="AdditionalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField">
+          <End Role="AdditionalField" Type="Self.AdditionalField" Multiplicity="1" />
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalField">
+              <PropertyRef Name="IDAdditionalField" />
+            </Principal>
+            <Dependent Role="AdditionalFieldForDevice">
+              <PropertyRef Name="AdditionalFieldID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice">
+          <End Role="TypeOfDevice" Type="Self.TypeOfDevice" Multiplicity="1" />
+          <End Role="AdditionalFieldForDevice" Type="Self.AdditionalFieldForDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfDevice">
+              <PropertyRef Name="IDTypeOfDevice" />
+            </Principal>
+            <Dependent Role="AdditionalFieldForDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitLoction1_KitID_Kit">
+          <End Role="Kit" Type="Self.Kit" Multiplicity="1" />
+          <End Role="KitLoction" Type="Self.KitLoction" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kit">
+              <PropertyRef Name="IDKit" />
+            </Principal>
+            <Dependent Role="KitLoction">
+              <PropertyRef Name="KitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KitLoction2_LocationID_Location">
+          <End Role="Location" Type="Self.Location" Multiplicity="1" />
+          <End Role="KitLoction" Type="Self.KitLoction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="IDLocation" />
+            </Principal>
+            <Dependent Role="KitLoction">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice">
+          <End Role="TypeOfDevice" Type="Self.TypeOfDevice" Multiplicity="1" />
+          <End Role="ModelOfDevice" Type="Self.ModelOfDevice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfDevice">
+              <PropertyRef Name="IDTypeOfDevice" />
+            </Principal>
+            <Dependent Role="ModelOfDevice">
+              <PropertyRef Name="TypeOfDeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FillingTheKit">
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <End Role="Kit" Type="Self.Kit" Multiplicity="0..1" />
+        </Association>
+        <EntityContainer Name="BalanceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Devices" EntityType="Self.Device" />
+          <EntitySet Name="DeviceWithAdditionalFields" EntityType="Self.DeviceWithAdditionalField" />
+          <EntitySet Name="AdditionalFields" EntityType="Self.AdditionalField" />
+          <EntitySet Name="AdditionalFieldForDevices" EntityType="Self.AdditionalFieldForDevice" />
+          <EntitySet Name="Kits" EntityType="Self.Kit" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="ModelOfDevices" EntityType="Self.ModelOfDevice" />
+          <EntitySet Name="TypeOfDevices" EntityType="Self.TypeOfDevice" />
+          <EntitySet Name="KitLoctions" EntityType="Self.KitLoction" />
+          <AssociationSet Name="FK_Device1_ModelOfDeviceID_ModelOfDevice" Association="Self.FK_Device1_ModelOfDeviceID_ModelOfDevice">
+            <End Role="ModelOfDevice" EntitySet="ModelOfDevices" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceWithAdditionalField1_DeviceID_Device" Association="Self.FK_DeviceWithAdditionalField1_DeviceID_Device">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="DeviceWithAdditionalField" EntitySet="DeviceWithAdditionalFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice" Association="Self.FK_DeviceWithAdditionalField2_TypeOfDeviceID_AdditionalFieldID_AdditionalFieldForDevice">
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevices" />
+            <End Role="DeviceWithAdditionalField" EntitySet="DeviceWithAdditionalFields" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField" Association="Self.FK_AdditionalFieldForDevice2_AdditionalFieldID_AdditionalField">
+            <End Role="AdditionalField" EntitySet="AdditionalFields" />
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice" Association="Self.FK_AdditionalFieldForDevice1_TypeOfDeviceID_TypeOfDevice">
+            <End Role="TypeOfDevice" EntitySet="TypeOfDevices" />
+            <End Role="AdditionalFieldForDevice" EntitySet="AdditionalFieldForDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitLoction1_KitID_Kit" Association="Self.FK_KitLoction1_KitID_Kit">
+            <End Role="Kit" EntitySet="Kits" />
+            <End Role="KitLoction" EntitySet="KitLoctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KitLoction2_LocationID_Location" Association="Self.FK_KitLoction2_LocationID_Location">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="KitLoction" EntitySet="KitLoctions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice" Association="Self.FK_ModelOfDevice1_TypeOfDeviceID_TypeOfDevice">
+            <End Role="TypeOfDevice" EntitySet="TypeOfDevices" />
+            <End Role="ModelOfDevice" EntitySet="ModelOfDevices" />
+          </AssociationSet>
+          <AssociationSet Name="FillingTheKit" Association="Self.FillingTheKit">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Kit" EntitySet="Kits" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Balance_V2ModelStoreContainer" CdmEntityContainer="BalanceEntities">
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="Balance_V2Model.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="IDDevice" ColumnName="IDDevice" />
+                <ScalarProperty Name="ModelOfDeviceID" ColumnName="ModelOfDeviceID" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceWithAdditionalFields">
+            <EntityTypeMapping TypeName="Balance_V2Model.DeviceWithAdditionalField">
+              <MappingFragment StoreEntitySet="DeviceWithAdditionalField">
+                <ScalarProperty Name="IDDeviceWithAdditionalField" ColumnName="IDDeviceWithAdditionalField" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="TypeOfDeviceID" ColumnName="TypeOfDeviceID" />
+                <ScalarProperty Name="AdditionalFieldID" ColumnName="AdditionalFieldID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalFields">
+            <EntityTypeMapping TypeName="Balance_V2Model.AdditionalField">
+              <MappingFragment StoreEntitySet="AdditionalField">
+                <ScalarProperty Name="IDAdditionalField" ColumnName="IDAdditionalField" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalFieldForDevices">
+            <EntityTypeMapping TypeName="Balance_V2Model.AdditionalFieldForDevice">
+              <MappingFragment StoreEntitySet="AdditionalFieldForDevice">
+                <ScalarProperty Name="TypeOfDeviceID" ColumnName="TypeOfDeviceID" />
+                <ScalarProperty Name="AdditionalFieldID" ColumnName="AdditionalFieldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kits">
+            <EntityTypeMapping TypeName="Balance_V2Model.Kit">
+              <MappingFragment StoreEntitySet="Kit">
+                <ScalarProperty Name="IDKit" ColumnName="IDKit" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="Balance_V2Model.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="IDLocation" ColumnName="IDLocation" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModelOfDevices">
+            <EntityTypeMapping TypeName="Balance_V2Model.ModelOfDevice">
+              <MappingFragment StoreEntitySet="ModelOfDevice">
+                <ScalarProperty Name="IDModelOfDevice" ColumnName="IDModelOfDevice" />
+                <ScalarProperty Name="TypeOfDeviceID" ColumnName="TypeOfDeviceID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfDevices">
+            <EntityTypeMapping TypeName="Balance_V2Model.TypeOfDevice">
+              <MappingFragment StoreEntitySet="TypeOfDevice">
+                <ScalarProperty Name="IDTypeOfDevice" ColumnName="IDTypeOfDevice" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KitLoctions">
+            <EntityTypeMapping TypeName="Balance_V2Model.KitLoction">
+              <MappingFragment StoreEntitySet="KitLoction">
+                <ScalarProperty Name="KitID" ColumnName="KitID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FillingTheKit" TypeName="Balance_V2Model.FillingTheKit" StoreEntitySet="FillingTheKit">
+            <EndProperty Name="Device">
+              <ScalarProperty Name="IDDevice" ColumnName="DeviceID" />
+            </EndProperty>
+            <EndProperty Name="Kit">
+              <ScalarProperty Name="IDKit" ColumnName="KitID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
